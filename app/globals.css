@@ -63,6 +63,12 @@
 
   .copy-button {
     @apply rounded-lg border border-transparent text-sm font-medium text-text-normal transition-colors duration-200 outline-none border-none;
+    contain: layout style;
+  }
+
+  .performance-optimized {
+    content-visibility: auto;
+    contain-intrinsic-size: 200px;
   }
 
   
@@ -107,7 +113,7 @@
   }
 
   .squil {
-    @apply pb-1 hover:underline-offset-4 transition-colors duration-300 font-light hover:text-text-heading hover:cursor-pointer;
+    @apply pb-1 font-light;
   }
 }
 
@@ -117,13 +123,8 @@ body {
   font-family: var(--font-geist-sans);
   background-color: #1a1a1a;
   color: #f0f0f0;
-  contain: layout style paint;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  content-visibility: auto;
 }
 
 .tw-shadow {
@@ -163,7 +164,7 @@ body {
 }
 
 .link-footer {
-  @apply hover:underline hover:underline-offset-4 transition-colors duration-300 font-light hover:text-text-heading hover:cursor-pointer;
+  @apply font-light;
 }
 
 .link-active {
@@ -172,6 +173,8 @@ body {
 
 .nav {
   background-color: rgba(26, 26, 26, 0.9);
+  contain: layout style paint;
+  will-change: transform;
 }
 
 .hide-scrollbar {
@@ -206,22 +209,7 @@ body {
   width: 1.5rem;
 }
 
-.animate-in {
-  opacity: 1;
-  transform: translateY(0) translateZ(0);
-  will-change: opacity, transform;
-  contain: layout style paint;
-}
 
-.fade-in {
-  opacity: 1;
-  contain: layout style paint;
-}
-
-.duration-300 {
-  transition-duration: 0.3s;
-  contain: layout style paint;
-}
 
 .fade-in {
   opacity: 1;
@@ -251,6 +239,7 @@ body {
   padding-bottom: 1rem;
   font-weight: 400;
   color: #eaeaea;
+  contain: layout style;
 }
 
 @media (min-width: 300px) {
