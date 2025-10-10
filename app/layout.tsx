@@ -32,10 +32,13 @@ export default async function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/avatars/avatar-smile.png" as="image" />
         <link rel="dns-prefetch" href="https://vercel.live" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+        <style dangerouslySetInnerHTML={{__html: `body{background-color:#1a1a1a;color:#f0f0f0;font-family:var(--font-geist-sans),system-ui,-apple-system,sans-serif}`}} />
       </head>
       <ClientBody>{children}</ClientBody>
     </html>

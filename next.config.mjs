@@ -5,9 +5,17 @@ const nextConfig = {
   swcMinify: true,
   compress: true,
   experimental: {
-    optimizePackageImports: ['@vercel/analytics', 'framer-motion', 'zustand'],
+    optimizePackageImports: ['@vercel/analytics'],
     webVitalsAttribution: ['CLS', 'LCP'],
-    serverComponentsExternalPackages: ['canvas-confetti'],
+    serverComponentsExternalPackages: ['sharp'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -50,6 +58,15 @@ const nextConfig = {
         ],
       },
       {
+        source: '/avatars/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400',
+          },
+        ],
+      },
+      {
         source: '/(.*)',
         headers: [
           {
@@ -59,6 +76,10 @@ const nextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'DENY'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
           }
         ],
       },

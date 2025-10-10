@@ -17,7 +17,9 @@ const AppFooter = () => {
     <footer className="py-7 border-t border-t-zinc-800">
       <div className="max-w-screen-lx mx-auto md:px-10 px-6 grid lg:grid-cols-6 gap-8">
         <div className="lg:col-span-3 xs:col-span-2 max-w-md">
-          <h3 className="font-semibold mb-2 text-text-heading">Samuel's personal site</h3>
+          <h3 className="font-semibold mb-2 text-text-heading">
+            Samuel's personal site
+          </h3>
           <div className="flex items-center gap-1">
             <div className="flex items-center text-text-normal">
               <svg
@@ -27,7 +29,7 @@ const AppFooter = () => {
                 height={24}
                 color={"#000000"}
                 fill={"none"}
-                className="size-4 text-zinc-500"
+                className="size-4 text-zinc-500 mr-2"
               >
                 <path
                   d="M15 9.5C15 11.1569 13.6569 12.5 12 12.5C10.3431 12.5 9 11.1569 9 9.5C9 7.84315 10.3431 6.5 12 6.5C13.6569 6.5 15 7.84315 15 9.5Z"
@@ -46,7 +48,9 @@ const AppFooter = () => {
                   strokeLinecap="round"
                 />
               </svg>
-              <p className="font-firacode capitalize text-text-normal">{LOCATION}</p>
+              <p className="font-firacode capitalize text-text-normal">
+                {LOCATION}
+              </p>
             </div>
           </div>
         </div>
@@ -89,7 +93,9 @@ const AppFooter = () => {
                         backgroundColor: link.bg,
                         rotate: link.tilt,
                       }}
-                      className={`transition-all absolute left-16 bottom-1 ${link.bg} duration-300 ${
+                      className={`transition-all absolute left-16 bottom-1 ${
+                        link.bg
+                      } duration-300 ${
                         hoveredIndex !== index
                           ? "opacity-0 translate-y-1"
                           : "opacity-100 translate-y-0"
