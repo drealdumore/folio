@@ -6,7 +6,7 @@ const Motion = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div className="animate-in fade-in duration-300">
+    <div className="animate-in fade-in duration-300" style={{ willChange: 'opacity, transform' }}>
       {children}
     </div>
   );

@@ -29,9 +29,13 @@ export default async function RootLayout({
       className={`${GeistSans.variable} ${calSans.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
+        <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       </head>
       <ClientBody>{children}</ClientBody>
     </html>
