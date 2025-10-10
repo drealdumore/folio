@@ -26,10 +26,12 @@
 
   .bg-dots {
     background: #1a1a1a;
+    contain: layout style paint;
   }
 
   .bg-grid {
     background: #1a1a1a;
+    contain: layout style paint;
   }
 
   .tooltip {
@@ -121,6 +123,7 @@ body {
   text-rendering: optimizeLegibility;
   transform: translateZ(0);
   backface-visibility: hidden;
+  content-visibility: auto;
 }
 
 .tw-shadow {
@@ -207,6 +210,17 @@ body {
   opacity: 1;
   transform: translateY(0) translateZ(0);
   will-change: opacity, transform;
+  contain: layout style paint;
+}
+
+.fade-in {
+  opacity: 1;
+  contain: layout style paint;
+}
+
+.duration-300 {
+  transition-duration: 0.3s;
+  contain: layout style paint;
 }
 
 .fade-in {

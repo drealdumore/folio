@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import AppFooter from "@/components/layout/footer";
 import AppNav from "@/components/layout/nav";
+import CriticalCSS from "@/components/performance/CriticalCSS";
 
 export default function ClientBody({
   children,
@@ -15,6 +16,7 @@ export default function ClientBody({
 
   return (
     <body>
+      <CriticalCSS />
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-text-heading text-background px-4 py-2 rounded z-50">
         Skip to main content
       </a>
