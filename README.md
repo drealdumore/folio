@@ -51,6 +51,30 @@ pnpm dev
 # Server runs on http://localhost:3001
 ```
 
+## Performance Optimizations
+
+This portfolio implements several performance optimizations:
+
+**Image Optimization:**
+- AVIF and WebP format support
+- Responsive image sizing
+- Lazy loading with Next.js Image component
+
+**Code Optimization:**
+- Package import optimization for analytics and UI libraries
+- Tree shaking and code splitting
+- GPU-accelerated CSS animations
+
+**Loading Performance:**
+- Resource preloading for critical assets
+- Font display swap for better loading
+- Optimized middleware for security headers
+
+**Monitoring:**
+- Web Vitals tracking
+- Performance hooks for optimization
+- Vercel Analytics integration
+
 ## Tech Stack
 
 **Framework & Core:**
@@ -60,52 +84,76 @@ pnpm dev
 
 **Styling & Animation:**
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS
-- [Framer Motion](https://www.framer.com/motion/) - Smooth animations
 - [Geist Font](https://vercel.com/font) - Typography
-- Custom fonts (Cal Sans, Instrument Serif, Fira Code)
+- Custom fonts (Cal Sans, BDO Grotesk, Instrument Serif, Fira Code)
 
 **Email & Communication:**
 - [Resend](https://resend.com/) - Email API
 - [React Email](https://react.email/) - Email templates
-- [EmailJS](https://www.emailjs.com/) - Client-side email
 
-**State & Utils:**
-- [Zustand](https://zustand-demo.pmnd.rs/) - State management
-- [Lenis](https://lenis.studiofreight.com/) - Smooth scrolling
-- [Canvas Confetti](https://www.kirilv.com/canvas-confetti/) - Celebrations
+**Performance & Optimization:**
+- [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
+- [Vercel Analytics](https://vercel.com/analytics) - Performance monitoring
+- Custom performance hooks and components
+- Optimized package imports and code splitting
 
 **Development:**
-- [Prettier](https://prettier.io/) - Code formatting
-- [ESLint](https://eslint.org/) - Code linting
+- [PostCSS](https://postcss.org/) - CSS processing
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
 
 **Deployment:**
 - [Vercel](https://vercel.com) - Hosting and deployment
-- [Vercel Analytics](https://vercel.com/analytics) - Performance monitoring
 
 ## Features
 
 - **Responsive Design** - Works seamlessly across all devices
-- **Dark Theme** - Elegant dark color scheme with custom animations
-- **Smooth Animations** - Powered by Framer Motion for fluid interactions
-- **Contact Form** - Integrated email functionality with validation
+- **Dark Theme** - Elegant dark color scheme with optimized CSS
+- **Performance Optimized** - Lighthouse score improvements with:
+  - AVIF/WebP image formats
+  - Optimized package imports
+  - GPU-accelerated animations
+  - Resource preloading
+  - Security headers via middleware
+- **Contact Form** - Integrated email functionality with Resend
 - **Project Showcase** - Dynamic project cards with detailed views
-- **SEO Optimized** - Meta tags, Open Graph, and Twitter cards
-- **Performance** - Optimized images, fonts, and lazy loading
+- **SEO Optimized** - Meta tags, sitemap, robots.txt, and Open Graph
+- **Accessibility** - Skip links, semantic HTML, and ARIA labels
 - **Type Safe** - Full TypeScript implementation
+- **Web Vitals** - Performance monitoring and optimization
 
 ## Environment Variables
 
 Create a `.env.local` file with the following variables:
 
 ```env
-NEXT_PRIVATE_EMAILJS_USER_ID=your_emailjs_user_id
-NEXT_PUBLIC_EMAILJS_USER_ID=your_public_emailjs_user_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-MAX_REQUESTS=10
-RATE_LIMIT_WINDOW=3600000
+# Email Configuration
 RECEIVER_MAIL_ADDRESS=your_email@example.com
 RESEND_API_KEY=your_resend_api_key
+
+# Rate Limiting
+MAX_REQUESTS=10
+RATE_LIMIT_WINDOW=3600000
+```
+
+## Project Structure
+
+```
+portfolio/
+├── app/                    # Next.js App Router
+│   ├── (pages)/           # Route groups
+│   ├── api/               # API routes
+│   ├── globals.css        # Global styles
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── performance/       # Performance optimization components
+│   ├── layout/           # Layout components
+│   └── design/           # UI components
+├── content/              # Content and data
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility libraries
+├── motion/               # Animation components
+├── public/               # Static assets
+└── utils/                # Helper functions
 ```
 
 ## License
