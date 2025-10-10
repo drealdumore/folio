@@ -5,11 +5,7 @@ const Motion = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (
-    <div className="animate-in fade-in duration-300" style={{ willChange: 'opacity, transform' }}>
-      {children}
-    </div>
-  );
+  return <>{children}</>;
 };
 
 export default Motion;
