@@ -159,13 +159,13 @@ export default function ContactForm() {
         {FORMCONTENT.map((field, index) => (
           <div key={index} className="w-full border-t-2 border-zinc-700">
             <div className="flex w-full gap-4 pt-8 pb-8 font-light text-text-normal">
-              <p>{String(index + 1).padStart(2, "0")}</p>
+              <p className="text-sm">{String(index + 1).padStart(2, "0")}</p>
               <div className="w-full">
-                <label className="flex flex-grow text-lg font-medium text-text-heading">
+                <label className="flex flex-grow text-base font-medium text-text-heading">
                   {field.label}
                 </label>
                 <input
-                  className="peer w-full flex flex-grow appearance-none border-0 bg-transparent px-0 py-2.5 text-lg focus:outline-none text-text-normal placeholder-text-normal/50"
+                  className="peer w-full flex flex-grow appearance-none border-0 bg-transparent px-0 py-2.5 text-base focus:outline-none text-text-normal placeholder-text-normal/50"
                   placeholder={field.placeholder}
                   type={field.type}
                   name={field.name}
@@ -189,7 +189,7 @@ export default function ContactForm() {
         ))}
 
         {success && (
-          <p className="text-green-500 text-sm text-center font-semibold mb-4">
+          <p className="text-green-500 text-base text-center font-medium mb-4">
             {success}
           </p>
         )}
