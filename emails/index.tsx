@@ -30,79 +30,175 @@ const InquiryEmail = ({
   <Html>
     <Head />
     <Preview>
-      New Inquiry from {username} ({email})
+      New inquiry from {username} • {service}
     </Preview>
     <Body
       style={{
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#f4f4f4",
-        padding: "20px",
+        fontFamily: "'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif",
+        backgroundColor: "#1a1a1a",
+        padding: "40px 20px",
+        margin: 0,
       }}
     >
       <Container
         style={{
-          backgroundColor: "#ffffff",
-          padding: "20px",
-          borderRadius: "8px",
+          backgroundColor: "#1a1a1a",
+          border: "1px solid #333333",
+          borderRadius: "12px",
+          padding: "32px",
+          maxWidth: "600px",
         }}
       >
-        <Heading style={{ color: "#333333", fontSize: "24px" }}>
+        <Heading 
+          style={{ 
+            color: "#f2f2f2", 
+            fontSize: "24px", 
+            fontWeight: "600",
+            marginBottom: "8px",
+            marginTop: 0
+          }}
+        >
           New Contact Inquiry
         </Heading>
-        <Text style={{ fontSize: "16px", color: "#333" }}>
-          You have received a new inquiry through the contact form. Here are the
-          details:
+        
+        <Text style={{ fontSize: "16px", color: "#eaeaea", marginBottom: "24px" }}>
+          Someone reached out through your portfolio contact form.
         </Text>
 
-        <div style={{ marginTop: "20px" }}>
-          <div style={{ marginBottom: "12px" }}>
-            <strong>Name:</strong>
-            <Text style={{ marginLeft: "10px", display: "inline-block" }}>
+        <div style={{ 
+          backgroundColor: "#262626", 
+          borderRadius: "8px", 
+          padding: "24px",
+          marginBottom: "24px"
+        }}>
+          <div style={{ marginBottom: "16px" }}>
+            <Text style={{ 
+              fontSize: "14px", 
+              color: "#a1a1aa", 
+              margin: "0 0 4px 0",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              Name
+            </Text>
+            <Text style={{ 
+              fontSize: "16px", 
+              color: "#f2f2f2", 
+              margin: 0,
+              fontWeight: "500"
+            }}>
               {username}
             </Text>
           </div>
 
-          <div style={{ marginBottom: "12px" }}>
-            <strong>Email:</strong>
-            <Text style={{ marginLeft: "10px", display: "inline-block" }}>
-              {email}
+          <div style={{ marginBottom: "16px" }}>
+            <Text style={{ 
+              fontSize: "14px", 
+              color: "#a1a1aa", 
+              margin: "0 0 4px 0",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              Email
             </Text>
+            <Link 
+              href={`mailto:${email}`}
+              style={{ 
+                fontSize: "16px", 
+                color: "#60a5fa", 
+                textDecoration: "none",
+                fontWeight: "500"
+              }}
+            >
+              {email}
+            </Link>
           </div>
 
           {organization && (
-            <div style={{ marginBottom: "12px" }}>
-              <strong>Organization:</strong>
-              <Text style={{ marginLeft: "10px", display: "inline-block" }}>
+            <div style={{ marginBottom: "16px" }}>
+              <Text style={{ 
+                fontSize: "14px", 
+                color: "#a1a1aa", 
+                margin: "0 0 4px 0",
+                textTransform: "uppercase",
+                letterSpacing: "0.5px"
+              }}>
+                Organization
+              </Text>
+              <Text style={{ 
+                fontSize: "16px", 
+                color: "#f2f2f2", 
+                margin: 0,
+                fontWeight: "500"
+              }}>
                 {organization}
               </Text>
             </div>
           )}
 
-          <div style={{ marginBottom: "12px" }}>
-            <strong>Service:</strong>
-            <Text style={{ marginLeft: "10px", display: "inline-block" }}>
+          <div style={{ marginBottom: "16px" }}>
+            <Text style={{ 
+              fontSize: "14px", 
+              color: "#a1a1aa", 
+              margin: "0 0 4px 0",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              Service Needed
+            </Text>
+            <Text style={{ 
+              fontSize: "16px", 
+              color: "#f2f2f2", 
+              margin: 0,
+              fontWeight: "500"
+            }}>
               {service}
             </Text>
           </div>
 
-          <div style={{ marginBottom: "12px" }}>
-            <strong>Message:</strong>
-            <Text style={{ marginLeft: "10px", display: "inline-block" }}>
+          <div>
+            <Text style={{ 
+              fontSize: "14px", 
+              color: "#a1a1aa", 
+              margin: "0 0 8px 0",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              Message
+            </Text>
+            <Text style={{ 
+              fontSize: "16px", 
+              color: "#eaeaea", 
+              margin: 0,
+              lineHeight: "1.6",
+              whiteSpace: "pre-wrap"
+            }}>
               {message}
             </Text>
           </div>
         </div>
 
-        <Text style={{ fontSize: "14px", marginTop: "20px" }}>
-          Please respond to this inquiry as soon as possible.
-        </Text>
+        <Hr style={{ 
+          border: "none", 
+          borderTop: "1px solid #333333", 
+          margin: "24px 0" 
+        }} />
 
-        <Hr />
-
-        <Text style={{ fontSize: "14px", color: "#999999" }}>
+        <Text style={{ 
+          fontSize: "14px", 
+          color: "#a1a1aa", 
+          margin: 0,
+          textAlign: "center" as const
+        }}>
           Sent from{" "}
-          <Link href={sharedMetadata.url}>
-            ${sharedMetadata.name}'s Personal site.
+          <Link 
+            href={sharedMetadata.url}
+            style={{ 
+              color: "#60a5fa", 
+              textDecoration: "none" 
+            }}
+          >
+            {sharedMetadata.name}'s Portfolio
           </Link>
         </Text>
       </Container>
