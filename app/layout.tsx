@@ -2,7 +2,6 @@ import { sharedMetadata } from "@/constants/shared-meta";
 import { SOCIALS } from "@/constants/social-profiles";
 
 import React from "react";
-import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -13,17 +12,11 @@ import ClientBody from "./ClientBody";
 const calSans = localFont({
   src: ".././public/fonts/CalSans-SemiBold.woff2",
   variable: "--font-calSans",
+  display: 'swap',
+  preload: true,
 });
 
-const instrumentSerif = localFont({
-  src: ".././public/fonts/Instrument_Serif.woff2",
-  variable: "--font-instrumentSerif",
-});
 
-const firacode = localFont({
-  src: ".././public/fonts/firacode.woff2",
-  variable: "--font-firacode",
-});
 
 export default async function RootLayout({
   children,
@@ -33,9 +26,13 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${calSans.variable} ${instrumentSerif.variable} ${firacode.variable}`}
+      className={`${GeistSans.variable} ${calSans.variable}`}
     >
-      
+      <head>
+        <link rel="preload" href="/fonts/CalSans-SemiBold.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#1a1a1a" />
+      </head>
       <ClientBody>{children}</ClientBody>
     </html>
   );
@@ -81,8 +78,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "white",
-  colorScheme: "only light",
+  themeColor: "#1a1a1a",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
 };

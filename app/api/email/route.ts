@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       from: "onboarding@resend.dev",
       to: process.env.RECEIVER_MAIL_ADDRESS || "",
       subject: `New Inquiry from ${username} (${email})`,
-      react: InquiryEmail({ username, email, organization, service, message }),
+      html: InquiryEmail({ username, email, organization, service, message }),
     });
 
     return new Response(

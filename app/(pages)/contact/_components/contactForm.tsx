@@ -1,9 +1,5 @@
 import { useRef, useState } from "react";
 
-
-
-import { motion } from "framer-motion";
-
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     username: "",
@@ -149,39 +145,31 @@ export default function ContactForm() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 15 }}
-      transition={{ delay: 0.3 }}
-    >
+    <div className="animate-in fade-in duration-300">
       <form ref={form} className="px-2" onSubmit={sendEmail}>
         {FORMCONTENT.map((field, index) => (
           <div key={index} className="w-full border-t-2 border-zinc-700">
             <div className="flex w-full gap-4 pt-8 pb-8 font-light text-text-normal">
               <p className="text-sm">{String(index + 1).padStart(2, "0")}</p>
               <div className="w-full">
-                <label className="flex flex-grow text-base font-medium text-text-heading">
+                <label htmlFor={field.name} className="flex flex-grow text-base font-medium text-text-heading">
                   {field.label}
                 </label>
                 <input
-                  className="peer w-full flex flex-grow appearance-none border-0 bg-transparent px-0 py-2.5 text-base focus:outline-none text-text-normal placeholder-text-normal/50"
+                  id={field.name}
+                  className="peer w-full flex flex-grow appearance-none border-0 bg-transparent px-0 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-text-heading focus:ring-offset-2 focus:ring-offset-background rounded text-text-normal placeholder-text-normal/50"
                   placeholder={field.placeholder}
                   type={field.type}
                   name={field.name}
                   value={formData[field.name as keyof typeof formData]}
                   onChange={handleChange}
+                  required={field.name !== 'organization'}
+                  aria-describedby={error[field.name] ? `${field.name}-error` : undefined}
                 />
                 {error[field.name] && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-red-500 text-sm mt-1"
-                  >
+                  <div id={`${field.name}-error`} className="text-red-500 text-sm mt-1 animate-in fade-in duration-300" role="alert">
                     {error[field.name]}
-                  </motion.div>
+                  </div>
                 )}
               </div>
             </div>
@@ -198,7 +186,7 @@ export default function ContactForm() {
           <button
             type="submit"
             disabled={loading}
-            className="group relative inline-flex h-12 items-center justify-center rounded-md bg-text-heading px-6 font-medium text-background duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:translate-y-1 active:scale-x-110 active:scale-y-90 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 disabled:transition-none disabled:translate-y-0"
+            className="group relative inline-flex h-12 items-center justify-center rounded-md bg-text-heading px-6 font-medium text-background duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:translate-y-1 active:scale-x-110 active:scale-y-90 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 disabled:transition-none disabled:translate-y-0 focus:outline-none focus:ring-2 focus:ring-text-heading focus:ring-offset-2 focus:ring-offset-background"
           >
             {loading ? "Sending..." : "Send It"}
             <div className="relative ml-1 h-5 w-5 overflow-hidden">
@@ -238,6 +226,6 @@ export default function ContactForm() {
           </button>
         </div>
       </form>
-    </motion.div>
+    </div>
   );
 }

@@ -6,7 +6,10 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./motion/**/*.{js,ts,jsx,tsx,mdx}",
+    "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
     screens: {
       ...defaultTheme.screens,
@@ -23,8 +26,8 @@ const config: Config = {
       colors: {
         background: "#1a1a1a",
         text: {
-          normal: "#eaeaea",
-          heading: "#f2f2f2",
+          normal: "#f0f0f0",
+          heading: "#ffffff",
         },
         gray: {
           200: "#dcdcdc",
@@ -93,6 +96,7 @@ const config: Config = {
     },
   },
   plugins: [],
+
 };
 
 export default config;

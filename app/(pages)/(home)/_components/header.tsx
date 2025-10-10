@@ -2,7 +2,6 @@
 
 import React from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,22 +9,17 @@ import { SmallPing } from "@/components/design/ping";
 
 const Header = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 15 }}
-      transition={{ delay: 0.2 }}
-    >
-      <AnimatePresence>
+    <section className="animate-in fade-in duration-300">
         <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:pb-8 lg:justify-between lg:flex-row">
           <div className="flex flex-col lg:h-2/6 h-2/5 max-lg:w-full max-lg:flex">
             <div className="max-w-[130px] w-full flex-shrink-0 mb-8 ">
               <Image
                 src="/avatars/avatar-smile.png"
                 className="tw-shadow aspect-square rounded-[28px] bg-[#dcdcdc]"
-                alt="avatar"
+                alt="Samuel Isah's profile photo - smiling portrait"
                 height={100}
                 width={100}
+                priority
               />
             </div>
             <div className="flex items-center gap-x-3 mb-4">
@@ -60,11 +54,11 @@ const Header = () => {
               <h1 className="lg:text-[32px] font-semibold w-full font-cal text-2xl mb-1 leading-9 text-text-heading">
                 Hi, I'm Samuel
                 <span className="ml-1 inline-block origin-bottom-right animate-wave cursor-pointer">
-                  <Image src="/icons/wave.svg" alt="" width={25} height={25} />
+                  <Image src="/icons/wave.svg" alt="Waving hand emoji" width={25} height={25} />
                 </span>
               </h1>
 
-              <p className="mb-4 text-text-normal">
+              <p className="mb-4 text-text-normal" role="text">
                 Full-Stack Developer from{" "}
                 <span className="inline-flex items-center transition-all duration-500 ease-slow">
                   <span className="mr-1">Nigeria</span>
@@ -84,8 +78,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </AnimatePresence>
-    </motion.section>
+    </section>
   );
 };
 

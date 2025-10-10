@@ -25,27 +25,45 @@
   }
 
   .bg-dots {
-    @apply bg-background bg-[radial-gradient(#404040_1px,transparent_1px)] [background-size:16px_16px];
+    background: #1a1a1a;
   }
 
   .bg-grid {
-    @apply bg-background bg-[linear-gradient(to_right,#40404012_1px,transparent_1px),linear-gradient(to_bottom,#40404012_1px,transparent_1px)] bg-[size:24px_24px];
+    background: #1a1a1a;
   }
 
   .tooltip {
     @apply z-50 rounded-md w-max border border-zinc-600 bg-background px-2 py-1 text-xs text-text-normal;
   }
 
-  .copy-button {
-    @apply rounded-lg border border-transparent text-sm font-medium text-text-normal transition duration-1000 outline-none border-none;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  .animation-delay-2000 {
-    animation-delay: 2s;
+  .focus\:not-sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
-  .animation-delay-4000 {
-    animation-delay: 4s;
+
+  .copy-button {
+    @apply rounded-lg border border-transparent text-sm font-medium text-text-normal transition-colors duration-200 outline-none border-none;
   }
+
+  
 }
 
 .tag {
@@ -62,7 +80,11 @@
   display: flex;
   gap: 7.5rem;
 }
+
 @media only screen and (max-width: 600px) {
+  .footer-items {
+    gap: 2rem;
+  }
 }
 
 
@@ -70,9 +92,7 @@
   html {
     @apply scroll-smooth antialiased;
     text-size-adjust: 100%;
-    font-family: "Josefin Sans" system-ui, -apple-system, Segoe UI, Roboto,
-      Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-      sans-serif;
+    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   }
 
   .cursor-styled-arrow-black {
@@ -84,26 +104,24 @@
   }
 
   .squil {
-    @apply pb-1 hover:underline-offset-4 hover:no-underline active:no-underline hover:bg-[url('../public/squiggle.svg')] transition-all duration-500 hover:translate-x-2 font-light hover:text-text-heading hover:cursor-pointer;
+    @apply pb-1 hover:underline-offset-4 transition-colors duration-300 font-light hover:text-text-heading hover:cursor-pointer;
   }
 }
 
 body {
-  font-size: 14px;
-  /* font-size: 1rem; */
-  line-height: 1.5rem;
-  --tw-text-opacity: 1;
-  font-family: var(--font-geist-mono);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: var(--font-geist-sans);
   background-color: #1a1a1a;
-  color: #eaeaea;
-  background-position: center;
-  background-size: cover;
+  color: #f0f0f0;
+  contain: layout style paint;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .tw-shadow {
-  box-shadow: 0 0 0 0.5px #e2e8f0, 0 0 0 1px rgba(226, 232, 240, 0.5),
-    0 0 0 3px #f8fafc, 0 0 0 3.5px #f1f5f9, 0 10px 15px -3px rgb(59 130 246/5%),
-    0 4px 6px -4px rgb(59 130 246/5%);
+  box-shadow: 0 0 0 0.5px #e2e8f0, 0 10px 15px -3px rgb(59 130 246/5%);
 }
 
 .box-shadow-btn {
@@ -132,34 +150,22 @@ body {
   }
 }
 
-.glass {
-  @apply bg-opacity-60 dark:bg-opacity-60;
-}
+
 
 .link {
   @apply hover:underline hover:underline-offset-4;
 }
 
 .link-footer {
-  @apply hover:underline hover:underline-offset-4 transition-all duration-500 hover:translate-x-2 font-light hover:text-text-heading hover:cursor-pointer;
+  @apply hover:underline hover:underline-offset-4 transition-colors duration-300 font-light hover:text-text-heading hover:cursor-pointer;
 }
 
 .link-active {
   @apply underline underline-offset-4;
 }
 
-/* svg filter for chrome and edge */
-@supports (backdrop-filter: url("#svgfilter")) {
-  .nav {
-    backdrop-filter: url("#svgfilter");
-  }
-}
-
-/* Added this cos the svg filter doesn't work on firefox */
-@-moz-document url-prefix() {
-  .nav {
-    backdrop-filter: blur(4px); /* Specific to Firefox */
-  }
+.nav {
+  background-color: rgba(26, 26, 26, 0.9);
 }
 
 .hide-scrollbar {
@@ -170,18 +176,21 @@ body {
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0 #ffd074;
-  border-radius: 0;
+  background: #1a1a1a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0d1117;
-  border-radius: 10px;
+  background: #404040;
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+::-webkit-scrollbar-thumb:hover {
+  background: #eaeaea;
 }
 
 .icon-lg {
@@ -191,62 +200,29 @@ body {
   width: 1.5rem;
 }
 
-@keyframes wave-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(14deg);
-  }
-  20% {
-    transform: rotate(-8deg);
-  }
-  30% {
-    transform: rotate(14deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.duration-300 {
+  transition-duration: 0.3s;
 }
 
 .animate-wave {
-  animation-name: wave-animation;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
   display: inline-block;
 }
 
-@keyframes radar-ping {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(8);
-    opacity: 0;
-  }
-}
-
 .animate-radar {
-  animation: radar-ping 1.6s infinite ease;
+  opacity: 0.8;
 }
 
-.radar1 {
-  animation-delay: 0s;
-}
-
-.radar2 {
-  animation-delay: 0.4s;
+.radar1, .radar2 {
+  opacity: 0.6;
 }
 
 .skill-item {
@@ -288,26 +264,16 @@ body {
 }
 
 .bx-shadow {
-  box-shadow: inset 0px 1px 0px 0px hsla(0, 0%, 100%, 0.03),
-    inset 0px 0px 0px 1px hsla(0, 0%, 100%, 0.03),
-    0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.1),
-    0px 4px 4px 0px rgba(0, 0, 0, 0.1), 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .light-shadow {
-  box-shadow: 0 0 0 1px color(display-p3 0.0572 0.0889 0.1628/0.1),
-    0 2px 4px 0 color(display-p3 0 0 0/0.06);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
-/* Custom scrollbar for code blocks */
 pre::-webkit-scrollbar {
   width: 4px;
   height: 4px;
-  display: none;
-}
-
-pre::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 pre::-webkit-scrollbar-thumb {
@@ -315,16 +281,10 @@ pre::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
 
-pre::-webkit-scrollbar-thumb:hover {
-  background: #ccc;
-}
-
-/* Placeholder styling */
 textarea::placeholder {
   color: #ccc;
 }
 
-/* Auto-growing textarea */
 textarea {
   overflow: hidden;
 }

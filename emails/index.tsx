@@ -1,17 +1,3 @@
-import { sharedMetadata } from "@/constants/shared-meta";
-
-import {
-  Body,
-  Container,
-  Head,
-  Heading,
-  Hr,
-  Html,
-  Link,
-  Preview,
-  Text,
-} from "@react-email/components";
-
 interface InquiryEmailProps {
   username: string;
   email: string;
@@ -26,184 +12,53 @@ const InquiryEmail = ({
   organization,
   service,
   message,
-}: InquiryEmailProps) => (
-  <Html>
-    <Head />
-    <Preview>
-      New inquiry from {username} • {service}
-    </Preview>
-    <Body
-      style={{
-        fontFamily: "'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif",
-        backgroundColor: "#1a1a1a",
-        padding: "40px 20px",
-        margin: 0,
-      }}
-    >
-      <Container
-        style={{
-          backgroundColor: "#1a1a1a",
-          border: "1px solid #333333",
-          borderRadius: "12px",
-          padding: "32px",
-          maxWidth: "600px",
-        }}
-      >
-        <Heading 
-          style={{ 
-            color: "#f2f2f2", 
-            fontSize: "24px", 
-            fontWeight: "600",
-            marginBottom: "8px",
-            marginTop: 0
-          }}
-        >
-          New Contact Inquiry
-        </Heading>
-        
-        <Text style={{ fontSize: "16px", color: "#eaeaea", marginBottom: "24px" }}>
-          Someone reached out through your portfolio contact form.
-        </Text>
+}: InquiryEmailProps) => {
+  return `
+    <html>
+      <body style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; background-color: #1a1a1a; padding: 40px 20px; margin: 0;">
+        <div style="background-color: #1a1a1a; border: 1px solid #333333; border-radius: 12px; padding: 32px; max-width: 600px; margin: 0 auto;">
+          <h1 style="color: #f2f2f2; font-size: 24px; font-weight: 600; margin-bottom: 8px; margin-top: 0;">New Contact Inquiry</h1>
+          
+          <p style="font-size: 16px; color: #eaeaea; margin-bottom: 24px;">Someone reached out through your portfolio contact form.</p>
 
-        <div style={{ 
-          backgroundColor: "#262626", 
-          borderRadius: "8px", 
-          padding: "24px",
-          marginBottom: "24px"
-        }}>
-          <div style={{ marginBottom: "16px" }}>
-            <Text style={{ 
-              fontSize: "14px", 
-              color: "#a1a1aa", 
-              margin: "0 0 4px 0",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px"
-            }}>
-              Name
-            </Text>
-            <Text style={{ 
-              fontSize: "16px", 
-              color: "#f2f2f2", 
-              margin: 0,
-              fontWeight: "500"
-            }}>
-              {username}
-            </Text>
-          </div>
-
-          <div style={{ marginBottom: "16px" }}>
-            <Text style={{ 
-              fontSize: "14px", 
-              color: "#a1a1aa", 
-              margin: "0 0 4px 0",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px"
-            }}>
-              Email
-            </Text>
-            <Link 
-              href={`mailto:${email}`}
-              style={{ 
-                fontSize: "16px", 
-                color: "#60a5fa", 
-                textDecoration: "none",
-                fontWeight: "500"
-              }}
-            >
-              {email}
-            </Link>
-          </div>
-
-          {organization && (
-            <div style={{ marginBottom: "16px" }}>
-              <Text style={{ 
-                fontSize: "14px", 
-                color: "#a1a1aa", 
-                margin: "0 0 4px 0",
-                textTransform: "uppercase",
-                letterSpacing: "0.5px"
-              }}>
-                Organization
-              </Text>
-              <Text style={{ 
-                fontSize: "16px", 
-                color: "#f2f2f2", 
-                margin: 0,
-                fontWeight: "500"
-              }}>
-                {organization}
-              </Text>
+          <div style="background-color: #262626; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+            <div style="margin-bottom: 16px;">
+              <p style="font-size: 14px; color: #a1a1aa; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 0.5px;">Name</p>
+              <p style="font-size: 16px; color: #f2f2f2; margin: 0; font-weight: 500;">${username}</p>
             </div>
-          )}
 
-          <div style={{ marginBottom: "16px" }}>
-            <Text style={{ 
-              fontSize: "14px", 
-              color: "#a1a1aa", 
-              margin: "0 0 4px 0",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px"
-            }}>
-              Service Needed
-            </Text>
-            <Text style={{ 
-              fontSize: "16px", 
-              color: "#f2f2f2", 
-              margin: 0,
-              fontWeight: "500"
-            }}>
-              {service}
-            </Text>
+            <div style="margin-bottom: 16px;">
+              <p style="font-size: 14px; color: #a1a1aa; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 0.5px;">Email</p>
+              <a href="mailto:${email}" style="font-size: 16px; color: #60a5fa; text-decoration: none; font-weight: 500;">${email}</a>
+            </div>
+
+            ${organization ? `
+            <div style="margin-bottom: 16px;">
+              <p style="font-size: 14px; color: #a1a1aa; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 0.5px;">Organization</p>
+              <p style="font-size: 16px; color: #f2f2f2; margin: 0; font-weight: 500;">${organization}</p>
+            </div>
+            ` : ''}
+
+            <div style="margin-bottom: 16px;">
+              <p style="font-size: 14px; color: #a1a1aa; margin: 0 0 4px 0; text-transform: uppercase; letter-spacing: 0.5px;">Service Needed</p>
+              <p style="font-size: 16px; color: #f2f2f2; margin: 0; font-weight: 500;">${service}</p>
+            </div>
+
+            <div>
+              <p style="font-size: 14px; color: #a1a1aa; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;">Message</p>
+              <p style="font-size: 16px; color: #eaeaea; margin: 0; line-height: 1.6; white-space: pre-wrap;">${message}</p>
+            </div>
           </div>
 
-          <div>
-            <Text style={{ 
-              fontSize: "14px", 
-              color: "#a1a1aa", 
-              margin: "0 0 8px 0",
-              textTransform: "uppercase",
-              letterSpacing: "0.5px"
-            }}>
-              Message
-            </Text>
-            <Text style={{ 
-              fontSize: "16px", 
-              color: "#eaeaea", 
-              margin: 0,
-              lineHeight: "1.6",
-              whiteSpace: "pre-wrap"
-            }}>
-              {message}
-            </Text>
-          </div>
+          <hr style="border: none; border-top: 1px solid #333333; margin: 24px 0;" />
+
+          <p style="font-size: 14px; color: #a1a1aa; margin: 0; text-align: center;">
+            Sent from <a href="https://drealdumore.vercel.app" style="color: #60a5fa; text-decoration: none;">Samuel's Portfolio</a>
+          </p>
         </div>
-
-        <Hr style={{ 
-          border: "none", 
-          borderTop: "1px solid #333333", 
-          margin: "24px 0" 
-        }} />
-
-        <Text style={{ 
-          fontSize: "14px", 
-          color: "#a1a1aa", 
-          margin: 0,
-          textAlign: "center" as const
-        }}>
-          Sent from{" "}
-          <Link 
-            href={sharedMetadata.url}
-            style={{ 
-              color: "#60a5fa", 
-              textDecoration: "none" 
-            }}
-          >
-            {sharedMetadata.name}'s Portfolio
-          </Link>
-        </Text>
-      </Container>
-    </Body>
-  </Html>
-);
+      </body>
+    </html>
+  `;
+};
 
 export default InquiryEmail;

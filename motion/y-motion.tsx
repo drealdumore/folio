@@ -1,23 +1,14 @@
 import React from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
-
 const Motion = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 15 }}
-        transition={{ delay: 0.2 }}
-      >
-        <AnimatePresence>{children}</AnimatePresence>
-      </motion.div>
-    </>
+    <div className="animate-in fade-in duration-300">
+      {children}
+    </div>
   );
 };
 

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Link from "next/link";
-import { useMediaQuery } from "usehooks-ts";
 
 interface BreadCrumbItem {
   title: string;
@@ -13,7 +12,14 @@ interface BreadCrumbProps {
 }
 
 const BreadCrumb: React.FC<BreadCrumbProps> = ({ links }) => {
-  const isMobile = useMediaQuery("(max-width: 640px)");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (isMobile) {
     return (
