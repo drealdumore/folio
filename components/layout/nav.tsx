@@ -1,16 +1,9 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { SvgFilter } from "@/components/design/svgFilter";
-
-interface LinkPosition {
-  left: number;
-  width: number;
-}
 
 const AppNav = () => {
   const pathName = usePathname();
@@ -27,134 +20,42 @@ const AppNav = () => {
     },
   ];
 
-  const [linkPositions, setLinkPositions] = useState<LinkPosition[]>([]);
-  const [selectorPosition, setSelectorPosition] = useState<{
-    x: number;
-    width: number;
-  }>({ x: 0, width: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-  const selector = useRef<HTMLDivElement>(null);
-  const [activeLinkIndex, setActiveLinkIndex] = useState(0);
 
-  const updateSelectorPosition = (index: number) => {
-    const activeLink = containerRef.current?.children[index] as HTMLElement;
-    if (activeLink) {
-      const { left, width } = activeLink.getBoundingClientRect();
-      const containerRect = containerRef.current?.getBoundingClientRect();
 
-      if (containerRect) {
-        const containerLeft = containerRect.left;
 
-        const newLeft = left;
-        const newWidth = width;
-
-        setSelectorPosition({
-          x: newLeft - containerLeft,
-          width: newWidth,
-        });
-
-        // Center the text inside the selector
-        selector.current!.style.transform = `translateX(${
-          newLeft - containerLeft
-        }px)`;
-        selector.current!.style.width = `${newWidth}px`;
-        selector.current!.style.lineHeight = `${activeLink.offsetHeight}px`;
-
-        // Show the selector
-        selector.current?.classList.remove("opacity-0");
-        setTimeout(() => {
-          if (selector.current) {
-            selector.current.classList.add("transition-all");
-          }
-        }, 100);
-      }
-    } else {
-      // Hide the selector for non-allowed pages
-      selector.current?.classList.add("opacity-0");
-    }
-  };
-
-  useLayoutEffect(() => {
-    if (linkPositions.length > 0) {
-      const activeLinkIndex = links.findIndex((link) => link.link === pathName);
-
-      if (activeLinkIndex >= 0) {
-        updateSelectorPosition(activeLinkIndex);
-      }
-    }
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [linkPositions, pathName]);
-
-  useEffect(() => {
-    if (containerRef.current) {
-      const positions = Array.from(containerRef.current.children).map(
-        (child: Element) => {
-          const rect = (child as HTMLElement).getBoundingClientRect();
-          return { left: rect.left, width: rect.width };
-        }
-      );
-      setLinkPositions(positions);
-    }
-  }, [containerRef.current]);
-
-  const handleResize = () => {
-    const activeLinkIndex = links.findIndex((link) => link.link === pathName);
-
-    if (activeLinkIndex >= 0) {
-      updateSelectorPosition(activeLinkIndex);
-    }
-  };
 
   return (
     <>
-      <nav className="gap-12 px-2 text-text-normal sticky mt-2 pb-1 pt-2 top-0 bottom-auto border-t-transparent border-l-transparent border-r-transparent z-[51] w-full max-w-none mx-auto rounded-none shadow-none nav backdrop-blur-sm bg-background/30">
+      <nav aria-label="Main navigation" className="gap-12 px-2 text-text-normal sticky mt-2 pb-1 pt-2 top-0 z-[51] w-full max-w-none mx-auto nav">
         <div className="w-full px-0 md:px-1.5  flex items-center justify-between max-w-screen-lx mx-auto">
           <div>
-            <Link href="/" className="flex flex-col">
-              <p className="block font-semibold sm:font-sans text-text-heading">Samuel</p>
-              <p className="text-[13px] hidden md:block opacity-80 group-hover:opacity-100 text-text-normal">
+            <Link href="/" className="flex flex-col focus:outline-none focus:ring-2 focus:ring-text-heading focus:ring-offset-2 focus:ring-offset-background rounded" aria-label="Samuel Isah - Home">
+              <span className="block font-semibold sm:font-sans text-text-heading">Samuel</span>
+              <span className="text-[13px] hidden md:block opacity-80 group-hover:opacity-100 text-text-normal">
                 Full-Stack Developer
-              </p>
+              </span>
             </Link>
           </div>
 
-          <div
-            className="flex items-center md:gap-4 gap-2 justify-between md:justify-normal w-auto -0 px-0 relative"
-            id="nav-links"
-            ref={containerRef}
-          >
+          <div className="flex items-center md:gap-4 gap-2 justify-between md:justify-normal w-auto px-0">
             {links.map((link, i) => (
               <Link
                 prefetch={true}
                 key={i}
-                onClick={() => setActiveLinkIndex(i)}
+
                 href={link.link}
                 target={i === links.length - 1 ? "_blank" : ""}
+                rel={i === links.length - 1 ? "noopener noreferrer" : undefined}
+                aria-label={i === links.length - 1 ? `${link.title} (opens in new tab)` : link.title}
                 className={`${
                   pathName === link.link ? "text-text-heading" : "text-text-normal"
-                } flex items-center rounded-[8px] justify-center px-2 h-9 hover:text-text-heading py-4 transition-colors duration-150 font-medium md:w-auto w-full text-center text-sm z-50 relative`}
+                } flex items-center rounded-[8px] justify-center px-2 h-9 hover:text-text-heading focus:text-text-heading focus:outline-none focus:ring-2 focus:ring-text-heading focus:ring-offset-2 focus:ring-offset-background py-4 transition-colors duration-150 font-medium md:w-auto w-full text-center text-sm z-50 relative`}
               >
                 {link.title}
               </Link>
             ))}
 
-            {linkPositions.length > 0 && (
-              <div
-                ref={selector}
-                className={`transition-all px-2 h-9 bg-zinc-800 rounded-[8px] absolute duration-300 opacity-0 flex items-center justify-center ${
-                  pathName === links[activeLinkIndex].link ? "z-40" : "z-0"
-                }`}
-                style={{
-                  transform: `translateX(${selectorPosition.x}px)`,
-                  width: `${selectorPosition.width}px`,
-                }}
-              ></div>
-            )}
+
           </div>
         </div>
       </nav>
