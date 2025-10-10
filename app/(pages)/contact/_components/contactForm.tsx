@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 
-import emailjs from "@emailjs/browser";
+
+
 import { motion } from "framer-motion";
 
 export default function ContactForm() {
@@ -64,23 +65,26 @@ export default function ContactForm() {
 
     setIsLoading(true);
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "",
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_USER_ID,
-      )
-      .then((response) => {
-        setFormData({
-          username: "",
-          email: "",
-          organization: "",
-          service: "",
-          message: "",
-        });
+    fetch('/api/email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.success) {
+          setFormData({
+            username: "",
+            email: "",
+            organization: "",
+            service: "",
+            message: "",
+          });
+          setSuccess("Your message has been sent successfully!");
+        } else {
+          throw new Error(data.error);
+        }
         setIsLoading(false);
-        setSuccess("Your message has been sent successfully!");
       })
       .catch((error) => {
         console.error(error);
