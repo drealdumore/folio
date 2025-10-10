@@ -43,7 +43,7 @@ const Projects = () => {
 
       <Link
         prefetch={true}
-        className="text-[14px] mt-4 font-semibold transition-colors flex items-center gap-1 text-text-normal hover:text-text-heading hover:underline underline-offset-2"
+        className="mt-4 font-semibold transition-colors flex items-center gap-1 text-text-normal hover:text-text-heading hover:underline underline-offset-2"
         href="/projects"
       >
         More projects

@@ -7,7 +7,6 @@ import React, { useState } from "react";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { RadarPing } from "@/components/design/ping";
 import { LOCATION } from "@/content/bio";
 
 const AppFooter = () => {
@@ -47,9 +46,8 @@ const AppFooter = () => {
                   strokeLinecap="round"
                 />
               </svg>
-              <h3 className="text-sm font-firacode capitalize text-text-normal">{LOCATION}</h3>
+              <p className="font-firacode capitalize text-text-normal">{LOCATION}</p>
             </div>
-            <RadarPing className="w-4 h-4" />
           </div>
         </div>
 

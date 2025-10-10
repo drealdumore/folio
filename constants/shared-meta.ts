@@ -2,12 +2,10 @@ export const sharedMetadata = {
   title: "Samuel Isah | Software Developer",
   name: "Samuel Isah",
   description:
-    "I'm Samuel Isah, a Fullstack Software Engineer Interested in developing innovative applications that exceed expectations on all platforms and creating beautiful and functional interfaces.",
-  og: "Fullstack Software Engineer based in Nigeria.",
+    "I'm Samuel Isah, a Full-Stack Web and Mobile Developer interested in developing innovative applications that exceed expectations on all platforms and creating beautiful and functional interfaces.",
+  og: "Full-Stack Web and Mobile Developer.",
   keywords: [
     "Samuel Isah",
-    "angular saint",
-    "drealdumore",
     "Portfolio",
     "Creative Software Developer",
     "samuel isah",
@@ -15,6 +13,7 @@ export const sharedMetadata = {
     "software developer",
     "fullstack developer",
     "web developer",
+    "mobile developer",
     "software engineer",
     "frontend developer",
     "backend developer",
