@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     const data = await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: process.env.RECEIVER_MAIL_ADDRESS || "sireroyce1@gmail.com",
+      to: process.env.RECEIVER_MAIL_ADDRESS || "",
       subject: `New Inquiry from ${username} (${email})`,
       react: InquiryEmail({ username, email, organization, service, message }),
     });

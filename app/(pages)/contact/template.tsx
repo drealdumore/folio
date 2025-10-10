@@ -10,7 +10,7 @@ const Contact = () => {
     <Motion>
       <div className="flex flex-col gap-4">
         <Heading
-          title="Let's Connect!"
+          title="Let's Connect"
           sub="Whether you're looking to collaborate on a project, need a solution
             to a challenging problem, or just want to talk tech, feel free to
             reach out. Together, we can turn ideas into reality."
