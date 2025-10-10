@@ -83,5 +83,4 @@ export const profileData = [
   },
 ];
 
-
 export const LOCATION = "Kaduna, Nigeria";

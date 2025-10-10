@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </h3>
           <div className="space-x-2">
             <Link
-              className="text-sm inline-flex gap-x-1 items-center hover:underline opacity-50 text-text-normal"
+              className="inline-flex gap-x-1 items-center hover:underline opacity-50 text-text-normal"
               rel="noopener noreferrer"
               target="_blank"
               href={projectLink}
@@ -47,12 +47,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <span className="text-xs opacity-50 text-text-normal">
             {projectType}
           </span>
-          {/* <span className="text-xs text-emerald-500">{projectType}</span> */}
         </div>
-        <p className="text-sm text-text-normal">{projectDescription}</p>
-        {/* <span className="text-neutral-500 text-xs -mb-2.5">
-          I've came across
-        </span> */}
+        <p className="text-text-normal">{projectDescription}</p>
+
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech, index) => (
             <div

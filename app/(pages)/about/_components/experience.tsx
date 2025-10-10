@@ -6,7 +6,9 @@ const Experience = () => {
   return (
     <>
       <div className="border-t border-zinc-700">
-        <h3 className="text-lg font-semibold mt-5 mb-2 text-text-heading">Experience</h3>
+        <h3 className="text-lg font-semibold mt-5 mb-2 text-text-heading">
+          Experience
+        </h3>
         <div className="mb-4">
           {EXPERIENCE.map((exp, index) => (
             <div key={index} className="flex flex-col gap-2 mb-8">
@@ -14,7 +16,7 @@ const Experience = () => {
                 <p className="font-semibold text-text-heading">{exp.company}</p>
                 <p className="text-text-normal">{exp.duration}</p>
               </div>
-              <div className="transition-all duration-400 hover:translate-x-2 hover:border-l-2 hover:pl-2">
+              <div className="transition-all duration-400 ease-in-out">
                 <p className="font-semibold text-text-heading">{exp.title}</p>
                 {exp.description.map((desc, i) => (
                   <div className="flex gap-3">
