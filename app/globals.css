@@ -100,7 +100,7 @@
   html {
     @apply scroll-smooth antialiased;
     text-size-adjust: 100%;
-    font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-newsreader), system-ui, -apple-system, sans-serif;
     font-display: swap;
   }
 
@@ -120,11 +120,15 @@
 body {
   font-size: 16px;
   line-height: 1.5;
-  font-family: var(--font-geist-sans);
+  font-family: var(--font-newsreader);
   background-color: #1a1a1a;
   color: #f0f0f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-josefin);
 }
 
 .tw-shadow {
@@ -271,7 +275,7 @@ body {
 }
 
 .bx-shadow {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 4px rgba(26, 26, 26, 0.1);;
 }
 
 .light-shadow {

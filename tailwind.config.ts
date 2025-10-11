@@ -50,12 +50,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        cal: ["var(--font-calSans)"],
-        bdog: ["var(--font-bdog)"],
-        firacode: ["var(--font-firacode)"],
-        instrumentSerif: ["var(--font-instrumentSerif)"],
-        sans: ["var(--font-geist-sans)", ...defaultTheme.fontFamily.sans],
-        mono: ["var(--font-geist-mono)", ...defaultTheme.fontFamily.mono],
+        sans: ["var(--font-newsreader)", ...defaultTheme.fontFamily.sans],
+        heading: ["var(--font-josefin)", ...defaultTheme.fontFamily.sans],
       },
 
       keyframes: {

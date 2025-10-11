@@ -2,20 +2,25 @@ import { sharedMetadata } from "@/constants/shared-meta";
 import { SOCIALS } from "@/constants/social-profiles";
 
 import React from "react";
-import { GeistSans } from "geist/font/sans";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Newsreader, Josefin_Sans } from "next/font/google";
 
 import "./globals.css";
 import ClientBody from "./ClientBody";
 
-const calSans = localFont({
-  src: ".././public/fonts/CalSans-SemiBold.woff2",
-  variable: "--font-calSans",
-  display: 'optional',
-  preload: false,
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  variable: '--font-newsreader',
+  display: 'swap',
+  adjustFontFallback: false,
 });
 
+const josefin = Josefin_Sans({
+  subsets: ['latin'],
+  variable: '--font-josefin',
+  display: 'swap',
+  adjustFontFallback: false,
+});
 
 
 export default async function RootLayout({
@@ -26,7 +31,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${calSans.variable}`}
+      className={`${newsreader.variable} ${josefin.variable}`}
     >
       <head>
         <meta name="format-detection" content="telephone=no" />

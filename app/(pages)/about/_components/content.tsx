@@ -20,10 +20,10 @@ const Content = () => {
   return (
     <div className="flex-grow md:max-w-2xl font-light flex text-text-normal flex-col gap-2 md:gap-4 xl:text-[1.02rem] sm:text-[1.05rem]">
       <div className="flex flex-col gap-2 pt-2">
-        <h1 className="text-[2rem] font-medium font-instrumentSerif text-text-heading">
+        <h1 className="text-[1.5rem] font-medium font-instrumentSerif text-text-heading">
           Fullstack Developer
         </h1>
-        <h6 className="text-[1rem] font-[500] text-text-normal">Samuel Isah</h6>
+        <h2 className=" font-[500] text-text-normal">Samuel Isah</h2>
       </div>
 
       <div className="xl:max-w-[35rem] sm:max-w-none xl:leading-[30px] sm:leading-[27px]">

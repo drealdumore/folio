@@ -15,7 +15,7 @@ const NotFoundTemplate = () => {
         <div className="mx-auto">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h2 className="font-cal text-text-heading">404—Not found</h2>
+              <h2 className="font-heading text-text-heading">404—Not found</h2>
               <p className="text-text-normal">
                 You just hit a route that doesn’t exist.
               </p>
