@@ -51,7 +51,7 @@ const Header = () => {
           </div>
 
           <div className="max-w-3xl">
-            <h1 className="lg:text-[32px] font-semibold w-full font-cal text-2xl mb-1 leading-9 text-text-heading">
+            <h1 className="lg:text-[32px] font-semibold w-full font-heading text-2xl mb-1 leading-9 text-text-heading">
               Hi, I'm Samuel
               <span className="ml-1 inline-block origin-bottom-right animate-wave cursor-pointer">
                 <Image

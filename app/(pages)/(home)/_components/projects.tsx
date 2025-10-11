@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import ProjectCard from "@/components/cards/project-card";
-import { SmallSpinner } from "@/components/design/loaders";
 
 const fetchProjects = async () => {
   const { PROJECTS } = await import("@/content/projects");
@@ -23,22 +22,22 @@ const Projects = () => {
 
   return (
     <section className="flex flex-col gap-3 mb-4">
-      <h2 className="md:text-2xl text-xl font-bold text-text-heading">Selected Projects</h2>
+      <h2 className="md:text-2xl text-xl font-bold text-text-heading">
+        Selected Projects
+      </h2>
 
       <div className="grid grid-cols-1  gap-6 group/wrapper">
-        {projects.length > 0 ? (
-          projects.map((project, i) => (
-            <ProjectCard
-              key={i}
-              name={project.name}
-              description={project.description}
-              href={project.href}
-              tech={project.tech}
-            />
-          ))
-        ) : (
-          <SmallSpinner/>
-        )}
+        {projects.length > 0
+          ? projects.map((project, i) => (
+              <ProjectCard
+                key={i}
+                name={project.name}
+                description={project.description}
+                href={project.href}
+                tech={project.tech}
+              />
+            ))
+          : ""}
       </div>
 
       <Link

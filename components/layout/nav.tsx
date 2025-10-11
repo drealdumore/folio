@@ -21,7 +21,7 @@ const AppNav = () => {
     <>
       <nav
         aria-label="Main navigation"
-        className="gap-12 px-2 text-text-normal sticky mt-2 pb-1 pt-2 top-0 z-[51] w-full max-w-none mx-auto nav"
+        className="gap-12 px-2 text-text-normal sticky mt-2 pb-1 pt-2 top-0 z-[51] w-full max-w-none mx-auto nav backdrop-blur-sm "
       >
         <div className="w-full px-0 md:px-1.5  flex items-center justify-between max-w-screen-lx mx-auto">
           <div>

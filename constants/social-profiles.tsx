@@ -42,7 +42,7 @@ interface Contact {
   href: string;
   text: string;
   icon: React.ReactNode;
-  bg?: string;
+  bg?: string | undefined;
   tilt?: string;
 }
 
@@ -102,7 +102,7 @@ const Mail = ({ className }: { className?: string }) => (
   <svg
     stroke="white"
     className={className}
-    fill="black"
+    fill="white"
     strokeWidth="0"
     viewBox="0 0 512 512"
     height="1em"
@@ -134,28 +134,28 @@ export const CONTACTS: Contact[] = [
     href: "mailto:samuelisah234@gmail.com",
     text: "Email",
     icon: <Mail />,
-    bg: "#dcdcdc border ml-[-20px]",
+    bg: "#41434657",
     tilt: "-5deg",
   },
   {
     href: SOCIALS.linkedin.url,
     text: "LinkedIn",
     icon: <LinkedInIcon />,
-    bg: "#0D1117",
+    bg: "#41434657",
     tilt: "5deg",
   },
   {
     href: SOCIALS.twitter.url,
     text: "Twitter",
     icon: <TwitterIcon />,
-    bg: "#0D1117",
+    bg: "#41434657",
     tilt: "5deg",
   },
   {
     href: SOCIALS.github.url,
     text: "GitHub",
     icon: <GithubIcon />,
-    bg: "#0D1117",
+    bg: "#41434657",
     tilt: "-5deg",
   },
 ];

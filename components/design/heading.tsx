@@ -7,7 +7,7 @@ type Heading = {
 export const Heading = ({ title, sub }: Heading) => {
   return (
     <div className="flex flex-col gap-2 mb-4">
-      <h1 className="lg:text-[40px] font-semibold w-full font-cal text-[25px] leading-9 text-text-heading">
+      <h1 className="lg:text-[40px] font-semibold w-full font-heading text-[25px] leading-9 text-text-heading">
         {title}
       </h1>
       <p className="font-medium text-text-normal">{sub}</p>
