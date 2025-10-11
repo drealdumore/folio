@@ -1,24 +1,11 @@
 # Samuel Isah Portfolio
 
-<br>
-<br>
+A modern, responsive portfolio website built with Next.js 14, featuring smooth animations, dark theme, and clean design. Showcases projects, experience, and mobile app development.
 
-  <h3 align="center">Samuel Isah | Software Developer</h3>
-
-  <p align="center">
-    Personal portfolio website showcasing projects and experience.
-    <br />
-    <a href="https://drealdumore.vercel.app"><strong>Visit Site →</strong></a>
-    <br />
-   
-  </p>
-
-A modern, responsive portfolio website built with Next.js 14, featuring smooth animations, dark theme, and a clean design. Showcases projects, experience, and provides contact functionality.
-
-## Overview
+## Routes
 
 - `/` — Home page with introduction and featured projects
-- `/about` — About me, experience, and skills
+- `/about` — About me, experience, and skills  
 - `/contact` — Contact form with email integration
 - `/projects` — Portfolio projects showcase
 - `/projects/[id]` — Individual project details
@@ -29,21 +16,24 @@ A modern, responsive portfolio website built with Next.js 14, featuring smooth a
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/Drealdumore/portfolio.git
-cd portfolio
+git clone https://github.com/Drealdumore/folio.git
+cd folio
 ```
 
 2. Install dependencies:
 ```bash
 pnpm install
-# or npm install
 ```
 
 3. Set up environment variables:
 ```bash
 cp .env.example .env.local
 ```
-Fill in the required environment variables for email functionality.
+Add your email configuration:
+```env
+RECEIVER_MAIL_ADDRESS=your_email@example.com
+RESEND_API_KEY=your_resend_api_key
+```
 
 4. Start the development server:
 ```bash
@@ -51,29 +41,17 @@ pnpm dev
 # Server runs on http://localhost:3001
 ```
 
-## Performance Optimizations
+## Features
 
-This portfolio implements several performance optimizations:
-
-**Image Optimization:**
-- AVIF and WebP format support
-- Responsive image sizing
-- Lazy loading with Next.js Image component
-
-**Code Optimization:**
-- Package import optimization for analytics and UI libraries
-- Tree shaking and code splitting
-- GPU-accelerated CSS animations
-
-**Loading Performance:**
-- Resource preloading for critical assets
-- Font display swap for better loading
-- Optimized middleware for security headers
-
-**Monitoring:**
-- Web Vitals tracking
-- Performance hooks for optimization
-- Vercel Analytics integration
+- **Responsive Design** — Works seamlessly across all devices
+- **Dark Theme** — Elegant dark color scheme with custom animations
+- **Contact Form** — Integrated email functionality with Resend
+- **Project Showcase** — Dynamic project cards with detailed views
+- **Mobile App Projects** — Dedicated sections for React Native apps (Echo, GPZ)
+- **SEO Optimized** — Meta tags, sitemap, robots.txt, and Open Graph
+- **Performance Optimized** — Sharp image optimization and custom fonts
+- **Type Safe** — Full TypeScript implementation
+- **Custom Animations** — Tailwind CSS keyframes 
 
 ## Tech Stack
 
@@ -82,10 +60,11 @@ This portfolio implements several performance optimizations:
 - [TypeScript](https://www.typescriptlang.org/) - Type safety
 - [React 18](https://react.dev/) - UI library
 
-**Styling & Animation:**
+**Styling & Fonts:**
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS
-- [Geist Font](https://vercel.com/font) - Typography
-- Custom fonts (Cal Sans, BDO Grotesk, Instrument Serif, Fira Code)
+- [Geist](https://vercel.com/font) - Modern font family
+- Google Fonts (Newsreader, Josefin Sans)
+- Custom fonts (BDO Grotesk, Cal Sans, Instrument Serif, Fira Code)
 
 **Email & Communication:**
 - [Resend](https://resend.com/) - Email API
@@ -94,8 +73,7 @@ This portfolio implements several performance optimizations:
 **Performance & Optimization:**
 - [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
 - [Vercel Analytics](https://vercel.com/analytics) - Performance monitoring
-- Custom performance hooks and components
-- Optimized package imports and code splitting
+- Custom performance hooks
 
 **Development:**
 - [PostCSS](https://postcss.org/) - CSS processing
@@ -104,22 +82,38 @@ This portfolio implements several performance optimizations:
 **Deployment:**
 - [Vercel](https://vercel.com) - Hosting and deployment
 
-## Features
+## Project Structure
 
-- **Responsive Design** - Works seamlessly across all devices
-- **Dark Theme** - Elegant dark color scheme with optimized CSS
-- **Performance Optimized** - Lighthouse score improvements with:
-  - AVIF/WebP image formats
-  - Optimized package imports
-  - GPU-accelerated animations
-  - Resource preloading
-  - Security headers via middleware
-- **Contact Form** - Integrated email functionality with Resend
-- **Project Showcase** - Dynamic project cards with detailed views
-- **SEO Optimized** - Meta tags, sitemap, robots.txt, and Open Graph
-- **Accessibility** - Skip links, semantic HTML, and ARIA labels
-- **Type Safe** - Full TypeScript implementation
-- **Web Vitals** - Performance monitoring and optimization
+```
+folio/
+├── app/                    # Next.js App Router
+│   ├── (pages)/           # Route groups
+│   │   ├── (home)/        # Home page components
+│   │   ├── about/         # About page
+│   │   ├── contact/       # Contact form
+│   │   └── projects/      # Projects showcase
+│   ├── api/               # API routes
+│   │   ├── email/         # Contact form handler
+│   │   └── og/            # Open Graph images
+│   ├── globals.css        # Global styles
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── cards/            # Project cards
+│   ├── design/           # UI components
+│   └── layout/           # Layout components
+├── constants/            # App constants
+├── content/              # Content and data
+├── emails/               # Email templates
+├── hooks/                # Custom React hooks
+├── lib/                  # Utility libraries
+├── motion/               # Animation components
+├── public/               # Static assets
+│   ├── avatars/          # Profile images
+│   ├── fonts/            # Custom fonts
+│   ├── projects/         # Project images
+│   └── icons/            # SVG icons
+└── utils/                # Helper functions
+```
 
 ## Environment Variables
 
@@ -129,31 +123,23 @@ Create a `.env.local` file with the following variables:
 # Email Configuration
 RECEIVER_MAIL_ADDRESS=your_email@example.com
 RESEND_API_KEY=your_resend_api_key
-
-# Rate Limiting
-MAX_REQUESTS=10
-RATE_LIMIT_WINDOW=3600000
 ```
 
-## Project Structure
+## Scripts
 
-```
-portfolio/
-├── app/                    # Next.js App Router
-│   ├── (pages)/           # Route groups
-│   ├── api/               # API routes
-│   ├── globals.css        # Global styles
-│   └── layout.tsx         # Root layout
-├── components/            # Reusable components
-│   ├── performance/       # Performance optimization components
-│   ├── layout/           # Layout components
-│   └── design/           # UI components
-├── content/              # Content and data
-├── hooks/                # Custom React hooks
-├── lib/                  # Utility libraries
-├── motion/               # Animation components
-├── public/               # Static assets
-└── utils/                # Helper functions
+```bash
+# Development
+pnpm dev              # Start dev server on port 3001
+
+# Build
+pnpm build            # Production build
+pnpm build:analyze    # Build with bundle analysis
+
+# Other
+pnpm start            # Start production server
+pnpm lint             # Run ESLint
+pnpm email            # Email development
+pnpm format           # Format with Prettier
 ```
 
 ## License
