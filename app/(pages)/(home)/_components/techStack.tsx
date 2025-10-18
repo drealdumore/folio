@@ -1,5 +1,8 @@
 "use client";
 
+import { AnimatedSection } from "@/components/layout/animated-section";
+import { SectionHeading } from "@/components/design/SectionHeading";
+
 interface SkillsInterface {
   id: number;
   skill?: string | undefined;
@@ -29,39 +32,44 @@ const StackTable = () => {
   const secondHalf = skills.slice(half);
 
   return (
-    <section className="w-full pb-6 flex flex-col gap-3 mb-4">
-      <h2 className="md:text-2xl text-xl font-bold text-text-heading">My Tech Stack</h2>
+    <section className="flex flex-col">
+      <SectionHeading
+        title="My Tech Stack"
+        subtitle="Learned by coding all night and debugging all day!"
+      />
 
-      <div className="mb-5 mt-3 w-full skills rounded-[0.9rem] flex">
-        <div className="border-r-[#404040] border-r basis-[50%]">
-          {firstHalf.map((skill, index) => (
-            <p
-              key={skill.id}
-              className={`skill-item ${
-                index !== firstHalf.length - 1
-                  ? "border-b-[#404040] border-b"
-                  : ""
-              }`}
-            >
-              {skill.skill}
-            </p>
-          ))}
+      <AnimatedSection delay={0.2}>
+        <div className="mb-5 mt-3 w-full skills rounded-lg flex">
+          <div className="border-r-[#404040] border-r basis-[50%]">
+            {firstHalf.map((skill, index) => (
+              <p
+                key={skill.id}
+                className={`skill-item ${
+                  index !== firstHalf.length - 1
+                    ? "border-b-[#404040] border-b"
+                    : ""
+                }`}
+              >
+                {skill.skill}
+              </p>
+            ))}
+          </div>
+          <div className="basis-[50%]">
+            {secondHalf.map((skill, index) => (
+              <p
+                key={skill.id}
+                className={`skill-item ${
+                  index !== secondHalf.length - 1
+                    ? "border-b-[#404040] border-b"
+                    : ""
+                }`}
+              >
+                {skill.skill}
+              </p>
+            ))}
+          </div>
         </div>
-        <div className="basis-[50%]">
-          {secondHalf.map((skill, index) => (
-            <p
-              key={skill.id}
-              className={`skill-item ${
-                index !== secondHalf.length - 1
-                  ? "border-b-[#404040] border-b"
-                  : ""
-              }`}
-            >
-              {skill.skill}
-            </p>
-          ))}
-        </div>
-      </div>
+      </AnimatedSection>
     </section>
   );
 };

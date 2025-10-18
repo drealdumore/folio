@@ -3,36 +3,41 @@ import { SOCIALS } from "@/constants/social-profiles";
 
 import React from "react";
 import type { Metadata } from "next";
-import { Newsreader, Josefin_Sans } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
 import ClientBody from "./ClientBody";
 
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  variable: '--font-newsreader',
-  display: 'swap',
-  adjustFontFallback: false,
+const geist = localFont({
+  src: [
+    {
+      path: "../public/fonts/geist.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-geist",
+  display: "swap",
 });
 
-const josefin = Josefin_Sans({
-  subsets: ['latin'],
-  variable: '--font-josefin',
-  display: 'swap',
-  adjustFontFallback: false,
+const satoshi = localFont({
+  src: [
+    {
+      path: "../public/fonts/satoshi.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
 });
-
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${newsreader.variable} ${josefin.variable}`}
-    >
+    <html lang="en" className={`${satoshi.variable} ${geist.variable}`}>
       <head>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />

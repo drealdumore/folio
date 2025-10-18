@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 import ProjectCard from "@/components/cards/project-card";
+import { AnimatedSection } from "@/components/layout/animated-section";
+import { SectionHeading } from "@/components/design/SectionHeading";
 
 const fetchProjects = async () => {
   const { PROJECTS } = await import("@/content/projects");
@@ -21,33 +23,36 @@ const Projects = () => {
   }, []);
 
   return (
-    <section className="flex flex-col gap-3 mb-4">
-      <h2 className="md:text-2xl text-xl font-bold text-text-heading">
-        Selected Projects
-      </h2>
-
-      <div className="grid grid-cols-1  gap-6 group/wrapper">
-        {projects.length > 0
-          ? projects.map((project, i) => (
-              <ProjectCard
-                key={i}
-                name={project.name}
-                description={project.description}
-                href={project.href}
-                tech={project.tech}
-              />
-            ))
-          : ""}
-      </div>
-
-      <Link
-        prefetch={true}
-        className="mt-4 font-semibold transition-colors flex items-center gap-1 text-text-normal hover:text-text-heading hover:underline underline-offset-2"
-        href="/projects"
-      >
-        More projects
-        <RightIcon />
-      </Link>
+    <section className="flex flex-col">
+      <SectionHeading
+        title="Selected Projects"
+        subtitle="A lot of ideas, but some are still under construction!"
+      />
+      <AnimatedSection delay={0.2}>
+        <div className="grid grid-cols-1  gap-6 group/wrapper">
+          {projects.length > 0
+            ? projects.map((project, i) => (
+                <ProjectCard
+                  key={i}
+                  name={project.name}
+                  description={project.description}
+                  href={project.href}
+                  tech={project.tech}
+                />
+              ))
+            : ""}
+        </div>
+      </AnimatedSection>
+      <AnimatedSection delay={0.4}>
+        <Link
+          prefetch={true}
+          className="group mt-4 font-semibold transition-colors flex items-center gap-1 text-text-normal hover:text-text-heading hover:underline underline-offset-2"
+          href="/projects"
+        >
+          More projects
+          <RightIcon />
+        </Link>
+      </AnimatedSection>{" "}
     </section>
   );
 };

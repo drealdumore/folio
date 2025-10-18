@@ -14,9 +14,9 @@ const config: Config = {
     screens: {
       ...defaultTheme.screens,
     },
-    
+
     // screens: {
-      // xs: "350px",
+    // xs: "350px",
     //   desktop: { max: "75em" },
     //   laptop: { max: "64em" },
     //   tablet: { max: "56.25em" },
@@ -50,8 +50,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-newsreader)", ...defaultTheme.fontFamily.sans],
-        heading: ["var(--font-josefin)", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-geist)", ...defaultTheme.fontFamily.sans],
+        heading: ["var(--font-satoshi)", ...defaultTheme.fontFamily.sans],
       },
 
       keyframes: {
@@ -92,7 +92,6 @@ const config: Config = {
     },
   },
   plugins: [],
-
 };
 
 export default config;

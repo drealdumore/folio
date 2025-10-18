@@ -2,68 +2,85 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 import { SvgFilter } from "@/components/design/svgFilter";
+import { hoverScale } from "@/hooks/useScrollAnimation";
 
 const AppNav = () => {
-  const pathName = usePathname();
+  const pathname = usePathname();
 
   const links = [
-    { link: "/about", title: "About" },
-    { link: "/projects", title: "Projects" },
     {
       link: "/files/samuel-isah-resume.pdf",
       title: "Resume",
+      external: true, // more semantic than using index comparison
     },
   ];
 
   return (
     <>
-      <nav
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.25, 0.46, 0.45, 0.94],
+          delay: 0.1,
+        }}
         aria-label="Main navigation"
-        className="gap-12 px-2 text-text-normal sticky mt-2 pb-1 pt-2 top-0 z-[51] w-full max-w-none mx-auto nav backdrop-blur-sm "
+        className="sticky top-0 z-[51] w-full nav backdrop-blur-sm px-2 pt-2 pb-1 mt-2 text-text-normal"
       >
-        <div className="w-full px-0 md:px-1.5  flex items-center justify-between max-w-screen-lx mx-auto">
-          <div>
+        <div className="flex items-center justify-between w-full max-w-screen-lx mx-auto px-0 md:px-1.5">
+          {/* Logo / Brand */}
+          <motion.div whileHover={hoverScale}>
             <Link
               href="/"
-              className="flex flex-col focus:outline-none rounded"
+              className="flex flex-col group focus:outline-none rounded"
               aria-label="Samuel Isah - Home"
             >
-              <span className="block font-semibold sm:font-sans text-text-heading">
+              <span className="block font-semibold font-heading text-text-heading transition-colors duration-300 group-hover:text-white">
                 Samuel
               </span>
-              <span className="text-[13px] hidden md:block opacity-80 group-hover:opacity-100 text-text-normal">
+              <span className="hidden md:block text-[13px] opacity-80 group-hover:opacity-100 text-text-normal transition-all duration-300">
                 Full-Stack Developer
               </span>
             </Link>
-          </div>
+          </motion.div>
 
-          <div className="flex items-center md:gap-4 gap-2 justify-between md:justify-normal w-auto px-0">
-            {links.map((link, i) => (
-              <Link
-                prefetch={true}
+          {/* Navigation Links */}
+          <div className="flex items-center gap-2 md:gap-4 justify-between md:justify-normal w-auto px-0">
+            {links.map(({ link, title, external }, i) => (
+              <motion.div
                 key={i}
-                href={link.link}
-                target={i === links.length - 1 ? "_blank" : ""}
-                rel={i === links.length - 1 ? "noopener noreferrer" : undefined}
-                aria-label={
-                  i === links.length - 1
-                    ? `${link.title} (opens in new tab)`
-                    : link.title
-                }
-                className={`${
-                  pathName === link.link
-                    ? "text-text-heading"
-                    : "text-text-heading/50"
-                } flex items-center rounded-[8px]  justify-center px-2 h-9 hover:text-text-heading focus:text-text-heading focus:outline-none  py-4 transition-all duration-150 font-medium md:w-auto w-full text-center text-sm z-50 relative`}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  delay: 0.2 + i * 0.1,
+                }}
+                whileHover={hoverScale}
               >
-                {link.title}
-              </Link>
+                <Link
+                  href={link}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  aria-label={external ? `${title} (opens in new tab)` : title}
+                  className={`${
+                    pathname === link
+                      ? "text-text-heading"
+                      : "text-text-heading/50"
+                  } flex items-center justify-center px-3 h-9 py-2 text-sm font-medium text-center transition-all duration-300 rounded-md hover:text-text-heading hover:bg-zinc-800/30 focus:outline-none focus:text-text-heading md:w-auto w-full z-50 relative`}
+                >
+                  {title}
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
-      </nav>
+      </motion.nav>
+
       <SvgFilter />
     </>
   );

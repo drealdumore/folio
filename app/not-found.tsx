@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import { NAVLINKS } from "@/constants/links";
 
 import React from "react";
 
@@ -27,19 +26,6 @@ const NotFound = () => {
               an alternate phrasing, a note to self.
             </p>
           </div>
-          <ul className="mt-3 flex flex-col gap-2">
-            {NAVLINKS.map((link, index) => (
-              <li key={index}>
-                <Link
-                  prefetch={true}
-                  className="link text-text-normal hover:text-text-heading transition-all"
-                  href={link.href}
-                >
-                  {link.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </>

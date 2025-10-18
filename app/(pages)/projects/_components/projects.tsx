@@ -1,6 +1,9 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 
 import ProjectCard from "./project-card";
+import { AnimatedSection } from "@/components/layout/animated-section";
 
 const fetchProjects = async () => {
   const { ALLPROJECTS } = await import("@/content/projects");
@@ -26,25 +29,27 @@ const Projects = () => {
   }, []);
 
   return (
-    <>
-      <div className="flex flex-col gap-8">
-        {projects.length > 0 ? (
-          projects.map((project, i) => (
-            <ProjectCard
-              key={i}
-              projectName={project.projectName}
-              projectLink={project.projectLink}
-              projectDescription={project.projectDescription}
-              projectType={project.projectType}
-              projectDate={project.projectDate}
-              technologies={project.technologies}
-            />
-          ))
-        ) : (
-          <p className="text-text-normal">Loading projects...</p>
-        )}
-      </div>
-    </>
+    <div className="flex flex-col gap-8">
+      {projects.length > 0 ? (
+        <AnimatedSection>
+          <div className="flex flex-col gap-8">
+            {projects.map((project, i) => (
+              <ProjectCard
+                key={i}
+                projectName={project.projectName}
+                projectLink={project.projectLink}
+                projectDescription={project.projectDescription}
+                projectType={project.projectType}
+                projectDate={project.projectDate}
+                technologies={project.technologies}
+              />
+            ))}
+          </div>
+        </AnimatedSection>
+      ) : (
+        <p className="text-text-normal">Loading projects...</p>
+      )}
+    </div>
   );
 };
 

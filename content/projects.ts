@@ -208,4 +208,47 @@ export const MOBILE_APPS = [
       { label: "GitHub", url: "#" },
     ],
   },
+  {
+    id: "ratecheck",
+    title: "Projects",
+    sub: "Rate Check",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    website: "Coming Soon",
+    heroImage: "/projects/rate-check.png",
+    intro:
+      "Rate Check is an app that allows users to convert and compare both forex currencies and cryptocurrencies in real time, with continuously updated prices.",
+    introText:
+      "With constant market fluctuations, I wanted a tool that not only converts forex currencies but also includes crypto rates. Rate Check provides live price updates and comparison features to help users make informed decisions quickly.",
+    gallery: [
+      { src: "/projects/rate-check.png", alt: "Rate Check Dashboard" },
+      {
+        src: "/projects/rate-check-convert.png",
+        alt: "Currency and Crypto Conversion",
+      },
+      { src: "/projects/rate-check-compare.png", alt: "Rate Comparison View" },
+    ],
+    challenge:
+      "The challenge was integrating multiple APIs to provide accurate, real-time rates for both traditional currencies and a growing list of cryptocurrencies, while maintaining a smooth user experience.",
+    actions: [
+      {
+        title: "Unified Forex & Crypto conversion",
+        text: "Built a seamless converter that handles both traditional forex currencies and cryptocurrencies, bridging the gap between two fast-moving markets in a single app.",
+      },
+      {
+        title: "Real-time price updates",
+        text: "Implemented WebSocket connections and polling strategies to keep exchange rates and crypto prices updated live without performance lag.",
+      },
+      {
+        title: "Comparison tools",
+        text: "Designed a feature allowing users to compare conversion rates side-by-side, helping users spot the best rates instantly.",
+      },
+    ],
+    result:
+      "Rate Check empowers users with real-time, reliable data for both forex and crypto markets. The app’s clean interface and live updates make currency and crypto conversion simple and trustworthy.",
+    links: [
+      { label: "Rate Check", url: "#" },
+      { label: "GitHub", url: "#" },
+    ],
+  },
 ];
