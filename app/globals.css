@@ -38,6 +38,31 @@
     @apply z-50 rounded-md w-max border border-zinc-600 bg-background px-2 py-1 text-xs text-text-normal;
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis:not(.lenis-autoToggle).lenis-stopped {
+    overflow: clip;
+  }
+
+  .lenis [data-lenis-prevent],
+  .lenis [data-lenis-prevent-wheel],
+  .lenis [data-lenis-prevent-touch] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
+
+  .lenis.lenis-autoToggle {
+    transition-property: overflow;
+    transition-duration: 1ms;
+    transition-behavior: allow-discrete;
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
@@ -70,18 +95,16 @@
     content-visibility: auto;
     contain-intrinsic-size: 200px;
   }
-
-  
 }
 
 .tag {
-    margin-left: .25rem;
-    margin-right: .25rem;
-    border-radius: 5px;
-    border-style: none;
-    padding: .25rem .5rem;
-    font-size: .85rem;
-    font-weight: 500;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  border-radius: 5px;
+  border-style: none;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 .footer-items {
@@ -95,12 +118,11 @@
   }
 }
 
-
 @layer base {
   html {
     @apply scroll-smooth antialiased;
     text-size-adjust: 100%;
-    font-family: var(--font-newsreader), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-geist), system-ui, -apple-system, sans-serif;
     font-display: swap;
   }
 
@@ -120,15 +142,20 @@
 body {
   font-size: 16px;
   line-height: 1.5;
-  font-family: var(--font-newsreader);
+  font-family: var(--font-geist);
   background-color: #1a1a1a;
   color: #f0f0f0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-josefin);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-satoshi);
 }
 
 .tw-shadow {
@@ -160,8 +187,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
   }
 }
-
-
 
 .link {
   @apply hover:underline hover:underline-offset-4;
@@ -213,8 +238,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 1.5rem;
 }
 
-
-
 .fade-in {
   opacity: 1;
 }
@@ -231,7 +254,8 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.8;
 }
 
-.radar1, .radar2 {
+.radar1,
+.radar2 {
   opacity: 0.6;
 }
 
@@ -275,7 +299,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bx-shadow {
-  box-shadow: 0px 2px 4px rgba(26, 26, 26, 0.1);;
+  box-shadow: 0px 2px 4px rgba(26, 26, 26, 0.1);
 }
 
 .light-shadow {

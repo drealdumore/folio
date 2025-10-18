@@ -4,6 +4,8 @@ import { formatDateDifference } from "@/utils/date";
 import React from "react";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/hooks/useScrollAnimation";
 
 interface ProjectCardProps {
   projectName: string | undefined | null;
@@ -25,7 +27,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const formattedDate = new Date(projectDate);
 
   return (
-    <div className="min-w-[120px] font-sans p-4 gap-y-4 gap-x-4 justify-start items-center border border-[#404040] rounded-lg flex">
+    <motion.div 
+      variants={fadeInUp}
+      className="min-w-[120px] font-sans p-4 gap-y-4 gap-x-4 justify-start items-center border border-[#404040] rounded-lg flex"
+    >
       <div className="flex flex-col gap-y-4 w-full">
         <div className="inline-flex w-full justify-between items-center">
           <h3 className="font-medium text-lg tracking-tighter text-text-heading">
@@ -64,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {formatDateDifference(formattedDate)}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

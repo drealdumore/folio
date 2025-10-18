@@ -1,6 +1,5 @@
 "use client";
 
-import { NAVLINKS } from "@/constants/links";
 import { CONTACTS } from "@/constants/social-profiles";
 
 import React, { useState } from "react";
@@ -18,7 +17,7 @@ const AppFooter = () => {
       <div className="max-w-screen-lx mx-auto md:px-10 px-6 grid lg:grid-cols-6 gap-8">
         <div className="lg:col-span-3 xs:col-span-2 max-w-md">
           <h3 className="font-semibold mb-2 text-text-heading">
-            Samuel's personal site
+            Samuel&apos;s personal site
           </h3>
           <div className="flex items-center gap-1">
             <div className="flex items-center text-text-normal">
@@ -56,29 +55,6 @@ const AppFooter = () => {
         </div>
 
         <div className="footer-items">
-          {/* <div className="xl:place-self-end"> */}
-          <div>
-            <h4 className="font-semibold mb-3 text-text-heading">Pages</h4>
-            <ul className="space-y-2 w-max">
-              {NAVLINKS.map((link, index) => (
-                <li key={index} className="link-footer">
-                  <Link href={link.href}>
-                    <span
-                      className={`link ${
-                        pathName === link.href
-                          ? "underline underline-offset-2 text-text-heading font-medium hover:translate-x-6"
-                          : "text-text-normal no-underline"
-                      }`}
-                    >
-                      {link.text}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* <div className="xl:place-self-end"> */}
           <div>
             <h4 className="font-semibold mb-3 text-text-heading">Connect</h4>
             <ul className="space-y-2">
@@ -99,7 +75,7 @@ const AppFooter = () => {
                         hoveredIndex !== index
                           ? "opacity-0 translate-y-1"
                           : "opacity-100 translate-y-0"
-                      }  ease-in-out text-white p-3 rounded-[10px] bx-shadow text-[1.2rem]`}
+                      }  ease-in-out text-white p-3 rounded-lg bx-shadow text-lg`}
                     >
                       {link.icon}
                     </span>
@@ -126,7 +102,7 @@ const AppFooter = () => {
 
         <div className="lg:col-span-6 xs:col-span-4">
           <p className="text-sm text-center text-text-normal font-firacode">
-            &copy; {new Date().getFullYear()} Samuel's personal site.
+            &copy; {new Date().getFullYear()} Samuel&apos;s personal site.
           </p>
         </div>
       </div>
