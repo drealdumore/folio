@@ -7,7 +7,7 @@ import {
   staggerContainer,
 } from "@/hooks/useScrollAnimation";
 import { bioData } from "@/content/bio";
-import { SectionHeading } from "./design/SectionHeading";
+import { SectionHeading } from "@/components/design/SectionHeading";
 
 export default function AboutSection() {
   const { ref, controls } = useScrollAnimation();

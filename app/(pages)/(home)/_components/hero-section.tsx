@@ -18,7 +18,7 @@ const Header = () => {
             <div className="max-w-[130px] w-full flex-shrink-0 mb-8 ">
               <Image
                 src="/avatars/avatar-smile.png"
-                className="tw-shadow aspect-square rounded-2xl bg-[#dcdcdc]"
+                className="tw-shadow aspect-square rounded-full bg-[#dcdcdc]"
                 alt="Samuel Isah's profile photo - smiling portrait"
                 height={100}
                 width={100}
@@ -73,7 +73,7 @@ const Header = () => {
                 A coder by day, problem-solver by night!
               </h2>
 
-              <p className="mb-4 text-text-normal" role="text">
+              <p className="text-text-normal" role="text">
                 Full-Stack Developer crafting fast, minimal web & mobile
                 experiences with care for the tiny details that make big
                 differences.

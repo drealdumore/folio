@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/_next/'],
     },
-    sitemap: 'https://drealdumore.vercel.app/sitemap.xml',
+    sitemap: 'https://drealdumore.vercel.app/sitemap.ts',
   }
 }

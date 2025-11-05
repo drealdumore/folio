@@ -14,7 +14,7 @@ const AppNav = () => {
     {
       link: "/files/samuel-isah-resume.pdf",
       title: "Resume",
-      external: true, // more semantic than using index comparison
+      external: true, 
     },
   ];
 
@@ -32,7 +32,6 @@ const AppNav = () => {
         className="sticky top-0 z-[51] w-full nav backdrop-blur-sm px-2 pt-2 pb-1 mt-2 text-text-normal"
       >
         <div className="flex items-center justify-between w-full max-w-screen-lx mx-auto px-0 md:px-1.5">
-          {/* Logo / Brand */}
           <motion.div whileHover={hoverScale}>
             <Link
               href="/"
@@ -51,31 +50,20 @@ const AppNav = () => {
           {/* Navigation Links */}
           <div className="flex items-center gap-2 md:gap-4 justify-between md:justify-normal w-auto px-0">
             {links.map(({ link, title, external }, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  delay: 0.2 + i * 0.1,
-                }}
-                whileHover={hoverScale}
-              >
                 <Link
+                key={i}
                   href={link}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
                   aria-label={external ? `${title} (opens in new tab)` : title}
                   className={`${
-                    pathname === link
+                    !external && pathname === link
                       ? "text-text-heading"
                       : "text-text-heading/50"
                   } flex items-center justify-center px-3 h-9 py-2 text-sm font-medium text-center transition-all duration-300 rounded-md hover:text-text-heading hover:bg-zinc-800/30 focus:outline-none focus:text-text-heading md:w-auto w-full z-50 relative`}
                 >
                   {title}
                 </Link>
-              </motion.div>
             ))}
           </div>
         </div>

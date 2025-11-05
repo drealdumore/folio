@@ -17,10 +17,60 @@ interface ProjectCardProps {
 
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
+    projectName: "Echo",
+    projectLink: "/projects/gpz",
+    projectDescription:
+      "minimalist, offline-first reminder app that triggers based on where you are, not just when. With geofencing and a clean UI, it helps you remember things exactly when you arrive at the right place.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2025-03-01",
+    technologies: [
+      "TypeScript",
+      "React-native",
+      "expo",
+      "react-native animated",
+      "maps api",
+    ],
+  },
+  {
+    projectName: "Peekr",
+    projectLink: "https://peekrr.vercel.app/",
+    projectDescription:
+      "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
+    projectType: "Personal project",
+    projectDate: "2025-10-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    projectName: "Thank You Card Generator",
+    projectLink: "https://cardd-generatorr.vercel.app/",
+    projectDescription: "Create beautiful personalized thank you cards.",
+    projectType: "Task",
+    projectDate: "2025-11-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    projectName: "Olamide - Official Website | Tours, Music & Tickets (clone)",
+    projectLink: "https://olamide-tour.vercel.app/",
+    projectDescription:
+      "Experience Olamide live in Toronto! Get tickets for the electrifying concert tour featuring Nigeria's biggest Afrobeats star at Rebel and Queen Elizabeth Theatre.",
+    projectType: "Personal project",
+    projectDate: "2025-10-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app",
     projectDescription:
       "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
+    projectType: "Personal project",
+    projectDate: "2024-03-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    projectName: "Clean Attitude",
+    projectLink: "https://clean-attitude.vercel.app/",
+    projectDescription:
+      "Professional cleaning company in Nigeria.",
     projectType: "Personal project",
     projectDate: "2024-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -175,15 +225,18 @@ export const MOBILE_APPS = [
     year: 2025,
     builtBy: "Samuel Isah",
     website: "Coming Soon",
-    heroImage: "/projects/echo-square.png",
+    heroImage: "/projects/gpz-splash.png",
     intro:
       "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
     introText:
       "My main struggle as a student was not knowing what GPA I needed next semester to reach my target, or whether I was really on track. That problem inspired GPZ — an app that calculates targets, tracks progress, and turns GPA tracking into a motivating experience.",
     gallery: [
-      { src: "/projects/echo-square.png", alt: "GPZ Dashboard Overview" },
-      { src: "/projects/echo-square.png", alt: "GPZ Semester Management" },
-      { src: "/projects/echo-square.png", alt: "GPZ Target GPA Calculator" },
+      { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
+      { src: "/projects/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
+      { src: "/projects/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
+      { src: "/projects/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
+      { src: "/projects/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
+      { src: "/projects/gpz-home.png", alt: "GPZ Home" },
     ],
     challenge:
       "Traditional GPA calculators only give you numbers for past semesters. But students need more: guidance for the future. The challenge was building a system that could project, calculate, and show what’s required to reach academic goals.",

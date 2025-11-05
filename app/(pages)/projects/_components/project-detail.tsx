@@ -84,6 +84,8 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
           </p>
         )}
 
+        {/* TODO:: ADD THAT LIBRARY TGAT MAKES IMAGES BIG. HOLD ON, I CODED SOMTHING LINKE THAT IN SCRENSHOTTER. might just make it a libarary */}
+
         {/* Gallery */}
         {project.gallery?.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -144,7 +146,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
         )}
 
         {/* Project Links */}
-        {project.links?.length > 0 && (
+        {/* {project.links?.length > 0 && (
           <div className="flex flex-wrap gap-4 mt-8">
             {project.links.map((link, i) => (
               <a
@@ -162,7 +164,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               </a>
             ))}
           </div>
-        )}
+        )} */}
       </article>
     </Motion>
   );
