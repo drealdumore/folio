@@ -2,18 +2,28 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Samuel Isah - Software Developer',
+    name: 'Samuel Isah - Full-Stack Developer & Mobile App Creator',
     short_name: 'Samuel Isah',
-    description: 'Personal portfolio website showcasing projects and experience',
+    description: 'Full-Stack Web and Mobile Developer creating innovative applications with React, Next.js, React Native, and TypeScript. Explore my portfolio of web apps, mobile projects, and development tools.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#1a1a1a',
+    orientation: 'portrait-primary',
+    background_color: '#0a0a0a',
     theme_color: '#1a1a1a',
+    categories: ['portfolio', 'developer', 'technology', 'software'],
+    lang: 'en',
+    scope: '/',
     icons: [
       {
         src: '/favicon.ico',
-        sizes: 'any',
+        sizes: '16x16 32x32 48x48',
         type: 'image/x-icon',
+      },
+      {
+        src: '/og.png',
+        sizes: '1200x630',
+        type: 'image/png',
+        purpose: 'any maskable',
       },
     ],
   }
