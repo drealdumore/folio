@@ -1,16 +1,16 @@
 "use client";
 
-import Header from "./_components/header";
+import Header from "./_components/hero-section";
 import Motion from "@/motion/y-motion";
 
 import React from "react";
 
-import Projects from "./_components/projects";
-import StackTable from "./_components/techStack";
-import Repos from "./_components/repos";
-import ContactSection from "@/components/contact-section";
-import WorkExperienceSection from "@/components/work-experience-section";
-import AboutSection from "@/components/about-section";
+import AboutSection from "./_components/about-section";
+import ContactSection from "./_components/contact-section";
+import WorkExperienceSection from "./_components/work-experience-section";
+import Projects from "./_components/projects-section";
+import Repos from "./_components/repos-section";
+import StackTable from "./_components/techStack-section";
 
 const Home = () => {
   return (

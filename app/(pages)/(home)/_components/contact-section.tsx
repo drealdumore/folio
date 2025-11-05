@@ -7,7 +7,8 @@ import {
   fadeInUp,
   staggerContainer,
 } from "@/hooks/useScrollAnimation";
-import { SectionHeading } from "./design/SectionHeading";
+import { SectionHeading } from "@/components/design/SectionHeading";
+
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -128,7 +129,7 @@ export default function ContactSection() {
           variants={fadeInUp}
           type="submit"
           disabled={loading}
-          className="group relative bg-text-heading text-background py-3.5 px-6 rounded-xl text-base font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
+          className="group relative bg-text-heading text-[#1a1a1a] py-3.5 px-6 rounded-xl text-base font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >

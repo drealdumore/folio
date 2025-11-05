@@ -27,7 +27,7 @@ export const useScrollAnimation = (
     }
 
     return () => observer.disconnect();
-  }, [controls, threshold, rootMargin]);
+  }, [controls, threshold, rootMargin, hasAnimated]);
 
   return { ref, controls };
 };

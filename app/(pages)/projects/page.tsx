@@ -19,7 +19,7 @@ const ProjectsPage = () => {
       <div className="flex flex-col gap-4">
         <Heading
           title="My Projects"
-          sub="From innovative web applications to efficient backend solutions, take a look at my portfolio of work. "
+          sub="A lot of ideas, but some are still under construction!"
         />
 
         <Projects />

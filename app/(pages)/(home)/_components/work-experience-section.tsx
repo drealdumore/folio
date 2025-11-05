@@ -7,8 +7,9 @@ import {
   staggerContainer,
 } from "@/hooks/useScrollAnimation";
 import { EXPERIENCE } from "@/content/experience";
-import { AnimatedSection } from "./layout/animated-section";
-import { SectionHeading } from "./design/SectionHeading";
+import { SectionHeading } from "@/components/design/SectionHeading";
+
+
 
 export default function WorkExperienceSection() {
   const { ref, controls } = useScrollAnimation();

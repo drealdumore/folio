@@ -8,7 +8,7 @@ export interface SplitTextProps {
   className?: string;
   initialDelay?: number; // in seconds
   staggerDelay?: number; // between characters/words
-  duration?: number;     // duration per character/word
+  duration?: number; // duration per character/word
   ease?:
     | [number, number, number, number]
     | "linear"
@@ -85,7 +85,12 @@ const SplitText: React.FC<SplitTextProps> = ({
   return (
     <Tag
       className={className}
-      style={{ textAlign, overflowWrap: "break-word", display: "inline-block" }}
+      style={{
+        textAlign,
+        overflowWrap: "break-word",
+        display: "inline-block",
+        width: "max-content",
+      }}
     >
       <motion.span
         variants={createContainerVariants(staggerDelay)}
