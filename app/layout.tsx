@@ -41,6 +41,35 @@ export default async function RootLayout({
       <head>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "name": "Samuel Isah",
+              "url": "https://drealdumore.vercel.app",
+              "image": "https://drealdumore.vercel.app/og.png",
+              "sameAs": [
+                `https://twitter.com/${SOCIALS.twitter.username}`,
+                `https://github.com/${SOCIALS.github.username}`,
+                `https://linkedin.com/in/${SOCIALS.linkedin.username}`,
+              ],
+              "jobTitle": "Full-Stack Developer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Freelance"
+              },
+              "knowsAbout": [
+                "React", "Next.js", "React Native", "TypeScript", "JavaScript",
+                "Node.js", "Web Development", "Mobile Development", "UI/UX Design"
+              ],
+              "description": "Full-Stack Web and Mobile Developer creating innovative applications with modern technologies."
+            })
+          }}
+        />
       </head>
       <ClientBody>{children}</ClientBody>
     </html>
@@ -55,6 +84,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   title: {
@@ -63,6 +95,11 @@ export const metadata: Metadata = {
   },
   description: sharedMetadata.description,
   keywords: sharedMetadata.keywords,
+  authors: [{ name: sharedMetadata.name, url: sharedMetadata.url }],
+  creator: sharedMetadata.name,
+  publisher: sharedMetadata.name,
+  category: 'Technology',
+  classification: 'Portfolio',
   openGraph: {
     title: {
       default: sharedMetadata.title,
@@ -72,9 +109,13 @@ export const metadata: Metadata = {
     type: "website",
     url: sharedMetadata.url,
     siteName: sharedMetadata.title,
-    locale: "en_IE",
-    images: sharedMetadata.image,
-    // images: sharedMetadata.url + "/api/og",
+    locale: "en_US",
+    images: {
+      url: sharedMetadata.image,
+      width: 1200,
+      height: 630,
+      alt: sharedMetadata.title,
+    },
   },
   alternates: {
     canonical: "/",
@@ -83,6 +124,17 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: `@${SOCIALS.twitter.username}`,
     creator: `@${SOCIALS.twitter.username}`,
+    title: sharedMetadata.title,
+    description: sharedMetadata.description,
+    images: [sharedMetadata.image],
+  },
+  verification: {
+    google: 'google-site-verification-code',
+  },
+  other: {
+    'msapplication-TileColor': '#1a1a1a',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
   },
 };
 
