@@ -45,7 +45,7 @@ export const sharedMetadata = {
     height: 630,
     type: "image/png",
   },
-  image: "/og.png",
+  image: "/api/og",
   author: "Samuel Isah",
   creator: "Samuel Isah",
   publisher: "Samuel Isah",

@@ -51,7 +51,7 @@ export default async function RootLayout({
               "@type": "Person",
               "name": "Samuel Isah",
               "url": "https://drealdumore.vercel.app",
-              "image": "https://drealdumore.vercel.app/og.png",
+              "image": "https://drealdumore.vercel.app/api/og",
               "sameAs": [
                 `https://twitter.com/${SOCIALS.twitter.username}`,
                 `https://github.com/${SOCIALS.github.username}`,
