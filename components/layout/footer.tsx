@@ -16,7 +16,7 @@ const AppFooter = () => {
     <footer className="py-7 border-t border-t-zinc-800">
       <div className="max-w-screen-lx mx-auto md:px-10 px-6 grid lg:grid-cols-6 gap-8">
         <div className="lg:col-span-3 xs:col-span-2 max-w-md">
-          <h3 className="font-semibold mb-2 text-text-heading">
+          <h3 className="font-semibold mb-2 text-text-heading font-mono">
             Samuel&apos;s personal site
           </h3>
           <div className="flex items-center gap-1">
@@ -56,7 +56,9 @@ const AppFooter = () => {
 
         <div className="footer-items">
           <div>
-            <h4 className="font-semibold mb-3 text-text-heading">Connect</h4>
+            <h4 className="font-semibold mb-3 text-text-heading font-mono">
+              Connect
+            </h4>
             <ul className="space-y-2">
               {CONTACTS.map((link, index) => {
                 return (
@@ -101,7 +103,7 @@ const AppFooter = () => {
         </div>
 
         <div className="lg:col-span-6 xs:col-span-4">
-          <p className="text-sm text-center text-text-normal font-firacode">
+          <p className="text-sm text-center text-text-normal font-mono">
             &copy; {new Date().getFullYear()} Samuel&apos;s personal site.
           </p>
         </div>

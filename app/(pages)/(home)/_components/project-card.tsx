@@ -11,6 +11,8 @@ type ProjectType = {
 };
 
 const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
+  const isExternalLink = href.startsWith('http');
+  
   return (
     <motion.div
       variants={fadeInUp}
@@ -46,8 +48,7 @@ const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
           {href && (
             <Link
               href={href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(isExternalLink && { target: "_blank", rel: "noopener noreferrer" })}
               className="inline-flex items-center gap-2 text-[12px] font-medium text-text-normal hover:text-text-heading transition-all group/button"
             >
               View Project

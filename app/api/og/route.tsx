@@ -1,6 +1,5 @@
-import { OpenGraphImage } from "@/components/og-image";
-import { sharedMetadata } from "@/constants/shared-meta";
-import { getBoldFont, getRegularFont } from "@/utils/fonts";
+// Use the Edge runtime for ImageResponse
+export const runtime = "edge";
 
 import { ImageResponse } from "next/og";
 
@@ -9,27 +8,82 @@ type sizeType = {
   height: number;
 };
 
-const alt = sharedMetadata.title;
+const alt = "Samuel Isah | Full-Stack Developer & Mobile App Creator";
 
 const size: sizeType = {
-  width: sharedMetadata.ogImage.width,
-  height: sharedMetadata.ogImage.height,
+  width: 1200,
+  height: 630,
 };
 
-const contentType = sharedMetadata.ogImage.type;
+const contentType = "image/png";
 
 export async function GET() {
   const [regularFontData, boldFontData] = await Promise.all([
-    getRegularFont(),
-    getBoldFont(),
+    fetch(
+      new URL("../../../public/fonts/Geist-Regular.otf", import.meta.url)
+    ).then((r) => r.arrayBuffer()),
+    fetch(
+      new URL("../../../public/fonts/Geist-Medium.otf", import.meta.url)
+    ).then((r) => r.arrayBuffer()),
   ]);
 
   return new ImageResponse(
     (
-      <OpenGraphImage
-        title={sharedMetadata.name}
-        description={sharedMetadata.og}
-      />
+      <div
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            height: "100%",
+            width: "100%",
+            backgroundImage:
+              "linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+
+        <span
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            position: "absolute",
+            bottom: 100,
+            left: 60,
+            width: "80%",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+            <span
+              style={{
+                fontSize: "4.75rem",
+                lineHeight: 1,
+                fontWeight: 600,
+              }}
+            >
+              Samuel Isah
+            </span>
+          </div>
+          <span
+            style={{
+              fontSize: "2.5rem",
+              lineHeight: "3rem",
+              marginTop: "1rem",
+            }}
+          >
+            Full-Stack Web and Mobile Developer creating innovative applications
+            with modern technologies.
+          </span>
+        </span>
+      </div>
     ),
     {
       width: size.width,

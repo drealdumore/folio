@@ -8,6 +8,7 @@ import Link from "next/link";
 import { SmallPing } from "@/components/design/ping";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import SplitText from "./SplitText";
+import { TextReveal } from "./textReveal";
 
 const Header = () => {
   return (
@@ -62,18 +63,14 @@ const Header = () => {
               <SplitText
                 text={`Hi, I'm Samuel Isah`}
                 tag="h1"
-                className="text-3xl font-bold mt-6 text-text-heading"
+                className="text-3xl font-bold mt-6 text-text-heading font-mono"
                 initialDelay={0.2}
                 duration={0.3}
                 ease={[0.4, 0, 0.2, 1]}
                 splitType="chars"
               />
 
-              <h2 className="text-xl font-semibold mb-4 text-text-heading">
-                A coder by day, problem-solver by night!
-              </h2>
-
-              <p className="text-text-normal" role="text">
+              <p className="text-text-normal mt-4" role="text">
                 Full-Stack Developer crafting fast, minimal web & mobile
                 experiences with care for the tiny details that make big
                 differences.

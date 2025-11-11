@@ -76,6 +76,14 @@ const config: Config = {
   			heading: [
   				'var(--font-satoshi)',
                     ...defaultTheme.fontFamily.sans
+                ],
+  			aws: [
+  				'var(--font-aws-diatype)',
+                    ...defaultTheme.fontFamily.sans
+                ],
+  			mono: [
+  				'var(--font-aws-diatype-mono)',
+                    ...defaultTheme.fontFamily.mono
                 ]
   		},
   		keyframes: {
