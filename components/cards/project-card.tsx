@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/hooks/useScrollAnimation";
 
@@ -8,66 +9,85 @@ type ProjectType = {
   description?: string | null;
   href: string;
   tech?: string[];
+  image?: string;
 };
 
-const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
+const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
+  const isExternalLink = href.startsWith("http");
+
   return (
     <motion.div
       variants={fadeInUp}
       className="w-full group/project lg:group-hover/wrapper:opacity-25 lg:hover:!opacity-100 transition-opacity"
     >
-      <div className="border border-zinc-700 p-6 bg-zinc-900/20 hover:bg-zinc-900/40 transition-all duration-300 group/card skills rounded-lg">
-        <div className="flex flex-col gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-text-heading group-hover/card:text-text-normal transition-colors">
-              {name}
-            </h3>
+      <Link
+        href={href}
+        {...(isExternalLink && {
+          target: "_blank",
+          rel: "noopener noreferrer",
+        })}
+        className="w-full rounded-[20px] overflow-hidden border border-zinc-700/50 relative transition-all block bg-zinc-900/20 hover:bg-zinc-900/40"
+      >
+        <div className="px-5 pt-5 pb-4 rounded-[20px] group">
+          <div className="relative w-full h-[200px] rounded-[20px] overflow-hidden">
+            {image ? (
+              <Image
+                alt={name}
+                src={image}
+                fill
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#19191999] flex items-center  justify-center">
+                <span className="text-text-normal text-lg font-medium font-mono">
+                  {name}
+                </span>
+              </div>
+            )}
           </div>
-
+        </div>
+        <div className="px-7 pb-7">
+          <h3 className="text-2xl font-semibold mb-2 text-text-heading font-mono">
+            {name}
+          </h3>
           {description && (
-            <p className="text-text-normal text-sm leading-relaxed">
+            <p className="text-text-normal/70 text-base line-clamp-2 mb-4">
               {description}
             </p>
           )}
-
           {tech && tech.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-4">
               {tech.map((technology, index) => (
                 <span
                   key={index}
-                  className="px-2 py-1 text-xs bg-zinc-800 text-text-normal rounded border border-zinc-600"
+                  className="bg-text-heading/10 text-text-heading px-3 py-1 rounded-full text-sm"
                 >
                   {technology}
                 </span>
               ))}
             </div>
           )}
-
-          {href && (
-            <Link
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[12px] font-medium text-text-normal hover:text-text-heading transition-all group/button"
-            >
+          <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-6 py-3.5 text-base font-medium transition-all duration-300 group">
+            <span className="flex items-center group-hover:pr-2 transition-all duration-300">
               View Project
-              <svg
-                className="w-4 h-4 transition-transform group-hover/button:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
-            </Link>
-          )}
+            </span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>{" "}
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 };

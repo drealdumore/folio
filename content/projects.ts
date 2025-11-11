@@ -18,7 +18,7 @@ interface ProjectCardProps {
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Echo",
-    projectLink: "/projects/gpz",
+    projectLink: "/projects/echo",
     projectDescription:
       "minimalist, offline-first reminder app that triggers based on where you are, not just when. With geofencing and a clean UI, it helps you remember things exactly when you arrive at the right place.",
     projectType: "Personal project (Mobile app)",
@@ -29,6 +29,23 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "expo",
       "react-native animated",
       "maps api",
+    ],
+  },
+
+  {
+    projectName: "GPZ",
+    projectLink: "/projects/gpz",
+    projectDescription:
+      "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2025-01-01",
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "expo-router",
+      "AsyncStorage",
+      "react-query",
     ],
   },
   {
@@ -49,7 +66,16 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    projectName: "Olamide - Official Website | Tours, Music & Tickets (clone)",
+    projectName: "Rivr App",
+    projectLink: "https://rivr-mu.vercel.app/",
+    projectDescription:
+      "Empower Your Brand Through Authentic Creator Collaborations. Connect with trusted creators to amplify your message and drive results.",
+    projectType: "Personal project",
+    projectDate: "2025-03-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    projectName: "Olamide - Tours Website (clone)",
     projectLink: "https://olamide-tour.vercel.app/",
     projectDescription:
       "Experience Olamide live in Toronto! Get tickets for the electrifying concert tour featuring Nigeria's biggest Afrobeats star at Rebel and Queen Elizabeth Theatre.",
@@ -69,8 +95,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Clean Attitude",
     projectLink: "https://clean-attitude.vercel.app/",
-    projectDescription:
-      "Professional cleaning company in Nigeria.",
+    projectDescription: "Professional cleaning company in Nigeria.",
     projectType: "Personal project",
     projectDate: "2024-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],

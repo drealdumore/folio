@@ -1,8 +1,7 @@
 import { formatDateDifference } from "@/utils/date";
-
 import React from "react";
-
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/hooks/useScrollAnimation";
 
@@ -13,6 +12,7 @@ interface ProjectCardProps {
   projectType: string | undefined | null;
   projectDate: string | any;
   technologies: string[];
+  image?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -22,48 +22,64 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   projectType,
   projectDate,
   technologies,
+  image,
 }) => {
-  const formattedDate = new Date(projectDate);
-
+  const isExternalLink =
+    typeof projectLink === "string" && projectLink.startsWith("http");
   return (
     <motion.div
       variants={fadeInUp}
-      className="min-w-[120px] font-sans p-4 gap-y-4 gap-x-4 justify-start items-center border border-[#404040] rounded-lg flex group"
+      className="w-full group/project lg:group-hover/wrapper:opacity-25 lg:hover:!opacity-100 transition-opacity"
     >
-      <div className="flex flex-col gap-y-4 w-full">
-        <div className="inline-flex w-full justify-between items-center group relative">
-          <Link
-          // TODO: add the feature so that if link starts with https it is an external link and target blank else no.
-            href={projectLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-lg tracking-tighter text-text-heading gap-[0.15rem] w-max flex items-center relative"
-          >
-            {projectName}
-            <span className="absolute left-0 bottom-0 w-full h-[2px] bg-current origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ease-in-out" />
-          </Link>
+      <Link
+        href={projectLink}
+        {...(isExternalLink && {
+          target: "_blank",
+          rel: "noopener noreferrer",
+        })}
+        className="w-full rounded-[20px] overflow-hidden border border-zinc-700/50 relative transition-all block"
+      >
+        <div className="px-5 pt-5 pb-4 rounded-[20px] group">
+          <div className="relative w-full h-[200px] rounded-[20px] overflow-hidden">
+            {image ? (
+              <Image
+                alt={projectName || "Project"}
+                src={image}
+                fill
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#191919]/60 flex items-center  justify-center">
+                <span className="text-text-normal text-lg font-medium font-mono">
+                  {projectName}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="flex items-center w-full -mt-4">
-          <span className="text-xs opacity-50 text-text-normal">
-            {projectType}
-          </span>
+        <div className="px-7 pb-7">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-2xl font-semibold text-text-heading font-mono">
+              {projectName}
+            </h3>
+          </div>
+          {projectDescription && (
+            <p className="text-text-normal/70 text-base line-clamp-2 mb-4">
+              {projectDescription}
+            </p>
+          )}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {technologies.map((tech, index) => (
+              <span
+                key={index}
+                className="bg-text-heading/10 text-text-heading px-3 py-1 rounded-full text-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
-        <p className="text-text-normal">{projectDescription}</p>
-
-        <div className="flex flex-wrap gap-2">
-          {technologies.map((tech, index) => (
-            <div
-              key={index}
-              className="p-1 inline-flex text-xs text-text-normal border bg-zinc-800 max-w-max border-[#404040] rounded"
-            >
-              {tech}
-            </div>
-          ))}
-        </div>
-        <span className="text-[10px] text-text-normal">
-          {formatDateDifference(formattedDate)}
-        </span>
-      </div>
+      </Link>
     </motion.div>
   );
 };
