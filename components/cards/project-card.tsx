@@ -67,7 +67,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
               ))}
             </div>
           )}
-          <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-6 py-3.5 text-base font-medium transition-all duration-300 group">
+          <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-4 py-2.5 text-base font-medium transition-all duration-300 group">
             <span className="flex items-center group-hover:pr-2 transition-all duration-300">
               View Project
             </span>

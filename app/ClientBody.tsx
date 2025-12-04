@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import AppFooter from "@/components/layout/footer";
 import AppNav from "@/components/layout/nav";
 
@@ -12,8 +13,10 @@ export default function ClientBody({
   const lenisRef = useRef<{
     raf: (time: number) => void;
     destroy: () => void;
+    scrollTo: (target: number, options?: any) => void;
   } | null>(null);
   const rafRef = useRef<number>(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     let mounted = true;
@@ -55,6 +58,15 @@ export default function ClientBody({
   useEffect(() => {
     document.body.className = "antialiased";
   }, []);
+
+  // Scroll to top on route change
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return (
     <body>

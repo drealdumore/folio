@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 
 import ProjectCard from "./project-card";
-import { AnimatedSection } from "@/components/layout/animated-section";
 
 const fetchProjects = async () => {
   const { ALLPROJECTS } = await import("@/content/projects");
@@ -31,21 +30,19 @@ const Projects = () => {
   return (
     <div className="flex flex-col gap-8">
       {projects.length > 0 ? (
-        <AnimatedSection>
-          <div className="flex flex-col gap-8">
-            {projects.map((project, i) => (
-              <ProjectCard
-                key={i}
-                projectName={project.projectName}
-                projectLink={project.projectLink}
-                projectDescription={project.projectDescription}
-                projectType={project.projectType}
-                projectDate={project.projectDate}
-                technologies={project.technologies}
-              />
-            ))}
-          </div>
-        </AnimatedSection>
+        <div className="flex flex-col gap-8">
+          {projects.map((project, i) => (
+            <ProjectCard
+              key={i}
+              projectName={project.projectName}
+              projectLink={project.projectLink}
+              projectDescription={project.projectDescription}
+              projectType={project.projectType}
+              projectDate={project.projectDate}
+              technologies={project.technologies}
+            />
+          ))}
+        </div>
       ) : (
         <p className="text-text-normal">Loading projects...</p>
       )}

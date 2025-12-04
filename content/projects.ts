@@ -8,6 +8,7 @@ type projectType = {
 
 interface ProjectCardProps {
   projectName: string | undefined | null;
+  image?: string | any;
   projectLink: string | any;
   projectDescription: string | undefined | null;
   projectType: string | undefined | null;
@@ -16,6 +17,43 @@ interface ProjectCardProps {
 }
 
 export const ALLPROJECTS: ProjectCardProps[] = [
+  {
+    projectName: "Isami Technologies – Corporate Website",
+    projectLink: "https://isamitechnologies.com.ng/",
+    image: "/projects/isamitechnologies.png",
+    projectDescription:
+      "Official website for Isami Technologies — a Nigerian digital agency offering web development, e-commerce, AI chatbots, UI/UX & branding, and SEO services across Nigeria.",
+    projectType: "Client / Company Website",
+    projectDate: "2025-12-01",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "React",
+      "AI-integration",
+    ],
+  },
+  {
+    projectName: "Cleanup – Cleaning Services Website",
+    projectLink: "https://cleanup.com.ng/",
+    image: "/projects/cleanup.png",
+    projectDescription:
+      "Website for Cleanup — a professional cleaning services company based in Kaduna, offering services like residential & commercial cleaning, post-construction cleanup, upholstery & carpet cleaning, hotel/restaurant cleaning, pest control, and 24/7 support.",
+    projectType: "Client / Company Website",
+    projectDate: "2025-11-15",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "React"],
+  },
+  {
+    projectName: "Olamide - Tours Website (clone)",
+    projectLink: "https://olamide-tour.vercel.app/",
+    image: "/projects/celeb-tour.png",
+    projectDescription:
+      "Experience Olamide live in Toronto! Get tickets for the electrifying concert tour featuring Nigeria's biggest Afrobeats star at Rebel and Queen Elizabeth Theatre.",
+    projectType: "Personal project",
+    projectDate: "2025-10-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+
   {
     projectName: "Echo",
     projectLink: "/projects/echo",
@@ -48,82 +86,69 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "react-query",
     ],
   },
-  {
-    projectName: "Peekr",
-    projectLink: "https://peekrr.vercel.app/",
-    projectDescription:
-      "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
-    projectType: "Personal project",
-    projectDate: "2025-10-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    projectName: "Thank You Card Generator",
-    projectLink: "https://cardd-generatorr.vercel.app/",
-    projectDescription: "Create beautiful personalized thank you cards.",
-    projectType: "Task",
-    projectDate: "2025-11-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
+
   {
     projectName: "Rivr App",
     projectLink: "https://rivr-mu.vercel.app/",
+    image: "/projects/rivr-app.png",
     projectDescription:
       "Empower Your Brand Through Authentic Creator Collaborations. Connect with trusted creators to amplify your message and drive results.",
     projectType: "Personal project",
     projectDate: "2025-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
-  {
-    projectName: "Olamide - Tours Website (clone)",
-    projectLink: "https://olamide-tour.vercel.app/",
-    projectDescription:
-      "Experience Olamide live in Toronto! Get tickets for the electrifying concert tour featuring Nigeria's biggest Afrobeats star at Rebel and Queen Elizabeth Theatre.",
-    projectType: "Personal project",
-    projectDate: "2025-10-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    projectName: "MetaScraper",
-    projectLink: "https://meta-scrapper.vercel.app",
-    projectDescription:
-      "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
-    projectType: "Personal project",
-    projectDate: "2024-03-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    projectName: "Clean Attitude",
-    projectLink: "https://clean-attitude.vercel.app/",
-    projectDescription: "Professional cleaning company in Nigeria.",
-    projectType: "Personal project",
-    projectDate: "2024-03-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    projectName: "Write it",
-    projectLink: "https://writee-it.vercel.app",
-    projectDescription:
-      "Craft Your Unique Sayings and Watch Them change to perfect handwritting.",
-    projectType: "Personal project",
-    projectDate: "2023-12-15",
-    technologies: ["Angular", "Tailwind CSS", "TypeScript"],
-  },
-  {
-    projectName: "Minimalist",
-    projectLink: "https://minimal-list.vercel.app",
-    projectDescription: "Simple, no-auth task manager.",
-    projectType: "Personal project",
-    projectDate: "2024-11-12",
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Supabase",
-      "Local storage",
-    ],
-  },
+
+  // {
+  //   projectName: "MetaScraper",
+  //   projectLink: "https://meta-scrapper.vercel.app",
+  //   projectDescription:
+  //     "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
+  //   projectType: "Personal project",
+  //   projectDate: "2024-03-01",
+  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  // },
+
+  // {
+  //   projectName: "Write it",
+  //   projectLink: "https://writee-it.vercel.app",
+  //   projectDescription:
+  //     "Craft Your Unique Sayings and Watch Them change to perfect handwritting.",
+  //   projectType: "Personal project",
+  //   projectDate: "2023-12-15",
+  //   technologies: ["Angular", "Tailwind CSS", "TypeScript"],
+  // },
+  // {
+  //   projectName: "Minimalist",
+  //   projectLink: "https://minimal-list.vercel.app",
+  //   projectDescription: "Simple, no-auth task manager.",
+  //   projectType: "Personal project",
+  //   projectDate: "2024-11-12",
+  //   technologies: [
+  //     "TypeScript",
+  //     "Next.js",
+  //     "Tailwind CSS",
+  //     "Framer Motion",
+  //     "Supabase",
+  //     "Local storage",
+  //   ],
+  // },
+  // {
+  //   projectName: "Peekr",
+  //   projectLink: "https://peekrr.vercel.app/",
+  //   projectDescription:
+  //     "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
+  //   projectType: "Personal project",
+  //   projectDate: "2025-10-01",
+  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  // },
+  // {
+  //   projectName: "Thank You Card Generator",
+  //   projectLink: "https://cardd-generatorr.vercel.app/",
+  //   projectDescription: "Create beautiful personalized thank you cards.",
+  //   projectType: "Task",
+  //   projectDate: "2025-11-01",
+  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  // },
 ];
 
 export const SHORTPROJECTS = [

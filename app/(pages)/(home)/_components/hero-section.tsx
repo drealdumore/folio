@@ -60,7 +60,7 @@ const Header = () => {
 
           <AnimatedSection delay={0.4}>
             <div className="max-w-3xl">
-              <SplitText
+              {/* <SplitText
                 text={`Hi, I'm Samuel Isah`}
                 tag="h1"
                 className="text-3xl font-bold mt-6 text-text-heading font-mono"
@@ -68,8 +68,10 @@ const Header = () => {
                 duration={0.3}
                 ease={[0.4, 0, 0.2, 1]}
                 splitType="chars"
-              />
-
+              /> */}
+              <h1 className="text-3xl font-bold mt-6 text-text-heading font-mono">
+                Hi, I'm Samuel Isah
+              </h1>
               <p className="text-text-normal mt-4" role="text">
                 Full-Stack Developer crafting fast, minimal web & mobile
                 experiences with care for the tiny details that make big

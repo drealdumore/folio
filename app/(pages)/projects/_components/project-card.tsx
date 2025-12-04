@@ -2,8 +2,6 @@ import { formatDateDifference } from "@/utils/date";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { fadeInUp } from "@/hooks/useScrollAnimation";
 
 interface ProjectCardProps {
   projectName: string | undefined | null;
@@ -27,10 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const isExternalLink =
     typeof projectLink === "string" && projectLink.startsWith("http");
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="w-full group/project lg:group-hover/wrapper:opacity-25 lg:hover:!opacity-100 transition-opacity"
-    >
+    <div className="w-full group/project lg:group-hover/wrapper:opacity-25 lg:hover:!opacity-100 transition-opacity">
       <Link
         href={projectLink}
         {...(isExternalLink && {
@@ -80,7 +75,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 };
 

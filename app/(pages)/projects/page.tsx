@@ -2,7 +2,6 @@
 import { sharedMetadata } from "@/constants/shared-meta";
 import { Metadata } from "next";
 import { Heading } from "@/components/design/heading";
-import Motion from "@/motion/y-motion";
 import Projects from "./_components/projects";
 
 export const metadata: Metadata = {
@@ -15,22 +14,20 @@ export const metadata: Metadata = {
 
 const ProjectsPage = () => {
   return (
-    <Motion>
-      <div className="flex flex-col gap-4">
-        <Heading
-          title="My Projects"
-          sub="A lot of ideas, but some are still under construction!"
-        />
+    <div className="flex flex-col gap-4">
+      <Heading
+        title="My Projects"
+        sub="A lot of ideas, but some are still under construction!"
+      />
 
-        <Projects />
+      <Projects />
 
-        <div className="w-full flex justify-end">
-          <span className="tag text-text-normal">
-            More projects coming soon!
-          </span>
-        </div>
+      <div className="w-full flex justify-end">
+        <span className="tag text-text-normal">
+          More projects coming soon!
+        </span>
       </div>
-    </Motion>
+    </div>
   );
 };
 

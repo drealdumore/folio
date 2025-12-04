@@ -6,8 +6,8 @@ import { AnimatedSection } from "@/components/layout/animated-section";
 import { SectionHeading } from "@/components/design/SectionHeading";
 
 const fetchProjects = async () => {
-  const { PROJECTS } = await import("@/content/projects");
-  return PROJECTS;
+  const { ALLPROJECTS } = await import("@/content/projects");
+  return ALLPROJECTS.slice(0, 2);
 };
 
 const Projects = () => {
@@ -34,10 +34,11 @@ const Projects = () => {
             ? projects.map((project, i) => (
                 <ProjectCard
                   key={i}
-                  name={project.name}
-                  description={project.description}
-                  href={project.href}
-                  tech={project.tech}
+                  image={project.image}
+                  name={project.projectName}
+                  description={project.projectDescription}
+                  href={project.projectLink}
+                  tech={project.technologies}
                 />
               ))
             : ""}

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image"; // <-- import Image here
+import Image from "next/image"; 
 import { WorkHeading } from "@/components/design/heading";
 import Motion from "@/motion/y-motion";
 import { MOBILE_APPS } from "@/content/projects";
@@ -32,7 +32,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                   </td>
                   <td className="text-text-normal">{project.year}</td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td className="pr-6 py-2 font-semibold text-text-heading">
                     Built by
                   </td>
@@ -54,7 +54,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                       </a>
                     </td>
                   </tr>
-                )}
+                )} */}
               </tbody>
             </table>
           </div>
@@ -108,7 +108,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
         )}
 
         {/* Process Grid */}
-        <div className="grid grid-cols-1 gap-12 my-32 relative">
+        <div className="grid gap-12 my-32 relative">
           <div>
             <h3 className="text-xl font-bold text-text-heading mb-4">
               Challenge
