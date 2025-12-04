@@ -70,7 +70,7 @@ const Header = () => {
                 splitType="chars"
               /> */}
               <h1 className="text-3xl font-bold mt-6 text-text-heading font-mono">
-                Hi, I'm Samuel Isah
+                Hi, I&apos;m Samuel Isah
               </h1>
               <p className="text-text-normal mt-4" role="text">
                 Full-Stack Developer crafting fast, minimal web & mobile

@@ -8,7 +8,7 @@ type projectType = {
 
 interface ProjectCardProps {
   projectName: string | undefined | null;
-  image?: string | any;
+  image?: string;
   projectLink: string | any;
   projectDescription: string | undefined | null;
   projectType: string | undefined | null;
