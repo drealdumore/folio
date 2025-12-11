@@ -18,6 +18,23 @@ interface ProjectCardProps {
 
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
+    projectName: "The SupaDevs – Curated Developer Resources Library",
+    projectLink: "https://thesupadevs.vercel.app/",
+    image: "/projects/thesupadevs.png",
+    projectDescription:
+      "A curated web library of developer tools, UI components, APIs, and resources designed to help developers find quality assets quickly without searching all over the web. It serves as a central ‘shelf’ for useful dev resources and encourages community contributions.",
+    projectType: "Web Platform / Tools Library",
+    projectDate: "2025-12-11",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React",
+      "Vercel Deployment",
+    ],
+  },
+
+  {
     projectName: "Isami Technologies – Corporate Website",
     projectLink: "https://isamitechnologies.com.ng/",
     image: "/projects/isamitechnologies.png",

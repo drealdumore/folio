@@ -13,7 +13,7 @@ import { TextReveal } from "./textReveal";
 const Header = () => {
   return (
     <section>
-      <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:pb-8 lg:justify-between lg:flex-row">
+      <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:justify-between lg:flex-row">
         <div className="flex flex-col lg:h-2/6 h-2/5 max-lg:w-full max-lg:flex">
           <AnimatedSection>
             <div className="max-w-[130px] w-full flex-shrink-0 mb-8 ">

@@ -16,13 +16,7 @@ const Projects = () => {
     const loadProjects = async () => {
       const projectData = await fetchProjects();
 
-      const sortedProjects = projectData.sort((a: any, b: any) => {
-        const dateA = new Date(a.projectDate).getTime();
-        const dateB = new Date(b.projectDate).getTime();
-        return dateB - dateA;
-      });
-
-      setProjects(sortedProjects);
+      setProjects(projectData);
     };
     loadProjects();
   }, []);
