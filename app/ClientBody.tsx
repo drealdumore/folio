@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
 import AppNav from "@/components/layout/nav";
 
@@ -92,6 +93,7 @@ export default function ClientBody({
 
         <AppFooter />
       </div>
+      <Analytics />
     </body>
   );
 }
