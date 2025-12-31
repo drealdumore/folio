@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 
 import "./globals.css";
 import ClientBody from "./ClientBody";
+import { PostHogProviderWrapper } from "./providers";
 
 const geist = localFont({
   src: [
@@ -66,41 +67,58 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${satoshi.variable} ${geist.variable} ${awsDiatype.variable} ${awsDiatypeMono.variable}`}>
+    <html
+      lang="en"
+      className={`${satoshi.variable} ${geist.variable} ${awsDiatype.variable} ${awsDiatypeMono.variable}`}
+    >
       <head>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Samuel Isah",
-              "url": "https://drealdumore.vercel.app",
-              "image": "https://drealdumore.vercel.app/api/og",
-              "sameAs": [
+              name: "Samuel Isah",
+              url: "https://drealdumore.vercel.app",
+              image: "https://drealdumore.vercel.app/api/og",
+              sameAs: [
                 `https://twitter.com/${SOCIALS.twitter.username}`,
                 `https://github.com/${SOCIALS.github.username}`,
                 `https://linkedin.com/in/${SOCIALS.linkedin.username}`,
               ],
-              "jobTitle": "Full-Stack Developer",
-              "worksFor": {
+              jobTitle: "Full-Stack Developer",
+              worksFor: {
                 "@type": "Organization",
-                "name": "Freelance"
+                name: "Freelance",
               },
-              "knowsAbout": [
-                "React", "Next.js", "React Native", "TypeScript", "JavaScript",
-                "Node.js", "Web Development", "Mobile Development", "UI/UX Design"
+              knowsAbout: [
+                "React",
+                "Next.js",
+                "React Native",
+                "TypeScript",
+                "JavaScript",
+                "Node.js",
+                "Web Development",
+                "Mobile Development",
+                "UI/UX Design",
               ],
-              "description": "Full-Stack Web and Mobile Developer creating innovative applications with modern technologies."
-            })
+              description:
+                "Full-Stack Web and Mobile Developer creating innovative applications with modern technologies.",
+            }),
           }}
         />
       </head>
-      <ClientBody>{children}</ClientBody>
+      <PostHogProviderWrapper>
+        <ClientBody>{children}</ClientBody>
+      </PostHogProviderWrapper>
     </html>
   );
 }
@@ -113,9 +131,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   title: {
@@ -127,8 +145,8 @@ export const metadata: Metadata = {
   authors: [{ name: sharedMetadata.name, url: sharedMetadata.url }],
   creator: sharedMetadata.name,
   publisher: sharedMetadata.name,
-  category: 'Technology',
-  classification: 'Portfolio',
+  category: "Technology",
+  classification: "Portfolio",
   openGraph: {
     title: {
       default: sharedMetadata.title,
@@ -158,12 +176,15 @@ export const metadata: Metadata = {
     images: [sharedMetadata.image],
   },
   verification: {
-    google: 'google-site-verification-code',
+    google: "google-site-verification-code",
+  },
+  appleWebApp: {
+    capable: true,
+    title: sharedMetadata.title,
+    statusBarStyle: "black-translucent",
   },
   other: {
-    'msapplication-TileColor': '#1a1a1a',
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    "msapplication-TileColor": "#1a1a1a",
   },
 };
 
