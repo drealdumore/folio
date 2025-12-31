@@ -372,3 +372,36 @@ export const MOBILE_APPS = [
     ],
   },
 ];
+
+export const WEB_TOOLS = [
+  {
+    projectName: "Deps Janitor",
+    projectLink: "https://deps-janitor.vercel.app/",
+    image: "/projects/deps-janitor.png",
+    projectDescription:
+      "A specialized tool designed to find and safely remove unused npm dependencies from your projects, keeping your codebase lean and efficient.",
+    projectType: "CLI & Web Tool",
+    projectDate: "2025-12-28",
+    technologies: ["Node.js", "Next.js", "Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    projectName: "Peekr",
+    projectLink: "https://peekrr.vercel.app/",
+    image: "/projects/peekrr.png",
+    projectDescription:
+      "Capture and preview websites instantly with responsive snapshots. Perfect for developers and designers to see how their sites look across various screen sizes.",
+    projectType: "Developer Utility",
+    projectDate: "2025-12-15",
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+  },
+  {
+    projectName: "MetaScraper",
+    projectLink: "https://meta-scrapper.vercel.app/",
+    image: "/projects/metascraper.png",
+    projectDescription:
+      "Easily extract and retrieve essential metadata from any website, including titles, OG images, and descriptions, in a simple and clean interface.",
+    projectType: "Web Utility",
+    projectDate: "2025-11-20",
+    technologies: ["Next.js", "Tailwind CSS", "Lucide React", "shadcn/ui"],
+  },
+];
