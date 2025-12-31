@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "optimize": "next build && next export",
     "cleanup-deps": "node scripts/cleanup-deps.js",
-    "cleanup-deps:debug": "node scripts/cleanup-deps.js --debug"
+    "cleanup-deps:debug": "node scripts/cleanup-deps.js --debug",
+    "cleanup-deps:dry-run": "node scripts/cleanup-deps.js --dry-run"
   },
   "dependencies": {
     "@vercel/analytics": "^1.3.1",
