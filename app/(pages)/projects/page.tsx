@@ -1,8 +1,8 @@
-
 import { sharedMetadata } from "@/constants/shared-meta";
 import { Metadata } from "next";
 import { Heading } from "@/components/design/heading";
 import Projects from "./_components/projects";
+import ShortProjects from "./_components/short-projects";
 
 export const metadata: Metadata = {
   title: `My Projects`,
@@ -21,11 +21,10 @@ const ProjectsPage = () => {
       />
 
       <Projects />
+      <ShortProjects />
 
       <div className="w-full flex justify-end">
-        <span className="tag text-text-normal">
-          More projects coming soon!
-        </span>
+        <span className="tag text-text-normal">More projects coming soon!</span>
       </div>
     </div>
   );
