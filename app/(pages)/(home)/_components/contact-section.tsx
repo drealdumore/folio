@@ -9,7 +9,6 @@ import {
 } from "@/hooks/useScrollAnimation";
 import { SectionHeading } from "@/components/design/SectionHeading";
 
-
 export default function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
@@ -90,6 +89,7 @@ export default function ContactSection() {
       <motion.form
         variants={fadeInUp}
         onSubmit={handleSubmit}
+        suppressHydrationWarning
         className="w-full flex flex-col gap-4"
       >
         <div className="grid md:flex gap-4 w-full">
@@ -97,6 +97,7 @@ export default function ContactSection() {
             variants={fadeInUp}
             placeholder="Your Name"
             required
+            suppressHydrationWarning
             className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
             type="text"
             name="name"
@@ -107,6 +108,7 @@ export default function ContactSection() {
             variants={fadeInUp}
             placeholder="Where can I reach you back?"
             required
+            suppressHydrationWarning
             className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
             type="email"
             name="email"
@@ -120,6 +122,7 @@ export default function ContactSection() {
           name="message"
           placeholder="Your words, my inbox."
           required
+          suppressHydrationWarning
           className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
           value={formData.message}
           onChange={handleChange}

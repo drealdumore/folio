@@ -185,6 +185,7 @@ export const metadata: Metadata = {
   },
   other: {
     "msapplication-TileColor": "#1a1a1a",
+    "mobile-web-app-capable": "yes",
   },
 };
 
