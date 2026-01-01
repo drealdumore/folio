@@ -9,18 +9,17 @@ interface SkillsInterface {
 }
 
 const skills: SkillsInterface[] = [
-  { id: 3, skill: "JavaScript" },
+  { id: 1, skill: "JavaScript" },
   { id: 2, skill: "Tailwind CSS" },
-  { id: 6, skill: "Angular" },
-  { id: 9, skill: "Node Js" },
-  { id: 11, skill: "MongoDB" },
-  { id: 5, skill: "MySQL" },
-  { id: 6, skill: "React Native" },
-
-  { id: 4, skill: "TypeScript" },
-  { id: 2, skill: "SCSS" },
-  { id: 8, skill: "NextJs" },
-  { id: 10, skill: "Express Js" },
+  { id: 3, skill: "Angular" },
+  { id: 4, skill: "Node Js" },
+  { id: 5, skill: "MongoDB" },
+  { id: 6, skill: "MySQL" },
+  { id: 7, skill: "React Native" },
+  { id: 8, skill: "TypeScript" },
+  { id: 9, skill: "SCSS" },
+  { id: 10, skill: "NextJs" },
+  { id: 11, skill: "Express Js" },
   { id: 12, skill: "Postgres" },
   { id: 13, skill: "Git" },
   { id: 14, skill: "GoLang" },
