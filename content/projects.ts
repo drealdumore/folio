@@ -19,7 +19,7 @@ interface ProjectCardProps {
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Crystalglowxquisite – Skincare Boutique",
-    projectLink: "https://www.crystalglowxquisite.com/",
+    projectLink: "https://crystalglowxquisite.com/",
     image: "/projects/crystalglowxquisite.png",
     projectDescription:
       "Premium skincare boutique website.",
