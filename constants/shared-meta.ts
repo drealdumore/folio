@@ -1,5 +1,5 @@
 export const sharedMetadata = {
-  title: "Samuel Isah | Full-Stack Developer & Mobile App Creator",
+  title: "Samuel Isah | Full-Stack Web and Mobile Developer",
   name: "Samuel Isah",
   description:
     "Full-Stack Web and Mobile Developer creating innovative applications with React, Next.js, React Native, and TypeScript. Specializing in modern web development, mobile apps, and user-centric design solutions.",

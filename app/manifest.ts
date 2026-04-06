@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Samuel Isah - Full-Stack Developer & Mobile App Creator',
+    name:  "Samuel Isah | Full-Stack Web and Mobile Developer",
     short_name: 'Samuel Isah',
     description: 'Full-Stack Web and Mobile Developer creating innovative applications with React, Next.js, React Native, and TypeScript. Explore my portfolio of web apps, mobile projects, and development tools.',
     start_url: '/',

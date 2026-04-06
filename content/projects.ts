@@ -18,6 +18,26 @@ interface ProjectCardProps {
 
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
+    projectName: "Crystalglowxquisite – Skincare Boutique",
+    projectLink: "https://www.crystalglowxquisite.com/",
+    image: "/projects/crystalglowxquisite.png",
+    projectDescription:
+      "Premium skincare boutique website.",
+    projectType: "E-commerce ",
+    projectDate: "2026-01-20",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React",
+      "Vercel Deployment",
+      "Posthog",
+      "Neon",
+      "Python",
+
+    ],
+  },
+  {
     projectName: "The SupaDevs – Curated Developer Resources Library",
     projectLink: "https://thesupadevs.vercel.app/",
     image: "/projects/thesupadevs.png",
