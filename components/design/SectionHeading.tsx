@@ -16,7 +16,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <AnimatedSection>
-      <div className={`pt-4 mb-4 ${className}`}>
+      <div className={`mb-4 ${className}`}>
         <h2 className="text-text-heading">
           {title}
         </h2>

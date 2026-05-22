@@ -22,19 +22,19 @@ const Home = () => {
         <Morph delay={0.2}>
           <AboutSection />
         </Morph>
-        <Morph delay={0.4}>
+        <Morph delay={0.1}>
           <StackTable />
         </Morph>
-        <Morph delay={0.6}>
+        <Morph delay={0.1}>
           <Projects />
         </Morph>
-        <Morph delay={0.8}>
+        <Morph delay={0.1}>
           <WebTools />
         </Morph>
-        <Morph delay={1.0}>
+        <Morph delay={0.1}>
           <WorkExperienceSection />
         </Morph>
-        <Morph delay={1.2}>
+        <Morph delay={0.1}>
           <ContactSection />
         </Morph>
       </div>
