@@ -31,7 +31,7 @@ const AppNav = () => {
               className="flex flex-col group focus:outline-none rounded"
               aria-label="Samuel Isah - Home"
             >
-              <span className="block font-semibold font-mono text-text-heading transition-colors duration-300 group-hover:text-white">
+              <span className="block font-medium font-mono text-text-heading transition-colors duration-300 group-hover:text-white">
                 Samuel
               </span>
               <span className="hidden md:block text-[13px] opacity-80 group-hover:opacity-100 text-text-normal transition-all duration-300">

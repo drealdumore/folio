@@ -48,7 +48,7 @@ const Projects = () => {
         <div className="col-span-2 w-full">
           <Link prefetch={true} href="/projects">
             <button className="mx-auto mt-8 bg-text-heading/90 hover:bg-text-heading/90 flex items-center rounded-[14px] px-[24px] py-[14px] text-[16px] font-normal text-start no-underline transition-all duration-300 group">
-              <span className="flex items-center group-hover:pr-2 font-medium text-[16px] transition-all duration-300">
+              <span className="flex items-center group-hover:pr-2 font-medium text-[14px] transition-all duration-300">
                 View All Projects
               </span>
               <svg

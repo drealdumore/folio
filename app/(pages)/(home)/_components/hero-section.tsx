@@ -39,7 +39,7 @@ const Header = () => {
 
           <AnimatedSection delay={0.2}>
             <div className="flex items-center gap-x-3 mb-4">
-              <p className="font-semibold items-center gap-2 hidden md:flex text-text-normal">
+              <p className="font-medium items-center gap-2 hidden md:flex text-text-normal">
                 Current Status:
               </p>
 
@@ -54,7 +54,7 @@ const Header = () => {
 
                 <div className="relative cursor-pointer overflow-hidden">
                   <p className="group text-text-normal">
-                    <span className="group-hover:-translate-y-full font-semibold items-center text-emerald-700 flex flex-col transition-all duration-500 ease-slow">
+                    <span className="group-hover:-translate-y-full font-medium items-center text-emerald-700 flex flex-col transition-all duration-500 ease-slow">
                       Available for work
                       <span className="invisible h-0">Reach out</span>
                     </span>
@@ -75,7 +75,7 @@ const Header = () => {
               </h1>
 
               <p
-                className="text-text-normal mt-2 md:mt-4 text-lg max-w-xl opacity-80"
+                className="text-text-normal mt-2 md:mt-4 max-w-xl opacity-80"
                 role="text"
               >
                 Software Developer crafting fast, minimal web & mobile

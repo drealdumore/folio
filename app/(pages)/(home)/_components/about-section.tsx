@@ -22,7 +22,7 @@ export default function AboutSection() {
         </p>
 
         <p className={paragraphClass}>
-          I&apos;m {bioData.name}, a Nigerian full-stack software engineer with
+          I&apos;m {bioData.name}, a full-stack software engineer with
           over 3 years of experience building web and mobile applications across
           different industries. I specialize in modern frontend development,
           backend systems, and creating seamless cross-platform experiences.

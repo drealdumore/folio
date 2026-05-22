@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image"; 
+import Image from "next/image";
 import { WorkHeading } from "@/components/design/heading";
 import Motion from "@/motion/y-motion";
 import { MOBILE_APPS } from "@/content/projects";
@@ -27,20 +27,20 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             <table>
               <tbody className="divide-y divide-zinc-700">
                 <tr>
-                  <td className="pr-6 py-2 font-semibold text-text-heading">
+                  <td className="pr-6 py-2 font-medium text-text-heading">
                     Year
                   </td>
                   <td className="text-text-normal">{project.year}</td>
                 </tr>
                 {/* <tr>
-                  <td className="pr-6 py-2 font-semibold text-text-heading">
+                  <td className="pr-6 py-2 font-medium text-text-heading">
                     Built by
                   </td>
                   <td className="text-text-normal">{project.builtBy}</td>
                 </tr>
                 {project.website && (
                   <tr>
-                    <td className="pr-6 py-2 font-semibold text-text-heading">
+                    <td className="pr-6 py-2 font-medium text-text-heading">
                       Website
                     </td>
                     <td>
@@ -123,7 +123,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               <h3 className="text-xl font-bold text-text-heading">Action</h3>
               {project.actions.map((action, i) => (
                 <div key={i}>
-                  <h4 className="font-semibold text-text-heading">
+                  <h4 className="font-medium text-text-heading">
                     {action.title}
                   </h4>
                   <p className="text-text-normal leading-relaxed">

@@ -5,9 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>([
-    { text: "Hi! I'm Samuel's AI clone. Ask me anything about his work, skills, or projects!", isUser: false }
-  ]);
+  const [messages, setMessages] = useState<{ text: string; isUser: boolean }[]>(
+    [
+      {
+        text: "Hi! I'm Samuel's AI clone. Ask me anything about his work, skills, or projects!",
+        isUser: false,
+      },
+    ],
+  );
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -16,7 +21,7 @@ export default function ChatWidget() {
 
     const userMessage = input.trim();
     setInput("");
-    setMessages(prev => [...prev, { text: userMessage, isUser: true }]);
+    setMessages((prev) => [...prev, { text: userMessage, isUser: true }]);
     setIsLoading(true);
 
     try {
@@ -27,9 +32,15 @@ export default function ChatWidget() {
       });
 
       const data = await response.json();
-      setMessages(prev => [...prev, { text: data.response, isUser: false }]);
+      setMessages((prev) => [...prev, { text: data.response, isUser: false }]);
     } catch (error) {
-      setMessages(prev => [...prev, { text: "Sorry, I'm having trouble responding right now.", isUser: false }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: "Sorry, I'm having trouble responding right now.",
+          isUser: false,
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -55,20 +66,30 @@ export default function ChatWidget() {
             className="fixed bottom-20 right-6 w-80 h-96 bg-background border border-zinc-700 rounded-lg shadow-xl z-50 flex flex-col"
           >
             <div className="flex justify-between items-center p-4 border-b border-zinc-700">
-              <h3 className="font-semibold text-text-heading">Chat with Samuel</h3>
-              <button onClick={() => setIsOpen(false)} className="text-text-normal hover:text-text-heading">
+              <h3 className="font-medium text-text-heading">
+                Chat with Samuel
+              </h3>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-text-normal hover:text-text-heading"
+              >
                 ✕
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-3">
               {messages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] p-3 rounded-lg text-sm ${
-                    msg.isUser 
-                      ? 'bg-text-heading text-background' 
-                      : 'bg-zinc-800 text-text-normal'
-                  }`}>
+                <div
+                  key={i}
+                  className={`flex ${msg.isUser ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                      msg.isUser
+                        ? "bg-text-heading text-background"
+                        : "bg-zinc-800 text-text-normal"
+                    }`}
+                  >
                     {msg.text}
                   </div>
                 </div>
@@ -87,7 +108,7 @@ export default function ChatWidget() {
                 <input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                  onKeyPress={(e) => e.key === "Enter" && sendMessage()}
                   placeholder="Ask me anything..."
                   className="flex-1 bg-zinc-800 text-text-normal p-2 rounded border border-zinc-700 text-sm"
                 />

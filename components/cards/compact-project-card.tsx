@@ -40,7 +40,7 @@ const CompactProjectCard = ({
 
         <div className="flex w-full flex-col gap-1">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="line-clamp-1 text-start text-base font-semibold text-text-heading font-heading">
+            <h3 className="line-clamp-1 text-start text-base font-medium text-text-heading font-heading">
               {name}
             </h3>
           </div>

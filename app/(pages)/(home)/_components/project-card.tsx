@@ -24,7 +24,7 @@ const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
       <div className="border border-zinc-700 p-6 bg-zinc-900/20 hover:bg-zinc-900/40 transition-all duration-300 group/card skills rounded-lg">
         <div className="flex flex-col gap-4">
           <div>
-            <h3 className="text-lg font-semibold text-text-heading group-hover/card:text-text-normal transition-colors">
+            <h3 className="font-medium text-text-heading group-hover/card:text-text-normal transition-colors">
               {name}
             </h3>
           </div>

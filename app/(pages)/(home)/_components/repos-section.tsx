@@ -21,14 +21,14 @@ const Repos = () => {
                   href={repo.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-max text-text-heading flex items-center gap-[0.15rem] relative text-lg font-semibold"
+                  className="w-max text-text-heading flex items-center gap-[0.15rem] relative text-lg font-medium"
                 >
                   {repo.name}
                   <span className="absolute left-0 bottom-0 w-full h-[2px] bg-current origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100 ease-in-out" />
                 </Link>
               ) : (
                 <div
-                  className="w-max text-text-muted flex items-center gap-[0.15rem] relative text-lg font-semibold"
+                  className="w-max text-text-muted flex items-center gap-[0.15rem] relative text-lg font-medium"
                   aria-disabled
                 >
                   {repo.name}

@@ -46,7 +46,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               />
             ) : (
               <div className="w-full h-full bg-[#19191999] flex items-center  justify-center">
-                <span className="text-text-normal text-lg font-medium line-clamp-2">
+                <span className="text-text-normal font-medium line-clamp-2">
                   {projectName}
                 </span>
               </div>
@@ -55,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="px-7 pb-7">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-2xl font-semibold text-text-heading font-mono">
+            <h3 className="text-2xl font-medium text-text-heading font-mono">
               {projectName}
             </h3>
           </div>
