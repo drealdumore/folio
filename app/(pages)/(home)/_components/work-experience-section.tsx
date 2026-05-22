@@ -45,7 +45,7 @@ export default function WorkExperienceSection() {
                 <div className="text-[16px] text-[#a1a1a1] font-medium">
                   {exp.title} at
                 </div>
-                <div className="flex items-center gap-1 bg-zinc-800/50 text-text-heading px-3 py-1 rounded-md border border-zinc-700/50 backdrop-blur-sm group-hover:bg-zinc-700/50 transition-all duration-300">
+                <div className="flex items-center gap-1 bg-zinc-800/50 text-text-heading px-3 py-1 rounded-[14px] border border-zinc-700/50 backdrop-blur-sm group-hover:bg-zinc-700/50 transition-all duration-300">
                   <div className="w-2 h-2 rounded-full bg-text-heading flex items-center justify-center">
                     <svg
                       width="10"

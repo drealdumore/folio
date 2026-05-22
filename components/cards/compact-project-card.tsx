@@ -18,14 +18,8 @@ const CompactProjectCard = ({
 }: CompactProjectCardProps) => {
   return (
     <Link href={href} target="_blank" rel="noopener noreferrer">
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
-        className="flex w-full gap-3 rounded-lg border border-[#26262a] bg-zinc-900/20 p-2 transition-colors hover:bg-zinc-900/40 group/card flex-col"
-      >
-        <div className="flex size-[clamp(2rem,5vw,2.25rem)] shrink-0 items-center justify-center rounded-lgtext-text-normal">
+      <div className="flex w-full gap-3 rounded-[20px] border border-[#26262a] bg-zinc-900/20 p-2 transition-colors hover:bg-zinc-900/40 group/card flex-col">
+        <div className="flex size-[clamp(2rem,5vw,2.25rem)] shrink-0 items-center justify-center text-text-normal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -54,7 +48,7 @@ const CompactProjectCard = ({
             {description}
           </p>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 };
