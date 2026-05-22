@@ -44,9 +44,8 @@ const AppNav = () => {
           {/* Navigation Links */}
           <div className="flex items-center gap-2 md:gap-4 justify-between md:justify-normal w-auto px-0">
             {links.map(({ link, title, external }, i) => (
-              <Morph delay={0}>
+              <Morph key={i} delay={0}>
                 <Link
-                  key={i}
                   href={link}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
