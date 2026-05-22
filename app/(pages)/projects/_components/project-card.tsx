@@ -34,7 +34,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         })}
         className="w-full rounded-[20px] overflow-hidden border border-zinc-700/50 relative transition-all block"
       >
-        <div className="px-5 pt-5 pb-4 rounded-[20px] group">
+        {/* <div className="px-5 pt-5 pb-4 rounded-[20px] group">
           <div className="relative w-full h-[200px] rounded-[20px] overflow-hidden">
             {image ? (
               <Image
@@ -46,6 +46,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             ) : (
               <div className="w-full h-full bg-[#191919]/60 flex items-center  justify-center">
                 <span className="text-text-normal text-lg font-medium font-mono">
+                  {projectName}
+                </span>
+              </div>
+            )}
+          </div>
+        </div> */}
+        <div className="px-5 pt-5 pb-4 rounded-[20px] group">
+          <div className="relative w-full h-[200px] rounded-[20px] overflow-hidden">
+            {image ? (
+              <Image
+                alt={projectName || "Project"}
+                src={image}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#19191999] flex items-center  justify-center">
+                <span className="text-text-normal text-lg font-medium line-clamp-2">
                   {projectName}
                 </span>
               </div>
@@ -63,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               {projectDescription}
             </p>
           )}
-          <div className="flex flex-wrap gap-2 mb-4">
+          {/* <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span
                 key={index}
@@ -72,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 {tech}
               </span>
             ))}
-          </div>
+          </div> */}
         </div>
       </Link>
     </div>

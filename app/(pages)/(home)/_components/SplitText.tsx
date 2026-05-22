@@ -1,120 +1,77 @@
 "use client";
 
 import React from "react";
-import { motion, Variants, Transition } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
-export interface SplitTextProps {
+interface SplitTextProps {
   text: string;
   className?: string;
-  initialDelay?: number; // in seconds
-  staggerDelay?: number; // between characters/words
-  duration?: number; // duration per character/word
-  ease?:
-    | [number, number, number, number]
-    | "linear"
-    | "easeIn"
-    | "easeOut"
-    | "easeInOut"
-    | "circIn"
-    | "circOut"
-    | "circInOut"
-    | "backIn"
-    | "backOut"
-    | "backInOut"
-    | "anticipate";
-  splitType?: "chars" | "words";
-  tag?: keyof JSX.IntrinsicElements;
-  textAlign?: React.CSSProperties["textAlign"];
-  onAnimationComplete?: () => void;
+  tag?: "h1" | "h2" | "h3" | "p" | "span";
+  initialDelay?: number;
+  duration?: number;
+  stagger?: number;
+  ease?: number[] | string;
 }
 
-const createContainerVariants = (staggerDelay: number): Variants => ({
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: staggerDelay,
-    },
-  },
-});
-
-const createItemVariants = (
-  duration: number,
-  ease: SplitTextProps["ease"]
-): Variants => ({
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration,
-      ease,
-    },
-  },
-});
-
-const SplitText: React.FC<SplitTextProps> = ({
+export default function SplitText({
   text,
   className = "",
+  tag = "h1",
   initialDelay = 0,
-  staggerDelay = 0.05,
-  duration = 0.4,
-  ease = [0.4, 0, 0.2, 1],
-  splitType = "chars",
-  tag = "p",
-  textAlign = "center",
-  onAnimationComplete,
-}) => {
-  const splitText = React.useMemo(() => {
-    if (splitType === "words") {
-      const words = text.split(" ");
-      return words.map((word, i) => ({
-        text: word + (i !== words.length - 1 ? " " : ""),
-        key: `${word}-${i}`,
-      }));
-    }
+  duration = 0.8,
+  stagger = 0.02,
+  ease = [0.19, 1, 0.22, 1], // Lochie Axon's favorite "swift" ease
+}: SplitTextProps) {
+  const words = text.split(" ");
 
-    return Array.from(text).map((char, i) => ({
-      text: char,
-      key: `${char}-${i}`,
-    }));
-  }, [text, splitType]);
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: stagger,
+        delayChildren: initialDelay,
+      },
+    },
+  };
 
-  const Tag = tag as keyof JSX.IntrinsicElements;
-  const itemVariants = createItemVariants(duration, ease);
+  const childVariants: Variants = {
+    hidden: {
+      y: "100%",
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: duration,
+        ease: ease as any,
+      },
+    },
+  };
+
+  const Tag = tag;
 
   return (
-    <Tag
-      className={className}
-      style={{
-        textAlign,
-        overflowWrap: "break-word",
-        display: "inline-block",
-        width: "max-content",
-      }}
-    >
+    <Tag className={`${className} overflow-hidden flex flex-wrap`}>
       <motion.span
-        variants={createContainerVariants(staggerDelay)}
+        variants={containerVariants}
         initial="hidden"
-        animate="visible"
-        transition={{ delay: initialDelay }}
-        onAnimationComplete={onAnimationComplete}
-        style={{ display: "inline-block", whiteSpace: "pre-wrap" }}
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-wrap"
       >
-        {splitText.map(({ text: unit, key }) => (
-          <motion.span
-            key={key}
-            variants={itemVariants}
-            style={{
-              display: "inline-block",
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            {unit}
-          </motion.span>
+        {words.map((word, wordIndex) => (
+          <span key={wordIndex} className="inline-block overflow-hidden mr-[0.25em] py-[0.1em]">
+            <motion.span
+              variants={childVariants}
+              className="inline-block"
+            >
+              {word}
+            </motion.span>
+          </span>
         ))}
       </motion.span>
     </Tag>
   );
-};
-
-export default SplitText;
+}

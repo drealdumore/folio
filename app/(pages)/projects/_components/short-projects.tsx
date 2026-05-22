@@ -25,7 +25,7 @@ const ShortProjects = () => {
     <div className="flex flex-col gap-6 mt-12">
       <div className="flex flex-col gap-1">
         <h2 className="text-2xl font-bold text-text-heading font-heading">
-          Short Projects
+        Side quests
         </h2>
         <p className="text-text-normal/60 text-sm">
           A collection of small tools and experiments built for speed and

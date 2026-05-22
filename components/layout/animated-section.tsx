@@ -71,14 +71,15 @@ export const AnimatedSection = ({
   }
 
   return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={variantWithDelay}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <div className={className}>{children}</div>
+    // <motion.div
+    //   ref={ref}
+    //   initial="hidden"
+    //   animate={controls}
+    //   variants={variantWithDelay}
+    //   className={className}
+    // >
+    //   {children}
+    // </motion.div>
   );
 };

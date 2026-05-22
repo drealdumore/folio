@@ -3,83 +3,21 @@ import { SOCIALS } from "@/constants/social-profiles";
 
 import React from "react";
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import { PostHogProviderWrapper } from "./providers";
 
-const geist = localFont({
-  src: [
-    {
-      path: "../public/fonts/geist.woff2",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-geist",
-  display: "swap",
-});
-
-const satoshi = localFont({
-  src: [
-    {
-      path: "../public/fonts/satoshi.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-satoshi",
-  display: "swap",
-});
-
-const awsDiatype = localFont({
-  src: [
-    {
-      path: "../public/fonts/AWSDiatype-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-  variable: "--font-aws-diatype",
-  display: "swap",
-});
-
-const awsDiatypeMono = localFont({
-  src: [
-    {
-      path: "../public/fonts/AWSDiatypeRoundedSemi-Mono-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../public/fonts/AWSDiatypeRoundedSemi-Mono-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-aws-diatype-mono",
-  display: "swap",
-});
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${satoshi.variable} ${geist.variable} ${awsDiatype.variable} ${awsDiatypeMono.variable}`}
-    >
+    <html lang="en">
       <head>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

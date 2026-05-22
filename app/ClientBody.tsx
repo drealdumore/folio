@@ -71,21 +71,20 @@ export default function ClientBody({
 
   return (
     <body>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-text-heading text-background px-4 py-2 rounded z-50"
-      >
-        Skip to main content
-      </a>
       <div
-        className="relative font-sans max-w-2xl mx-auto antialiased"
+        style={{
+          width: "100%",
+          maxWidth: "710px",
+          padding: "0px 24px 16px",
+          margin: "0px auto",
+        }}
         suppressHydrationWarning
       >
         <AppNav />
 
         <main
           id="main-content"
-          className="px-4 sm:px-5 md:p-8 min-h-[100dvh] text-neutral-800 my-7 lg:pt-8 lg:py-20"
+          className="my-7 lg:pt-8 lg:py-20"
           role="main"
         >
           {children}

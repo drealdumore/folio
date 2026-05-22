@@ -28,6 +28,7 @@ const Projects = () => {
           {projects.map((project, i) => (
             <ProjectCard
               key={i}
+              image={project.image}
               projectName={project.projectName}
               projectLink={project.projectLink}
               projectDescription={project.projectDescription}
@@ -45,5 +46,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-

@@ -16,13 +16,13 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <AnimatedSection>
-      <div className={`pt-8 mb-4 ${className}`}>
-        <h2 className="text-2xl md:text-3xl font-semibold mb-2 text-text-heading  font-mono">
+      <div className={`pt-4 mb-4 ${className}`}>
+        <h2 className="text-text-heading">
           {title}
         </h2>
-        {subtitle && (
+        {/* {subtitle && (
           <p className="text-base font-bold text-text-heading">{subtitle}</p>
-        )}
+        )} */}
       </div>
     </AnimatedSection>
   );

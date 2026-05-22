@@ -40,7 +40,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
               />
             ) : (
               <div className="w-full h-full bg-[#19191999] flex items-center  justify-center">
-                <span className="text-text-normal text-lg font-medium font-mono">
+                <span className="text-text-normal text-lg font-medium line-clamp-2">
                   {name}
                 </span>
               </div>
@@ -48,7 +48,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
           </div>
         </div>
         <div className="px-7 pb-7">
-          <h3 className="text-2xl font-semibold mb-2 text-text-heading font-mono">
+          <h3 className="text-xl font-semibold mb-2 text-text-heading line-clamp-2">
             {name}
           </h3>
           {description && (
@@ -56,7 +56,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
               {description}
             </p>
           )}
-          {tech && tech.length > 0 && (
+          {/* {tech && tech.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
               {tech.map((technology, index) => (
                 <span
@@ -67,7 +67,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
                 </span>
               ))}
             </div>
-          )}
+          )} */}
           <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-4 py-2.5 text-base font-medium transition-all duration-300 group">
             <span className="flex items-center group-hover:pr-2 transition-all duration-300">
               View Project
@@ -86,7 +86,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
-          </button>{" "}
+          </button>
         </div>
       </Link>
     </motion.div>

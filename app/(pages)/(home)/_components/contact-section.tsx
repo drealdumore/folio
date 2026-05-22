@@ -7,9 +7,11 @@ import {
   fadeInUp,
   staggerContainer,
 } from "@/hooks/useScrollAnimation";
+import { useWebHaptics } from "web-haptics/react";
 import { SectionHeading } from "@/components/design/SectionHeading";
 
 export default function ContactSection() {
+  const { trigger } = useWebHaptics();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,6 +48,7 @@ export default function ContactSection() {
       const data = await response.json();
 
       if (data.success) {
+        trigger([{ duration: 30 }, { delay: 60, duration: 40, intensity: 1 }]);
         setSuccess(true);
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setSuccess(false), 5000);
@@ -59,7 +62,7 @@ export default function ContactSection() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
@@ -135,6 +138,7 @@ export default function ContactSection() {
           className="group relative bg-text-heading text-[#1a1a1a] py-3.5 px-6 rounded-xl text-base font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          onClick={() => trigger([{ duration: 35 }], { intensity: 1 })}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-text-heading/90 to-text-heading opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <span className="relative z-10 flex items-center justify-center gap-2">

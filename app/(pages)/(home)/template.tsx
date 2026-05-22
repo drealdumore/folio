@@ -1,7 +1,6 @@
 "use client";
 
 import Header from "./_components/hero-section";
-import Motion from "@/motion/y-motion";
 
 import React from "react";
 
@@ -10,23 +9,21 @@ import ContactSection from "./_components/contact-section";
 import WorkExperienceSection from "./_components/work-experience-section";
 import Projects from "./_components/projects-section";
 import WebTools from "./_components/web-tools-section";
-import Repos from "./_components/repos-section";
 import StackTable from "./_components/techStack-section";
 
 const Home = () => {
   return (
-    <Motion>
+    <>
       <div className="flex flex-col gap-4 relative">
         <Header />
         <AboutSection />
         <StackTable />
         <Projects />
         <WebTools />
-        <Repos />
         <WorkExperienceSection />
         <ContactSection />
       </div>
-    </Motion>
+    </>
   );
 };
 

@@ -7,25 +7,34 @@ import Link from "next/link";
 
 import { SmallPing } from "@/components/design/ping";
 import { AnimatedSection } from "@/components/layout/animated-section";
+import Magnetic from "@/motion/magnetic";
+import { useWebHaptics } from "web-haptics/react";
 import SplitText from "./SplitText";
 import { TextReveal } from "./textReveal";
 
 const Header = () => {
+  const { trigger } = useWebHaptics();
+
   return (
     <section>
       <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:justify-between lg:flex-row">
         <div className="flex flex-col lg:h-2/6 h-2/5 max-lg:w-full max-lg:flex">
           <AnimatedSection>
-            <div className="max-w-[130px] w-full flex-shrink-0 mb-8 ">
-              <Image
-                src="/avatars/avatar-smile.png"
-                className="tw-shadow aspect-square rounded-full bg-[#dcdcdc]"
-                alt="Samuel Isah's profile photo - smiling portrait"
-                height={100}
-                width={100}
-                priority
-              />
-            </div>
+            <Magnetic strength={0.4}>
+              <div
+                className="max-w-[130px] w-full flex-shrink-0 mb-8 cursor-pointer"
+                onClick={() => trigger("light")}
+              >
+                <Image
+                  src="/avatars/avatar-smile.png"
+                  className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105"
+                  alt="Samuel Isah's profile photo - smiling portrait"
+                  height={100}
+                  width={100}
+                  priority
+                />
+              </div>
+            </Magnetic>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
@@ -38,7 +47,8 @@ const Header = () => {
                 href="mailto:samuelisah234@gmail.com"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="flex items-center justify-center gap-1.5"
+                className="flex items-center justify-center gap-1.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full"
+                onClick={() => trigger("medium")}
               >
                 <SmallPing />
 
@@ -60,20 +70,15 @@ const Header = () => {
 
           <AnimatedSection delay={0.4}>
             <div className="max-w-3xl">
-              {/* <SplitText
-                text={`Hi, I'm Samuel Isah`}
-                tag="h1"
-                className="text-3xl font-bold mt-6 text-text-heading font-mono"
-                initialDelay={0.2}
-                duration={0.3}
-                ease={[0.4, 0, 0.2, 1]}
-                splitType="chars"
-              /> */}
               <h1 className="text-3xl font-bold mt-6 text-text-heading font-mono">
                 Hi, I&apos;m Samuel Isah
               </h1>
-              <p className="text-text-normal mt-4" role="text">
-                Full-Stack Developer crafting fast, minimal web & mobile
+
+              <p
+                className="text-text-normal mt- md:mt-4 text-lg max-w-xl opacity-80"
+                role="text"
+              >
+                Software Developer crafting fast, minimal web & mobile
                 experiences with care for the tiny details that make big
                 differences.
               </p>

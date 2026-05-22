@@ -38,7 +38,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
-    projectName: "The SupaDevs – Curated Developer Resources Library",
+    projectName: "The SupaDevs – Developer Library",
     projectLink: "https://thesupadevs.vercel.app/",
     image: "/projects/thesupadevs.png",
     projectDescription:
@@ -135,15 +135,15 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
 
-  // {
-  //   projectName: "MetaScraper",
-  //   projectLink: "https://meta-scrapper.vercel.app",
-  //   projectDescription:
-  //     "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
-  //   projectType: "Personal project",
-  //   projectDate: "2024-03-01",
-  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  // },
+  {
+    projectName: "MetaScraper",
+    projectLink: "https://meta-scrapper.vercel.app",
+    projectDescription:
+      "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
+    projectType: "Personal project",
+    projectDate: "2024-03-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
 
   // {
   //   projectName: "Write it",
@@ -169,23 +169,23 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   //     "Local storage",
   //   ],
   // },
-  // {
-  //   projectName: "Peekr",
-  //   projectLink: "https://peekrr.vercel.app/",
-  //   projectDescription:
-  //     "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
-  //   projectType: "Personal project",
-  //   projectDate: "2025-10-01",
-  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  // },
-  // {
-  //   projectName: "Thank You Card Generator",
-  //   projectLink: "https://cardd-generatorr.vercel.app/",
-  //   projectDescription: "Create beautiful personalized thank you cards.",
-  //   projectType: "Task",
-  //   projectDate: "2025-11-01",
-  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  // },
+  {
+    projectName: "Peekr",
+    projectLink: "https://peekrr.vercel.app/",
+    projectDescription:
+      "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
+    projectType: "Personal project",
+    projectDate: "2025-10-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    projectName: "Thank You Card Generator",
+    projectLink: "https://cardd-generatorr.vercel.app/",
+    projectDescription: "Create beautiful personalized thank you cards.",
+    projectType: "Task",
+    projectDate: "2025-11-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  },
 ];
 
 export const SHORTPROJECTS = [
@@ -424,4 +424,16 @@ export const WEB_TOOLS = [
     projectDate: "2025-11-20",
     technologies: ["Next.js", "Tailwind CSS", "Lucide React", "shadcn/ui"],
   },
+  {
+    projectName: "vaultx",
+    projectLink: "https://github.com/drealdumore/vaultx/",
+    projectDescription: "A lightweight REST API that allows users to securely share and retrieve text snippets, links, or notes across devices. Supports temporary storage with configurable expiry, view limits, and burn-after-reading functionality — built for simplicity and privacy.",
+  },
+  
+  {
+    projectName: "falso-api",
+    projectLink: "https://github.com/drealdumore/falso-api/",
+    projectDescription: "TypeScript-powered mock data generator that produces realistic JSON data from user-defined interfaces. Ideal for seeding databases or testing APIs without external dependencies.",
+  },
+  
 ];

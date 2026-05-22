@@ -58,6 +58,13 @@
   }
 }
 
+:root {
+  --duration-snappy: 220ms;
+  --ease-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --duration-swift: 750ms;
+  --ease-swift: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -161,12 +168,20 @@
   html {
     @apply scroll-smooth antialiased;
     text-size-adjust: 100%;
-    font-family: var(--font-geist), system-ui, -apple-system, sans-serif;
+    font-family:
+      var(--font-geist),
+      system-ui,
+      -apple-system,
+      sans-serif;
     font-display: swap;
+    -webkit-transition: 0.2s ease all;
+    transition: 0.2s ease all;
   }
 
   .cursor-styled-arrow-black {
-    cursor: url("../public/arrow-black.svg") 15 2, pointer;
+    cursor:
+      url("../public/arrow-black.svg") 15 2,
+      pointer;
   }
 
   ::selection {
@@ -198,7 +213,9 @@ h6 {
 }
 
 .tw-shadow {
-  box-shadow: 0 0 0 0.5px #e2e8f0, 0 10px 15px -3px rgb(59 130 246/5%);
+  box-shadow:
+    0 0 0 0.5px #e2e8f0,
+    0 10px 15px -3px rgb(59 130 246/5%);
 }
 
 .box-shadow-btn {
@@ -363,8 +380,6 @@ textarea {
   overflow: hidden;
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
@@ -373,3 +388,153 @@ textarea {
     @apply bg-background text-foreground;
   }
 }
+@font-face {
+  font-family: "Honk Sans";
+  src: url(/fonts/honk-sans/HonkSans-Regular.woff2) format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Honk Header";
+  src: url(/fonts/honk-sans/HonkHeader-Bold.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --duration-snappy: 220ms;
+  --ease-snappy: cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  --duration-swift: 750ms;
+  --ease-swift: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+body {
+  font-family: "Honk Sans", sans-serif;
+  font-weight: 400;
+  margin: 0px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  text-size-adjust: none;
+  backface-visibility: hidden;
+  color: rgb(17, 17, 17);
+  font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media screen and (max-width: 810px) {
+  .iFfwEy {
+    padding-top: 32px !important;
+    padding-bottom: 0px;
+  }
+}
+
+.iFfwEy {
+  position: relative;
+  padding-top: 105px;
+  padding-bottom: 14px;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rYAoB {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: 960px;
+  padding: 0px;
+  margin: 0px auto;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 810px) {
+  .eyMjmJ {
+    margin: 0px auto;
+  }
+}
+
+.eyMjmJ {
+  display: inline-block;
+  margin: 0px;
+}
+
+@media screen and (max-width: 810px) {
+  .hnQujX {
+    margin: 0px;
+  }
+}
+
+.hnQujX {
+  text-align: left;
+  margin: 0px auto 34px;
+  position: relative;
+  max-width: 669px;
+}
+.cWBiQw {
+  width: 100%;
+  letter-spacing: -0.41px;
+  font-size: 17px;
+  line-height: 24px;
+  color: rgb(17, 17, 17);
+  margin: 0px auto;
+  border-top-width: medium;
+  border-top-style: none;
+  border-top-color: currentcolor;
+  padding-top: 0px;
+}
+
+@media screen and (max-width: 810px) {
+  h2 {
+    font-size: 17px;
+    line-height: 23.5px;
+    letter-spacing: -0.41px;
+    font-weight: 600;
+    padding-bottom: 17px;
+  }
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: -0.49px;
+  margin: 0px;
+  padding: 40px 0px 15px;
+}
+/* 
+h1.display, h2.display, h3.display, h4.display {
+  -webkit-text-stroke: 0.001px transparent;
+  font-family: "Honk Header", "Honk Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-variation-settings: "wght" 700;
+}
+
+@media screen and (max-width: 810px) {
+    .hnQujX h1 {
+        padding: 19px 0px 13px;
+        font-size: 44px;
+        line-height: 54px;
+    }
+}
+
+@media screen and (max-width: 810px) {
+  h1 {
+      font-size: clamp(44px, 11vw, 52px);
+      line-height: 1.2;
+  }
+}
+
+h1 {
+  font-style: normal;
+  margin: 0px;
+  padding: 0px 0px 14px;
+  font-size: 52px;
+  line-height: 64px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+} */

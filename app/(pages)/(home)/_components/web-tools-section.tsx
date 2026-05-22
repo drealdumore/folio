@@ -23,7 +23,7 @@ const WebTools = () => {
   return (
     <section className="flex flex-col">
       <SectionHeading
-        title="Short Projects"
+        title="Side quests"
         subtitle="Small projects built for speed and utility"
       />
       {/* <SectionHeading

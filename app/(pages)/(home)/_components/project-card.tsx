@@ -10,9 +10,12 @@ type ProjectType = {
   tech?: string[];
 };
 
+import { useWebHaptics } from "web-haptics/react";
+
 const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
-  const isExternalLink = href.startsWith('http');
-  
+  const { trigger } = useWebHaptics();
+  const isExternalLink = href.startsWith("http");
+
   return (
     <motion.div
       variants={fadeInUp}
@@ -48,7 +51,11 @@ const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
           {href && (
             <Link
               href={href}
-              {...(isExternalLink && { target: "_blank", rel: "noopener noreferrer" })}
+              {...(isExternalLink && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              onClick={() => trigger([{ duration: 40 }])}
               className="inline-flex items-center gap-2 text-[12px] font-medium text-text-normal hover:text-text-heading transition-all group/button"
             >
               View Project

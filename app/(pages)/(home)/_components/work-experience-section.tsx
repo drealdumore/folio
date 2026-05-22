@@ -36,9 +36,9 @@ export default function WorkExperienceSection() {
             <motion.div
               key={exp.durationAlt + index}
               variants={fadeInUp}
-              className="flex flex-col md:flex-row gap-[15px] md:gap-0 md:items-center md:justify-between group hover:bg-zinc-800/20 rounded-lg p-4 -m-4 transition-all duration-300"
+              className="flex flex-col md:flex-row gap-[15px] md:gap-0 md:items-center md:justify-between group p-4 -m-4"
             >
-              <div className="text-zinc-400 font-medium text-[13px]">
+              <div className="text-zinc-400 font-medium text-[15px]">
                 {exp.duration}
               </div>
               <div className="flex items-center gap-2">
