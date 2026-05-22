@@ -47,7 +47,7 @@ const Header = () => {
                 href="mailto:samuelisah234@gmail.com"
                 rel="noopener noreferrer"
                 target="_blank"
-                className="flex items-center justify-center gap-1.5 px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full"
+                className="flex items-center justify-center gap-1.5"
                 onClick={() => trigger("medium")}
               >
                 <SmallPing />
@@ -75,7 +75,7 @@ const Header = () => {
               </h1>
 
               <p
-                className="text-text-normal mt- md:mt-4 text-lg max-w-xl opacity-80"
+                className="text-text-normal mt-2 md:mt-4 text-lg max-w-xl opacity-80"
                 role="text"
               >
                 Software Developer crafting fast, minimal web & mobile
