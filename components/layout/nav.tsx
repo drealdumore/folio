@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import { Morph } from "@/components/morph";
 
 import { SvgFilter } from "@/components/design/svgFilter";
-import { hoverScale } from "@/hooks/useScrollAnimation";
 
 const AppNav = () => {
   const pathname = usePathname();
@@ -27,7 +25,7 @@ const AppNav = () => {
       >
         <div className="flex items-center justify-between w-full max-w-screen-lx mx-auto">
           <Morph delay={0}>
-            <motion.div whileHover={hoverScale}>
+            <div>
               <Link
                 href="/"
                 className="flex flex-col group focus:outline-none rounded"
@@ -40,7 +38,7 @@ const AppNav = () => {
                   Full-Stack Developer
                 </span>
               </Link>
-            </motion.div>
+            </div>
           </Morph>
 
           {/* Navigation Links */}

@@ -25,16 +25,37 @@ export const Morph: React.FC<MorphProps> = ({
   const [index, setIndex] = useState(0)
   const [fraction, setFraction] = useState(0)
   const [isStarted, setIsStarted] = useState(false)
+  const [isInView, setIsInView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const indexRef = useRef(0)
 
   const isEntrance = childrenArray.length === 1
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!isInView) return
     const timer = setTimeout(() => {
       setIsStarted(true)
     }, delay * 1000)
     return () => clearTimeout(timer)
-  }, [delay])
+  }, [isInView, delay])
 
   useEffect(() => {
     if (!isStarted || childrenArray.length === 0) return
@@ -87,7 +108,7 @@ export const Morph: React.FC<MorphProps> = ({
   }
 
   return (
-    <div className={cn("relative w-full", className)}>
+    <div ref={containerRef} className={cn("relative w-full", className)}>
       <div className="filter-[url(#threshold)_blur(0.6px)] relative w-full">
         {isEntrance ? (
           <div
