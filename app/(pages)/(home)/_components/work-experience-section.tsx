@@ -16,7 +16,7 @@ export default function WorkExperienceSection() {
           {EXPERIENCE.map((exp, index) => (
             <div
               key={exp.durationAlt + index}
-              className="flex flex-col md:flex-row gap-[15px] md:gap-0 md:items-center md:justify-between group p-4 -m-4"
+              className="flex flex-col  gap-[15px] group p-4 -m-4"
             >
               <p className="text-zinc-400 font-medium text-[15px]">
                 {exp.duration}

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
 import AppNav from "@/components/layout/nav";
+import { ProgressiveBlur } from "@/components/blur";
 
 export default function ClientBody({
   children,
@@ -91,6 +92,7 @@ export default function ClientBody({
         </main>
 
         <AppFooter />
+      <ProgressiveBlur position="bottom" height="8vh" className="fixed z-[50]" />
       </div>
       <Analytics />
     </body>

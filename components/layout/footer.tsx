@@ -7,7 +7,14 @@ import Link from "next/link";
 const AppFooter = () => {
   return (
     <footer className="py-7 border-t border-t-zinc-800">
-      <div className="max-w-screen-lx mx-auto md:px-10 px-6 grid lg:grid-cols-6 gap-8">
+      <div className="max-w-screen-lx mx-auto md:px-10 px-6 flex gap-6 flex-col">
+        <>
+          <p className="text-sm text-center text-text-normal">
+            &copy; {toRoman(new Date().getFullYear())} · Samuel&apos;s personal
+            site.
+          </p>
+        </>
+
         <div className="w-full max-w-[53rem] py-[20px] flex flex-col items-center gap-[16px] ">
           <div className="flex gap-6 py-1 cursor-pointer">
             <Link
@@ -98,13 +105,6 @@ const AppFooter = () => {
         </div>
         <div className="w-full max-w-[53rem] flex flex-col items-center gap-[16px] justify-center size-9">
           <Clock />
-        </div>
-
-        <div className="lg:col-span-6 xs:col-span-4">
-          <p className="text-sm text-center text-text-normal">
-            &copy; {toRoman(new Date().getFullYear())} · Samuel&apos;s personal
-            site.
-          </p>
         </div>
       </div>
     </footer>

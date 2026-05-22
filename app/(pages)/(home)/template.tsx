@@ -10,18 +10,33 @@ import WorkExperienceSection from "./_components/work-experience-section";
 import Projects from "./_components/projects-section";
 import WebTools from "./_components/web-tools-section";
 import StackTable from "./_components/techStack-section";
+import { Morph } from "@/components/morph";
 
 const Home = () => {
   return (
     <>
       <div className="flex flex-col gap-4 relative">
-        <Header />
-        <AboutSection />
-        <StackTable />
-        <Projects />
-        <WebTools />
-        <WorkExperienceSection />
-        <ContactSection />
+        <Morph delay={0.1}>
+          <Header />
+        </Morph>
+        <Morph delay={0.2}>
+          <AboutSection />
+        </Morph>
+        <Morph delay={0.4}>
+          <StackTable />
+        </Morph>
+        <Morph delay={0.6}>
+          <Projects />
+        </Morph>
+        <Morph delay={0.8}>
+          <WebTools />
+        </Morph>
+        <Morph delay={1.0}>
+          <WorkExperienceSection />
+        </Morph>
+        <Morph delay={1.2}>
+          <ContactSection />
+        </Morph>
       </div>
     </>
   );
