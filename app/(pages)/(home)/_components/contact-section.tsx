@@ -71,33 +71,25 @@ export default function ContactSection() {
   };
 
   return (
-    <motion.section
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-      className="flex flex-col"
-    >
+    <section className="flex flex-col">
       <SectionHeading
         title="Let's Connect"
         subtitle="Get in touch before I write another line of code!"
       />
 
-      <motion.p variants={fadeInUp} className="text-text-normal mb-6 text-base">
+      <p className="text-text-normal mb-6 text-base">
         Whether you&apos;re looking to collaborate on a project, need a solution
         to a challenging problem, or just want to talk tech, feel free to reach
         out. Together, we can turn ideas into reality.
-      </motion.p>
+      </p>
 
-      <motion.form
-        variants={fadeInUp}
+      <form
         onSubmit={handleSubmit}
         suppressHydrationWarning
         className="w-full flex flex-col gap-4"
       >
         <div className="grid md:flex gap-4 w-full">
-          <motion.input
-            variants={fadeInUp}
+          <input
             placeholder="Your Name"
             required
             suppressHydrationWarning
@@ -107,8 +99,7 @@ export default function ContactSection() {
             value={formData.name}
             onChange={handleChange}
           />
-          <motion.input
-            variants={fadeInUp}
+          <input
             placeholder="Where can I reach you back?"
             required
             suppressHydrationWarning
@@ -120,8 +111,7 @@ export default function ContactSection() {
           />
         </div>
 
-        <motion.textarea
-          variants={fadeInUp}
+        <textarea
           name="message"
           placeholder="Your words, my inbox."
           required
@@ -132,7 +122,6 @@ export default function ContactSection() {
         />
 
         <motion.button
-          variants={fadeInUp}
           type="submit"
           disabled={loading}
           className="group relative bg-text-heading text-[#1a1a1a] py-3.5 px-6 rounded-xl text-base font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
@@ -176,7 +165,7 @@ export default function ContactSection() {
             )}
           </span>
         </motion.button>
-      </motion.form>
+      </form>
 
       {error && (
         <motion.div
@@ -187,6 +176,6 @@ export default function ContactSection() {
           {error}
         </motion.div>
       )}
-    </motion.section>
+    </section>
   );
 }

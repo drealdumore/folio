@@ -1,41 +1,22 @@
 "use client";
 
-import { motion } from "framer-motion";
-import {
-  useScrollAnimation,
-  fadeInUp,
-  staggerContainer,
-} from "@/hooks/useScrollAnimation";
 import { EXPERIENCE } from "@/content/experience";
 import { SectionHeading } from "@/components/design/SectionHeading";
 
-
-
 export default function WorkExperienceSection() {
-  const { ref, controls } = useScrollAnimation();
 
   return (
-    <motion.section
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-      className="flex flex-col"
-    >
+    <section className="flex flex-col">
       <div className="w-full flex flex-col">
         <SectionHeading
           title="Work Experience"
           subtitle="You need it to get the job, but the job’s what gives it!"
         />
 
-        <motion.div
-          variants={staggerContainer}
-          className="flex flex-col gap-[30px] w-full"
-        >
+        <div className="flex flex-col gap-[30px] w-full">
           {EXPERIENCE.map((exp, index) => (
-            <motion.div
+            <div
               key={exp.durationAlt + index}
-              variants={fadeInUp}
               className="flex flex-col md:flex-row gap-[15px] md:gap-0 md:items-center md:justify-between group p-4 -m-4"
             >
               <div className="text-zinc-400 font-medium text-[15px]">
@@ -64,10 +45,10 @@ export default function WorkExperienceSection() {
                   <span>{exp.company}</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
