@@ -16,8 +16,11 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
 }) => {
   return (
     <AnimatedSection>
-      <div className={`mb-4 ${className}`}>
-        <h2 className="text-text-heading">
+      <div>
+        <h2
+          className="text-text-heading leading-[50px]"
+          style={{ fontFamily: "Gabarito" }}
+        >
           {title}
         </h2>
         {/* {subtitle && (

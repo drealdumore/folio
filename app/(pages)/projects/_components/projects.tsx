@@ -3,18 +3,14 @@
 import React, { useEffect, useState } from "react";
 
 import ProjectCard from "./project-card";
-
-const fetchProjects = async () => {
-  const { ALLPROJECTS } = await import("@/content/projects");
-  return ALLPROJECTS;
-};
+import { ALLPROJECTS } from "@/content/projects";
 
 const Projects = () => {
   const [projects, setProjects] = useState<any[]>([]);
 
   useEffect(() => {
     const loadProjects = async () => {
-      const projectData = await fetchProjects();
+      const projectData = ALLPROJECTS;
 
       setProjects(projectData);
     };

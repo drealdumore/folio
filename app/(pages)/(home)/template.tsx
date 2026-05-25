@@ -11,6 +11,7 @@ import Projects from "./_components/projects-section";
 import WebTools from "./_components/web-tools-section";
 import StackTable from "./_components/techStack-section";
 import { Morph } from "@/components/morph";
+import { Signature } from "@/components/signature";
 
 const Home = () => {
   return (
@@ -19,7 +20,7 @@ const Home = () => {
         <Morph delay={0.1}>
           <Header />
         </Morph>
-        <Morph delay={0.2}>
+        <Morph delay={0.1}>
           <AboutSection />
         </Morph>
         <Morph delay={0.1}>
@@ -36,6 +37,16 @@ const Home = () => {
         </Morph>
         <Morph delay={0.1}>
           <ContactSection />
+        </Morph>
+        <Morph delay={0.1}>
+          <Signature
+            text="Samuel..."
+            // text="Drealdumore..."
+            fontSize={12}
+            color="#ccc"
+            inView
+            once={false}
+          />
         </Morph>
       </div>
     </>

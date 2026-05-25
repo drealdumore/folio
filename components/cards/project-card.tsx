@@ -40,7 +40,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
               />
             ) : (
               <div className="w-full h-full bg-[#19191999] flex items-center  justify-center">
-                <span className="text-text-normal font-medium line-clamp-2">
+                <span className="text-text-normal line-clamp-2">
                   {name}
                 </span>
               </div>
@@ -48,27 +48,16 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
           </div>
         </div>
         <div className="px-7 pb-7">
-          <h3 className="text-xl font-medium mb-2 text-text-heading line-clamp-2">
+          <h3 className="mb-2 text-text-heading line-clamp-2 font-medium">
             {name}
           </h3>
           {description && (
-            <p className="text-text-normal/70 text-base line-clamp-2 mb-4">
+            <p className="text-text-normal/70 text-[15px] line-clamp-2 mb-4">
               {description}
             </p>
           )}
-          {/* {tech && tech.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-4">
-              {tech.map((technology, index) => (
-                <span
-                  key={index}
-                  className="bg-text-heading/10 text-text-heading px-3 py-1 rounded-full text-sm"
-                >
-                  {technology}
-                </span>
-              ))}
-            </div>
-          )} */}
-          <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-4 py-2.5 text-base font-medium transition-all duration-300 group">
+
+          <button className="mt-1 bg-text-heading/70 hover:bg-text-heading/90 flex items-center rounded-xl px-4 py-2.5 text-[14px] transition-all duration-300 group">
             <span className="flex items-center group-hover:pr-2 transition-all duration-300">
               View Project
             </span>

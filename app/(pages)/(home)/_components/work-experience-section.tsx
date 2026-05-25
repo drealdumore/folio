@@ -18,11 +18,11 @@ export default function WorkExperienceSection() {
               key={exp.durationAlt + index}
               className="flex flex-col  gap-[15px] group p-4 -m-4"
             >
-              <p className="text-zinc-400 font-medium text-[15px]">
+              <p className="text-zinc-400 font-medium text-[13px] italic">
                 {exp.duration}
               </p>
               <div className="flex items-center gap-2">
-                <p className="text-[16px] text-[#a1a1a1] font-medium">
+                <p className="text-[15px] text-[#f0f0f0b3] font-medium">
                   {index === 0
                     ? "I’m currently a "
                     : "Previously, I worked as a "}

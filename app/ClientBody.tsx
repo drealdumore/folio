@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
-import AppNav from "@/components/layout/nav";
 import { ProgressiveBlur } from "@/components/blur";
 
 export default function ClientBody({
@@ -74,25 +73,26 @@ export default function ClientBody({
     <body>
       <div
         style={{
-          width: "100%",
-          maxWidth: "710px",
-          padding: "0px 24px 16px",
-          margin: "0px auto",
+          // width: "100%",
+          // maxWidth: "710px",
+          // padding: "0px 24px 16px",
+          // margin: "0px auto",
+          width: "min(629px, 100vw - 44px)",
+          margin: "0 auto",
+          padding: "0 0 88px",
         }}
         suppressHydrationWarning
       >
-        <AppNav />
-
-        <main
-          id="main-content"
-          className="my-7 lg:pt-8 lg:py-20"
-          role="main"
-        >
+        <main id="main-content" className="my-7 lg:pt-8 lg:py-20" role="main">
           {children}
         </main>
 
         <AppFooter />
-      <ProgressiveBlur position="bottom" height="8vh" className="fixed z-[50]" />
+        <ProgressiveBlur
+          position="bottom"
+          height="8vh"
+          className="fixed z-[50]"
+        />
       </div>
       <Analytics />
     </body>

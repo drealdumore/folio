@@ -38,7 +38,7 @@ const StackTable = () => {
       />
 
       <AnimatedSection delay={0.2}>
-        <div className="mb-5 mt-3 w-full skills rounded-[20px] flex">
+        <div className="mb-5 mt-3 w-full skills rounded-[20px] flex text-[15px]">
           <div className="border-r-[#404040] border-r basis-[50%]">
             {firstHalf.map((skill, index) => (
               <p

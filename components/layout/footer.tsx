@@ -11,9 +11,9 @@ const AppFooter = () => {
       <Morph delay={0.25}>
         <div className="max-w-screen-lx mx-auto md:px-10 px-6 flex gap-6 flex-col">
           <>
-            <p className="text-sm text-center text-text-normal">
-              &copy; {toRoman(new Date().getFullYear())} · Samuel&apos;s personal
-              site.
+            <p className="text-[14px] text-center text-text-normal">
+              &copy; {toRoman(new Date().getFullYear())} · Samuel&apos;s
+              personal site.
             </p>
           </>
 
@@ -27,7 +27,7 @@ const AppFooter = () => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="20"
                   width="20"
@@ -50,9 +50,9 @@ const AppFooter = () => {
                   <g
                     fill="none"
                     stroke="currentColor"
-                    stroke-linecap="round"
+                    strokeLinecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeWidth="2"
                   >
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z" />
                     <circle cx="4" cy="4" r="2" />
@@ -71,8 +71,8 @@ const AppFooter = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   className="lucide lucide-github"
                   aria-hidden="true"
@@ -93,8 +93,8 @@ const AppFooter = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   className="lucide lucide-mail"
                   aria-hidden="true"

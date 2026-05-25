@@ -55,16 +55,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         </div>
         <div className="px-7 pb-7">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="text-2xl font-medium text-text-heading font-mono">
+            <h3 className="font-medium text-text-heading font-mono">
               {projectName}
             </h3>
           </div>
           {projectDescription && (
-            <p className="text-text-normal/70 text-base line-clamp-2 mb-4">
+            <p className="text-text-normal/70 text-[15px] line-clamp-2 mb-4">
               {projectDescription}
             </p>
           )}
-          {/* <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-4">
             {technologies.map((tech, index) => (
               <span
                 key={index}
@@ -73,7 +73,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                 {tech}
               </span>
             ))}
-          </div> */}
+          </div>
         </div>
       </Link>
     </div>

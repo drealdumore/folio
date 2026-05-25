@@ -77,7 +77,7 @@ export default function ContactSection() {
         subtitle="Get in touch before I write another line of code!"
       />
 
-      <p className="text-text-normal mb-6 text-base">
+      <p className="text-text-normal mb-6 text-[15px]">
         Whether you&apos;re looking to collaborate on a project, need a solution
         to a challenging problem, or just want to talk tech, feel free to reach
         out. Together, we can turn ideas into reality.
@@ -93,7 +93,7 @@ export default function ContactSection() {
             placeholder="Your Name"
             required
             suppressHydrationWarning
-            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
+            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
             type="text"
             name="name"
             value={formData.name}
@@ -103,7 +103,7 @@ export default function ContactSection() {
             placeholder="Where can I reach you back?"
             required
             suppressHydrationWarning
-            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
+            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
             type="email"
             name="email"
             value={formData.email}
@@ -116,7 +116,7 @@ export default function ContactSection() {
           placeholder="Your words, my inbox."
           required
           suppressHydrationWarning
-          className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-base text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
+          className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
           value={formData.message}
           onChange={handleChange}
         />
@@ -124,7 +124,7 @@ export default function ContactSection() {
         <motion.button
           type="submit"
           disabled={loading}
-          className="group relative bg-text-heading text-[#1a1a1a] py-3.5 px-6 rounded-xl text-base font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
+          className="group relative bg-text-heading text-[#1a1a1a] py-3.5 px-6 rounded-xl text-[14px] font-medium w-full disabled:opacity-70 overflow-hidden transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-text-heading/20 focus:ring-offset-2 focus:ring-offset-background"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           onClick={() => trigger([{ duration: 35 }], { intensity: 1 })}

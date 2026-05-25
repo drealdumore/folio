@@ -18,14 +18,14 @@ const CompactProjectCard = ({
 }: CompactProjectCardProps) => {
   return (
     <Link href={href} target="_blank" rel="noopener noreferrer">
-      <div className="flex w-full gap-3 rounded-[20px] border border-[#26262a] bg-zinc-900/20 p-2 transition-colors hover:bg-zinc-900/40 group/card flex-col">
+      <div className="flex w-full gap-3 flex-col">
         <div className="flex size-[clamp(2rem,5vw,2.25rem)] shrink-0 items-center justify-center text-text-normal">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            className="size-7"
+            className="size-8"
           >
             <path
               fill="#cbd2d8"
@@ -40,11 +40,11 @@ const CompactProjectCard = ({
 
         <div className="flex w-full flex-col gap-1">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="line-clamp-1 text-start text-base font-medium text-text-heading font-heading">
+            <h3 className="line-clamp-1 text-start font-medium text-text-heading font-heading">
               {name}
             </h3>
           </div>
-          <p className="line-clamp-2 text-start text-[clamp(0.8rem,1vw,0.95rem)] text-text-normal/70 leading-relaxed">
+          <p className="line-clamp-2 text-start text-[15px] text-text-normal/70 leading-relaxed">
             {description}
           </p>
         </div>

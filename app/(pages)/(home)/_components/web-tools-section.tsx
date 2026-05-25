@@ -26,10 +26,7 @@ const WebTools = () => {
         title="Side quests"
         subtitle="Small projects built for speed and utility"
       />
-      {/* <SectionHeading
-        title="Utility Web Tools"
-        subtitle="Small projects built for speed and utility"
-      /> */}
+
       <AnimatedSection delay={0.2}>
         <div className="grid grid-cols-1  gap-4 group/wrapper">
           {tools.length > 0
