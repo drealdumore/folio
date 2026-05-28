@@ -313,6 +313,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
               href="https://twitter.com/drealdumore"
+              aria-label="Follow Samuel Isah on Twitter"
             >
               <svg
                 stroke="currentColor"
@@ -333,6 +334,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
               href="https://www.linkedin.com/in/samuel-isah"
+              aria-label="Connect with Samuel Isah on LinkedIn"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -359,6 +361,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
               href="https://github.com/drealdumore"
+              aria-label="View Samuel Isah's GitHub profile"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -384,6 +387,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
               href="mailto:samuelisah234@gmail.com"
+              aria-label="Send an email to Samuel Isah"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -440,6 +444,7 @@ const Header = () => {
                   onClick={handleAvatarClick}
                   role="button"
                   tabIndex={0}
+                  aria-label="View profile photo"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
@@ -496,7 +501,7 @@ const Header = () => {
                   className="text-[20px] font-medium mt-6 text-text-heading"
                   style={{ fontFamily: "Gabarito" }}
                 >
-                  Hi, I&apos;m Samuel Isah
+                  Hi, I&apos;m Samuel Isah — Full-Stack Web & Mobile Developer
                 </h1>
                 <p
                   className="text-text-normal text-[15px] mt-2 md:mt-4 max-w-xl opacity-80"

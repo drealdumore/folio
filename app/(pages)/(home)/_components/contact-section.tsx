@@ -89,37 +89,49 @@ export default function ContactSection() {
         className="w-full flex flex-col gap-4"
       >
         <div className="grid md:flex gap-4 w-full">
-          <input
-            placeholder="Your Name"
+          <div className="flex-1 flex flex-col gap-2">
+            <label htmlFor="name" className="sr-only">Your Name</label>
+            <input
+              id="name"
+              placeholder="Your Name"
+              required
+              suppressHydrationWarning
+              className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="flex-1 flex flex-col gap-2">
+            <label htmlFor="email" className="sr-only">Email Address</label>
+            <input
+              id="email"
+              placeholder="Where can I reach you back?"
+              required
+              suppressHydrationWarning
+              className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label htmlFor="message" className="sr-only">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your words, my inbox."
             required
             suppressHydrationWarning
-            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input
-            placeholder="Where can I reach you back?"
-            required
-            suppressHydrationWarning
-            className="flex-1 bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
-            type="email"
-            name="email"
-            value={formData.email}
+            className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
+            value={formData.message}
             onChange={handleChange}
           />
         </div>
-
-        <textarea
-          name="message"
-          placeholder="Your words, my inbox."
-          required
-          suppressHydrationWarning
-          className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
-          value={formData.message}
-          onChange={handleChange}
-        />
 
         <motion.button
           type="submit"

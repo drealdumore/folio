@@ -25,14 +25,15 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Samuel Isah",
-              url: "https://drealdumore.vercel.app",
-              image: "https://drealdumore.vercel.app/api/og",
+              alternateName: "drealdumore",
+              url: sharedMetadata.url,
+              image: `${sharedMetadata.url}/api/og`,
               sameAs: [
                 `https://twitter.com/${SOCIALS.twitter.username}`,
                 `https://github.com/${SOCIALS.github.username}`,
                 `https://linkedin.com/in/${SOCIALS.linkedin.username}`,
               ],
-              jobTitle: "Full-Stack Developer",
+              jobTitle: "Senior Full-Stack Developer",
               worksFor: {
                 "@type": "Organization",
                 name: "Freelance",
@@ -42,14 +43,28 @@ export default async function RootLayout({
                 "Next.js",
                 "React Native",
                 "TypeScript",
-                "JavaScript",
                 "Node.js",
                 "Web Development",
                 "Mobile Development",
                 "UI/UX Design",
               ],
-              description:
-                "Full-Stack Web and Mobile Developer creating innovative applications with modern technologies.",
+              description: sharedMetadata.description,
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: sharedMetadata.title,
+              url: sharedMetadata.url,
+              author: {
+                "@type": "Person",
+                name: "Samuel Isah",
+              },
+              description: sharedMetadata.description,
             }),
           }}
         />
@@ -103,7 +118,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "/",
+    canonical: sharedMetadata.url,
   },
   twitter: {
     card: "summary_large_image",
@@ -111,10 +126,10 @@ export const metadata: Metadata = {
     creator: `@${SOCIALS.twitter.username}`,
     title: sharedMetadata.title,
     description: sharedMetadata.description,
-    images: [sharedMetadata.image],
+    images: [`${sharedMetadata.url}${sharedMetadata.image}`],
   },
   verification: {
-    google: "google-site-verification-code",
+    google: "google-site-verification-code", // TODO: Replace with your actual Google Site Verification code
   },
   appleWebApp: {
     capable: true,

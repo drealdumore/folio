@@ -5,11 +5,11 @@ import Projects from "./_components/projects";
 import ShortProjects from "./_components/short-projects";
 
 export const metadata: Metadata = {
-  title: `My Projects`,
+  title: `Portfolio Projects | Samuel Isah`,
   description:
-    "Explore a diverse range of projects I have worked on, including innovative web applications, backend solutions, and open-source contributions. Discover how I solve real-world problems through technology.",
+    "A collection of high-performance web and mobile projects by Samuel Isah (drealdumore). Featuring React, Next.js, and React Native applications focused on user experience and technical excellence.",
   keywords:
-    "software development, web applications, backend solutions, open-source, full-stack projects, portfolio, developer projects",
+    "Full-Stack Projects, Web Development Portfolio, React Native Apps, Next.js Applications, Samuel Isah Projects, Software Engineering Showcases",
 };
 
 const ProjectsPage = () => {
