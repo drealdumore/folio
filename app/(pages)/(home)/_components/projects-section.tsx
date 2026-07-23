@@ -60,7 +60,7 @@ const Projects = () => {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 className="ml-2 w-5 h-5"
                 aria-hidden="true"
               >

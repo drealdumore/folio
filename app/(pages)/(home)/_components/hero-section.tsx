@@ -11,9 +11,6 @@ import { useWebHaptics } from "web-haptics/react";
 
 import { motion } from "framer-motion";
 
-// ==========================================
-// ELITE MAGNETIC MICRO-INTERACTION ENGINE
-// ==========================================
 interface MagneticProps {
   children: React.ReactElement;
   strength?: number;
@@ -51,9 +48,6 @@ function Magnetic({ children, strength = 0.5 }: MagneticProps) {
   );
 }
 
-// ==========================================
-// INTERACTIVE FLIP AVATAR OVERLAY
-// ==========================================
 interface AvatarOverlayProps {
   isOpen: boolean;
   onClose: () => void;

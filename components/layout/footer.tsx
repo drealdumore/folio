@@ -12,8 +12,7 @@ const AppFooter = () => {
         <div className="max-w-screen-lx mx-auto md:px-10 px-6 flex gap-6 flex-col">
           <>
             <p className="text-[14px] text-center text-text-normal">
-              &copy; {toRoman(new Date().getFullYear())} · Samuel&apos;s
-              personal site.
+              {toRoman(new Date().getFullYear())}
             </p>
           </>
 
@@ -51,7 +50,7 @@ const AppFooter = () => {
                     fill="none"
                     stroke="currentColor"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                   >
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z" />
@@ -73,7 +72,7 @@ const AppFooter = () => {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-github"
                   aria-hidden="true"
                 >
@@ -95,7 +94,7 @@ const AppFooter = () => {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  stroke-linejoin="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-mail"
                   aria-hidden="true"
                 >

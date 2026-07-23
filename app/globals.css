@@ -414,7 +414,15 @@ textarea {
 
 @font-face {
   font-family: "Gabarito";
-  src: url(/fonts/Gabarito.woff2) format("woff2");
+  src: url(/fonts/CabinetGrotesk-Variable.woff2) format("woff2");
+  /* src: url(/fonts/Gabarito.woff2) format("woff2"); */
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url(/fonts/CabinetGrotesk-Variable.woff2) format("woff2");
   font-weight: 500;
   font-style: normal;
 }
