@@ -21,8 +21,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectName: "Crystalglowxquisite – Skincare Boutique",
     projectLink: "https://crystalglowxquisite.com/",
     image: "/projects/crystalglowxquisite.png",
-    projectDescription:
-      "Premium skincare boutique website.",
+    projectDescription: "Premium skincare boutique website.",
     projectType: "E-commerce ",
     projectDate: "2026-01-20",
     technologies: [
@@ -34,7 +33,6 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "Posthog",
       "Neon",
       "Python",
-
     ],
   },
   {
@@ -399,7 +397,7 @@ export const WEB_TOOLS = [
     projectLink: "https://deps-janitor.vercel.app/",
     image: "/projects/deps-janitor.png",
     projectDescription:
-      "A specialized tool designed to find and safely remove unused npm dependencies from your projects, keeping your codebase lean and efficient.",
+      "Finds and removes unused npm dependencies to keep JavaScript and Node.js projects clean and lightweight.",
     projectType: "CLI & Web Tool",
     projectDate: "2025-12-28",
     technologies: ["Node.js", "Next.js", "Tailwind CSS", "shadcn/ui"],
@@ -409,7 +407,7 @@ export const WEB_TOOLS = [
     projectLink: "https://peekrr.vercel.app/",
     image: "/projects/peekrr.png",
     projectDescription:
-      "Capture and preview websites instantly with responsive snapshots. Perfect for developers and designers to see how their sites look across various screen sizes.",
+      "Generates responsive website snapshots so developers and designers can preview how a site looks across different screen sizes.",
     projectType: "Developer Utility",
     projectDate: "2025-12-15",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
@@ -419,21 +417,27 @@ export const WEB_TOOLS = [
     projectLink: "https://meta-scrapper.vercel.app/",
     image: "/projects/metascraper.png",
     projectDescription:
-      "Easily extract and retrieve essential metadata from any website, including titles, OG images, and descriptions, in a simple and clean interface.",
+      "Extracts website metadata including titles, descriptions, Open Graph images, and other useful page information.",
     projectType: "Web Utility",
     projectDate: "2025-11-20",
     technologies: ["Next.js", "Tailwind CSS", "Lucide React", "shadcn/ui"],
   },
   {
-    projectName: "vaultx",
+    projectName: "VaultX",
     projectLink: "https://github.com/drealdumore/vaultx/",
-    projectDescription: "A lightweight REST API that allows users to securely share and retrieve text snippets, links, or notes across devices. Supports temporary storage with configurable expiry, view limits, and burn-after-reading functionality — built for simplicity and privacy.",
+    projectDescription:
+      "A lightweight API for sharing text, links, and notes across devices with expiry times, view limits, and burn-after-reading support.",
+    projectType: "REST API",
+    projectDate: "",
+    technologies: ["TypeScript", "Node.js"],
   },
-  
   {
-    projectName: "falso-api",
+    projectName: "Falso API",
     projectLink: "https://github.com/drealdumore/falso-api/",
-    projectDescription: "TypeScript-powered mock data generator that produces realistic JSON data from user-defined interfaces. Ideal for seeding databases or testing APIs without external dependencies.",
+    projectDescription:
+      "A TypeScript mock data generator that turns user-defined interfaces into realistic JSON for API testing and database seeding.",
+    projectType: "Developer Tool",
+    projectDate: "",
+    technologies: ["TypeScript", "Node.js"],
   },
-  
 ];

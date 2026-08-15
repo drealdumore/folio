@@ -8,37 +8,28 @@ export default function AboutSection() {
 
   return (
     <section className="flex flex-col">
-      <SectionHeading
-        title="About"
-        subtitle="More than just a title—let&rsquo;s dive deeper!"
-      />
-
       <div className="flex flex-col gap-6 max-w-3xl">
         <p className={paragraphClass}>
-          I&apos;m {bioData.name}, a full-stack software developer who builds web
-          and mobile applications across different industries. I specialize in
-          modern frontend development, backend systems, and creating seamless
-          cross-platform experiences.
+          Hey, I&apos;m {bioData.name}. I&apos;m a full-stack software developer
+          who enjoys turning ideas into products people can actually use.
         </p>
 
         <p className={paragraphClass}>
-          I enjoy crafting scalable digital products with clean user
-          experiences, blending creativity with problem-solving to build
-          solutions that feel fast, intuitive, and impactful.
+          I build web and mobile applications with TypeScript, React, React
+          Native, Next.js, Node.js, and Golang. I&apos;ve worked across
+          everything from e-commerce and SaaS products to APIs, mobile apps, and
+          AI-powered tools.
         </p>
 
         <p className={paragraphClass}>
-          My stack includes JavaScript, TypeScript, React, React Native,
-          Next.js, Node.js, and Supabase. I enjoy building everything from sleek
-          landing pages and e-commerce platforms to scalable APIs and mobile
-          apps that solve real-world problems.
+          Outside of client work, I&apos;m usually building something of my own,
+          experimenting with new ideas, or figuring out how to turn a problem
+          into a useful product.
         </p>
 
         <p className={paragraphClass}>
-          Beyond coding, I&apos;m also interested in continuous growth, design,
-          and pushing creative boundaries in tech. I enjoy collaborating with
-          people, turning ideas into polished products, and constantly learning
-          new ways to improve both performance and user experience.
+          You can find some of my work here, or connect with me on X, GitHub,
+          and LinkedIn.
         </p>
       </div>
     </section>

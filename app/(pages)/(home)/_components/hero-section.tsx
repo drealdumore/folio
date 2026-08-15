@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 
 import { SmallPing } from "@/components/design/ping";
+import { AvatarTip } from "@/components/design/avatar-tip";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { useWebHaptics } from "web-haptics/react";
 
@@ -404,7 +405,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
         </div>
       </nav>
     </div>,
-    document.body,
+    document.body
   );
 };
 
@@ -414,10 +415,49 @@ const Header = () => {
   const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
   const originAvatarRef = useRef<HTMLDivElement>(null);
 
+  const [showTip, setShowTip] = useState(false);
+  const tipTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const avatarSrc = "/avatars/avatar-smile.png";
   const avatarAlt = "Samuel Isah's profile photo";
 
+  const dismissAvatarTip = useCallback(() => {
+    if (tipTimerRef.current) {
+      clearTimeout(tipTimerRef.current);
+      tipTimerRef.current = null;
+    }
+    setShowTip(false);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const AVATAR_TIP_KEY = "folio:avatar-tip";
+
+    let seen = false;
+    try {
+      seen = window.localStorage.getItem(AVATAR_TIP_KEY) === "1";
+    } catch {
+      /* noop */
+    }
+    if (seen) return;
+
+    tipTimerRef.current = setTimeout(() => {
+      setShowTip(true);
+      try {
+        window.localStorage.setItem(AVATAR_TIP_KEY, "1");
+      } catch {
+        /* noop */
+      }
+    }, 900);
+
+    return () => {
+      if (tipTimerRef.current) clearTimeout(tipTimerRef.current);
+    };
+  }, []);
+
   const handleAvatarClick = () => {
+    dismissAvatarTip();
     if (originAvatarRef.current) {
       setTriggerRect(originAvatarRef.current.getBoundingClientRect());
     }
@@ -431,10 +471,10 @@ const Header = () => {
         <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:justify-between lg:flex-row">
           <div className="flex flex-col lg:h-2/6 h-2/5 max-lg:w-full max-lg:flex">
             <AnimatedSection>
-              <Magnetic strength={0.4}>
+              <Magnetic strength={0.1}>
                 <div
                   ref={originAvatarRef}
-                  className="max-w-[130px] w-full flex-shrink-0 mb-8 cursor-pointer"
+                  className="relative max-w-[130px] w-full flex-shrink-0 mb-8 cursor-pointer"
                   onClick={handleAvatarClick}
                   role="button"
                   tabIndex={0}
@@ -447,14 +487,51 @@ const Header = () => {
                   }}
                   style={{ opacity: isOpen ? 0 : 1 }}
                 >
-                  <Image
-                    src={avatarSrc}
-                    className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px]"
-                    alt={avatarAlt}
-                    height={100}
-                    width={100}
-                    priority
-                  />
+                  <span className="group relative inline-flex">
+                    <Image
+                      src={avatarSrc}
+                      className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px]"
+                      alt={avatarAlt}
+                      height={100}
+                      width={100}
+                      priority
+                    />
+
+                    <span
+                      className="pointer-events-none absolute -bottom-1 -right-1 z-10 flex size-5 items-center justify-center rounded-full bg-[#2b2b2b] text-systemYellow border border-white/10 shadow-md transition-transform duration-200 group-hover:scale-110"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="size-3"
+                      >
+                        <polyline points="15 3 21 3 21 9" />
+                        <polyline points="9 21 3 21 3 15" />
+                        <line x1="21" x2="14" y1="3" y2="10" />
+                        <line x1="3" x2="10" y1="21" y2="14" />
+                      </svg>
+                    </span>
+
+                    <span
+                      className={`pointer-events-none absolute top-1/2 left-[calc(100%+10px)] -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#2b2b2b] px-2 py-1 text-xs font-medium text-text-normal shadow-md transition-all duration-200 ${
+                        showTip
+                          ? "opacity-0"
+                          : "opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100"
+                      }`}
+                      role="tooltip"
+                      aria-hidden="true"
+                    >
+                      View photo
+                    </span>
+                  </span>
+
+                  <AvatarTip show={showTip} />
                 </div>
               </Magnetic>
             </AnimatedSection>
@@ -495,6 +572,16 @@ const Header = () => {
                   className="text-[20px] font-medium mt-6 text-text-heading"
                   style={{ fontFamily: "Gabarito" }}
                 >
+                  Full-Stack Web & Mobile Developer
+                </h1>
+              </div>
+            </AnimatedSection>
+            {/* <AnimatedSection delay={0.4}>
+              <div className="max-w-3xl">
+                <h1
+                  className="text-[20px] font-medium mt-6 text-text-heading"
+                  style={{ fontFamily: "Gabarito" }}
+                >
                   Hi, I&apos;m Samuel Isah — Full-Stack Web & Mobile Developer
                 </h1>
                 <p
@@ -506,7 +593,7 @@ const Header = () => {
                   differences.
                 </p>
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
           </div>
         </div>
       </section>
