@@ -18,7 +18,7 @@ export default function WorkExperienceSection() {
               key={exp.durationAlt + index}
               className="flex flex-col  gap-[15px] group p-4 -m-4"
             >
-              <p className="text-zinc-400 font-medium text-[13px] italic">
+              <p className="text-zinc-400 font-medium text-[13px]">
                 {exp.duration}
               </p>
               <div className="flex items-center gap-2">

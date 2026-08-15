@@ -531,7 +531,7 @@ const Header = () => {
                     </span>
                   </span>
 
-                  <AvatarTip show={showTip} />
+                  {/* <AvatarTip show={showTip} /> */}
                 </div>
               </Magnetic>
             </AnimatedSection>

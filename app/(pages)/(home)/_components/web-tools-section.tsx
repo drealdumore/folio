@@ -22,7 +22,7 @@ const WebTools = () => {
               name={tool.projectName}
               description={tool.projectDescription}
               href={tool.projectLink}
-              image={tool.image}
+              // image={tool.image}
               tech={tool.technologies}
             />
           ))}
