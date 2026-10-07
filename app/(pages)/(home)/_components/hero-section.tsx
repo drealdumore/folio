@@ -460,18 +460,6 @@ const Header = () => {
                       width={100}
                       priority
                     />
-{/*                     
-                    <span
-                      className={`pointer-events-none absolute top-1/2 left-[calc(100%+10px)] -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#2b2b2b] px-2 py-1 text-xs font-medium text-text-normal shadow-md transition-all duration-200 ${
-                        showTip
-                          ? "opacity-0"
-                          : "opacity-0 translate-x-1 group-hover:translate-x-0 group-hover:opacity-100"
-                      }`}
-                      role="tooltip"
-                      aria-hidden="true"
-                    >
-                      View photo
-                    </span> */}
                   </span>
                 </div>
               </Magnetic>
