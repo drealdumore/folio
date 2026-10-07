@@ -481,7 +481,7 @@ const Header = () => {
 
             <div className="flex flex-col items-start gap-2">
   <h1 className="text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
-    Hey, I'm Samuel Isah.
+    Hey, I&apos;m Samuel Isah.
   </h1>
   <h1 className="text-xl leading-[1.3] tracking-[-0.02em] text-white lg:text-[26px] font-medium">
     Software Developer
