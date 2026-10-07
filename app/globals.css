@@ -29,6 +29,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --bg-image-card: #141414;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -55,6 +56,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --bg-image-card: #141414;
   }
 }
 
@@ -64,6 +66,7 @@
   --duration-swift: 750ms;
   --ease-swift: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  --bg-image-card: #141414;
 }
 
 @layer utilities {
@@ -180,13 +183,12 @@
     scrollbar-gutter: stable;
     text-size-adjust: 100%;
     font-family:
+      "Plus Jakarta Sans",
       var(--font-geist),
       system-ui,
       -apple-system,
       sans-serif;
     font-display: swap;
-    -webkit-transition: 0.2s ease all;
-    transition: 0.2s ease all;
   }
 
   .cursor-styled-arrow-black {
@@ -207,7 +209,7 @@
 body {
   font-size: 16px;
   line-height: 1.5;
-  font-family: var(--font-geist);
+  font-family: "Plus Jakarta Sans", var(--font-geist), system-ui, sans-serif;
   background-color: #1a1a1a;
   color: #f0f0f0;
   -webkit-font-smoothing: antialiased;
@@ -220,7 +222,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-satoshi);
+  font-family: "Plus Jakarta Sans", var(--font-satoshi), system-ui, sans-serif;
 }
 
 .tw-shadow {
@@ -517,7 +519,26 @@ textarea {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Activity strip colours — on :root so they work regardless of DOM nesting */
+  :root {
+    --as-c0: #2a2a2a;
+    --as-c1: #3d3d3d;
+    --as-c2: #555555;
+    --as-c3: #808080;
+    --as-c4: #c8c8c8;
+    --as-fg: #e4e4e7;
+    --as-mute: #52525b;
+  }
 }
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/Plus Jakarta Sans.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Honk Sans";
   src: url(/fonts/honk-sans/HonkSans-Regular.woff2) format("woff2");
@@ -548,14 +569,14 @@ textarea {
 }
 
 body {
-  font-family: "Honk Sans", "Gabarito", sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   font-weight: 400;
   margin: 0px;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-size-adjust: none;
   backface-visibility: hidden;
-  color: rgb(17, 17, 17);
+  color: rgb(240, 240, 240);
   font-size: 16px;
   overflow-x: hidden;
   width: 100%;
@@ -659,3 +680,78 @@ h2 {
   margin: 0px;
   padding: 20px 0px 0px;
 }
+
+
+    .text-bio {
+        color: #b9b9b9
+    }
+
+    .text-black {
+        color: var(--color-black)
+    }
+
+    .text-heading {
+        color: #e5e5e5
+    }
+
+
+
+    .bg-lemon {
+        background-color: var(--lemon)
+    }
+
+    .bg-shell {
+        background-color: #000
+    }
+
+    .bg-shell\/90 {
+        background-color: oklab(0 none none/.9)
+    }
+
+    .bg-white {
+        background-color: var(--color-white)
+    }
+
+    .bg-\[radial-gradient\(circle\,rgba\(128\,255\,146\,0\.6\)\,transparent_70\%\)\] {
+        background-image: radial-gradient(circle,#80ff9299,#0000 70%)
+    }
+
+    .mask-intersect {
+        -webkit-mask-composite: source-in;
+        mask-composite: intersect
+    }
+
+    .mask-alpha {
+        -webkit-mask-source-type: alpha;
+        mask-mode: alpha
+    }
+
+    .mask-luminance {
+        -webkit-mask-source-type: luminance;
+        mask-mode: luminance
+    }
+
+    .mask-size-\[10\.629px_10\.629px\] {
+        -webkit-mask-size: 10.629px 10.629px;
+        mask-size: 10.629px 10.629px
+    }
+
+    .mask-size-\[16px_16px\] {
+        -webkit-mask-size: 16px 16px;
+        mask-size: 16px 16px
+    }
+
+    .mask-no-clip {
+        -webkit-mask-clip: no-clip;
+        mask-clip: no-clip
+    }
+
+    .mask-position-\[-0\.969px_-0\.607px\] {
+        -webkit-mask-position: -.969px -.607px;
+        mask-position: -.969px -.607px
+    }
+
+    .mask-no-repeat {
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat
+    }

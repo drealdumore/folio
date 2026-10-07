@@ -70,10 +70,12 @@ const config: Config = {
   		},
   		fontFamily: {
   			sans: [
+  				'"Plus Jakarta Sans"',
   				'var(--font-geist)',
                     ...defaultTheme.fontFamily.sans
                 ],
   			heading: [
+  				'"Plus Jakarta Sans"',
   				'var(--font-satoshi)',
                     ...defaultTheme.fontFamily.sans
                 ],

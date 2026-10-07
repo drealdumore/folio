@@ -4,32 +4,27 @@ import { bioData } from "@/content/bio";
 import { SectionHeading } from "@/components/design/SectionHeading";
 
 export default function AboutSection() {
-  const paragraphClass = "leading-[30px] text-text-normal text-[15px]";
+  const paragraphClass = "leading-[1.65] text-zinc-400 text-[15px]";
 
   return (
     <section className="flex flex-col">
-      <div className="flex flex-col gap-6 max-w-3xl">
+      <SectionHeading title="About" />
+      <div className="flex flex-col gap-4 max-w-3xl">
         <p className={paragraphClass}>
-          Hey, I&apos;m {bioData.name}. I&apos;m a full-stack software developer
-          who enjoys turning ideas into products people can actually use.
+          Hey, I&apos;m {bioData.name}. I build web and mobile products
+          people can actually use — from thoughtful interfaces to the systems
+          behind them.
         </p>
 
         <p className={paragraphClass}>
-          I build web and mobile applications with TypeScript, React, React
-          Native, Next.js, Node.js, and Golang. I&apos;ve worked across
-          everything from e-commerce and SaaS products to APIs, mobile apps, and
-          AI-powered tools.
+          My stack is TypeScript, React, React Native, Next.js, Node.js, and
+          Golang. I&apos;ve shipped across e-commerce, SaaS, APIs, mobile
+          apps, and AI-powered tools.
         </p>
 
         <p className={paragraphClass}>
-          Outside of client work, I&apos;m usually building something of my own,
-          experimenting with new ideas, or figuring out how to turn a problem
-          into a useful product.
-        </p>
-
-        <p className={paragraphClass}>
-          You can find some of my work here, or connect with me on X, GitHub,
-          and LinkedIn.
+          When I&apos;m not on client work, I&apos;m building something of my
+          own — or figuring out how to turn a problem into a useful product.
         </p>
       </div>
     </section>

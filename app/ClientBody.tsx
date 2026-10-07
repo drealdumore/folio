@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
+import MobileNav from "@/components/layout/mobile-nav";
 import { ProgressiveBlur } from "@/components/blur";
 
 export default function ClientBody({
@@ -73,10 +74,6 @@ export default function ClientBody({
     <body>
       <div
         style={{
-          // width: "100%",
-          // maxWidth: "710px",
-          // padding: "0px 24px 16px",
-          // margin: "0px auto",
           width: "min(629px, 100vw - 44px)",
           margin: "0 auto",
           padding: "0 0 88px",
@@ -88,10 +85,11 @@ export default function ClientBody({
         </main>
 
         <AppFooter />
+        <MobileNav />
         <ProgressiveBlur
           position="bottom"
           height="8vh"
-          className="fixed z-[50]"
+          className="fixed z-[40]"
         />
       </div>
       <Analytics />

@@ -10,44 +10,46 @@ import WorkExperienceSection from "./_components/work-experience-section";
 import Projects from "./_components/projects-section";
 import WebTools from "./_components/web-tools-section";
 import StackTable from "./_components/techStack-section";
+import PerformanceSection from "./_components/performance-section";
 import { Morph } from "@/components/morph";
 import { Signature } from "@/components/signature";
 
 const Home = () => {
   return (
     <>
-      <div className="flex flex-col gap-4 relative">
+      <div className="flex flex-col relative">
         <Morph delay={0.1}>
           <Header />
         </Morph>
-        <Morph delay={0.1}>
-          <AboutSection />
-        </Morph>
-        <Morph delay={0.1}>
-          <StackTable />
-        </Morph>
-        <Morph delay={0.1}>
-          <Projects />
-        </Morph>
-        <Morph delay={0.1}>
-          <WebTools />
-        </Morph>
-        <Morph delay={0.1}>
-          <WorkExperienceSection />
-        </Morph>
-        <Morph delay={0.1}>
-          <ContactSection />
-        </Morph>
-        <Morph delay={0.1}>
-          <Signature
-            text="Samuel..."
-            // text="Drealdumore..."
-            fontSize={12}
-            color="#ccc"
-            inView
-            once={false}
-          />
-        </Morph>
+        <div className="flex flex-col gap-16 mt-14">
+          <Morph delay={0.1}>
+            <Projects />
+          </Morph>
+          <Morph delay={0.1}>
+            <PerformanceSection />
+          </Morph>
+          <Morph delay={0.1}>
+            <StackTable />
+          </Morph>
+          <Morph delay={0.1}>
+            <WebTools />
+          </Morph>
+          <Morph delay={0.1}>
+            <WorkExperienceSection />
+          </Morph>
+          <Morph delay={0.1}>
+            <ContactSection />
+          </Morph>
+          <Morph delay={0.1}>
+            <Signature
+              text="Samuel..."
+              fontSize={12}
+              color="#555"
+              inView
+              once={false}
+            />
+          </Morph>
+        </div>
       </div>
     </>
   );

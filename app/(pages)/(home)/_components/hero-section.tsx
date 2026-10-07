@@ -98,10 +98,6 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
       const dy = originY - centerY;
       const startScale = triggerRect.width / 250;
 
-      // Reset magnetic offsets on opening sequence
-      containerRef.current.style.setProperty("--mx", "0px");
-      containerRef.current.style.setProperty("--my", "0px");
-
       // 1. Hard reset to inverted state immediately (No layout transition)
       containerRef.current.style.transition = "none";
       containerRef.current.style.transform = `translate3d(calc(-50% + ${dx}px), calc(-50% + ${dy}px), 0) scale(${startScale})`;
@@ -138,7 +134,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
 
           containerRef.current.style.transition = transformCurve;
           containerRef.current.style.transform =
-            "translate3d(calc(-50% + var(--mx, 0px)), calc(-50% + var(--my, 0px)), 0) scale(1)";
+            "translate3d(-50%, -50%, 0) scale(1)";
 
           backdropRef.current.style.transition = opacityCurve;
           backdropRef.current.style.opacity = "1";
@@ -183,10 +179,6 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
     const exitCurve = "transform 0.22s cubic-bezier(0.16, 1, 0.3, 1)";
     const exitOpacity = "opacity 0.15s linear, backdrop-filter 0.15s linear";
 
-    // Smoothly clear magnetic variables so layout handles return trajectory accurately
-    containerRef.current.style.setProperty("--mx", "0px");
-    containerRef.current.style.setProperty("--my", "0px");
-
     containerRef.current.style.transition = exitCurve;
     containerRef.current.style.transform = `translate3d(calc(-50% + ${dx}px), calc(-50% + ${dy}px), 0) scale(${startScale})`;
 
@@ -205,32 +197,6 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
       document.body.style.overflow = "";
       onClose();
     }, 220);
-  };
-
-  // Raw inline performance variable tracking
-  const handleAvatarMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-
-    const { clientX, clientY } = e;
-    const { width, height, left, top } =
-      containerRef.current.getBoundingClientRect();
-
-    const mx = (clientX - (left + width / 2)) * 0.8;
-    const my = (clientY - (top + height / 2)) * 0.8;
-
-    containerRef.current.style.setProperty("--mx", `${mx}px`);
-    containerRef.current.style.setProperty("--my", `${my}px`);
-    containerRef.current.style.transition = "none"; // Eliminates lag during manual track hooks
-  };
-
-  const handleAvatarMouseLeave = () => {
-    if (!containerRef.current) return;
-
-    // Smooth return transition curve
-    containerRef.current.style.transition =
-      "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)";
-    containerRef.current.style.setProperty("--mx", "0px");
-    containerRef.current.style.setProperty("--my", "0px");
   };
 
   if (!mounted || !isOpen) return null;
@@ -272,12 +238,10 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
         </button>
       </div>
 
-      {/* Morph Layout Frame Node with Native Variables */}
+      {/* Morphing image frame */}
       <div
         ref={containerRef}
         onClick={handleClose}
-        onMouseMove={handleAvatarMouseMove}
-        onMouseLeave={handleAvatarMouseLeave}
         className="fixed top-1/2 left-1/2 w-[250px] h-[250px] rounded-full overflow-hidden bg-[#dcdcdc] shadow-2xl cursor-zoom-out select-none touch-action-none will-change-transform"
         style={{
           transformOrigin: "center center",
@@ -496,28 +460,7 @@ const Header = () => {
                       width={100}
                       priority
                     />
-
-                    <span
-                      className="pointer-events-none absolute -bottom-1 -right-1 z-10 flex size-5 items-center justify-center rounded-full bg-[#2b2b2b] text-systemYellow border border-white/10 shadow-md transition-transform duration-200 group-hover:scale-110"
-                      aria-hidden="true"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="size-3"
-                      >
-                        <polyline points="15 3 21 3 21 9" />
-                        <polyline points="9 21 3 21 3 15" />
-                        <line x1="21" x2="14" y1="3" y2="10" />
-                        <line x1="3" x2="10" y1="21" y2="14" />
-                      </svg>
-                    </span>
-
+{/*                     
                     <span
                       className={`pointer-events-none absolute top-1/2 left-[calc(100%+10px)] -translate-y-1/2 whitespace-nowrap rounded-md border border-white/10 bg-[#2b2b2b] px-2 py-1 text-xs font-medium text-text-normal shadow-md transition-all duration-200 ${
                         showTip
@@ -528,72 +471,107 @@ const Header = () => {
                       aria-hidden="true"
                     >
                       View photo
-                    </span>
+                    </span> */}
                   </span>
-
-                  {/* <AvatarTip show={showTip} /> */}
                 </div>
               </Magnetic>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.2}>
-              <div className="flex items-center gap-x-3 mb-4">
-                <p className="font-medium items-center gap-2 hidden md:flex text-text-normal text-[14px]">
-                  Current Status:
-                </p>
+            <AnimatedSection delay={0.4}>
 
+            <div className="flex flex-col items-start gap-2">
+  <h1 className="text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
+    Hey, I'm Samuel Isah.
+  </h1>
+  <h1 className="text-xl leading-[1.3] tracking-[-0.02em] text-white lg:text-[26px] font-medium">
+    Software Developer
+  </h1>
+
+  <div className="mt-1 flex items-center gap-1.5">
+    <span className="relative flex h-2 w-2">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+    </span> 
+    <span className="text-[13px] text-emerald-500 font-medium">Open to work</span>
+  </div>
+
+  <div className="mt-4 flex flex-col gap-4 text-[15px] leading-[1.65] text-zinc-400">
+
+    <p>
+      I build and Ship Web &amp; Mobile products across AI, developer tools,
+      automation, and everyday problems worth solving.
+    </p>
+
+    <p>
+      I&apos;m a Software Developer who enjoys taking ideas from “this could be useful” to something people can actually use. from React Native apps and AI-powered tools
+      to backend systems and infrastructure.
+    </p>
+
+    <p>
+      I&apos;ve built include{" "}
+      <span className="text-white">Melo</span>, a private
+      one-to-one chat app with real-time language translation,{" "}
+      <span className="text-white">DropEnv</span>, an encrypted
+      environment-variable sharing tool, and{" "}
+      <span className="text-white">Chop Iron</span>, an offline-first
+      fitness progress tracker.
+    </p>
+
+    <p>
+      I work mainly with TypeScript, React Native, Expo, Node.js, Next.js, and Supabase, with a growing focus on backend systems, AI, developer tools and Automation.
+    </p>
+    <p>
+     Currently looking for opportunities to work with ambitious teams and build useful products.
+    </p>
+
+    <p>
+      You can find me on{" "}
+      <a
+        href="https://x.com/drealdumore"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-track="contact"
+        data-target="X"
+        className="text-white link-underline"
+      >
+        X
+      </a>
+      {" "}or check out my{" "}
+      <a
+        href="https://drealdumore.cv"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-track="contact"
+        data-target="Portfolio"
+        className="text-white link-underline"
+      >
+        projects
+      </a>.
+    </p>
+
+  </div>
+</div>
+            </AnimatedSection>
+
+
+            {/* <AnimatedSection delay={0.2}>
+              <div className="flex items-center gap-x-3 mb-4">
                 <Link
                   href="mailto:samuelisah234@gmail.com"
                   rel="noopener noreferrer"
                   target="_blank"
-                  className="flex items-center justify-center gap-1.5"
+                  className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-medium text-emerald-400 transition-colors hover:bg-emerald-500/15"
                   onClick={() => trigger("medium")}
+                  aria-label="Available for work. Contact Samuel by email."
                 >
                   <SmallPing />
-                  <div className="relative cursor-pointer overflow-hidden">
-                    <div className="group text-text-normal text-[14px]">
-                      <span className="group-hover:-translate-y-full font-medium items-center text-emerald-700 flex flex-col transition-all duration-500 ease-slow">
-                        Available for work
-                        <span className="invisible h-0">Reach out</span>
-                      </span>
-                      <span className="group-hover:-translate-y-full absolute top-full flex items-center transition-all duration-500 ease-slow">
-                        Reach out
-                        <MailIcon />
-                      </span>
-                    </div>
-                  </div>
+                  <span>Available for work</span>
+                  <span aria-hidden="true" className="text-emerald-400/60">·</span>
+                  <span>Reach out</span>
                 </Link>
               </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.4}>
-              <div className="max-w-3xl">
-                <h1
-                  className="text-[20px] font-medium mt-6 text-text-heading"
-                  style={{ fontFamily: "Gabarito" }}
-                >
-                  Full-Stack Web & Mobile Developer
-                </h1>
-              </div>
-            </AnimatedSection>
-            {/* <AnimatedSection delay={0.4}>
-              <div className="max-w-3xl">
-                <h1
-                  className="text-[20px] font-medium mt-6 text-text-heading"
-                  style={{ fontFamily: "Gabarito" }}
-                >
-                  Hi, I&apos;m Samuel Isah — Full-Stack Web & Mobile Developer
-                </h1>
-                <p
-                  className="text-text-normal text-[15px] mt-2 md:mt-4 max-w-xl opacity-80"
-                  role="text"
-                >
-                  Software Developer crafting fast, minimal web & mobile
-                  experiences with care for the tiny details that make big
-                  differences.
-                </p>
-              </div>
             </AnimatedSection> */}
+  
           </div>
         </div>
       </section>
@@ -610,21 +588,3 @@ const Header = () => {
 };
 
 export default Header;
-
-const MailIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="ml-1 size-4"
-  >
-    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-  </svg>
-);

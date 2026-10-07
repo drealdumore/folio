@@ -9,6 +9,7 @@ type projectType = {
 interface ProjectCardProps {
   projectName: string | undefined | null;
   image?: string;
+  mobileScreens?: string[];
   projectLink: string | any;
   projectDescription: string | undefined | null;
   projectType: string | undefined | null;
@@ -18,7 +19,7 @@ interface ProjectCardProps {
 
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
-    projectName: "Crystalglowxquisite – Skincare Boutique",
+    projectName: "Crystalglowxquisite: Skincare Boutique",
     projectLink: "https://crystalglowxquisite.com/",
     image: "/projects/crystalglowxquisite.png",
     projectDescription: "Premium skincare boutique website.",
@@ -36,7 +37,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
-    projectName: "The SupaDevs – Developer Library",
+    projectName: "The SupaDevs: Developer Library",
     projectLink: "https://thesupadevs.vercel.app/",
     image: "/projects/thesupadevs.png",
     projectDescription:
@@ -53,11 +54,11 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   },
 
   {
-    projectName: "Isami Technologies – Corporate Website",
+    projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
     image: "/projects/isamitechnologies.png",
     projectDescription:
-      "Official website for Isami Technologies — a Nigerian digital agency offering web development, e-commerce, AI chatbots, UI/UX & branding, and SEO services across Nigeria.",
+      "Official website for Isami Technologies, a Nigerian digital agency offering web development, e-commerce, AI chatbots, UI/UX & branding, and SEO services across Nigeria.",
     projectType: "Client / Company Website",
     projectDate: "2025-12-01",
     technologies: [
@@ -69,7 +70,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
-    projectName: "Cleanup – Cleaning Services Website",
+    projectName: "Cleanup: Cleaning Services Website",
     projectLink: "https://cleanup.com.ng/",
     image: "/projects/cleanup.png",
     projectDescription:
@@ -79,7 +80,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "React"],
   },
   {
-    projectName: "Olamide - Tours Website (clone)",
+    projectName: "Olamide Tours Website (clone)",
     projectLink: "https://olamide-tour.vercel.app/",
     image: "/projects/celeb-tour.png",
     projectDescription:
@@ -89,21 +90,25 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
 
-  {
-    projectName: "Echo",
-    projectLink: "/projects/echo",
-    projectDescription:
-      "minimalist, offline-first reminder app that triggers based on where you are, not just when. With geofencing and a clean UI, it helps you remember things exactly when you arrive at the right place.",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2025-03-01",
-    technologies: [
-      "TypeScript",
-      "React-native",
-      "expo",
-      "react-native animated",
-      "maps api",
-    ],
-  },
+  // {
+  //   projectName: "Echo",
+  //   projectLink: "/projects/echo",
+  //   projectDescription:
+  //     "minimalist, offline-first reminder app that triggers based on where you are, not just when. With geofencing and a clean UI, it helps you remember things exactly when you arrive at the right place.",
+  //   projectType: "Personal project (Mobile app)",
+  //   projectDate: "2025-03-01",
+  //   technologies: [
+  //     "TypeScript",
+  //     "React-native",
+  //     "expo",
+  //     "react-native animated",
+  //     "maps api",
+  //   ],
+  //   mobileScreens: [
+  //     "/projects/echo-hero.png",
+  //     "/projects/echo-square.png",
+  //   ],
+  // },
 
   {
     projectName: "GPZ",
@@ -119,6 +124,11 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "expo-router",
       "AsyncStorage",
       "react-query",
+    ],
+    mobileScreens: [
+      "/projects/gpz-onboarding-1.png",
+      "/projects/gpz-onboarding-2.png",
+      "/projects/gpz-home.png",
     ],
   },
 
@@ -136,6 +146,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app",
+    image: "/projects/meta-scrapper.webp",
     projectDescription:
       "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
     projectType: "Personal project",
@@ -155,6 +166,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   // {
   //   projectName: "Minimalist",
   //   projectLink: "https://minimal-list.vercel.app",
+  //   image: "/projects/minimalist.png",
   //   projectDescription: "Simple, no-auth task manager.",
   //   projectType: "Personal project",
   //   projectDate: "2024-11-12",
@@ -170,20 +182,22 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Peekr",
     projectLink: "https://peekrr.vercel.app/",
+    image: "/projects/peekrr.webp",
     projectDescription:
       "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
     projectType: "Personal project",
     projectDate: "2025-10-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
-  {
-    projectName: "Thank You Card Generator",
-    projectLink: "https://cardd-generatorr.vercel.app/",
-    projectDescription: "Create beautiful personalized thank you cards.",
-    projectType: "Task",
-    projectDate: "2025-11-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
+  // {
+  //   projectName: "Thank You Card Generator",
+  //   image: "/projects/cardd-generatorr.webp",
+  //   projectLink: "https://cardd-generatorr.vercel.app/",
+  //   projectDescription: "Create beautiful personalized thank you cards.",
+  //   projectType: "Task",
+  //   projectDate: "2025-11-01",
+  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+  // },
 ];
 
 export const SHORTPROJECTS = [

@@ -72,15 +72,10 @@ export default function ContactSection() {
 
   return (
     <section className="flex flex-col">
-      <SectionHeading
-        title="Let's Connect"
-        subtitle="Get in touch before I write another line of code!"
-      />
+      <SectionHeading title="Contact" />
 
-      <p className="text-text-normal mb-6 text-[15px]">
-        Whether you&apos;re looking to collaborate on a project, need a solution
-        to a challenging problem, or just want to talk tech, feel free to reach
-        out. Together, we can turn ideas into reality.
+      <p className="text-zinc-400 mb-6 text-[15px] leading-relaxed">
+        Looking to build something together, or just want to talk? Reach out.
       </p>
 
       <form

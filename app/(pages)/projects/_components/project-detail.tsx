@@ -4,6 +4,7 @@ import Image from "next/image";
 import Motion from "@/motion/y-motion";
 import { MOBILE_APPS } from "@/content/projects";
 import Link from "next/link";
+import { MobileRow } from "@/components/design/project-ui";
 
 const ProjectsDetailTemplate = ({ id }: { id: string }) => {
   const project = MOBILE_APPS.find((p) => p.id === id);
@@ -16,10 +17,33 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
     <Motion>
       <Link
         href="/projects"
-        className="flex p-2 items-center w-max justify-center rounded-full bg-white/10 border border-white/15 backdrop-blur-md transition-all hover:bg-white/25 hover:scale-110 group duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:translate-y-1 active:scale-x-110 active:scale-y-90 text-[#ccc] mb-4"
+        className="flex p-2 items-center w-max justify-center bg-white/10 border border-white/15 backdrop-blur-md transition-all hover:bg-white/25 hover:scale-110 group duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] active:translate-y-1 active:scale-x-110 active:scale-y-90 text-[#ccc] mb-4 shrink-0 rounded-sm"
         aria-label="Previous"
       >
-        <BackIcon className="size-5 text-white" />
+        <svg
+          className="size-5 text-white"
+          aria-hidden="true"
+          width="24px"
+          height="24px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.74992 5L3.10348 8.64645C2.90822 8.84171 2.90822 9.15829 3.10348 9.35355L6.74992 13"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+          <path
+            d="M4 9H19C20.1046 9 21 9.89543 21 11V16C21 17.1046 20.1046 18 19 18H12"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          ></path>
+        </svg>
       </Link>
       <div className="flex flex-col gap-2 mb-4">
         <h1 className="w-full font-bold leading-9 text-[20px] text-text-heading">
@@ -47,29 +71,6 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                     {project.year}
                   </td>
                 </tr>
-                {/* <tr>
-                  <td className="pr-6 py-2 font-medium text-text-heading">
-                    Built by
-                  </td>
-                  <td className="text-text-normal">{project.builtBy}</td>
-                </tr>
-                {project.website && (
-                  <tr>
-                    <td className="pr-6 py-2 font-medium text-text-heading">
-                      Website
-                    </td>
-                    <td>
-                      <a
-                        href={project.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-text-normal hover:text-text-heading hover:underline"
-                      >
-                        {project.website}
-                      </a>
-                    </td>
-                  </tr>
-                )} */}
               </tbody>
             </table>
           </div>
@@ -87,7 +88,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               className="object-cover"
               fill
               sizes="(max-width: 768px) 100vw, 800px"
-              priority={true} // You can set priority for above-the-fold images
+              priority={true}
             />
           </div>
         )}
@@ -99,26 +100,13 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
           </p>
         )}
 
-        {/* TODO:: ADD THAT LIBRARY TGAT MAKES IMAGES BIG. HOLD ON, I CODED SOMTHING LINKE THAT IN SCRENSHOTTER. might just make it a libarary */}
-
         {/* Gallery */}
         {project.gallery?.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {project.gallery.map((img, i) => (
-              <div
-                key={i}
-                className="relative w-full h-48 rounded-xl shadow-sm overflow-hidden"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt || `Gallery image ${i + 1}`}
-                  className="object-cover"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+          <div className="my-8">
+            <MobileRow
+              images={project.gallery.map((img) => img.src)}
+              alt={project.sub}
+            />
           </div>
         )}
 
