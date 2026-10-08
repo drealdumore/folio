@@ -18,7 +18,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
     <AnimatedSection>
       <div className={`mb-5 ${className}`}>
         <h2
-          className="uppercase mb-1 text-xl leading-[1.3] tracking-[-0.02em] text-white/70 lg:text-[26px] font-medium"
+          className="uppercase mb-1 text-[18px] md:text-xl leading-[1.3] tracking-[-0.02em] text-white/70 lg:text-[26px] font-medium"
         >
           {title}
         </h2>

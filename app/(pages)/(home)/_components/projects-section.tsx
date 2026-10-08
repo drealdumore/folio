@@ -4,12 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
+import { MobileRow } from "@/components/design/project-ui";
 
 interface Project {
   name: string;
-  highlight?: string; 
+  highlight?: string;
   highlightLabel?: string;
   image?: string;
+  mobileScreens?: string[];
   href: string;
   descriptionBefore?: string;
   descriptionAfter?: string;
@@ -31,6 +33,18 @@ const FEATURED_PROJECTS: Project[] = [
     descriptionAfter: ".",
     image: "/projects/thesupadevs.png",
     href: "https://thesupadevs.vercel.app/",
+  },
+  {
+    name: "MELO",
+    descriptionBefore: "A private two-person chat that ",
+    highlight: "translates every message before delivery",
+    descriptionAfter: " — you write in your language, they read in theirs.",
+    mobileScreens: [
+      "/projects/melo-onboarding.png",
+      "/projects/melo-chat.png",
+      "/projects/melo-id.png",
+    ],
+    href: "/projects/melo",
   },
   {
     name: "Isami Technologies",
@@ -87,8 +101,8 @@ const ProjectArticle = ({
     return () => observer.disconnect();
   }, []);
 
-  // highlight is shown when in viewport OR when hovered
   const showHighlight = inView || hovered;
+  const { mobileScreens } = project;
 
   return (
     <div
@@ -133,7 +147,16 @@ const ProjectArticle = ({
         </header>
 
         {/* Media */}
-        {project.image && (
+        {mobileScreens && mobileScreens.length > 0 ? (
+          <Link
+            href={project.href}
+            target={project.href.startsWith("http") ? "_blank" : undefined}
+            rel={project.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="w-full block transition-transform duration-500 hover:scale-[1.01]"
+          >
+            <MobileRow images={mobileScreens} alt={project.name} />
+          </Link>
+        ) : project.image ? (
           <Link
             href={project.href}
             target={project.href.startsWith("http") ? "_blank" : undefined}
@@ -153,7 +176,7 @@ const ProjectArticle = ({
               />
             </div>
           </Link>
-        )}
+        ) : null}
       </article>
     </div>
   );
