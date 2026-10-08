@@ -486,7 +486,7 @@ const Header = () => {
   <div className="mt-4 flex flex-col gap-4 text-[15px] leading-[1.65] text-zinc-400">
 
     <p>
-      I build and Ship Web &amp; Mobile products across AI, developer tools,
+      I build Web &amp; Mobile products across AI, developer tools,
       automation, and everyday problems worth solving.
     </p>
 

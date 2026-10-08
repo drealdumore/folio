@@ -19,6 +19,18 @@ interface Project {
 
 const FEATURED_PROJECTS: Project[] = [
   {
+    name: "MELO",
+    descriptionBefore: "A private two-person chat that ",
+    highlight: "translates every message before delivery",
+    descriptionAfter: " — you write in your language, they read in theirs.",
+    mobileScreens: [
+      "/projects/melo-onboarding.png",
+      "/projects/melo-chat.png",
+      "/projects/melo-id.png",
+    ],
+    href: "/projects/melo",
+  },
+  {
     name: "Crystalglowxquisite",
     descriptionBefore: "Premium skincare boutique — built a full e-commerce storefront with ",
     highlight: "custom checkout and analytics",
@@ -34,42 +46,7 @@ const FEATURED_PROJECTS: Project[] = [
     image: "/projects/thesupadevs.png",
     href: "https://thesupadevs.vercel.app/",
   },
-  {
-    name: "MELO",
-    descriptionBefore: "A private two-person chat that ",
-    highlight: "translates every message before delivery",
-    descriptionAfter: " — you write in your language, they read in theirs.",
-    mobileScreens: [
-      "/projects/melo-onboarding.png",
-      "/projects/melo-chat.png",
-      "/projects/melo-id.png",
-    ],
-    href: "/projects/melo",
-  },
-  {
-    name: "Isami Technologies",
-    descriptionBefore: "Corporate website for a Nigerian digital agency offering web development, AI chatbots, and SEO — built with ",
-    highlight: "AI-powered features",
-    descriptionAfter: " integrated throughout.",
-    image: "/projects/isamitechnologies.png",
-    href: "https://isamitechnologies.com.ng/",
-  },
-  {
-    name: "Rivr",
-    descriptionBefore: "Brand collaboration platform connecting companies with trusted creators to ",
-    highlight: "amplify reach and drive results",
-    descriptionAfter: ".",
-    image: "/projects/rivr-app.png",
-    href: "https://rivr-mu.vercel.app/",
-  },
-  {
-    name: "Cleanup",
-    descriptionBefore: "Professional cleaning services website for a Kaduna-based company — ",
-    highlight: "booking, service listings, and 24/7 support",
-    descriptionAfter: " in one place.",
-    image: "/projects/cleanup.png",
-    href: "https://cleanup.com.ng/",
-  },
+  
 ];
 
 const ProjectArticle = ({
