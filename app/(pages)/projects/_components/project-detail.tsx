@@ -85,10 +85,10 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             <Image
               src={project.heroImage}
               alt={`${project.sub} Hero`}
-              className="object-cover"
+              className="object-cover select-none transition-transform duration-500 hover:scale-[1.03]"
               fill
               sizes="(max-width: 768px) 100vw, 800px"
-              priority={true}
+              priority
             />
           </div>
         )}

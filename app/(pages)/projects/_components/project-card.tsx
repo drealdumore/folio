@@ -102,11 +102,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
           >
-            <h2 className="font-medium pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
+            <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
               {projectName}
             </h2>
           </Link>
-          <p className="text-zinc-500">
+          <p className="text-[15px] leading-[1.65] text-zinc-400">
             <span className="relative inline-block px-[0.15em]">
               <span
                 aria-hidden="true"
