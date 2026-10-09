@@ -22,7 +22,7 @@ const Home = () => {
           <Header />
         </Morph>
         <div className="flex flex-col gap-16 mt-14">
-          <Morph delay={0.1}>
+          <Morph>
             <Projects />
           </Morph>
           <Morph delay={0.1}>
