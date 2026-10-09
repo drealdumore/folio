@@ -18,8 +18,9 @@ interface Project {
 }
 
 const FEATURED_PROJECTS: Project[] = [
+  
   {
-    name: "MELO",
+    name: "Melo",
     descriptionBefore: "A private two-person chat that ",
     highlight: "translates every message before delivery",
     descriptionAfter: " — you write in your language, they read in theirs.",
@@ -29,6 +30,14 @@ const FEATURED_PROJECTS: Project[] = [
       "/projects/melo-id.png",
     ],
     href: "/projects/melo",
+  },
+  {
+    name: "Knowledge Master",
+    descriptionBefore: "An e-commerce website for a bookstore, featuring textbooks, novels, ",
+    highlight: "educational resources, and school bookfair services",
+    descriptionAfter: ", with nationwide delivery information.",
+    image: "/projects/knowledgemaster.webp",
+    href: "https://www.knowledgemaster.com.ng/",
   },
   {
     name: "Crystalglowxquisite",
@@ -43,10 +52,9 @@ const FEATURED_PROJECTS: Project[] = [
     descriptionBefore: "A curated library of developer tools, UI components, APIs and resources — designed to help developers find quality assets without searching ",
     highlight: "all over the web",
     descriptionAfter: ".",
-    image: "/projects/thesupadevs.png",
+    image: "/projects/thesupadevs.webp",
     href: "https://thesupadevs.vercel.app/",
   },
-  
 ];
 
 const ProjectArticle = ({

@@ -1,4 +1,4 @@
-﻿type projectType = {
+type projectType = {
   name: string | any;
   description: string | undefined | null;
   image: string | any;
@@ -19,6 +19,26 @@ interface ProjectCardProps {
 
 export const ALLPROJECTS: ProjectCardProps[] = [
   {
+    projectName: "Melo",
+    projectLink: "/projects/melo",
+    projectDescription:
+      "A private, two-person chat that translates every message before delivery. You write in your language, they read in theirs — one room, two languages, no copy-pasting.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2026-01-01",
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Supabase",
+      "expo-router",
+    ],
+    mobileScreens: [
+      "/projects/melo-onboarding.png",
+      "/projects/melo-profile-sheet-1.png",
+      "/projects/melo-chat.png",
+    ],
+  },
+  {
     projectName: "Crystalglowxquisite: Skincare Boutique",
     projectLink: "https://crystalglowxquisite.com/",
     image: "/projects/crystalglowxquisite.png",
@@ -37,9 +57,30 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
+    projectName: "Knowledge Master",
+    projectLink: "https://www.knowledgemaster.com.ng/",
+    image: "/projects/knowledgemaster.webp",
+    projectDescription:
+      "An e-commerce website for a bookstore, featuring textbooks, novels, educational resources, product listings, book categories, and school bookfair services, with nationwide delivery information.",
+    projectType: "Client / E-commerce Website",
+    projectDate: "2026-10-01",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React",
+      "Vercel Deployment",
+      "Posthog",
+      "Neon",
+      "Python",
+      "AI-integration",
+    ],
+  },
+
+  {
     projectName: "The SupaDevs: Developer Library",
     projectLink: "https://thesupadevs.vercel.app/",
-    image: "/projects/thesupadevs.png",
+    image: "/projects/thesupadevs.webp",
     projectDescription:
       "A curated web library of developer tools, UI components, APIs, and resources designed to help developers find quality assets quickly without searching all over the web. It serves as a central ‘shelf’ for useful dev resources and encourages community contributions.",
     projectType: "Web Platform / Tools Library",
@@ -204,26 +245,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "/projects/sage-conversation-1.png",
     ],
   },
-  {
-    projectName: "MELO",
-    projectLink: "/projects/melo",
-    projectDescription:
-      "A private, two-person chat that translates every message before delivery. You write in your language, they read in theirs — one room, two languages, no copy-pasting.",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2026-01-01",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "Supabase",
-      "expo-router",
-    ],
-    mobileScreens: [
-      "/projects/melo-onboarding.png",
-      "/projects/melo-profile-sheet-1.png",
-      "/projects/melo-chat.png",
-    ],
-  },
+  
   {
     projectName: "Chop Iron",
     projectLink: "/projects/iron",
