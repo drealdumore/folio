@@ -1,13 +1,25 @@
 "use client";
 
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Motion from "@/motion/y-motion";
 import { MOBILE_APPS } from "@/content/projects";
 import Link from "next/link";
 import { MobileRow } from "@/components/design/project-ui";
+import { prefetchImage, prefetchImages } from "@/lib/prefetch";
 
 const ProjectsDetailTemplate = ({ id }: { id: string }) => {
   const project = MOBILE_APPS.find((p) => p.id === id);
+
+  useEffect(() => {
+    if (!project) return;
+    if (project.heroImage) {
+      prefetchImage(project.heroImage);
+    }
+    if (project.gallery && project.gallery.length > 0) {
+      prefetchImages(project.gallery.map((img) => img.src));
+    }
+  }, [project]);
 
   if (!project) {
     return <p className="text-text-normal">Project not found</p>;

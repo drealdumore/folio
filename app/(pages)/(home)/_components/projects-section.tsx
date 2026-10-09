@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import { MobileRow } from "@/components/design/project-ui";
+import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 
 interface Project {
   name: string;
@@ -70,6 +71,16 @@ const ProjectArticle = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Prefetch project detail first image and gallery images ahead of time
+    if (project.href && !project.href.startsWith("http")) {
+      prefetchProjectDetail(project.href);
+    }
+    if (project.mobileScreens) {
+      prefetchImages(project.mobileScreens);
+    } else if (project.image) {
+      prefetchImage(project.image);
+    }
+
     const el = ref.current;
     if (!el) return;
 
@@ -78,13 +89,26 @@ const ProjectArticle = ({
         const visible = entry.isIntersecting;
         setOpacity(visible ? 1 : 0.35);
         setInView(visible);
+        if (visible && project.href && !project.href.startsWith("http")) {
+          prefetchProjectDetail(project.href);
+        }
       },
       { threshold: 0.4 }
     );
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [project]);
+
+  const handleHover = () => {
+    setHovered(true);
+    if (project.href && !project.href.startsWith("http")) {
+      prefetchProjectDetail(project.href);
+    }
+    if (project.mobileScreens) {
+      prefetchImages(project.mobileScreens);
+    }
+  };
 
   const showHighlight = inView || hovered;
   const { mobileScreens } = project;
@@ -93,7 +117,7 @@ const ProjectArticle = ({
     <div
       ref={ref}
       style={{ opacity, transition: "opacity 0.4s ease" }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleHover}
       onMouseLeave={() => setHovered(false)}
     >
       <article className="flex w-full flex-col items-start gap-[25px]">

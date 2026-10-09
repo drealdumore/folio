@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MobileRow } from "@/components/design/project-ui";
+import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 
 interface ProjectCardProps {
   projectName: string | undefined | null;
@@ -29,7 +30,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const [hovered, setHovered] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  const isExternal =
+    typeof projectLink === "string" && projectLink.startsWith("http");
+
   useEffect(() => {
+    // Prefetch project detail first image and screens ahead of time
+    if (projectLink && !isExternal) {
+      prefetchProjectDetail(projectLink);
+    }
+    if (mobileScreens && mobileScreens.length > 0) {
+      prefetchImages(mobileScreens);
+    } else if (image) {
+      prefetchImage(image);
+    }
+
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -37,15 +51,25 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         const visible = entry.isIntersecting;
         setOpacity(visible ? 1 : 0.35);
         setInView(visible);
+        if (visible && projectLink && !isExternal) {
+          prefetchProjectDetail(projectLink);
+        }
       },
       { threshold: 0.3 }
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [projectLink, isExternal, mobileScreens, image]);
 
-  const isExternal =
-    typeof projectLink === "string" && projectLink.startsWith("http");
+  const handleHover = () => {
+    setHovered(true);
+    if (projectLink && !isExternal) {
+      prefetchProjectDetail(projectLink);
+    }
+    if (mobileScreens && mobileScreens.length > 0) {
+      prefetchImages(mobileScreens);
+    }
+  };
 
   const showHighlight = inView || hovered;
 
@@ -58,7 +82,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div
       ref={ref}
       style={{ opacity, transition: "opacity 0.4s ease" }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleHover}
       onMouseLeave={() => setHovered(false)}
     >
       <article className="flex w-full flex-col items-start gap-[18px]">
