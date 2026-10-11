@@ -85,49 +85,53 @@ const icons: Record<string, React.ReactNode> = {
   "Drizzle": (
     <svg fill="currentColor" aria-hidden="true" className="size-[14px] shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5.353 11.823a1.036 1.036 0 0 0-.395-1.422 1.063 1.063 0 0 0-1.437.399L.138 16.702a1.035 1.035 0 0 0 .395 1.422 1.063 1.063 0 0 0 1.437-.398l3.383-5.903Zm11.216 0a1.036 1.036 0 0 0-.394-1.422 1.064 1.064 0 0 0-1.438.399l-3.382 5.902a1.036 1.036 0 0 0 .394 1.422c.506.283 1.15.104 1.438-.398l3.382-5.903Zm7.293-4.525a1.036 1.036 0 0 0-.395-1.422 1.062 1.062 0 0 0-1.437.399l-3.383 5.902a1.036 1.036 0 0 0 .395 1.422 1.063 1.063 0 0 0 1.437-.399l3.383-5.902Zm-11.219 0a1.035 1.035 0 0 0-.394-1.422 1.064 1.064 0 0 0-1.438.398l-3.382 5.903a1.036 1.036 0 0 0 .394 1.422c.506.282 1.15.104 1.438-.399l3.382-5.902Z"/></svg>
   ),
+  "Supabase": (
+    <svg viewBox="0 0 24 24" className="size-[14px] shrink-0" fill="currentColor" aria-hidden="true">
+      <path d="M21.362 9.354H12V.396a.396.396 0 0 0-.716-.233L.103 13.914a.792.792 0 0 0 .619 1.282h9.363v8.958a.396.396 0 0 0 .716.233l11.181-13.751a.792.792 0 0 0-.62-1.282z" />
+    </svg>
+  ),
 };
 
 const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    category: "Frontend",
+    category: "Frontend & Mobile",
     skills: [
-      { name: "Next.js" },
-      { name: "React" },
       { name: "TypeScript" },
-      { name: "Tailwind CSS" },
-      { name: "Angular" },
-    ],
-  },
-  {
-    category: "Mobile",
-    skills: [
+      { name: "React" },
+      { name: "Next.js" },
       { name: "React Native" },
       { name: "Expo" },
+      { name: "Tailwind CSS" },
     ],
   },
   {
-    category: "Backend",
+    category: "Backend & APIs",
     skills: [
       { name: "Node.js" },
       { name: "Express" },
-      { name: "GoLang" },
-    ],
-  },
-  {
-    category: "Databases",
-    skills: [
+      { name: "Supabase" },
       { name: "PostgreSQL" },
-      { name: "MongoDB" },
-      { name: "MySQL" },
       { name: "Redis" },
+      { name: "Prisma" },
+      { name: "Drizzle" },
     ],
   },
   {
-    category: "Tools",
+    category: "Other & Patterns",
     skills: [
       { name: "Git" },
-      { name: "Drizzle" },
-      { name: "Prisma" },
+      { name: "Real-time systems" },
+      { name: "Offline-first patterns" },
+      { name: "AI tooling integration" },
+      { name: "Performance & SEO optimization" },
+    ],
+  },
+  {
+    category: "Secondary",
+    skills: [
+      { name: "GoLang" },
+      { name: "MongoDB" },
+      { name: "MySQL" },
     ],
   },
 ];

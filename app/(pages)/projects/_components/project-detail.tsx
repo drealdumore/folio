@@ -113,7 +113,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
         )}
 
         {/* Gallery */}
-        {project.gallery?.length > 0 && (
+        {project.gallery && project.gallery.length > 0 && (
           <div className="my-8">
             <MobileRow
               images={project.gallery.map((img) => img.src)}

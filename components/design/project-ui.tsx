@@ -12,6 +12,7 @@ import {
   animate,
   useMotionValue,
   useReducedMotion,
+  type ValueAnimationTransition,
 } from "framer-motion";
 import { useWebHaptics } from "web-haptics/react";
 import { cn } from "@/lib/utils";
@@ -73,7 +74,7 @@ function Lightbox({
 
   const slideTo = (
     i: number,
-    transition: Parameters<typeof animate>[2] = {
+    transition: ValueAnimationTransition<number> = {
       duration: 0.4,
       ease: IN_OUT_QUART,
     }
@@ -84,7 +85,7 @@ function Lightbox({
     else animate(x, target, transition);
   };
 
-  const go = (i: number, transition?: Parameters<typeof animate>[2]) => {
+  const go = (i: number, transition?: ValueAnimationTransition<number>) => {
     const next = Math.max(0, Math.min(last, i));
     if (next === index) return;
     haptic("selection");

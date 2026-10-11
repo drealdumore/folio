@@ -79,6 +79,12 @@ const config: Config = {
   				'var(--font-satoshi)',
                     ...defaultTheme.fontFamily.sans
                 ],
+  			display: [
+  				'"Grotesque"',
+  				'"Cabinet Grotesk"',
+  				'"Gabarito"',
+                    ...defaultTheme.fontFamily.sans
+                ],
   			aws: [
   				'var(--font-aws-diatype)',
                     ...defaultTheme.fontFamily.sans

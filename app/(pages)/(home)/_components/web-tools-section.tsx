@@ -10,14 +10,15 @@ interface SideProject {
 }
 
 const SIDE_PROJECTS: SideProject[] = [
-  { name: "Deps Janitor: Find and remove unused npm dependencies", href: "https://deps-janitor.vercel.app/" },
-  { name: "Peekr: Responsive website snapshot generator", href: "https://peekrr.vercel.app/" },
-  { name: "MetaScraper: Extract metadata from any URL", href: "https://meta-scrapper.vercel.app/" },
-  { name: "VaultX: Share text and links across devices with expiry", href: "https://github.com/drealdumore/vaultx/" },
+  { name: "Deps Janitor: Interactive CLI that finds and safely removes unused npm dependencies", href: "https://deps-janitor.vercel.app/" },
+  { name: "Peekr: Responsive website snapshot & screenshot generator", href: "https://peekrr.vercel.app/" },
+  { name: "MetaScraper: Extract title, description, OG image & metadata from any URL", href: "https://meta-scrapper.vercel.app/" },
+  { name: "VaultX: Lightweight API for sharing text, code, and links across devices", href: "https://github.com/drealdumore/vaultx/" },
   { name: "Falso API: TypeScript mock data generator from interfaces", href: "https://github.com/drealdumore/falso-api/" },
-  { name: "Split cost: Split costs in real time" },
+  { name: "DropEnv: Encrypted environment-variable sharing tool", href: "https://github.com/drealdumore/dropenv/" },
+  { name: "Split Cost: Real-time group cost splitter and percentage calculator", href: "https://percentage-calcc.vercel.app/" },
   { name: "Writing Pad: Minimal distraction-free writing space" },
-  { name: "Olamide Tour: Concert landing page clone", href: "https://olamide-tour.vercel.app/" },
+  { name: "Olamide Tour: Concert tour landing page clone", href: "https://olamide-tour.vercel.app/" },
 ];
 
 export default function WebTools() {

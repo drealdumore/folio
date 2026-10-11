@@ -16,29 +16,67 @@ interface Project {
   href: string;
   descriptionBefore?: string;
   descriptionAfter?: string;
+  tags?: string[];
+  year?: string;
 }
 
 const FEATURED_PROJECTS: Project[] = [
-  
   {
     name: "Melo",
-    descriptionBefore: "A private two-person chat that ",
-    highlight: "translates every message before delivery",
-    descriptionAfter: " — you write in your language, they read in theirs.",
+    descriptionBefore: "Private one-to-one chat for people who speak different languages — ",
+    highlight: "translates messages before delivery",
+    descriptionAfter: " with original text one tap away. Real-time typing, presence, and multi-language support.",
     mobileScreens: [
       "/projects/melo-onboarding.png",
       "/projects/melo-chat.png",
       "/projects/melo-id.png",
     ],
     href: "/projects/melo",
+    tags: ["React Native", "Expo", "WebSocket", "AI"],
+    year: "2025",
+  },
+  {
+    name: "Chop Iron",
+    descriptionBefore: "Offline-first bodybuilding progress tracker with a Nigerian voice — ",
+    highlight: "logs 53 exercises and detects personal records",
+    descriptionAfter: " across 4 categories with local SQLite and streaks.",
+    mobileScreens: [
+      "/projects/chop-iron-splash-2.png",
+      "/projects/chop-iron-index.png",
+      "/projects/chop-iron-achievement.png",
+    ],
+    href: "/projects/iron",
+    tags: ["React Native", "SQLite", "Offline-first"],
+    year: "2025",
+  },
+  {
+    name: "VaultX",
+    descriptionBefore: "Lightweight, production-ready REST API for sharing text, code snippets, and links across devices — ",
+    highlight: "hybrid in-memory + Redis storage",
+    descriptionAfter: " with password protection, view limits, and burn-after-reading.",
+    href: "/projects/vaultx",
+    tags: ["Node.js", "Redis", "REST API"],
+    year: "2024",
+  },
+  {
+    name: "The SupaDevs",
+    descriptionBefore: "Open-source curated library of 1000+ developer tools, UI components, and APIs — ",
+    highlight: "smart search, AI categorization & scraping",
+    descriptionAfter: " with admin dashboard and Core Web Vitals monitoring.",
+    image: "/projects/thesupadevs.webp",
+    href: "/projects/thesupadevs",
+    tags: ["Next.js", "Supabase", "AI", "PostgreSQL"],
+    year: "2024",
   },
   {
     name: "Knowledge Master",
-    descriptionBefore: "An e-commerce website for a bookstore, featuring textbooks, novels, ",
+    descriptionBefore: "E-commerce platform for a bookstore, featuring textbooks, novels, ",
     highlight: "educational resources, and school bookfair services",
     descriptionAfter: ", with nationwide delivery information.",
     image: "/projects/knowledgemaster.webp",
     href: "https://www.knowledgemaster.com.ng/",
+    tags: ["Next.js", "E-commerce"],
+    year: "2023",
   },
   {
     name: "Crystalglowxquisite",
@@ -47,14 +85,8 @@ const FEATURED_PROJECTS: Project[] = [
     descriptionAfter: " from the ground up.",
     image: "/projects/crystalglowxquisite.png",
     href: "https://crystalglowxquisite.com/",
-  },
-  {
-    name: "The SupaDevs",
-    descriptionBefore: "A curated library of developer tools, UI components, APIs and resources — designed to help developers find quality assets without searching ",
-    highlight: "all over the web",
-    descriptionAfter: ".",
-    image: "/projects/thesupadevs.webp",
-    href: "https://thesupadevs.vercel.app/",
+    tags: ["Next.js", "E-commerce", "Analytics"],
+    year: "2023",
   },
 ];
 
@@ -134,6 +166,24 @@ const ProjectArticle = ({
               {project.name}
             </h2>
           </Link>
+          {(project.tags?.length || project.year) && (
+            <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-zinc-500">
+              {project.tags?.map((tag, i) => (
+                <span key={tag} className="flex items-center gap-2">
+                  {i > 0 && <span className="text-zinc-700">·</span>}
+                  {tag}
+                </span>
+              ))}
+              {project.year && (
+                <span className="flex items-center gap-2">
+                  {project.tags?.length ? (
+                    <span className="text-zinc-700">·</span>
+                  ) : null}
+                  <span className="tabular-nums">{project.year}</span>
+                </span>
+              )}
+            </div>
+          )}
           <p className="text-[15px] leading-[1.65] text-zinc-400">
             {project.descriptionBefore}
             {project.highlight && (

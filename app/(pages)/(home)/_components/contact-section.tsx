@@ -75,7 +75,8 @@ export default function ContactSection() {
       <SectionHeading title="Contact" />
 
       <p className="text-zinc-400 mb-6 text-[15px] leading-relaxed">
-        Looking to build something together, or just want to talk? Reach out.
+        Hiring, or just want to talk? I&apos;m open to full-time roles and happy
+        to hear from you.
       </p>
 
       <form

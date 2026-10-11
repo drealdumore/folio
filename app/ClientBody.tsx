@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
 import MobileNav from "@/components/layout/mobile-nav";
+import DesktopHeader from "@/components/layout/desktop-header";
 import { ProgressiveBlur } from "@/components/blur";
 
 export default function ClientBody({
@@ -72,6 +73,7 @@ export default function ClientBody({
 
   return (
     <body>
+      <DesktopHeader />
       <div
         style={{
           width: "min(629px, 100vw - 44px)",
@@ -80,7 +82,7 @@ export default function ClientBody({
         }}
         suppressHydrationWarning
       >
-        <main id="main-content" className="my-7 lg:pt-8 lg:py-20" role="main">
+        <main id="main-content" className="my-7 md:pt-20 lg:pb-20" role="main">
           {children}
         </main>
 

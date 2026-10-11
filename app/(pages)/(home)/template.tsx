@@ -11,6 +11,8 @@ import Projects from "./_components/projects-section";
 import WebTools from "./_components/web-tools-section";
 import StackTable from "./_components/techStack-section";
 import PerformanceSection from "./_components/performance-section";
+import TrustedBySection from "./_components/trusted-by-section";
+import TestimonialsSection from "./_components/testimonials-section";
 import { Morph } from "@/components/morph";
 import { Signature } from "@/components/signature";
 
@@ -22,6 +24,9 @@ const Home = () => {
           <Header />
         </Morph>
         <div className="flex flex-col gap-16 mt-14">
+          <Morph>
+            <TrustedBySection />
+          </Morph>
           <Morph>
             <Projects />
           </Morph>
@@ -36,6 +41,9 @@ const Home = () => {
           </Morph>
           <Morph delay={0.1}>
             <WorkExperienceSection />
+          </Morph>
+          <Morph delay={0.1}>
+            <TestimonialsSection />
           </Morph>
           <Morph delay={0.1}>
             <ContactSection />

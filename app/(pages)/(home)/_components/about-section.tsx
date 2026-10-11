@@ -11,20 +11,19 @@ export default function AboutSection() {
       <SectionHeading title="About" />
       <div className="flex flex-col gap-4 max-w-3xl">
         <p className={paragraphClass}>
-          Hey, I&apos;m {bioData.name}. I build web and mobile products
-          people can actually use — from thoughtful interfaces to the systems
-          behind them.
+          I’m a self-taught full-stack and mobile developer based in Nigeria with 4+ years of experience building and shipping products end-to-end.
         </p>
 
         <p className={paragraphClass}>
-          My stack is TypeScript, React, React Native, Next.js, Node.js, and
-          Golang. I&apos;ve shipped across e-commerce, SaaS, APIs, mobile
-          apps, and AI-powered tools.
+          My strongest work sits at the intersection of mobile (React Native + Expo), modern web (Next.js + TypeScript), and backend systems (Node.js, Supabase, PostgreSQL, Redis). I enjoy solving practical problems — real-time communication, offline-first experiences, developer tooling, and automation.
         </p>
 
         <p className={paragraphClass}>
-          When I&apos;m not on client work, I&apos;m building something of my
-          own — or figuring out how to turn a problem into a useful product.
+          I move quickly from idea to working product, then iterate based on real constraints (rate limits, flaky networks, free-tier limitations, etc.). Outside client and freelance work, I continuously ship side projects and build in public.
+        </p>
+
+        <p className={paragraphClass}>
+          I’m currently seeking mid-level full-stack or mobile engineering roles, preferably with teams that value ownership and are open to visa sponsorship + relocation.
         </p>
       </div>
     </section>

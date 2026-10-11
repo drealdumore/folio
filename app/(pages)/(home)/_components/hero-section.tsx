@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 
-import { SmallPing } from "@/components/design/ping";
-import { AvatarTip } from "@/components/design/avatar-tip";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { useWebHaptics } from "web-haptics/react";
 
@@ -432,135 +430,108 @@ const Header = () => {
   return (
     <>
       <section>
-        <div className="flex flex-col items-center justify-start md:gap-24 gap-16 w-full lg:justify-between lg:flex-row">
-          <div className="flex flex-col lg:h-2/6 h-2/5 max-lg:w-full max-lg:flex">
-            <AnimatedSection>
-              <Magnetic strength={0.1}>
-                <div
-                  ref={originAvatarRef}
-                  className="relative max-w-[130px] w-full flex-shrink-0 mb-8 cursor-pointer"
-                  onClick={handleAvatarClick}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="View profile photo"
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      handleAvatarClick();
-                    }
-                  }}
-                  style={{ opacity: isOpen ? 0 : 1 }}
-                >
-                  <span className="group relative inline-flex">
-                    <Image
-                      src={avatarSrc}
-                      className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px]"
-                      alt={avatarAlt}
-                      height={100}
-                      width={100}
-                      priority
-                    />
-                  </span>
-                </div>
-              </Magnetic>
-            </AnimatedSection>
+        <div className="flex w-full flex-col items-start gap-8">
+          <AnimatedSection>
+            <Magnetic strength={0.1}>
+              <div
+                ref={originAvatarRef}
+                className="relative w-full max-w-[130px] flex-shrink-0 cursor-pointer"
+                onClick={handleAvatarClick}
+                role="button"
+                tabIndex={0}
+                aria-label="View profile photo"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleAvatarClick();
+                  }
+                }}
+                style={{ opacity: isOpen ? 0 : 1 }}
+              >
+                <span className="group relative inline-flex">
+                  <Image
+                    src={avatarSrc}
+                    className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px]"
+                    alt={avatarAlt}
+                    height={100}
+                    width={100}
+                    priority
+                  />
+                </span>
+              </div>
+            </Magnetic>
+          </AnimatedSection>
 
-            <AnimatedSection delay={0.4}>
-
+          <AnimatedSection delay={0.4}>
             <div className="flex flex-col items-start gap-2">
-  <h1 className="text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
-    Hey, I&apos;m Samuel Isah.
-  </h1>
-  <h1 className="text-xl leading-[1.3] tracking-[-0.02em] text-white lg:text-[26px] font-medium">
-    Software Developer
-  </h1>
+              <h1 className="font-display text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
+                Hey, I&apos;m Samuel Isah.
+              </h1>
+              <h2 className="text-[15px] leading-[1.4] tracking-[-0.01em] text-zinc-400 lg:text-[16px] font-normal">
+                Full-Stack Web &amp; Mobile Developer
+              </h2>
 
-  <div className="mt-1 flex items-center gap-1.5">
-    <span className="relative flex h-2 w-2">
-      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-    </span> 
-    <span className="text-[13px] text-emerald-500 font-medium">Open to work</span>
-  </div>
+              <div className="mt-1 flex flex-wrap items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span className="text-[13px] text-emerald-500 font-medium">
+                  Open to work · Relocation &amp; visa sponsorship friendly
+                </span>
+              </div>
 
-  <div className="mt-4 flex flex-col gap-4 text-[15px] leading-[1.65] text-zinc-400">
+              <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-zinc-400">
+                I build real-time mobile apps, offline-first tools, and
+                production APIs — taking products from idea to shipped with
+                TypeScript, React Native, Next.js, and Node.js.
+              </p>
 
-    <p>
-      I build Web &amp; Mobile products across AI, developer tools,
-      automation, and everyday problems worth solving.
-    </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <Link
+                  href="/projects"
+                  onClick={() => trigger("light")}
+                  className="group inline-flex items-center gap-2 rounded-full bg-text-heading px-5 py-2.5 text-[14px] font-medium text-[#1a1a1a] transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
+                >
+                  View my work
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    className="transition-transform duration-200 group-hover:translate-x-0.5"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="1.8"
+                      d="M5 12h14M13 6l6 6-6 6"
+                    />
+                  </svg>
+                </Link>
 
-    <p>
-      I&apos;m a Software Developer who enjoys taking ideas from “this could be useful” to something people can actually use. from React Native apps and AI-powered tools
-      to backend systems and infrastructure.
-    </p>
-
-    <p>
-      I&apos;ve built include{" "}
-      <span className="text-white">Melo</span>, a private
-      one-to-one chat app with real-time language translation,{" "}
-      <span className="text-white">DropEnv</span>, an encrypted
-      environment-variable sharing tool, and{" "}
-      <span className="text-white">Chop Iron</span>, an offline-first
-      fitness progress tracker.
-    </p>
-
-    <p>
-      I work mainly with TypeScript, React Native, Expo, Node.js, Next.js, and Supabase, with a growing focus on backend systems, AI, developer tools and Automation.
-    </p>
-    <p>
-     Currently looking for opportunities to work with ambitious teams and build useful products.
-    </p>
-
-    <p>
-      You can find me on{" "}
-      <a
-        href="https://x.com/drealdumore"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-track="contact"
-        data-target="X"
-        className="text-white link-underline"
-      >
-        X
-      </a>
-      {" "}or check out my{" "}
-      <a
-        href="https://drealdumore.cv"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-track="contact"
-        data-target="Portfolio"
-        className="text-white link-underline"
-      >
-        projects
-      </a>.
-    </p>
-
-  </div>
-</div>
-            </AnimatedSection>
-
-
-            {/* <AnimatedSection delay={0.2}>
-              <div className="flex items-center gap-x-3 mb-4">
                 <Link
                   href="mailto:samuelisah234@gmail.com"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-sm font-medium text-emerald-400 transition-colors hover:bg-emerald-500/15"
-                  onClick={() => trigger("medium")}
-                  aria-label="Available for work. Contact Samuel by email."
+                  onClick={() => trigger("light")}
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white"
                 >
-                  <SmallPing />
-                  <span>Available for work</span>
-                  <span aria-hidden="true" className="text-emerald-400/60">·</span>
-                  <span>Reach out</span>
+                  Get in touch
+                </Link>
+
+                <Link
+                  href="/files/samuel-isah-resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trigger("light")}
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white"
+                >
+                  Resume
                 </Link>
               </div>
-            </AnimatedSection> */}
-  
-          </div>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

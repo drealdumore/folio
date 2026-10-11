@@ -1,20 +1,45 @@
-type projectType = {
-  name: string | any;
+export type projectType = {
+  name: string;
   description: string | undefined | null;
-  image: string | any;
+  image?: string;
   href: string | undefined;
   tech?: string[];
 };
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   projectName: string | undefined | null;
   image?: string;
   mobileScreens?: string[];
-  projectLink: string | any;
+  projectLink: string;
   projectDescription: string | undefined | null;
   projectType: string | undefined | null;
-  projectDate: string | any;
+  projectDate: string;
   technologies: string[];
+}
+
+export interface CaseStudy {
+  id: string;
+  title: string;
+  sub: string;
+  oneLiner?: string;
+  year: number | string;
+  builtBy: string;
+  website?: string;
+  heroImage?: string;
+  intro: string;
+  introText?: string;
+  gallery?: { src: string; alt: string }[];
+  challenge: string;
+  actions: {
+    title: string;
+    text: string;
+  }[];
+  result: string;
+  technologies?: string[];
+  links: {
+    label: string;
+    url: string;
+  }[];
 }
 
 export const ALLPROJECTS: ProjectCardProps[] = [
@@ -22,14 +47,15 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectName: "Melo",
     projectLink: "/projects/melo",
     projectDescription:
-      "A private, two-person chat that translates every message before delivery. You write in your language, they read in theirs — one room, two languages, no copy-pasting.",
+      "Private one-to-one chat for people who speak different languages. You write in your language; the other person reads in theirs. Messages are translated before delivery, with original text one tap away.",
     projectType: "Personal project (Mobile app)",
     projectDate: "2026-01-01",
     technologies: [
-      "TypeScript",
+      "Expo SDK",
       "React Native",
-      "Expo",
-      "Supabase",
+      "TypeScript",
+      "Supabase Realtime",
+      "AsyncStorage",
       "expo-router",
     ],
     mobileScreens: [
@@ -39,11 +65,69 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
+    projectName: "Chop Iron",
+    projectLink: "/projects/iron",
+    projectDescription:
+      "Offline-first bodybuilding / fitness progress tracker with a Nigerian voice. Logs workouts from 53 exercises, detects personal records across four categories, and turns training history into streaks, achievements, and analytics — even with no internet.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2026-01-01",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "SQLite",
+      "Zustand",
+      "Reanimated",
+      "expo-router",
+    ],
+    mobileScreens: [
+      "/projects/chop-iron-splash-2.png",
+      "/projects/chop-iron-index.png",
+      "/projects/chop-iron-achievement.png",
+    ],
+  },
+  {
+    projectName: "VaultX",
+    projectLink: "/projects/vaultx",
+    projectDescription:
+      "Lightweight, production-ready REST API for sharing text, code snippets, and links across devices. No accounts required. Features hybrid in-memory + Redis storage, rate limiting, expiry times, view limits, password protection, and burn-after-reading.",
+    projectType: "API / Backend System",
+    projectDate: "2025-12-01",
+    technologies: [
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "Redis",
+      "Helmet",
+      "Zod",
+    ],
+  },
+  {
+    projectName: "The SupaDevs",
+    projectLink: "/projects/thesupadevs",
+    image: "/projects/thesupadevs.webp",
+    projectDescription:
+      "Open-source curated library of 1000+ developer tools, UI components, APIs, and resources. Features smart search, AI-powered categorization (Groq + Llama), metadata scraping, admin dashboard with bulk actions, broken-link detection, and strong SEO & performance optimization.",
+    projectType: "Web Platform / Developer Tool",
+    projectDate: "2025-12-11",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "Framer Motion",
+      "Groq AI",
+      "Cheerio",
+      "ISR",
+    ],
+  },
+  {
     projectName: "Crystalglowxquisite: Skincare Boutique",
     projectLink: "https://crystalglowxquisite.com/",
     image: "/projects/crystalglowxquisite.png",
-    projectDescription: "Premium skincare boutique website.",
-    projectType: "E-commerce ",
+    projectDescription:
+      "Full e-commerce storefront for a premium skincare brand — custom checkout, product catalog, and analytics built from the ground up.",
+    projectType: "Client / E-commerce",
     projectDate: "2026-01-20",
     technologies: [
       "Next.js",
@@ -53,7 +137,6 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "Vercel Deployment",
       "Posthog",
       "Neon",
-      "Python",
     ],
   },
   {
@@ -61,7 +144,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "https://www.knowledgemaster.com.ng/",
     image: "/projects/knowledgemaster.webp",
     projectDescription:
-      "An e-commerce website for a bookstore, featuring textbooks, novels, educational resources, product listings, book categories, and school bookfair services, with nationwide delivery information.",
+      "E-commerce platform for a bookstore (textbooks, novels, educational resources, school bookfair services) with nationwide delivery information.",
     projectType: "Client / E-commerce Website",
     projectDate: "2026-10-01",
     technologies: [
@@ -72,28 +155,55 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "Vercel Deployment",
       "Posthog",
       "Neon",
-      "Python",
       "AI-integration",
     ],
   },
-
   {
-    projectName: "The SupaDevs: Developer Library",
-    projectLink: "https://thesupadevs.vercel.app/",
-    image: "/projects/thesupadevs.webp",
+    projectName: "SAGE",
+    projectLink: "/projects/sage",
     projectDescription:
-      "A curated web library of developer tools, UI components, APIs, and resources designed to help developers find quality assets quickly without searching all over the web. It serves as a central ‘shelf’ for useful dev resources and encourages community contributions.",
-    projectType: "Web Platform / Tools Library",
-    projectDate: "2025-12-11",
+      "An AI strategist for hard conversations. Describe the situation, and it reads the power dynamics, maps them against The 48 Laws of Power, and drafts your reply in eight different tones with voice input and key rotation.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2026-01-01",
     technologies: [
-      "Next.js",
       "TypeScript",
-      "Tailwind CSS",
-      "React",
-      "Vercel Deployment",
+      "React Native",
+      "Expo",
+      "Gemini API",
+      "Groq Whisper",
+      "Zod",
+      "Reanimated",
+    ],
+    mobileScreens: [
+      "/projects/sage-index.png",
+      "/projects/sage-coach.png",
+      "/projects/sage-conversation-1.png",
     ],
   },
-
+  {
+    projectName: "GPZ",
+    projectLink: "/projects/gpz",
+    projectDescription:
+      "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2025-01-01",
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "expo-router",
+      "AsyncStorage",
+      "react-query",
+    ],
+    mobileScreens: [
+      "/projects/gpz-onboarding-1.png",
+      "/projects/gpz-onboarding-2.png",
+      "/projects/gpz-onboarding-3.png",
+      "/projects/gpz-onboarding-4.png",
+      "/projects/gpz-onboarding-5.png",
+      "/projects/gpz-home.png",
+    ],
+  },
   {
     projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
@@ -121,181 +231,55 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "React"],
   },
   {
-    projectName: "Olamide Tours Website (clone)",
-    projectLink: "https://olamide-tour.vercel.app/",
-    image: "/projects/celeb-tour.png",
+    projectName: "Peekr",
+    projectLink: "https://peekrr.vercel.app/",
+    image: "/projects/peekrr.webp",
     projectDescription:
-      "Experience Olamide live in Toronto! Get tickets for the electrifying concert tour featuring Nigeria's biggest Afrobeats star at Rebel and Queen Elizabeth Theatre.",
-    projectType: "Personal project",
+      "Responsive website snapshot and screenshot generator. Perfect for developers, designers, and marketers who want clean visuals across multiple viewport sizes.",
+    projectType: "Developer Utility",
     projectDate: "2025-10-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
-
-  // {
-  //   projectName: "Echo",
-  //   projectLink: "/projects/echo",
-  //   projectDescription:
-  //     "minimalist, offline-first reminder app that triggers based on where you are, not just when. With geofencing and a clean UI, it helps you remember things exactly when you arrive at the right place.",
-  //   projectType: "Personal project (Mobile app)",
-  //   projectDate: "2025-03-01",
-  //   technologies: [
-  //     "TypeScript",
-  //     "React-native",
-  //     "expo",
-  //     "react-native animated",
-  //     "maps api",
-  //   ],
-  //   mobileScreens: [
-  //     "/projects/echo-hero.png",
-  //     "/projects/echo-square.png",
-  //   ],
-  // },
-
-  {
-    projectName: "GPZ",
-    projectLink: "/projects/gpz",
-    projectDescription:
-      "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2025-01-01",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "expo-router",
-      "AsyncStorage",
-      "react-query",
-    ],
-    mobileScreens: [
-      "/projects/gpz-onboarding-1.png",
-      "/projects/gpz-onboarding-2.png",
-      "/projects/gpz-onboarding-3.png",
-      "/projects/gpz-onboarding-4.png",
-      "/projects/gpz-onboarding-5.png",
-      "/projects/gpz-home.png",
-    ],
-  },
-
-  {
-    projectName: "Rivr App",
-    projectLink: "https://rivr-mu.vercel.app/",
-    image: "/projects/rivr-app.png",
-    projectDescription:
-      "Empower Your Brand Through Authentic Creator Collaborations. Connect with trusted creators to amplify your message and drive results.",
-    projectType: "Personal project",
-    projectDate: "2025-03-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-
   {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app",
     image: "/projects/meta-scrapper.webp",
     projectDescription:
-      "Easily extract and retrieve metadata from any website, including the title, OG image, and description.",
-    projectType: "Personal project",
+      "Extract and retrieve title, description, OG image, and metadata from any URL instantly.",
+    projectType: "Developer Tool",
     projectDate: "2024-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
-
-  // {
-  //   projectName: "Write it",
-  //   projectLink: "https://writee-it.vercel.app",
-  //   projectDescription:
-  //     "Craft Your Unique Sayings and Watch Them change to perfect handwritting.",
-  //   projectType: "Personal project",
-  //   projectDate: "2023-12-15",
-  //   technologies: ["Angular", "Tailwind CSS", "TypeScript"],
-  // },
-  // {
-  //   projectName: "Minimalist",
-  //   projectLink: "https://minimal-list.vercel.app",
-  //   image: "/projects/minimalist.png",
-  //   projectDescription: "Simple, no-auth task manager.",
-  //   projectType: "Personal project",
-  //   projectDate: "2024-11-12",
-  //   technologies: [
-  //     "TypeScript",
-  //     "Next.js",
-  //     "Tailwind CSS",
-  //     "Framer Motion",
-  //     "Supabase",
-  //     "Local storage",
-  //   ],
-  // },
   {
-    projectName: "SAGE",
-    projectLink: "/projects/sage",
+    projectName: "Rivr App",
+    projectLink: "https://rivr-mu.vercel.app/",
+    image: "/projects/rivr-app.png",
     projectDescription:
-      "An AI strategist for hard conversations. Describe the situation, and it reads the power dynamics, maps them against The 48 Laws of Power, and drafts your reply in eight different tones.",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2026-01-01",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "Gemini API",
-      "Groq Whisper",
-      "Zod",
-      "Reanimated",
-    ],
-    mobileScreens: [
-      "/projects/sage-index.png",
-      "/projects/sage-coach.png",
-      "/projects/sage-conversation-1.png",
-    ],
-  },
-  
-  {
-    projectName: "Chop Iron",
-    projectLink: "/projects/iron",
-    projectDescription:
-      "Offline-first bodybuilding tracker with a Nigerian voice. Logs workouts from 53 exercises, detects PRs across four categories, and turns training history into streaks, achievements, and analytics.",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2026-01-01",
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "SQLite",
-      "Reanimated",
-      "expo-router",
-    ],
-    mobileScreens: [
-      "/projects/chop-iron-splash-2.png",
-      "/projects/chop-iron-index.png",
-      "/projects/chop-iron-achievement.png",
-    ],
+      "Empower your brand through authentic creator collaborations. Connect with trusted creators to amplify your message and drive results.",
+    projectType: "Personal project",
+    projectDate: "2025-03-01",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
   {
-    projectName: "Peekr",
-    projectLink: "https://peekrr.vercel.app/",
-    image: "/projects/peekrr.webp",
+    projectName: "Olamide Tours Website (clone)",
+    projectLink: "https://olamide-tour.vercel.app/",
+    image: "/projects/celeb-tour.png",
     projectDescription:
-      "Peekr lets you capture and preview websites instantly — from full-page screenshots to responsive snapshots. Perfect for developers, designers, and marketers who want clean visuals of any webpage.",
+      "Experience Olamide live in Toronto! Concert tour landing page clone featuring responsive ticketing interface, tour dates, and media showcases.",
     projectType: "Personal project",
     projectDate: "2025-10-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
-  // {
-  //   projectName: "Thank You Card Generator",
-  //   image: "/projects/cardd-generatorr.webp",
-  //   projectLink: "https://cardd-generatorr.vercel.app/",
-  //   projectDescription: "Create beautiful personalized thank you cards.",
-  //   projectType: "Task",
-  //   projectDate: "2025-11-01",
-  //   technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  // },
 ];
 
 export const SHORTPROJECTS = [
   {
-    projectName: "Percentage Calculator",
+    projectName: "Percentage Calculator / Cost Splitter",
     projectLink: "https://percentage-calcc.vercel.app/",
     projectinAppLink: "/percentage-calc",
     projectDescription:
       "Easily divide any total amount among individuals, with the option to add more participants and see real-time updates for precise cost sharing.",
-    projectType: "Short project",
+    projectType: "Utility",
     projectDate: "2024-03-01",
     technologies: [
       "TypeScript",
@@ -310,8 +294,8 @@ export const SHORTPROJECTS = [
     projectLink: "",
     projectinAppLink: "/shooter-game",
     projectDescription:
-      "Experience the thrill of the mini shooter game, designed for fun and excitement",
-    projectType: "Short project",
+      "Experience the thrill of the mini shooter game, designed for fun and excitement with keyboard controls.",
+    projectType: "Mini Game",
     projectDate: "2024-03-01",
     technologies: [
       "TypeScript",
@@ -323,12 +307,12 @@ export const SHORTPROJECTS = [
     ],
   },
   {
-    projectName: "Falso - Mock data generator",
-    projectLink: "",
+    projectName: "Falso - Mock Data Generator",
+    projectLink: "https://github.com/drealdumore/falso-api/",
     projectinAppLink: "/falso",
     projectDescription:
-      "Generate type-safe mock data directly from your TypeScript interfaces",
-    projectType: "Short project",
+      "Generate type-safe mock data directly from your TypeScript interfaces.",
+    projectType: "Developer Tool",
     projectDate: "2025-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
   },
@@ -337,153 +321,375 @@ export const SHORTPROJECTS = [
     projectLink: "",
     projectinAppLink: "/writing-pad",
     projectDescription:
-      "Generate type-safe mock data directly from your TypeScript interfaces",
-    projectType: "Short project",
+      "Minimal distraction-free writing space for notes and quick ideation.",
+    projectType: "Utility",
     projectDate: "2025-05-05",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
   },
 ];
 
-export const MOBILE_APPS = [
-  
+export const MOBILE_APPS: CaseStudy[] = [
+  // 1. Melo
   {
-  id: "echo",
-  title: "Projects",
-  sub: "ECHO",
-  year: 2025,
-  builtBy: "Samuel Isah",
-  website: "Coming Soon",
-  heroImage: "/projects/echo-hero.png",
-  intro:
-    "ECHO is a minimalist, offline-first reminder app that fires based on where you are, not just when. Drop a pin, set a radius, and ECHO nudges you the moment you arrive — no account, no signal required.",
-  introText:
-    "I don't forget tasks because of when they matter — I forget them because of where. “Pick this up when you get to campus.” “Remind her when you're at her place.” Time-based reminders never had an answer for that, so I built ECHO: a location-first reminder app that surfaces the right task at the right place, whether or not I'm online.",
-  gallery: [
-    { src: "/projects/echo-hero.png", alt: "Echo Map View" },
-    { src: "/projects/echo-square.png", alt: "Echo Reminder List" },
-  ],
-  challenge:
-    "Most reminders are built around clocks, but half of real life is tied to places — and the moment you pass that place, the reminder is useless. Building ECHO meant making location sensing work reliably in the background, where operating systems aggressively fight to save battery, and where platform limits quietly break naive implementations.",
-  actions: [
-    {
-      title: "Building for myself",
-      text: "I started ECHO to fix my own habit of forgetting location-based tasks — walking past the pharmacy and remembering two stops later. The goal was a clean, intuitive, offline-first tool that just works when I'm there: no account, no setup friction, no cloud dependency.",
-    },
-    {
-      title: "Technical foundations",
-      text: "ECHO is built with React Native and Expo (SDK 54) — one codebase for iOS and Android. Geofencing runs on expo-location's region monitoring backed by a headless expo-task-manager task, so reminders still fire when the app is closed. Notifications are local, delivered through expo-notifications with action buttons you can act on from the lock screen. Everything persists offline in AsyncStorage, with a NetInfo-driven banner when connectivity drops. React Navigation 7 handles the stack and tabs, and the minimalist UI is set in Archivo and Bricolage.",
-    },
-    {
-      title: "Problems while building",
-      text: "The hardest part was background reliability. iOS only allows 20 monitored regions per app, so ECHO caps active reminders at 20 and syncs geofences from a single source of truth — using a dirty-check signature and a serialized promise chain to kill race conditions when reminders change in quick succession. The background task has to hold its promise open until all side effects complete, or the OS tears it down mid-work. Search was another fight: reverse-geocoding every keystroke was slow and rate-limited, so ECHO debounces forward geocoding while you type and only reverse-geocodes the pin you actually tap. All of it had to balance accuracy against battery, which meant testing on real devices instead of trusting the simulator.",
-    },
-  ],
-  result:
-    "ECHO ships the full loop: search or drop a pin, set a radius from 50 to 1,000 meters, pick an icon and color, and get an actionable notification on arrival — with repeat reminders, saved locations, and an offline-first store underneath. Reminders stay accurate in the background without draining the battery, everything works with no connection, and the codebase is covered by unit tests with TypeScript checking. It's the app I reach for when I need to remember something where, not when — and the foundation is clean enough to grow on.",
-  links: [
-    { label: "Echo", url: "#" },
-    { label: "GitHub", url: "#" },
-  ],
-},
-
-  {
-    id: "gpz",
+    id: "melo",
     title: "Projects",
-    sub: "GPZ",
-    year: 2025,
+    sub: "Melo",
+    oneLiner: "Private real-time chat with automatic language translation",
+    year: 2026,
     builtBy: "Samuel Isah",
-    website: "Coming Soon",
-    heroImage: "/projects/gpz-splash.png",
+    website: "https://github.com/drealdumore/melo",
+    heroImage: "/projects/melo-splash.png",
     intro:
-      "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
+      "A mobile-first, two-person chat app where you write in your language and the other person reads in theirs — no copy-pasting required. Every message is translated automatically before delivery while keeping the original one tap away.",
     introText:
-      "My main struggle as a student was not knowing what GPA I needed next semester to reach my target, or whether I was really on track. That problem inspired GPZ — an app that calculates targets, tracks progress, and turns GPA tracking into a motivating experience.",
+      "Friends and family who speak different languages often struggle with real-time conversation. Existing translation tools interrupt the flow, and most messaging apps treat translation as an afterthought. Melo eliminates that tax: you type in your language, they receive it in theirs, and communication flows naturally.",
     gallery: [
-      { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
-      { src: "/projects/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
-      { src: "/projects/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
-      { src: "/projects/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
-      { src: "/projects/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
-      { src: "/projects/gpz-home.png", alt: "GPZ Home" },
+      { src: "/projects/melo-splash.png", alt: "Melo Splash Screen" },
+      { src: "/projects/melo-onboarding.png", alt: "Melo Onboarding" },
+      { src: "/projects/melo-onboarding-name.png", alt: "Enter Your Name" },
+      { src: "/projects/melo-onboarding-avatar.png", alt: "Choose Avatar" },
+      { src: "/projects/melo-onboarding-language.png", alt: "Language Selection" },
+      { src: "/projects/melo-connect.png", alt: "Melo Chats List" },
+      { src: "/projects/melo-id.png", alt: "Melo ID Card" },
+      { src: "/projects/melo-chat.png", alt: "Melo Chat View" },
+      { src: "/projects/melo-friend-sheet.png", alt: "Add a Friend" },
+      { src: "/projects/melo-profile-sheet-1.png", alt: "Profile Settings" },
     ],
     challenge:
-      "Traditional GPA calculators only give you numbers for past semesters. But students need more: guidance for the future. The challenge was building a system that could project, calculate, and show what’s required to reach academic goals.",
+      "Chat apps don't translate natively, and translation apps aren't conversation tools. The challenge was building an instant optimistic UI where translation happens asynchronously without stuttering the chat, handling translation endpoint rate limits and silent failures, and creating frictionless identity without passwords.",
     actions: [
       {
-        title: "Building from a personal problem",
-        text: "I built GPZ because I often wondered: 'What GPA do I need next semester to hit my target?' and 'Am I on track, or slipping behind?' This app turned that frustration into a solution not just for me, but for other students.",
+        title: "Identity without traditional auth",
+        text: "Generated a unique device UUID and human-readable Melo ID stored in AsyncStorage and synced to Supabase. Room IDs are computed deterministically from participant ID pairs so both users always connect to the exact same room with zero signup friction.",
       },
       {
-        title: "Technical foundations",
-        text: "GPZ is built with React Native + Expo (TypeScript) for cross-platform support. It uses expo-router for navigation, AsyncStorage for offline persistence, react-query for data management, and custom hooks/context for GPA logic. Constants handle multiple grading systems (4.0 & 5.0), themes, and motivational quotes.",
+        title: "Optimistic UI + translation pipeline",
+        text: "Messages appear instantly on the sender's screen. The translation pipeline handles per-message status tracking (pending → translated / skipped / failed + retry) over Supabase Realtime, with in-flight request coalescing, bounded in-memory caching, and echo detection.",
       },
       {
-        title: "Challenges while building",
-        text: "The hardest part was designing the GPA target logic — calculating what grades are needed across credits and semesters. Supporting both 4.0 and 5.0 grading systems also required careful utility design. Finally, balancing detailed data entry with a clean, modern UI took several iterations.",
+        title: "Realtime architecture across 11 languages",
+        text: "Built with Expo Router and Supabase Realtime channels handling live typing indicators, presence, and read receipts. Supports 11 languages including English, Spanish, French, German, Simplified Chinese, Arabic, Portuguese, Hindi, Swahili, Yoruba, and Korean.",
       },
     ],
     result:
-      "GPZ makes GPA tracking practical and motivating. It shows students where they stand, what they need to do next semester, and keeps them inspired with progress tracking and quotes. The app is offline-first, lightweight, and designed for clarity and control.",
+      "Building Melo taught me how to architect real-time systems, design resilient optimistic update pipelines, and handle the practical trade-offs of client-side translation. It turns cross-language communication into ordinary, effortless texting.",
+    technologies: [
+      "Expo SDK 57",
+      "React Native",
+      "Expo Router",
+      "TypeScript",
+      "Supabase (Postgres + Realtime)",
+      "AsyncStorage",
+    ],
     links: [
-      { label: "GPZ", url: "#" },
-      { label: "GitHub", url: "#" },
+      { label: "GitHub", url: "https://github.com/drealdumore/melo" },
     ],
   },
 
+  // 2. The SupaDevs
   {
-    id: "ratecheck",
+    id: "thesupadevs",
     title: "Projects",
-    sub: "Rate Check",
+    sub: "The SupaDevs",
+    oneLiner: "Curated developer resources platform with AI-powered categorization",
     year: 2025,
+    builtBy: "Samuel Isah",
+    website: "https://thesupadevs.vercel.app",
+    heroImage: "/projects/thesupadevs.webp",
+    intro:
+      "An open-source library of 1000+ developer tools, UI components, APIs, and resources — designed so developers can find quality assets quickly without endless searching.",
+    introText:
+      "Developers waste significant time hunting for good tools, components, and learning resources across scattered websites, Twitter threads, and newsletters. The SupaDevs provides a fast, centralized hub with smart search, automatic metadata scraping, and AI categorization.",
+    gallery: [
+      { src: "/projects/thesupadevs.webp", alt: "The SupaDevs Platform" },
+    ],
+    challenge:
+      "Curating and structuring thousands of dynamic resources, scraping rich metadata from diverse and malformed websites reliably, and delivering an instant admin dashboard with bulk editing while preserving top-tier Core Web Vitals.",
+    actions: [
+      {
+        title: "Intelligent metadata scraper",
+        text: "Built a custom multi-source fallback scraper (OG image → Twitter card → first body image → favicon fallback) with in-memory caching, rate-limit handling, and retry logic to extract metadata cleanly.",
+      },
+      {
+        title: "AI batch categorization with Groq & Llama",
+        text: "Integrated Groq AI (Llama 3.1 8B) for batch classifying submitted developer resources into hierarchical categories with confidence scoring and automated tagging.",
+      },
+      {
+        title: "High-performance Next.js 15 & Admin suite",
+        text: "Architected with ISR (5-minute revalidation), dynamic SEO metadata, Open Graph generation, Core Web Vitals monitoring, and a comprehensive admin suite for bulk approval, link validation, and categorization.",
+      },
+    ],
+    result:
+      "The SupaDevs serves as a fast, community-driven resource hub. Building it deepened my expertise in production-grade Next.js caching, server-side scraping pipelines, and practical LLM integration for automated content workflows.",
+    technologies: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Supabase",
+      "Framer Motion",
+      "Groq AI",
+      "Cheerio + Axios",
+      "ISR",
+    ],
+    links: [
+      { label: "Live Demo", url: "https://thesupadevs.vercel.app" },
+      { label: "GitHub", url: "https://github.com/drealdumore/thesupadevs" },
+    ],
+  },
+
+  // 3. VaultX
+  {
+    id: "vaultx",
+    title: "Projects",
+    sub: "VaultX",
+    oneLiner: "Cross-device temporary sharing API",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    website: "https://github.com/drealdumore/vaultx",
+    heroImage: "/projects/metascraper.png",
+    intro:
+      "A lightweight, production-ready REST API for sharing text, code snippets, and links across devices — with expiry, view limits, password protection, and burn-after-reading.",
+    introText:
+      "Copying something on your phone and needing it on your laptop (or sharing a temporary secret) is still awkwardly friction-heavy. Most solutions require accounts or permanent storage. VaultX is a zero-account, secure sharing service built for speed and privacy.",
+    gallery: [],
+    challenge:
+      "Architecting a backend service that operates with near-zero latency, persists data safely across server restarts, and gracefully tolerates Redis outages without dropping clip retrieval for active users.",
+    actions: [
+      {
+        title: "Hybrid in-memory + Redis storage architecture",
+        text: "Designed a memory-first architecture where reads check in-memory cache first, fall back to Redis for persistence, and restore to memory on demand. Built automatic failover so the API runs seamlessly even without Redis.",
+      },
+      {
+        title: "Production security & rate limiting",
+        text: "Implemented Helmet security headers, password hashing with bcrypt, strict input validation, content size caps (100 KB), CORS configuration, and automatic background cleanup jobs for expired secrets.",
+      },
+      {
+        title: "Consistent API design & monitoring",
+        text: "Structured uniform JSON error responses, detailed health check endpoints, clip access analytics, and token generation via crypto.",
+      },
+    ],
+    result:
+      "VaultX reinforced my focus on API reliability, graceful degradation, and the vital difference between a local prototype and a resilient, production-ready backend service.",
+    technologies: [
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "Redis (Upstash)",
+      "Helmet",
+      "Zod",
+      "crypto",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/drealdumore/vaultx" },
+    ],
+  },
+
+  // 4. Chop Iron
+  {
+    id: "iron",
+    title: "Projects",
+    sub: "Chop Iron",
+    oneLiner: "Offline-first fitness / bodybuilding progress tracker",
+    year: 2026,
     builtBy: "Samuel Isah",
     website: "Coming Soon",
     heroImage: "/projects/chop-iron-splash.png",
     intro:
-      "Rate Check is an app that allows users to convert and compare both forex currencies and cryptocurrencies in real time, with continuously updated prices.",
+      "An offline-first bodybuilding tracker with a Nigerian voice. Logs workouts from a built-in library of 53 exercises, detects personal records across four categories — weight, reps, volume, and estimated 1RM — and turns training history into streaks, achievements, and analytics. No account, no server, no subscription: everything lives in a local SQLite database.",
     introText:
-      "With constant market fluctuations, I wanted a tool that not only converts forex currencies but also includes crypto rates. Rate Check provides live price updates and comparison features to help users make informed decisions quickly.",
+      "I built Chop Iron because every fitness app I tried felt bloated with paywalls or completely sterile. None had the motivating voice I needed when lifting: 'No dull. Go chop iron.' From there, every decision answered one question: does this help me log a set faster and train harder?",
     gallery: [
-      { src: "/projects/chop-iron-splash.png", alt: "Rate Check Dashboard" },
-      { src: "/projects/chop-iron-splash.png", alt: "Currency and Crypto Conversion" },
-      { src: "/projects/chop-iron-splash.png", alt: "Rate Comparison View" },
+      { src: "/projects/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
+      { src: "/projects/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
+      { src: "/projects/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
+      { src: "/projects/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
+      { src: "/projects/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
+      { src: "/projects/chop-iron-index.png", alt: "Home screen with streak calendar" },
+      { src: "/projects/chop-iron-calender.png", alt: "Calendar View" },
+      { src: "/projects/chop-iron-log.png", alt: "Logging a workout" },
+      { src: "/projects/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
+      { src: "/projects/chop-iron-progress.png", alt: "Progress screen with charts" },
+      { src: "/projects/chop-iron-achievement.png", alt: "Achievements and milestones" },
+      { src: "/projects/chop-iron-profile.png", alt: "Profile and stats overview" },
     ],
     challenge:
-      "The challenge was integrating multiple APIs to provide accurate, real-time rates for both traditional currencies and a growing list of cryptocurrencies, while maintaining a smooth user experience.",
+      "The real challenge was making the data honest while keeping logging frictionless. Streaks must count consecutive distinct days; personal records must accurately evaluate four metric types chronologically; achievements must re-lock if a workout is deleted; and the entire UI must stay at 60fps offline.",
     actions: [
       {
-        title: "Unified Forex & Crypto conversion",
-        text: "Built a seamless converter that handles both traditional forex currencies and cryptocurrencies, bridging the gap between two fast-moving markets in a single app.",
+        title: "Local-first SQLite database architecture",
+        text: "Built on React Native and Expo with a single Zustand store over 12 transactional SQLite tables in WAL mode. Zero network dependency ensures instantaneous logging anywhere.",
       },
       {
-        title: "Real-time price updates",
-        text: "Implemented WebSocket connections and polling strategies to keep exchange rates and crypto prices updated live without performance lag.",
+        title: "Custom PR calculation & streak engine",
+        text: "Engineered a chronological workout history evaluator that computes Epley 1RM, volume, and rep PRs. Includes dynamic achievement threshold evaluation and streak calculation.",
       },
       {
-        title: "Comparison tools",
-        text: "Designed a feature allowing users to compare conversion rates side-by-side, helping users spot the best rates instantly.",
+        title: "Spring-physics motion & local personality",
+        text: "Built bottom trays, fluid gestures, and spring-loaded animations using Reanimated 4 tokens, dark-mode styling tuned for gym environments, and fluent pidgin copy that gives the app an authentic training voice.",
       },
     ],
     result:
-      "Rate Check empowers users with real-time, reliable data for both forex and crypto markets. The app’s clean interface and live updates make currency and crypto conversion simple and trustworthy.",
+      "Chop Iron became my proving ground for offline-first architecture, local data integrity, gesture interaction design, and creating software with distinctive personality.",
+    technologies: [
+      "React Native",
+      "Expo SDK",
+      "TypeScript",
+      "SQLite",
+      "Zustand",
+      "Reanimated",
+      "expo-router",
+    ],
     links: [
-      { label: "Rate Check", url: "#" },
-      { label: "GitHub", url: "#" },
+      { label: "Chop Iron", url: "#" },
     ],
   },
 
-  //sage
+  // 5. Crystalglowxquisite
+  {
+    id: "crystalglowxquisite",
+    title: "Projects",
+    sub: "Crystalglowxquisite",
+    oneLiner: "Full e-commerce storefront for a premium skincare brand",
+    year: 2026,
+    builtBy: "Samuel Isah",
+    website: "https://crystalglowxquisite.com/",
+    heroImage: "/projects/crystalglowxquisite.png",
+    intro:
+      "Full e-commerce storefront for a premium skincare brand — custom checkout, product catalog, and analytics built from the ground up.",
+    introText:
+      "Designed and developed a modern luxury shopping experience tailored to skincare enthusiasts, complete with fluid cart drawer interactions, detailed product categorization, and high-performance page loads.",
+    gallery: [
+      { src: "/projects/crystalglowxquisite.png", alt: "Crystalglowxquisite Storefront" },
+    ],
+    challenge:
+      "Creating an elegant, ultra-responsive storefront that maintains sub-second page transitions, smooth cart state synchronization, and reliable checkout handling across mobile and desktop.",
+    actions: [
+      {
+        title: "Custom catalog & checkout flow",
+        text: "Built dynamic product filtering, responsive image galleries, real-time cart state management, and an intuitive checkout experience.",
+      },
+      {
+        title: "Performance & analytics integration",
+        text: "Integrated PostHog for detailed user interaction analytics, Neon PostgreSQL for resilient data storage, and edge caching on Vercel.",
+      },
+    ],
+    result:
+      "Launched a polished e-commerce platform that boosted brand credibility and streamlined customer purchasing flow.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React",
+      "Posthog",
+      "Neon",
+      "Vercel",
+    ],
+    links: [
+      { label: "Live Store", url: "https://crystalglowxquisite.com/" },
+    ],
+  },
+
+  // 6. Knowledge Master
+  {
+    id: "knowledgemaster",
+    title: "Projects",
+    sub: "Knowledge Master",
+    oneLiner: "E-commerce platform for a nationwide bookstore",
+    year: 2026,
+    builtBy: "Samuel Isah",
+    website: "https://www.knowledgemaster.com.ng/",
+    heroImage: "/projects/knowledgemaster.webp",
+    intro:
+      "E-commerce platform for a bookstore (textbooks, novels, educational resources, school bookfair services) with nationwide delivery information.",
+    introText:
+      "Built a comprehensive digital bookstore serving students, educators, and schools across Nigeria with an extensive educational catalog and transparent shipping logistics.",
+    gallery: [
+      { src: "/projects/knowledgemaster.webp", alt: "Knowledge Master Bookstore" },
+    ],
+    challenge:
+      "Structuring extensive inventory across varying school curriculums, handling multifaceted nationwide delivery tiers, and ensuring fast browsing on mobile devices.",
+    actions: [
+      {
+        title: "Curriculum & resource categorization",
+        text: "Designed intuitive category drill-downs, search indexing, and promotional bookfair service booking workflows.",
+      },
+      {
+        title: "Modern Next.js web platform",
+        text: "Engineered with Next.js, TypeScript, and Tailwind CSS with AI-assisted product recommendation utilities.",
+      },
+    ],
+    result:
+      "Delivered a dependable educational bookstore platform supporting nationwide deliveries and school partnership requests.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "React",
+      "Neon",
+      "Posthog",
+      "AI-integration",
+    ],
+    links: [
+      { label: "Live Website", url: "https://www.knowledgemaster.com.ng/" },
+    ],
+  },
+
+  // 7. DropEnv
+  {
+    id: "dropenv",
+    title: "Projects",
+    sub: "DropEnv",
+    oneLiner: "Encrypted environment-variable sharing tool",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    website: "https://github.com/drealdumore/dropenv",
+    heroImage: "/projects/metascraper.png",
+    intro:
+      "Encrypted environment-variable sharing tool — a practical utility for safely passing sensitive config between teammates or devices.",
+    introText:
+      "Sharing `.env` secrets over Slack or chat apps exposes keys to plain text storage. DropEnv encrypts config in the client browser with ephemeral zero-knowledge storage.",
+    gallery: [],
+    challenge:
+      "Guaranteeing zero-knowledge security so that server logs never receive unencrypted credentials, combined with one-time view and expiration triggers.",
+    actions: [
+      {
+        title: "Client-side AES encryption",
+        text: "Implemented Web Crypto API AES-GCM encryption where secret keys reside exclusively in the URL hash fragment.",
+      },
+      {
+        title: "Ephemeral lifecycle & auto-destruction",
+        text: "Designed self-destructing links with configurable timers and view counters.",
+      },
+    ],
+    result:
+      "Built a secure, friction-free secret sharing tool for developer teams.",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Web Crypto API",
+      "Tailwind CSS",
+    ],
+    links: [
+      { label: "GitHub", url: "https://github.com/drealdumore/dropenv" },
+    ],
+  },
+
+  // 8. SAGE
   {
     id: "sage",
     title: "Projects",
     sub: "SAGE",
+    oneLiner: "AI strategist for difficult conversations mapped against The 48 Laws of Power",
     year: 2026,
     builtBy: "Samuel Isah",
     website: "Coming Soon",
     heroImage: "/projects/sage-splash.png",
     intro:
-      "SAGE is an AI strategist for the conversations you're dreading. Describe the situation — a raise you need to ask for, a message you've been avoiding for a week — and it reads the power dynamics, maps what's happening against The 48 Laws of Power, and drafts your reply in eight different tones.",
+      "SAGE is an AI strategist for the conversations you're dreading. Describe the situation — a raise you need to ask for, a conflict you've been avoiding — and it reads the power dynamics, maps what's happening against The 48 Laws of Power, and drafts your reply in eight different tones.",
     introText:
-      "I didn't build Sage to ship an AI app. I built it because I kept losing the same kind of conversation: I'd send the honest, emotionally transparent message, then find out later what the other person was actually doing. Then I read The 48 Laws of Power and realised I'd been running Law 3 — Conceal Your Intentions — exactly backwards, over and over. I wanted something that checked my decisions against the laws before I hit send. Not a chatbot that agrees with me. A strategist that tells me I'm about to be outplayed.",
+      "I didn't build Sage to ship an AI app. I built it because I kept losing the same kind of conversation. I wanted something that checked my decisions against the laws before I hit send — not a chatbot that agrees with me, but a strategist that highlights hidden leverage.",
     gallery: [
       { src: "/projects/sage-splash.png", alt: "Sage Splash Screen" },
       { src: "/projects/sage-index.png", alt: "Sage Analysis View" },
@@ -492,154 +698,130 @@ export const MOBILE_APPS = [
       { src: "/projects/sage-conversation-1.png", alt: "Sage Conversation Simulator" },
       { src: "/projects/sage-conversation-1b.png", alt: "Sage Conversation Detail" },
       { src: "/projects/sage-conversation-2.png", alt: "Sage Conversation Follow-up" },
-      { src: "/projects/sage-conversation-load.png", alt: "Loading Analysis" },
       { src: "/projects/sage-learn.png", alt: "Sage Learn — The 48 Laws" },
-      { src: "/projects/sage-learn-load.png", alt: "Learn Loading State" },
       { src: "/projects/sage-library.png", alt: "Sage Library" },
-      { src: "/projects/sage-delete.png", alt: "Delete Confirmation" },
     ],
     challenge:
-      "Advice is cheap and generic. The hard part is getting a model to reason about one specific, messy human situation and return something structured enough to act on — hidden motivations, who holds leverage, which laws apply, what to actually say — without hallucinating the parts a reader can go and check.",
+      "Getting an LLM to reason about messy human situations and return reliable structured outputs without hallucinating laws or breaking under API rate limits.",
     actions: [
       {
-        title: "Building for myself",
-        text: "Sage is the only project I've built that already had a user before it had a name — me. I was running my own conversations through it while it was still a text field and a prompt. Every feature exists because I needed it mid-argument: the live coach that reads the other person's message, the simulator that rehearses how they might respond, the journal that reviews how a conversation actually went.",
+        title: "API key rotation & quota recovery",
+        text: "Built an 8-key rotation mechanism with dead-slot tracking and quota lockouts to prevent rate limit downtime on free tiers.",
       },
       {
-        title: "Technical foundations",
-        text: "React Native + Expo with Expo Router and TypeScript. The AI layer talks to Gemini over raw REST instead of an SDK, wrapped in an 8-key rotation system that marks dead keys and locks the quota window when the free tier runs dry. Voice input runs two transcription engines — Gemini's native audio understanding first, Groq Whisper as failover — picked specifically so a rate limit on one doesn't take the whole feature down. Every AI response is validated against a zod schema where each field degrades to a safe default rather than failing the payload. State persists to AsyncStorage behind a single context provider. The UI is a custom dark design system — my own colour, spacing, type and motion tokens — built on Reanimated and Gesture Handler.",
+        title: "Dual voice engine & schema validation",
+        text: "Implemented dual voice transcription (Gemini audio + Groq Whisper failover) and strict Zod validation with safe schema fallbacks.",
       },
       {
-        title: "Problems while building",
-        text: "Three shaped the app. First, free-tier rate limits are constant, and one API key made the product feel broken — so I built key rotation with dead-slot tracking and a 60-second quota lock that stops requests entirely instead of hammering the API and digging the hole deeper. Second, the model kept citing the wrong laws, numbering its own list instead of the book, so I stopped trusting it: every law title is scored against a keyword index of all 48, and a weak match falls back to a generic label rather than asserting a false citation. Third, structured output fails partially, not completely — so every schema field carries a default, and one missing array collapses a section instead of blanking the screen.",
+        title: "Custom dark motion design system",
+        text: "Created a bespoke design system with Reanimated, Gesture Handler, and tactile haptic feedback.",
       },
     ],
     result:
-      "Sage turned a book I'd read twice into something I use before every hard conversation. It's taught me more about shipping AI than anything else I've built: the prompt is the easy part, and everything that makes it feel reliable — key rotation, schema defaults, citation checks — is ordinary engineering wrapped around an unreliable component. It's also the most personal thing I've made, because the first user was me.",
+      "Sage turned theoretical strategy into a practical daily tool, proving how defensive engineering and schema validation make AI systems genuinely reliable.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Gemini API",
+      "Groq Whisper",
+      "Zod",
+      "Reanimated",
+    ],
     links: [
       { label: "Sage", url: "#" },
-      { label: "GitHub", url: "#" },
     ],
   },
 
-  //meelo
-{
-  id: "melo",
-  title: "Projects",
-  sub: "MELO",
-  year: 2026,
-  builtBy: "Samuel Isah",
-  website: "Coming Soon",
-  heroImage: "/projects/melo-splash.png",
-  intro:
-    "Melo is a private, two-person chat that translates every message before it is delivered. You write in your language, the person you're talking to reads in theirs — one room, two languages, no copy-pasting.",
-  introText:
-    "Talking to someone who reads in a different language meant the same dance for every message: type, copy, switch apps, paste, translate, switch back — and hope the tone survived. That tax on every single message is why I built Melo: a room for two where the translation happens before delivery, and each side just sees the conversation in their own language.",
-  gallery: [
-    { src: "/projects/melo-splash.png", alt: "Melo Splash Screen" },
-    { src: "/projects/melo-onboarding.png", alt: "Melo Onboarding" },
-    { src: "/projects/melo-onboarding-name.png", alt: "Enter Your Name" },
-    { src: "/projects/melo-onboarding-avatar.png", alt: "Choose Avatar" },
-    { src: "/projects/melo-onboarding-language.png", alt: "Language Selection" },
-    { src: "/projects/melo-connect.png", alt: "Melo Chats List" },
-    { src: "/projects/melo-id.png", alt: "Melo ID Card" },
-    { src: "/projects/melo-chat-id.png", alt: "Chat ID View" },
-    { src: "/projects/melo-chat-id-2.png", alt: "Chat ID Detail" },
-    { src: "/projects/melo-chat.png", alt: "Melo Chat View" },
-    { src: "/projects/melo-friend-sheet.png", alt: "Add a Friend" },
-    { src: "/projects/melo-profile-sheet-1.png", alt: "Profile Settings 1" },
-    { src: "/projects/melo-profile-sheet-2.png", alt: "Profile Settings 2" },
-    { src: "/projects/melo-profile-sheet-3.png", alt: "Profile Settings 3" },
-  ],
-  challenge:
-    "Chat apps don't translate, and translators aren't conversations. Doing it manually meant leaving the chat, losing context, and guessing at tone — and both people paid that cost on every message.",
-  actions: [
-    {
-      title: "Building for myself",
-      text: "Melo exists for conversations I was actually having — the kind where the other person reads in a different language. The goal was a chat that feels as light as texting a close friend, where translation is invisible infrastructure instead of an extra step.",
-    },
-    {
-      title: "Technical foundations",
-      text: "Melo is built with React Native + Expo (Expo Router) and Supabase. Every send runs a translate-before-insert pipeline: the message is translated into the recipient's reading language, with per-message status tracking, a bounded cache, in-flight request coalescing, timeouts, and retries. Three realtime channels drive messages, typing, presence, and the chats list, and rooms are derived from the two Melo IDs so both people always land in the same room.",
-    },
-    {
-      title: "Problems while building",
-      text: "The translation endpoint lies: on failure it returns your input unchanged, so success and failure look identical — and it rate-limits with an instant 429. I built an echo detector so messages that needed no translation don't get reported as errors, plus a retry pause and request coalescing so a chatty app doesn't throttle itself. Identity was its own puzzle: there are no passwords, and the Melo ID is the only credential, so it had to be readable out loud, collision-safe, and recoverable on a new phone.",
-    },
-  ],
-  result:
-    "Melo makes cross-language conversation feel like ordinary texting: you write in your language, they read in theirs, and the translation disappears into the delivery. It's realtime, lightweight, and built with scalability in mind for future features.",
-  links: [
-    { label: "Melo", url: "#" },
-    { label: "GitHub", url: "#" },
-  ],
-},
+  // 9. GPZ
+  {
+    id: "gpz",
+    title: "Projects",
+    sub: "GPZ",
+    oneLiner: "GPA tracker and academic planner for students",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    website: "Coming Soon",
+    heroImage: "/projects/gpz-splash.png",
+    intro:
+      "GPZ is a GPA tracker and academic planner for students. It helps students manage semesters, courses, grades, and set academic goals with a modern, intuitive interface.",
+    introText:
+      "Students often struggle to know what GPA they need next semester to hit their target degree classification. GPZ turns GPA projection into a clear, actionable roadmap.",
+    gallery: [
+      { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
+      { src: "/projects/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
+      { src: "/projects/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
+      { src: "/projects/gpz-home.png", alt: "GPZ Home" },
+    ],
+    challenge:
+      "Supporting multiple grading systems (4.0 and 5.0 scales) with forward-projecting target algorithms while keeping data entry fast and completely offline.",
+    actions: [
+      {
+        title: "Academic target calculation logic",
+        text: "Engineered algorithms that calculate exact credit requirements and required grades across upcoming semesters.",
+      },
+      {
+        title: "Offline-first React Native architecture",
+        text: "Built with Expo, TypeScript, AsyncStorage persistence, and React Query data caching.",
+      },
+    ],
+    result:
+      "Created an intuitive academic assistant that helps students take control of their grades.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "AsyncStorage",
+      "react-query",
+    ],
+    links: [
+      { label: "GPZ", url: "#" },
+    ],
+  },
 
-//iron
-{
-  id: "iron",
-  title: "Projects",
-  sub: "CHOP IRON",
-  year: 2026,
-  builtBy: "Samuel Isah",
-  website: "Coming Soon",
-  heroImage: "/projects/chop-iron-splash.png",
-  intro:
-    "Chop Iron is an offline-first bodybuilding tracker with a Nigerian voice. It logs workouts from a built-in library of 53 exercises, detects personal records across four categories — weight, reps, volume and estimated 1RM — and turns training history into streaks, achievements, progress photos and analytics. No account, no server, no subscription: everything lives in a local SQLite database, wrapped in a spring-physics motion system and written in fluent pidgin. No dull. Go chop iron.",
-  introText:
-    "I built Chop Iron because every fitness app I tried felt like it was built for someone else. Some were bloated with social feeds and paywalls; the rest were sterile — perfectly functional, completely soulless. None of them sounded like the voice I actually need when training is the last thing on my mind. So the voice became the starting point: 'No dull. Go chop iron.' From there, every decision answered one question — does this help me log a set faster and train harder? I designed around the only moment that matters: standing in the gym, phone in one hand, picking up exactly where the last session ended.",
-  gallery: [
-    { src: "/projects/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
-    { src: "/projects/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
-    { src: "/projects/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
-    { src: "/projects/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
-    { src: "/projects/chop-iron-onboarding-3.png", alt: "Onboarding Step 3" },
-    { src: "/projects/chop-iron-onboarding-4.png", alt: "Onboarding Step 4" },
-    { src: "/projects/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
-    { src: "/projects/chop-iron-onboarding-goal.png", alt: "Goal Selection" },
-    { src: "/projects/chop-iron-index.png", alt: "Home screen with streak calendar" },
-    { src: "/projects/chop-iron-index-2.png", alt: "Home screen alternative view" },
-    { src: "/projects/chop-iron-calender.png", alt: "Calendar View" },
-    { src: "/projects/chop-iron-calender-2.png", alt: "Calendar Detail" },
-    { src: "/projects/chop-iron-log.png", alt: "Logging a workout" },
-    { src: "/projects/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
-    { src: "/projects/chop-iron-exercise-push.png", alt: "Push Exercises" },
-    { src: "/projects/chop-iron-exercise-shoulder.png", alt: "Shoulder Exercises" },
-    { src: "/projects/chop-iron-exercise-detail.png", alt: "Exercise Detail" },
-    { src: "/projects/chop-iron-exercise-detail-image.png", alt: "Exercise with Image" },
-    { src: "/projects/chop-iron-progress.png", alt: "Progress screen with charts" },
-    { src: "/projects/chop-iron-achievement.png", alt: "Achievements and milestones" },
-    { src: "/projects/chop-iron-profile.png", alt: "Profile and stats overview" },
-    { src: "/projects/chop-iron-profile-1.png", alt: "Profile Detail 1" },
-    { src: "/projects/chop-iron-profile-2.png", alt: "Profile Detail 2" },
-    { src: "/projects/chop-iron-profile-3.png", alt: "Profile Detail 3" },
-    { src: "/projects/chop-iron-profile-avatar.png", alt: "Avatar Selection" },
-    { src: "/projects/chop-iron-edit-profile.png", alt: "Edit Profile" },
-  ],
-  challenge:
-    "On the surface, fitness tracking is a solved problem — every app can log a set. The real challenge was making the data underneath honest while keeping the surface effortless. A streak can't count workouts; it has to count consecutive distinct calendar days, and survive the awkward cases — training twice in a day, or missing today but training yesterday. A personal record isn't one number: a single set can break a weight PR, a rep PR, a volume PR or an estimated-1RM PR, and detecting them correctly means replaying every workout in chronological order. Achievements can't just unlock — when a workout is deleted, the app re-checks every threshold and re-locks what no longer qualifies. And all of it had to feel alive: offline-first on SQLite, 60fps motion, with a personality that makes the app a training partner, not a spreadsheet.",
-  actions: [
-    {
-      title: "Building for myself",
-      text: "Chop Iron wasn't a portfolio exercise — it was the app I wanted on my own phone, which gave every decision a strict test: does this help me log a set faster or train harder? The pidgin copy isn't decoration; 'Omo, you never log anything o' hits different from 'No workouts found.' The dark theme and yellow accent were tuned for a dim gym, bottom trays put every action under my thumb, and even the animations have jobs — spring-loaded progress bars and streak celebrations exist to make progress feel physical. Using my own app every session became the review that matters most.",
-    },
-    {
-      title: "Technical foundations",
-      text: "Built with Expo 54 and React Native 0.81 in TypeScript, with Expo Router handling file-based navigation across four tabs and a stack of modal flows. State lives in a single Zustand store over an expo-sqlite database — 12 tables covering workouts, sets, PR history, photos, achievements and profile, written transactionally in WAL mode. The PR engine is custom: it walks workout history chronologically, computes Epley estimated 1RM and tracks four record types per exercise, with bodyweight sets handled as a special case. The 53-exercise library ships with illustrations that download once and cache offline to the device. All motion runs on Reanimated 4 shared values — trays, sliding pills, directional tab transitions — with Lottie powering the streak flame and confetti marking celebrations.",
-    },
-    {
-      title: "Problems while building",
-      text: "iOS only presents one native modal at a time, and I learned that the hard way: an achievement popup and a PR toast firing after the same workout meant one silently swallowed the other. The fix was a queue — achievements, streak celebrations and PR toasts all funnel through pending state in the store and present in strict order. Gestures fought animations too, with tray dismissals and spring entrances competing for the same transform until I separated what the gesture owns from what the animation owns. I even built a shared-element morph — the workout icon flying into the detail screen — then removed it when the complexity outweighed the payoff. Adding weight data is easy; making streaks and achievements honest is not. That's where trust in a tracker is won or lost.",
-    },
-  ],
-  result:
-    "Chop Iron is the app I actually open every session — the only review that matters. Five days, from empty repo to complete offline-first product: full workout logging, a four-type PR engine, streak celebrations, achievements with a sense of humour, progress photos, weight and muscle-group analytics, and a motion system that makes the whole thing feel alive. Beyond the features, it became my proving ground for offline-first architecture, gesture design and building software with a voice — lessons I carry into everything I build next.",
-  links: [
-    { label: "Iron", url: "#" },
-    { label: "GitHub", url: "#" },
-  ],
-}
-
+  // 10. ECHO
+  {
+    id: "echo",
+    title: "Projects",
+    sub: "ECHO",
+    oneLiner: "Location-first offline reminder app",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    website: "Coming Soon",
+    heroImage: "/projects/echo-hero.png",
+    intro:
+      "ECHO is a minimalist, offline-first reminder app that fires based on where you are, not just when. Drop a pin, set a radius, and ECHO nudges you the moment you arrive — no account, no signal required.",
+    introText:
+      "Time-based reminders fail when tasks depend on location. ECHO triggers notifications right when you arrive at specific geofences without draining battery.",
+    gallery: [
+      { src: "/projects/echo-hero.png", alt: "Echo Map View" },
+      { src: "/projects/echo-square.png", alt: "Echo Reminder List" },
+    ],
+    challenge:
+      "Reliable background geofencing within OS battery conservation restrictions and region limits.",
+    actions: [
+      {
+        title: "Headless task manager & local geofencing",
+        text: "Configured background region monitoring with expo-task-manager and local notifications.",
+      },
+      {
+        title: "Offline location caching",
+        text: "Optimized forward and reverse geocoding with debounced caching to reduce battery consumption.",
+      },
+    ],
+    result:
+      "Delivered a dependable location reminder app that operates seamlessly without cloud dependencies.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "expo-location",
+      "expo-task-manager",
+      "TypeScript",
+    ],
+    links: [
+      { label: "Echo", url: "#" },
+    ],
+  },
 ];
 
 export const WEB_TOOLS = [
@@ -648,47 +830,74 @@ export const WEB_TOOLS = [
     projectLink: "https://deps-janitor.vercel.app/",
     image: "/projects/deps-janitor.png",
     projectDescription:
-      "Finds and removes unused npm dependencies to keep JavaScript and Node.js projects clean and lightweight.",
+      "Interactive CLI that finds and safely removes unused npm dependencies to keep projects clean and lightweight.",
     projectType: "CLI & Web Tool",
     projectDate: "2025-12-28",
-    technologies: ["Node.js", "Next.js", "Tailwind CSS", "shadcn/ui"],
+    technologies: ["Node.js", "Next.js", "Tailwind CSS", "TypeScript"],
   },
   {
     projectName: "Peekr",
     projectLink: "https://peekrr.vercel.app/",
-    image: "/projects/peekrr.png",
+    image: "/projects/peekrr.webp",
     projectDescription:
-      "Generates responsive website snapshots so developers and designers can preview how a site looks across different screen sizes.",
+      "Responsive website snapshot and screenshot generator for previewing designs across viewport sizes.",
     projectType: "Developer Utility",
     projectDate: "2025-12-15",
-    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "shadcn/ui"],
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
   },
   {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app/",
-    image: "/projects/metascraper.png",
+    image: "/projects/meta-scrapper.webp",
     projectDescription:
-      "Extracts website metadata including titles, descriptions, Open Graph images, and other useful page information.",
+      "Extract title, description, OG image, and metadata from any URL instantly.",
     projectType: "Web Utility",
     projectDate: "2025-11-20",
-    technologies: ["Next.js", "Tailwind CSS", "Lucide React", "shadcn/ui"],
+    technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Lucide React"],
   },
   {
     projectName: "VaultX",
     projectLink: "https://github.com/drealdumore/vaultx/",
     projectDescription:
-      "A lightweight API for sharing text, links, and notes across devices with expiry times, view limits, and burn-after-reading support.",
+      "Lightweight API for sharing text, code snippets, and links across devices with expiry and burn-after-reading.",
     projectType: "REST API",
-    projectDate: "",
-    technologies: ["TypeScript", "Node.js"],
+    projectDate: "2025-12-01",
+    technologies: ["TypeScript", "Node.js", "Express", "Redis"],
   },
   {
     projectName: "Falso API",
     projectLink: "https://github.com/drealdumore/falso-api/",
     projectDescription:
-      "A TypeScript mock data generator that turns user-defined interfaces into realistic JSON for API testing and database seeding.",
+      "TypeScript mock data generator that turns interfaces into realistic JSON for testing and database seeding.",
     projectType: "Developer Tool",
-    projectDate: "",
+    projectDate: "2025-03-01",
     technologies: ["TypeScript", "Node.js"],
+  },
+  {
+    projectName: "DropEnv",
+    projectLink: "https://github.com/drealdumore/dropenv/",
+    projectDescription:
+      "Encrypted environment-variable sharing tool for safely passing sensitive config between teammates or devices.",
+    projectType: "Security Utility",
+    projectDate: "2025-08-01",
+    technologies: ["TypeScript", "Next.js", "Web Crypto API"],
+  },
+  {
+    projectName: "Split Cost / Percentage Calculator",
+    projectLink: "https://percentage-calcc.vercel.app/",
+    projectDescription:
+      "Real-time cost splitter and percentage calculator for group expense sharing.",
+    projectType: "Web Utility",
+    projectDate: "2024-03-01",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "number-flow"],
+  },
+  {
+    projectName: "Writing Pad",
+    projectLink: "",
+    projectDescription:
+      "Minimal distraction-free writing pad for focused drafting.",
+    projectType: "Utility",
+    projectDate: "2025-05-05",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
   },
 ];

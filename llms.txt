@@ -59,3 +59,4 @@ Currently exploring: AI integration in apps, advanced React Native patterns, per
 ---
 
 *This portfolio represents my journey as a developer and the problems I'm passionate about solving. Every project here started with a real need I experienced or observed.*
+

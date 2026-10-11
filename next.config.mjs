@@ -4,8 +4,6 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   experimental: {
-    inlineCss: true,
-    reactCompiler: true,
     optimizePackageImports: ["lenis", "framer-motion"],
   },
   compiler: {

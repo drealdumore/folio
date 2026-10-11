@@ -1,10 +1,10 @@
 export const bioData = {
   name: "Samuel Isah",
   avatar: "https://github.com/drealdumore.png",
-  jobTitle: "Full Stack Software Developer",
+  jobTitle: "Full-Stack Web & Mobile Developer",
   website: "https://drealdumore.vercel.app",
   about:
-    "Experienced Software Developer with expertise in fullstack development, SEO and UX design. Committed to delivering high-quality projects and collaborating effectively in team environments.",
+    "I’m a self-taught full-stack and mobile developer based in Nigeria with 4+ years of experience building and shipping products end-to-end. My strongest work sits at the intersection of mobile (React Native + Expo), modern web (Next.js + TypeScript), and backend systems (Node.js, Supabase, PostgreSQL, Redis). I enjoy solving practical problems — real-time communication, offline-first experiences, developer tooling, and automation.",
   contacts: [
     {
       label: "Email",
@@ -20,6 +20,11 @@ export const bioData = {
       label: "LinkedIn",
       value: "samuel-isah",
       href: "https://www.linkedin.com/in/samuel-isah",
+    },
+    {
+      label: "X",
+      value: "drealdumore",
+      href: "https://x.com/drealdumore",
     },
   ],
 };
@@ -39,25 +44,25 @@ export const profileData = [
     title: "Work Experience",
     items: [
       {
-        title: "Lead Mobile Developer at Campus Buddy",
+        title: "Mobile Developer at Campus Buddy",
         subTitle: "Remote",
-        date: "2025 - Present",
+        date: "January 2025 - Present",
         description:
-          "Took charge of building and launching Campus Buddy’s mobile app from scratch: planning features, crafting the UI, wiring up APIs, and making sure it runs smooth on every device. Worked hand-in-hand with the team and stakeholders to turn ideas into a clean, fast, and user-friendly app students actually love to use.",
+          "Building and maintaining mobile features with React Native / Expo. Owned core features end-to-end, optimizing app performance, offline reliability, and screen transitions.",
       },
       {
-        title: "Front End Developer at NodePair",
+        title: "Front-end Developer at NodePair",
         subTitle: "Remote",
-        date: "2024",
+        date: "April 2024 - Present",
         description:
-          "Enhancing the company's visual identity by refining the user interface and developing versatile, sustainable user experiences.",
+          "Developing and iterating on front-end interfaces and user-facing features with modern React, TypeScript, and responsive component design.",
       },
       {
-        title: "Freelance Full Stack Developer",
+        title: "Full-Stack Developer at Freelance",
         subTitle: "Remote",
-        date: "2021 - 2024",
+        date: "April 2021 - 2024",
         description:
-          "Designed and implemented scalable web applications by integrating front-end interfaces with back-end services, ensuring seamless user experiences and robust functionality.",
+          "Delivered complete web and mobile solutions for clients, including e-commerce storefronts, business websites, and custom tools. Handled everything from UI implementation and backend APIs to deployment and iteration based on feedback.",
       },
     ],
   },
@@ -69,18 +74,16 @@ export const profileData = [
         title: "Bachelor's Degree in Statistics",
         subTitle: "Ahmadu Bello University, Nigeria",
         date: "Present",
-        // date: "2024 - Present",
-        description: "Specialize on statistical analysis and data science.",
+        description: "Specializing in statistical analysis and data science.",
       },
       {
         title: "Diploma Degree in Computer Science",
         subTitle: "Petroleum Training Institute Nigeria",
         date: "2021",
-        // date: "2021 - 2023",
-        description: "Specialize in software development.",
+        description: "Specializing in software development.",
       },
     ],
   },
 ];
 
-export const LOCATION = "Kaduna, Nigeria";
+export const LOCATION = "Kaduna, Nigeria (Open to relocation & visa sponsorship)";
