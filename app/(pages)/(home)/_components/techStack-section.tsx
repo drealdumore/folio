@@ -108,7 +108,7 @@ export default function StackTable() {
             key={category}
             className="flex flex-col md:flex-row items-start gap-4 md:gap-8 py-[14px] first:pt-0"
           >
-            <span className="text-[14px] text-zinc-500 w-24 shrink-0 pt-[1px]">
+            <span className="text-[14px] text-zinc-500 md:w-24 shrink-0 pt-[1px]">
               {category}
             </span>
             <div className="flex flex-wrap gap-x-5 gap-y-2">

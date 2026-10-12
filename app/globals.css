@@ -570,7 +570,7 @@ textarea {
 
 @font-face {
   font-family: "Grotesque";
-  src: url("/fonts/Grotesque.woff2") format("woff2");
+  src: url("/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
