@@ -478,9 +478,8 @@ const Header = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-[13px] text-emerald-500 font-medium">
-                  {PROFILE.availability}
-                  {/* {PROFILE.availability} · {PROFILE.locationNote} */}
-                </span>
+                {PROFILE.availability}
+              </span>
               </div>
 
               <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-zinc-400">
