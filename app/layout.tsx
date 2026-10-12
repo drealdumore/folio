@@ -1,5 +1,4 @@
-import { sharedMetadata } from "@/constants/shared-meta";
-import { SOCIALS } from "@/constants/social-profiles";
+import { META as sharedMetadata, PROFILE, SOCIALS } from "@/content/site";
 
 import React from "react";
 import type { Metadata } from "next";
@@ -24,8 +23,8 @@ export default async function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Samuel Isah",
-              alternateName: "drealdumore",
+              name: PROFILE.name,
+              alternateName: PROFILE.handle,
               url: sharedMetadata.url,
               image: `${sharedMetadata.url}/api/og`,
               sameAs: [
@@ -33,7 +32,7 @@ export default async function RootLayout({
                 `https://github.com/${SOCIALS.github.username}`,
                 `https://linkedin.com/in/${SOCIALS.linkedin.username}`,
               ],
-              jobTitle: "Senior Full-Stack Developer",
+              jobTitle: PROFILE.role,
               worksFor: {
                 "@type": "Organization",
                 name: "Freelance",
@@ -62,7 +61,7 @@ export default async function RootLayout({
               url: sharedMetadata.url,
               author: {
                 "@type": "Person",
-                name: "Samuel Isah",
+                name: PROFILE.name,
               },
               description: sharedMetadata.description,
             }),

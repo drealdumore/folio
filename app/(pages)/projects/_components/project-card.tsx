@@ -88,17 +88,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <article className="flex w-full flex-col items-start gap-[18px]">
         {/* Media: First Mobile Row Preview or Desktop Image */}
         {mobileScreens && mobileScreens.length > 0 ? (
-          <Link
-            href={projectLink}
-            target={isExternal ? "_blank" : undefined}
-            rel={isExternal ? "noopener noreferrer" : undefined}
-            className="w-full block transition-transform duration-500 hover:scale-[1.01]"
-          >
+          <div className="w-full block">
             <MobileRow
               images={mobileScreens.slice(0, 3)}
               alt={projectName ?? "Mobile App"}
             />
-          </Link>
+          </div>
         ) : image ? (
           <Link
             href={projectLink}

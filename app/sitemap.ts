@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next'
-import { MOBILE_APPS, SHORTPROJECTS } from '@/content/projects'
+import { META, MOBILE_APPS, SHORTPROJECTS } from '@/content/site'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://drealdumore.vercel.app'
+  const baseUrl = META.url
   
   // Static routes
   const routes = [

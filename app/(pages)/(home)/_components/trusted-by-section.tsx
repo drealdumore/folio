@@ -1,18 +1,12 @@
 "use client";
 
+import { SECTIONS, TEAMS } from "@/content/site";
 import { SectionHeading } from "@/components/design/SectionHeading";
-
-const TEAMS = [
-  "Campus Buddy",
-  "NodePair",
-  "Knowledge Master",
-  "Crystalglowxquisite",
-];
 
 export default function TrustedBySection() {
   return (
     <section className="flex flex-col">
-      <SectionHeading title="Teams & brands I've worked with" />
+      <SectionHeading title={SECTIONS.teams.title} />
 
       <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
         {TEAMS.map((name) => (

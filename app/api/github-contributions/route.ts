@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
+import { PROFILE } from "@/content/site";
 
 export const revalidate = 43200; // 12h
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
-  const username = searchParams.get("username") ?? "drealdumore";
+  const username = searchParams.get("username") ?? PROFILE.handle;
 
   try {
     const res = await fetch(

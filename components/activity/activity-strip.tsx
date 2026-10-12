@@ -1,5 +1,6 @@
 // components/activity-strip.tsx  (server component: fetches, then hands data to the client)
 import ActivityStripClient, { type Day } from "./activity-strip-client";
+import { PROFILE } from "@/content/site";
 
 async function getContributions(username: string): Promise<Day[] | null> {
   try {
@@ -16,7 +17,7 @@ async function getContributions(username: string): Promise<Day[] | null> {
 }
 
 export default async function ActivityStrip({
-  username = "drealdumore",
+  username = PROFILE.handle,
   inline = false,
 }: {
   username?: string;

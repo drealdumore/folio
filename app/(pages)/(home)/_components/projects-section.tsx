@@ -6,95 +6,13 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import { MobileRow } from "@/components/design/project-ui";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
-
-interface Project {
-  name: string;
-  highlight?: string;
-  highlightLabel?: string;
-  image?: string;
-  mobileScreens?: string[];
-  href: string;
-  descriptionBefore?: string;
-  descriptionAfter?: string;
-  tags?: string[];
-  year?: string;
-}
-
-const FEATURED_PROJECTS: Project[] = [
-  {
-    name: "Melo",
-    descriptionBefore: "Private one-to-one chat for people who speak different languages — ",
-    highlight: "translates messages before delivery",
-    descriptionAfter: " with original text one tap away. Real-time typing, presence, and multi-language support.",
-    mobileScreens: [
-      "/projects/melo-onboarding.png",
-      "/projects/melo-chat.png",
-      "/projects/melo-id.png",
-    ],
-    href: "/projects/melo",
-    tags: ["React Native", "Expo", "WebSocket", "AI"],
-    year: "2025",
-  },
-  {
-    name: "Chop Iron",
-    descriptionBefore: "Offline-first bodybuilding progress tracker with a Nigerian voice — ",
-    highlight: "logs 53 exercises and detects personal records",
-    descriptionAfter: " across 4 categories with local SQLite and streaks.",
-    mobileScreens: [
-      "/projects/chop-iron-splash-2.png",
-      "/projects/chop-iron-index.png",
-      "/projects/chop-iron-achievement.png",
-    ],
-    href: "/projects/iron",
-    tags: ["React Native", "SQLite", "Offline-first"],
-    year: "2025",
-  },
-  {
-    name: "VaultX",
-    descriptionBefore: "Lightweight, production-ready REST API for sharing text, code snippets, and links across devices — ",
-    highlight: "hybrid in-memory + Redis storage",
-    descriptionAfter: " with password protection, view limits, and burn-after-reading.",
-    href: "/projects/vaultx",
-    tags: ["Node.js", "Redis", "REST API"],
-    year: "2024",
-  },
-  {
-    name: "The SupaDevs",
-    descriptionBefore: "Open-source curated library of 1000+ developer tools, UI components, and APIs — ",
-    highlight: "smart search, AI categorization & scraping",
-    descriptionAfter: " with admin dashboard and Core Web Vitals monitoring.",
-    image: "/projects/thesupadevs.webp",
-    href: "/projects/thesupadevs",
-    tags: ["Next.js", "Supabase", "AI", "PostgreSQL"],
-    year: "2024",
-  },
-  {
-    name: "Knowledge Master",
-    descriptionBefore: "E-commerce platform for a bookstore, featuring textbooks, novels, ",
-    highlight: "educational resources, and school bookfair services",
-    descriptionAfter: ", with nationwide delivery information.",
-    image: "/projects/knowledgemaster.webp",
-    href: "https://www.knowledgemaster.com.ng/",
-    tags: ["Next.js", "E-commerce"],
-    year: "2023",
-  },
-  {
-    name: "Crystalglowxquisite",
-    descriptionBefore: "Premium skincare boutique — built a full e-commerce storefront with ",
-    highlight: "custom checkout and analytics",
-    descriptionAfter: " from the ground up.",
-    image: "/projects/crystalglowxquisite.png",
-    href: "https://crystalglowxquisite.com/",
-    tags: ["Next.js", "E-commerce", "Analytics"],
-    year: "2023",
-  },
-];
+import { FEATURED_GROUPS, SECTIONS, type FeaturedProject } from "@/content/site";
 
 const ProjectArticle = ({
   project,
   index,
 }: {
-  project: Project;
+  project: FeaturedProject;
   index: number;
 }) => {
   const [opacity, setOpacity] = useState(index === 0 ? 1 : 0.35);
@@ -242,13 +160,31 @@ const ProjectArticle = ({
 };
 
 const Projects = () => {
+  let globalIndex = -1;
+
   return (
     <section className="flex flex-col">
-      <SectionHeading title="Projects" />
+      <SectionHeading title={SECTIONS.projects.title} />
 
-      <div className="flex flex-col gap-[30px] md:gap-[50px]">
-        {FEATURED_PROJECTS.map((project, i) => (
-          <ProjectArticle key={project.name} project={project} index={i} />
+      <div className="flex flex-col gap-12 md:gap-16">
+        {FEATURED_GROUPS.map((group) => (
+          <div key={group.label} className="flex flex-col">
+            <h3 className="mb-6 text-[13px] font-medium uppercase tracking-[0.08em] text-zinc-500">
+              {group.label}
+            </h3>
+            <div className="flex flex-col gap-[30px] md:gap-[50px]">
+              {group.projects.map((project) => {
+                globalIndex += 1;
+                return (
+                  <ProjectArticle
+                    key={project.name}
+                    project={project}
+                    index={globalIndex}
+                  />
+                );
+              })}
+            </div>
+          </div>
         ))}
       </div>
 
@@ -257,7 +193,7 @@ const Projects = () => {
           href="/projects"
           className="text-[13px] text-zinc-500 hover:text-zinc-300 transition-all duration-300 flex items-center gap-1.5 group"
         >
-          View all projects
+          {SECTIONS.projects.viewAll}
           
 <svg className="transition-transform duration-200 group-hover:translate-x-0.5" width="14"
             height="14"

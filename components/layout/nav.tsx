@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Morph } from "@/components/morph";
+import { NAV, PROFILE } from "@/content/site";
 
 import { SvgFilter } from "@/components/design/svgFilter";
 
@@ -11,8 +12,8 @@ const AppNav = () => {
 
   const links = [
     {
-      link: "/files/samuel-isah-resume.pdf",
-      title: "Resume",
+      link: NAV.resume.href,
+      title: NAV.resume.label,
       external: true,
     },
   ];
@@ -29,13 +30,13 @@ const AppNav = () => {
               <Link
                 href="/"
                 className="flex flex-col group focus:outline-none rounded"
-                aria-label="Samuel Isah - Home"
+                aria-label={`${PROFILE.name} - Home`}
               >
                 <span className="block font-medium text-[14px] text-zinc-300 transition-colors duration-200 group-hover:text-white">
-                  Samuel Isah
+                  {PROFILE.name}
                 </span>
                 <span className="hidden md:block text-[12px] text-zinc-600 transition-colors duration-200 group-hover:text-zinc-500">
-                  Full-stack developer
+                  {PROFILE.shortRole}
                 </span>
               </Link>
             </div>

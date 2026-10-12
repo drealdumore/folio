@@ -6,13 +6,9 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import { useWebHaptics } from "web-haptics/react";
 import { cn } from "@/lib/utils";
-import { SOCIALS } from "@/constants/social-profiles";
+import { NAV, MOBILE_TABS, PROFILE, SOCIALS } from "@/content/site";
 
-const TABS = [
-  { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "Resume", href: "/files/samuel-isah-resume.pdf", external: true },
-];
+const TABS = MOBILE_TABS;
 
 export default function MobileNav() {
   const pathname = usePathname();
@@ -35,7 +31,7 @@ export default function MobileNav() {
   }, [trigger]);
 
   const copyEmail = useCallback(() => {
-    const email = "samuelisah234@gmail.com";
+    const email = PROFILE.email;
     void navigator.clipboard?.writeText(email);
     setCopied(true);
     try {
@@ -87,7 +83,7 @@ export default function MobileNav() {
 
       <MotionConfig transition={{ type: "spring", stiffness: 450, damping: 35, mass: 0.8 }}>
         <nav className="fixed inset-x-0 bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] z-50 flex justify-center md:hidden pointer-events-none px-4">
-          <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-white/10 bg-[#141414]/90 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl">
+          <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-white/10 bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150 glass-nav">
             {TABS.map((tab) => {
               const active = !tab.external && isActive(tab.href);
               return (
@@ -130,7 +126,7 @@ export default function MobileNav() {
             <div ref={containerRef} className="relative flex items-center">
               {/* Invisible footprint spacer inside the pill */}
               <div className="h-[29px] px-3.5 text-[13px] font-medium invisible select-none pointer-events-none flex items-center">
-                Contact
+                {NAV.contact}
               </div>
 
               <motion.div
@@ -159,7 +155,7 @@ export default function MobileNav() {
                       className="p-1"
                     >
                       <div className="flex items-center justify-between mb-3 px-1">
-                        <span className="text-[13px] font-semibold text-zinc-200">Contact</span>
+                        <span className="text-[13px] font-semibold text-zinc-200">{NAV.contact}</span>
                         <button
                           type="button"
                           onClick={close}
@@ -212,7 +208,7 @@ export default function MobileNav() {
                               <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
                               <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
                             </svg>
-                            <span>X (Twitter)</span>
+                            <span>{SOCIALS.twitter.label}</span>
                           </a>
 
                           <a
@@ -240,7 +236,7 @@ export default function MobileNav() {
                               <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
                               <path d="M9 18c-4.51 2-5-2-7-2" />
                             </svg>
-                            <span>GitHub</span>
+                            <span>{SOCIALS.github.label}</span>
                           </a>
 
                           <a
@@ -269,7 +265,7 @@ export default function MobileNav() {
                               <rect width="4" height="12" x="2" y="9" />
                               <circle cx="4" cy="4" r="2" />
                             </svg>
-                            <span>LinkedIn</span>
+                            <span>{SOCIALS.linkedin.label}</span>
                           </a>
                         </div>
 
@@ -316,7 +312,7 @@ export default function MobileNav() {
                               </motion.span>
                             </AnimatePresence>
                             <span className="block text-[10px] text-zinc-500 truncate mt-0.5">
-                              samuelisah234@gmail.com
+                              {PROFILE.email}
                             </span>
                           </div>
                         </button>
@@ -339,7 +335,7 @@ export default function MobileNav() {
                       transition={{ duration: 0.1 }}
                       className="h-full px-3.5 py-1.5 text-[13px] font-medium leading-none text-zinc-400 hover:text-white whitespace-nowrap flex items-center cursor-pointer select-none rounded-full"
                     >
-                      Contact
+                      {NAV.contact}
                     </motion.button>
                   )}
                 </AnimatePresence>

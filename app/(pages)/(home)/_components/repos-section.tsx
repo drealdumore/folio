@@ -1,5 +1,5 @@
 import React from "react";
-import { REPOS } from "@/content/repos";
+import { REPOS, SECTIONS } from "@/content/site";
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import Link from "next/link";
@@ -8,8 +8,8 @@ const Repos = () => {
   return (
     <section className="flex flex-col">
       <SectionHeading
-        title="Highlighted Repos"
-        subtitle="A curated list of notable repositories"
+        title={SECTIONS.repos.title}
+        subtitle={SECTIONS.repos.subtitle}
       />
 
       <AnimatedSection delay={0.2}>
@@ -45,7 +45,7 @@ const Repos = () => {
       <AnimatedSection delay={0.4}>
         <div className="w-full flex justify-end">
           <span className="tag text-text-normal">
-            Stay tuned for more stuff!
+            {SECTIONS.repos.stayTuned}
           </span>
         </div>
       </AnimatedSection>

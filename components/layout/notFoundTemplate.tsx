@@ -4,6 +4,7 @@ import React from "react";
 
 
 import Motion from "@/motion/y-motion";
+import { NOT_FOUND } from "@/content/site";
 
 const NotFoundTemplate = () => {
   return (
@@ -12,15 +13,9 @@ const NotFoundTemplate = () => {
         <div className="mx-auto">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <h2 className="font-heading text-text-heading">404—Not found</h2>
-              <p className="text-text-normal">
-                You just hit a route that doesn’t exist.
-              </p>
-              <p className="text-text-normal">
-                Another thing not found anymore is HTML comments. Websites are
-                smaller, at what cost? A discarded thought, an unfinished
-                design, an alternate phrasing, a note to self.
-              </p>
+              <h2 className="font-heading text-text-heading">{NOT_FOUND.heading}</h2>
+              <p className="text-text-normal">{NOT_FOUND.line1}</p>
+              <p className="text-text-normal">{NOT_FOUND.line2}</p>
             </div>
           </div>
         </div>

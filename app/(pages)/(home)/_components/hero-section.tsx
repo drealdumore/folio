@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { useWebHaptics } from "web-haptics/react";
+import { HERO_CTAS, PROFILE, SOCIALS } from "@/content/site";
 
 import { motion } from "framer-motion";
 
@@ -269,8 +270,8 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
             <Link
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href="https://twitter.com/drealdumore"
-              aria-label="Follow Samuel Isah on Twitter"
+              href={SOCIALS.twitter.url}
+              aria-label={`${PROFILE.name} on ${SOCIALS.twitter.label}`}
             >
               <svg
                 stroke="currentColor"
@@ -290,8 +291,8 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
             <Link
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href="https://www.linkedin.com/in/samuel-isah"
-              aria-label="Connect with Samuel Isah on LinkedIn"
+              href={SOCIALS.linkedin.url}
+              aria-label={`${PROFILE.name} on ${SOCIALS.linkedin.label}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -317,8 +318,8 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
             <Link
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href="https://github.com/drealdumore"
-              aria-label="View Samuel Isah's GitHub profile"
+              href={SOCIALS.github.url}
+              aria-label={`${PROFILE.name} on ${SOCIALS.github.label}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -343,8 +344,8 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
             <Link
               target="_blank"
               className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href="mailto:samuelisah234@gmail.com"
-              aria-label="Send an email to Samuel Isah"
+              href={`mailto:${PROFILE.email}`}
+              aria-label={`Email ${PROFILE.name}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -380,8 +381,8 @@ const Header = () => {
   const [showTip, setShowTip] = useState(false);
   const tipTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const avatarSrc = "/avatars/avatar-smile.png";
-  const avatarAlt = "Samuel Isah's profile photo";
+  const avatarSrc = PROFILE.avatar;
+  const avatarAlt = PROFILE.avatarAlt;
 
   const dismissAvatarTip = useCallback(() => {
     if (tipTimerRef.current) {
@@ -451,7 +452,7 @@ const Header = () => {
                 <span className="group relative inline-flex">
                   <Image
                     src={avatarSrc}
-                    className="tw-shadow aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px]"
+                    className="aspect-square rounded-full bg-[#dcdcdc] transition-transform duration-500 hover:scale-105 size-[55px] object-cover grayscale"
                     alt={avatarAlt}
                     height={100}
                     width={100}
@@ -464,11 +465,11 @@ const Header = () => {
 
           <AnimatedSection delay={0.4}>
             <div className="flex flex-col items-start gap-2">
-              <h1 className="font-display text-[22px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
-                Hey, I&apos;m Samuel Isah.
+              <h1 className="font-display text-[24px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
+                {PROFILE.greeting}
               </h1>
-              <h2 className="text-[15px] leading-[1.4] tracking-[-0.01em] text-zinc-400 lg:text-[16px] font-normal">
-                Full-Stack Web &amp; Mobile Developer
+              <h2 className="text-[15px] leading-[1.4] tracking-[-0.01em] text-zinc-400 lg:text-[16px] font-normal p-0">
+                {PROFILE.role}
               </h2>
 
               <div className="mt-1 flex flex-wrap items-center gap-1.5">
@@ -477,14 +478,13 @@ const Header = () => {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
                 <span className="text-[13px] text-emerald-500 font-medium">
-                  Open to work · Relocation &amp; visa sponsorship friendly
+                  {PROFILE.availability}
+                  {/* {PROFILE.availability} · {PROFILE.locationNote} */}
                 </span>
               </div>
 
               <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-zinc-400">
-                I build real-time mobile apps, offline-first tools, and
-                production APIs — taking products from idea to shipped with
-                TypeScript, React Native, Next.js, and Node.js.
+                {PROFILE.tagline}
               </p>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
@@ -493,7 +493,7 @@ const Header = () => {
                   onClick={() => trigger("light")}
                   className="group inline-flex items-center gap-2 rounded-full bg-text-heading px-5 py-2.5 text-[14px] font-medium text-[#1a1a1a] transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 >
-                  View my work
+                  {HERO_CTAS.primary}
                   <svg
                     width="14"
                     height="14"
@@ -513,21 +513,13 @@ const Header = () => {
                 </Link>
 
                 <Link
-                  href="mailto:samuelisah234@gmail.com"
-                  onClick={() => trigger("light")}
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white"
-                >
-                  Get in touch
-                </Link>
-
-                <Link
-                  href="/files/samuel-isah-resume.pdf"
+                  href={PROFILE.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trigger("light")}
                   className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white"
                 >
-                  Resume
+                  {HERO_CTAS.resume}
                 </Link>
               </div>
             </div>

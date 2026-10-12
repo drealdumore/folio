@@ -9,6 +9,7 @@ import {
 } from "@/hooks/useScrollAnimation";
 import { useWebHaptics } from "web-haptics/react";
 import { SectionHeading } from "@/components/design/SectionHeading";
+import { CONTACT_FORM, SECTIONS } from "@/content/site";
 
 export default function ContactSection() {
   const { trigger } = useWebHaptics();
@@ -36,8 +37,8 @@ export default function ContactSection() {
           username: formData.name,
           email: formData.email,
           message: formData.message,
-          service: "General Inquiry",
-          organization: "",
+          service: CONTACT_FORM.service,
+          organization: CONTACT_FORM.organization,
         }),
       });
 
@@ -55,7 +56,7 @@ export default function ContactSection() {
       }
     } catch (error) {
       console.error("Error sending message:", error);
-      setError("Failed to send message. Please try again.");
+      setError(CONTACT_FORM.error);
     } finally {
       setLoading(false);
     }
@@ -72,11 +73,10 @@ export default function ContactSection() {
 
   return (
     <section className="flex flex-col">
-      <SectionHeading title="Contact" />
+      <SectionHeading title={SECTIONS.contact.title} />
 
       <p className="text-zinc-400 mb-6 text-[15px] leading-relaxed">
-        Hiring, or just want to talk? I&apos;m open to full-time roles and happy
-        to hear from you.
+        {CONTACT_FORM.intro}
       </p>
 
       <form
@@ -86,10 +86,10 @@ export default function ContactSection() {
       >
         <div className="grid md:flex gap-4 w-full">
           <div className="flex-1 flex flex-col gap-2">
-            <label htmlFor="name" className="sr-only">Your Name</label>
+            <label htmlFor="name" className="sr-only">{CONTACT_FORM.namePlaceholder}</label>
             <input
               id="name"
-              placeholder="Your Name"
+              placeholder={CONTACT_FORM.namePlaceholder}
               required
               suppressHydrationWarning
               className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
@@ -100,10 +100,10 @@ export default function ContactSection() {
             />
           </div>
           <div className="flex-1 flex flex-col gap-2">
-            <label htmlFor="email" className="sr-only">Email Address</label>
+            <label htmlFor="email" className="sr-only">{CONTACT_FORM.emailPlaceholder}</label>
             <input
               id="email"
-              placeholder="Where can I reach you back?"
+              placeholder={CONTACT_FORM.emailPlaceholder}
               required
               suppressHydrationWarning
               className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 backdrop-blur-sm"
@@ -116,11 +116,11 @@ export default function ContactSection() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="message" className="sr-only">Your Message</label>
+          <label htmlFor="message" className="sr-only">{CONTACT_FORM.messagePlaceholder}</label>
           <textarea
             id="message"
             name="message"
-            placeholder="Your words, my inbox."
+            placeholder={CONTACT_FORM.messagePlaceholder}
             required
             suppressHydrationWarning
             className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-6 py-3.5 text-[15px] text-text-normal placeholder-text-normal/50 h-36 outline-none focus:ring-2 focus:ring-text-heading/20 focus:border-text-heading/30 transition-all duration-300 resize-none backdrop-blur-sm"
@@ -146,7 +146,7 @@ export default function ContactSection() {
                   transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full"
                 />
-                Sending...
+                {CONTACT_FORM.sending}
               </>
             ) : success ? (
               <>
@@ -166,10 +166,10 @@ export default function ContactSection() {
                     d="M5 13l4 4L19 7"
                   />
                 </motion.svg>
-                Message Sent!
+                {CONTACT_FORM.sent}
               </>
             ) : (
-              <>Send Message</>
+              <>{CONTACT_FORM.submit}</>
             )}
           </span>
         </motion.button>

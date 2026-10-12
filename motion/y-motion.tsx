@@ -1,5 +1,7 @@
+"use client";
+
 import React from "react";
-import { AnimatedSection } from "../components/layout/animated-section";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Motion = ({
   children,
@@ -8,7 +10,14 @@ const Motion = ({
 }>) => {
   return (
     <>
-      <AnimatedSection isContainer>{children}</AnimatedSection>
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 15 }}
+        transition={{ delay: 0.2 }}
+      >
+        <AnimatePresence>{children}</AnimatePresence>
+      </motion.div>
     </>
   );
 };

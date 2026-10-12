@@ -26,12 +26,23 @@ export const Morph: React.FC<MorphProps> = ({
   const [fraction, setFraction] = useState(0)
   const [isStarted, setIsStarted] = useState(false)
   const [isInView, setIsInView] = useState(false)
+  const [reduceMotion, setReduceMotion] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const indexRef = useRef(0)
 
   const isEntrance = childrenArray.length === 1
 
   useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setReduceMotion(true)
+      setIsStarted(true)
+      setFraction(1)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -58,7 +69,7 @@ export const Morph: React.FC<MorphProps> = ({
   }, [isInView, delay])
 
   useEffect(() => {
-    if (!isStarted || childrenArray.length === 0) return
+    if (!isStarted || reduceMotion || childrenArray.length === 0) return
 
     let animationFrameId: number
     let startTime = performance.now()
@@ -93,11 +104,14 @@ export const Morph: React.FC<MorphProps> = ({
 
     animationFrameId = requestAnimationFrame(animate)
     return () => cancelAnimationFrame(animationFrameId)
-  }, [isStarted, isEntrance, childrenArray.length, duration, cooldown])
+  }, [isStarted, isEntrance, childrenArray.length, duration, cooldown, reduceMotion])
 
   const nextIndex = (index + 1) % childrenArray.length
 
   const getStyles = (f: number, isCurrent: boolean) => {
+    if (reduceMotion) {
+      return { opacity: "100%", filter: "none" }
+    }
     const val = isCurrent ? 1 - f : f
     const opacity = Math.pow(val, 0.4)
     const blur = Math.min(8 / val - 8, 100)

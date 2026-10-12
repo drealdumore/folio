@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next'
+import { META } from '@/content/site'
  
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name:  "Samuel Isah | Full-Stack Web and Mobile Developer",
-    short_name: 'Samuel Isah',
-    description: 'Full-Stack Web and Mobile Developer creating innovative applications with React, Next.js, React Native, and TypeScript. Explore my portfolio of web apps, mobile projects, and development tools.',
+    name:  META.title,
+    short_name: META.name,
+    description: META.description,
     start_url: '/',
     display: 'standalone',
     orientation: 'portrait-primary',

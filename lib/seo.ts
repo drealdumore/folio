@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { sharedMetadata } from '@/constants/shared-meta'
+import { META as sharedMetadata } from '@/content/site'
 
 export function generateMetadata({
   title,
@@ -74,8 +74,8 @@ export function generateProjectStructuredData(project: {
     programmingLanguage: project.technologies,
     author: {
       '@type': 'Person',
-      name: 'Samuel Isah',
-      url: 'https://drealdumore.vercel.app',
+      name: sharedMetadata.name,
+      url: sharedMetadata.url,
     },
     dateCreated: project.dateCreated,
     offers: {

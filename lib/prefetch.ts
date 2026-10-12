@@ -1,4 +1,4 @@
-import { MOBILE_APPS } from "@/content/projects";
+import { MOBILE_APPS } from "@/content/site";
 
 const prefetchedCache = new Set<string>();
 

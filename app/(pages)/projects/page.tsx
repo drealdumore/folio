@@ -1,11 +1,10 @@
 import { Metadata } from "next";
-import Projects from "./_components/projects";
-import ShortProjects from "./_components/short-projects";
+import ProjectExplorer from "./_components/project-explorer";
+import { SECTIONS } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Projects — Samuel Isah",
-  description:
-    "A collection of web and mobile projects by Samuel Isah. React, Next.js, and React Native applications focused on user experience and technical craft.",
+  title: SECTIONS.projectsPage.title,
+  description: SECTIONS.projectsPage.description,
 };
 
 const ProjectsPage = () => {
@@ -14,16 +13,14 @@ const ProjectsPage = () => {
       {/* Page heading */}
       <div className="flex flex-col gap-2">
         <h1 className="text-[22px] font-semibold leading-[1.3] tracking-[-0.02em] text-white lg:text-[28px]">
-          Projects
+          {SECTIONS.projectsPage.title}
         </h1>
         <p className="text-[15px] text-zinc-500 leading-relaxed">
-          Things I&apos;ve built — web apps, mobile apps, and everything in
-          between.
+          {SECTIONS.projectsPage.subtitle}
         </p>
       </div>
 
-      <Projects />
-      <ShortProjects />
+      <ProjectExplorer />
     </div>
   );
 };

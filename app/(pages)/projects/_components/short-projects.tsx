@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { WEB_TOOLS } from "@/content/projects";
+import { SECTIONS, WEB_TOOLS } from "@/content/site";
 
-const ShortProjects = () => {
+const ShortProjects = ({ tools = WEB_TOOLS }: { tools?: typeof WEB_TOOLS }) => {
   return (
     <div className="flex flex-col mt-16">
       <h2 className="text-[13px] font-medium tracking-[0.08em] uppercase text-zinc-500 mb-4">
-        Side projects
+        {SECTIONS.sideProjects.title}
       </h2>
 
       <div className="flex flex-col">
-        {WEB_TOOLS.map((tool, i) => {
+        {tools.map((tool, i) => {
           const isExternal = tool.projectLink.startsWith("http");
           const isLive = !!tool.projectLink;
 

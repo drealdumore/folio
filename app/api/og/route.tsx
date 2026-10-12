@@ -2,13 +2,14 @@
 export const runtime = "edge";
 
 import { ImageResponse } from "next/og";
+import { META, PROFILE } from "@/content/site";
 
 type sizeType = {
   width: number;
   height: number;
 };
 
-const alt = "Samuel Isah | Full-Stack Developer & Mobile App Creator";
+const alt = `${PROFILE.name} | Full-Stack Developer & Mobile App Creator`;
 
 const size: sizeType = {
   width: 1200,
@@ -69,7 +70,7 @@ export async function GET() {
                 fontWeight: 600,
               }}
             >
-              Samuel Isah
+              {PROFILE.name}
             </span>
           </div>
           <span
@@ -79,8 +80,7 @@ export async function GET() {
               marginTop: "1rem",
             }}
           >
-            Full-Stack Web and Mobile Developer creating innovative applications
-            with modern technologies.
+            {META.og}
           </span>
         </span>
       </div>

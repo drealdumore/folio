@@ -2,19 +2,20 @@
 
 import React from "react";
 import Link from "next/link";
+import { PROFILE, SOCIALS } from "@/content/site";
 
 const AppFooter = () => {
   return (
     <footer className="py-8 border-t border-t-zinc-800/60">
       <div className="max-w-screen-lx mx-auto flex items-center justify-between">
         <p className="text-[13px] text-zinc-600">
-          Samuel Isah · {new Date().getFullYear()}
+          {PROFILE.name} · {new Date().getFullYear()}
         </p>
         <div className="flex gap-5">
           <Link
             target="_blank"
             className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
-            href="https://twitter.com/drealdumore"
+            href={SOCIALS.twitter.url}
             aria-label="Twitter"
           >
             <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="16" width="16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -24,7 +25,7 @@ const AppFooter = () => {
           <Link
             target="_blank"
             className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
-            href="https://www.linkedin.com/in/samuel-isah"
+            href={SOCIALS.linkedin.url}
             aria-label="LinkedIn"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
@@ -37,7 +38,7 @@ const AppFooter = () => {
           <Link
             target="_blank"
             className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
-            href="https://github.com/drealdumore"
+            href={SOCIALS.github.url}
             aria-label="GitHub"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -48,7 +49,7 @@ const AppFooter = () => {
           <Link
             target="_blank"
             className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
-            href="mailto:samuelisah234@gmail.com"
+            href={`mailto:${PROFILE.email}`}
             aria-label="Email"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

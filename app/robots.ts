@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { META } from '@/content/site'
  
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -17,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://drealdumore.vercel.app/sitemap.xml',
-    host: 'https://drealdumore.vercel.app',
+    sitemap: `${META.url}/sitemap.xml`,
+    host: META.url,
   }
 }

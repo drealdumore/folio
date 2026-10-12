@@ -1,10 +1,10 @@
 import ProjectCard from "./project-card";
-import { ALLPROJECTS } from "@/content/projects";
+import { ALLPROJECTS, type ProjectCardProps } from "@/content/site";
 
-const Projects = () => {
+const Projects = ({ projects = ALLPROJECTS }: { projects?: ProjectCardProps[] }) => {
   return (
     <div className="flex flex-col gap-[30px] md:gap-[50px]">
-      {ALLPROJECTS.map((project, i) => (
+      {projects.map((project, i) => (
         <ProjectCard
           key={i}
           image={project.image}

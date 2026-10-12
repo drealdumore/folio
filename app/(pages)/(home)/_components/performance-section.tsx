@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ActivityStripClient, { type Day } from "@/components/activity/activity-strip-client";
 import { SectionHeading } from "../../../../components/design/SectionHeading";
+import { PROFILE, SECTIONS } from "@/content/site";
 
 // Seeded hash — same output every render for a given date string
 function seedHash(seed: string): number {
@@ -25,7 +26,7 @@ function buildFallback(): Day[] {
     const d = new Date(start);
     d.setDate(start.getDate() + i);
     const date = d.toISOString().split("T")[0];
-    const t = seedHash(`drealdumore:${date}`);
+    const t = seedHash(`${PROFILE.handle}:${date}`);
 
     let count = 0;
     let level: 0 | 1 | 2 | 3 | 4 = 0;
@@ -58,14 +59,14 @@ export default function PerformanceSection() {
 
   useEffect(() => {
     // Fetch real data in the background; swap when ready
-    fetchGitHub("drealdumore").then((real) => {
+    fetchGitHub(PROFILE.handle).then((real) => {
       if (real && real.length > 0) setDays(real);
     });
   }, []);
 
   return (
     <section className="flex flex-col gap-4">
-      <SectionHeading title="Performance" />
+      <SectionHeading title={SECTIONS.performance.title} />
       
       <ActivityStripClient days={days} inline />
     </section>

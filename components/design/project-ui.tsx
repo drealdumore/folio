@@ -282,11 +282,13 @@ export function MobileRow({
   alt,
   priority,
   className,
+  labels,
 }: {
   images: string[];
   alt: string;
   priority?: boolean;
   className?: string;
+  labels?: (string | undefined)[];
 }) {
   const { trigger } = useWebHaptics();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -388,6 +390,11 @@ export function MobileRow({
                         )}
                       />
                     </div>
+                    {labels?.[globalIndex] && (
+                      <p className="mt-2 truncate text-center text-[12px] leading-tight text-zinc-500">
+                        {labels[globalIndex]}
+                      </p>
+                    )}
                   </div>
                 );
               })}

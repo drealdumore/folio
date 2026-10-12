@@ -25,8 +25,11 @@ const Home = () => {
         </Morph>
         <div className="flex flex-col gap-16 mt-14">
           <Morph>
-            <TrustedBySection />
+            <AboutSection />
           </Morph>
+          {/* <Morph>
+            <TrustedBySection />
+          </Morph> */}
           <Morph>
             <Projects />
           </Morph>

@@ -32,20 +32,6 @@ const Icon: React.FC<IconProps> = ({
   </svg>
 );
 
-interface Social {
-  title: string;
-  username?: string;
-  url: string;
-}
-
-interface Contact {
-  href: string;
-  text: string;
-  icon: React.ReactNode;
-  bg?: string | undefined;
-  tilt?: string;
-}
-
 export const TwitterIcon = () => (
   <Icon
     title="X (Twitter)"
@@ -97,65 +83,3 @@ export const EmailIcon = () => (
     }
   />
 );
-
-const Mail = ({ className }: { className?: string }) => (
-  <svg
-    stroke="white"
-    className={className}
-    fill="white"
-    strokeWidth="0"
-    viewBox="0 0 512 512"
-    height="1em"
-    width="1em"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M424 80H88a56.06 56.06 0 0 0-56 56v240a56.06 56.06 0 0 0 56 56h336a56.06 56.06 0 0 0 56-56V136a56.06 56.06 0 0 0-56-56zm-14.18 92.63-144 112a16 16 0 0 1-19.64 0l-144-112a16 16 0 1 1 19.64-25.26L256 251.73l134.18-104.36a16 16 0 0 1 19.64 25.26z"></path>
-  </svg>
-);
-
-export const SOCIALS: Record<string, Social> = {
-  twitter: {
-    title: "X (Twitter)",
-    username: "drealdumore",
-    url: "https://twitter.com/drealdumore",
-  },
-  github: {
-    title: "GitHub",
-    url: "https://github.com/drealdumore",
-  },
-  linkedin: {
-    title: "LinkedIn",
-    url: "https://www.linkedin.com/in/samuel-isah",
-  },
-};
-
-export const CONTACTS: Contact[] = [
-  {
-    href: "mailto:samuelisah234@gmail.com",
-    text: "Email",
-    icon: <Mail />,
-    bg: "#41434657",
-    tilt: "-5deg",
-  },
-  {
-    href: SOCIALS.linkedin.url,
-    text: "LinkedIn",
-    icon: <LinkedInIcon />,
-    bg: "#41434657",
-    tilt: "5deg",
-  },
-  {
-    href: SOCIALS.twitter.url,
-    text: "Twitter",
-    icon: <TwitterIcon />,
-    bg: "#41434657",
-    tilt: "5deg",
-  },
-  {
-    href: SOCIALS.github.url,
-    text: "GitHub",
-    icon: <GithubIcon />,
-    bg: "#41434657",
-    tilt: "-5deg",
-  },
-];

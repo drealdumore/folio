@@ -1,3 +1,5 @@
+import { META, PROFILE } from "@/content/site";
+
 interface InquiryEmailProps {
   username: string;
   email: string;
@@ -53,7 +55,7 @@ const InquiryEmail = ({
           <hr style="border: none; border-top: 1px solid #333333; margin: 24px 0;" />
 
           <p style="font-size: 14px; color: #a1a1aa; margin: 0; text-align: center;">
-            Sent from <a href="https://drealdumore.vercel.app" style="color: #60a5fa; text-decoration: none;">Samuel's Portfolio</a>
+            Sent from <a href="${META.url}" style="color: #60a5fa; text-decoration: none;">${PROFILE.name}'s Portfolio</a>
           </p>
         </div>
       </body>

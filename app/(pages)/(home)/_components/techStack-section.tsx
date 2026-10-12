@@ -2,16 +2,7 @@
 
 import React from "react";
 import { SectionHeading } from "../../../../components/design/SectionHeading";
-
-interface SkillItem {
-  name: string;
-  icon?: React.ReactNode;
-}
-
-interface SkillCategory {
-  category: string;
-  skills: SkillItem[];
-}
+import { SECTIONS, SKILL_CATEGORIES } from "@/content/site";
 
 // Simple inline SVG icons matched to each skill
 const icons: Record<string, React.ReactNode> = {
@@ -92,50 +83,6 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
-const SKILL_CATEGORIES: SkillCategory[] = [
-  {
-    category: "Frontend & Mobile",
-    skills: [
-      { name: "TypeScript" },
-      { name: "React" },
-      { name: "Next.js" },
-      { name: "React Native" },
-      { name: "Expo" },
-      { name: "Tailwind CSS" },
-    ],
-  },
-  {
-    category: "Backend & APIs",
-    skills: [
-      { name: "Node.js" },
-      { name: "Express" },
-      { name: "Supabase" },
-      { name: "PostgreSQL" },
-      { name: "Redis" },
-      { name: "Prisma" },
-      { name: "Drizzle" },
-    ],
-  },
-  {
-    category: "Other & Patterns",
-    skills: [
-      { name: "Git" },
-      { name: "Real-time systems" },
-      { name: "Offline-first patterns" },
-      { name: "AI tooling integration" },
-      { name: "Performance & SEO optimization" },
-    ],
-  },
-  {
-    category: "Secondary",
-    skills: [
-      { name: "GoLang" },
-      { name: "MongoDB" },
-      { name: "MySQL" },
-    ],
-  },
-];
-
 const GenericDot = () => (
   <span className="size-[14px] shrink-0 flex items-center justify-center text-zinc-600" aria-hidden="true">
     <svg viewBox="0 0 24 24" fill="currentColor" className="size-2">
@@ -150,7 +97,7 @@ export default function StackTable() {
       {/* Header row */}
       <div className="flex items-center justify-between mb-5">
       
-              <SectionHeading title="Skills" />
+              <SectionHeading title={SECTIONS.skills.title} />
 
         
       </div>
@@ -165,7 +112,7 @@ export default function StackTable() {
               {category}
             </span>
             <div className="flex flex-wrap gap-x-5 gap-y-2">
-              {skills.map(({ name }) => (
+              {skills.map((name) => (
                 <span
                   key={name}
                   className="flex items-center gap-1.5 text-[14px] text-zinc-300"

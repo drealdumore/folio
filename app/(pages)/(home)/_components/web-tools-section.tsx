@@ -3,28 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { SectionHeading } from "../../../../components/design/SectionHeading";
-
-interface SideProject {
-  name: string;
-  href?: string;
-}
-
-const SIDE_PROJECTS: SideProject[] = [
-  { name: "Deps Janitor: Interactive CLI that finds and safely removes unused npm dependencies", href: "https://deps-janitor.vercel.app/" },
-  { name: "Peekr: Responsive website snapshot & screenshot generator", href: "https://peekrr.vercel.app/" },
-  { name: "MetaScraper: Extract title, description, OG image & metadata from any URL", href: "https://meta-scrapper.vercel.app/" },
-  { name: "VaultX: Lightweight API for sharing text, code, and links across devices", href: "https://github.com/drealdumore/vaultx/" },
-  { name: "Falso API: TypeScript mock data generator from interfaces", href: "https://github.com/drealdumore/falso-api/" },
-  { name: "DropEnv: Encrypted environment-variable sharing tool", href: "https://github.com/drealdumore/dropenv/" },
-  { name: "Split Cost: Real-time group cost splitter and percentage calculator", href: "https://percentage-calcc.vercel.app/" },
-  { name: "Writing Pad: Minimal distraction-free writing space" },
-  { name: "Olamide Tour: Concert tour landing page clone", href: "https://olamide-tour.vercel.app/" },
-];
+import { SECTIONS, SIDE_PROJECTS } from "@/content/site";
 
 export default function WebTools() {
   return (
     <section className="flex flex-col">
-      <SectionHeading title="Side Projects" />
+      <SectionHeading title={SECTIONS.sideProjects.title} />
 
       <div className="flex flex-col">
         {SIDE_PROJECTS.map((project, i) => {
