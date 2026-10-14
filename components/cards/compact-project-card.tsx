@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 
 interface CompactProjectCardProps {
   name: string;
@@ -58,22 +59,10 @@ const CompactProjectCard = ({
             </span>
           )}
 
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4 shrink-0 text-text-normal/40 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-text-heading"
-            aria-hidden="true"
-          >
-            <path d="M7 17 17 7" />
-            <path d="M7 7h10v10" />
-          </svg>
+          <ArrowIcon
+            size={16}
+            className="shrink-0 -rotate-45 text-text-normal/40 transition-all duration-300 group-hover:text-text-heading"
+          />
         </div>
 
         <div className="flex flex-col gap-1.5">

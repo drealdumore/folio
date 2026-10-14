@@ -17,6 +17,7 @@ import {
 import { useWebHaptics } from "web-haptics/react";
 import { cn } from "@/lib/utils";
 import { prefetchImage, prefetchImages } from "@/lib/prefetch";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 
 // Curves from easing.dev
 const OUT_QUINT = [0.23, 1, 0.32, 1] as const; // fades, quick responses
@@ -27,7 +28,7 @@ const HOVER = "[@media(hover:hover)_and_(pointer:fine)]";
 
 const btnBase =
   "absolute z-30 flex items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md border border-white/15 shadow-xl cursor-pointer " +
-  "transition-[background-color,scale,opacity] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] " +
+  "transition-[background-color,scale,opacity] duration-150 ease-out-quint active:scale-[0.97] " +
   "disabled:opacity-0 disabled:pointer-events-none " +
   `${HOVER}:hover:bg-white/20`;
 
@@ -148,19 +149,7 @@ function Lightbox({
             )}
             aria-label="Previous image"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
+            <ArrowIcon size={20} className="rotate-180" />
           </button>
           <button
             type="button"
@@ -172,19 +161,7 @@ function Lightbox({
             )}
             aria-label="Next image"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <ArrowIcon size={20} />
           </button>
         </>
       )}
@@ -253,12 +230,16 @@ function Lightbox({
             >
               {/* Only mount the current image and its neighbours */}
               {Math.abs(i - index) <= 1 && (
-                <img
+                <Image
                   src={src}
                   alt={`${alt} preview ${i + 1}`}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 768px) 88vw, 1200px"
                   draggable={false}
                   onClick={(e) => e.stopPropagation()}
-                  className="max-h-[82vh] w-auto max-w-[88vw] rounded-[24px] border border-white/20 object-contain shadow-2xl select-none cursor-default"
+                  style={{ width: "auto", height: "auto" }}
+                  className="max-h-[82vh] max-w-[88vw] rounded-[24px] border border-white/20 object-contain shadow-2xl select-none cursor-default"
                 />
               )}
             </div>
@@ -372,7 +353,7 @@ export function MobileRow({
                       }}
                       className={cn(
                         "group/screen relative aspect-[9/19] w-full overflow-hidden rounded-[16cqi] shadow-md outline -outline-offset-1 outline-black/10 dark:outline-white/15 bg-zinc-950/60 cursor-pointer",
-                        "transition-[scale] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98]"
+                        "transition-[scale] duration-150 ease-out-quint active:scale-[0.98]"
                       )}
                     >
                       <Image
@@ -384,7 +365,7 @@ export function MobileRow({
                         sizes="(min-width: 768px) 260px, 30vw"
                         className={cn(
                           "object-cover select-none",
-                          "transition-[scale] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
+                          "transition-[scale] duration-300 ease-out-quint",
                           `${HOVER}:group-hover/screen:scale-[1.03]`,
                           "motion-reduce:transition-none motion-reduce:group-hover/screen:scale-100"
                         )}
@@ -418,24 +399,17 @@ export function WideImage({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "w-full rounded-2xl border border-zinc-800/80 bg-zinc-900/50 p-4 md:p-8 shadow-sm",
-        className
-      )}
-    >
-      <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-xl outline -outline-offset-1 outline-black/10 dark:outline-white/15">
-        <Image
-          src={src}
-          alt={alt}
-          width={1200}
-          height={800}
-          priority={priority}
-          draggable={false}
-          sizes="(min-width: 1600px) 768px, (min-width: 768px) 55vw, 92vw"
-          className="h-auto w-full object-cover select-none"
-        />
-      </div>
+    <div className={cn("bg-image-card p-4 md:p-12", className)}>
+      <Image
+        src={src}
+        alt={alt}
+        width={1200}
+        height={800}
+        priority={priority}
+        draggable={false}
+        sizes="(min-width: 1600px) 768px, (min-width: 768px) 55vw, 92vw"
+        className="mx-auto h-auto w-full max-w-3xl rounded-sm object-contain outline -outline-offset-1 outline-black/5 select-none dark:outline-white/15"
+      />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import AppFooter from "@/components/layout/footer";
 import MobileNav from "@/components/layout/mobile-nav";
 import DesktopHeader from "@/components/layout/desktop-header";
+import MusicToggle from "@/components/layout/music-toggle";
 import { ProgressiveBlur } from "@/components/blur";
 
 export default function ClientBody({
@@ -88,6 +89,7 @@ export default function ClientBody({
 
         <AppFooter />
         <MobileNav />
+        <MusicToggle />
         <ProgressiveBlur
           position="bottom"
           height="8vh"

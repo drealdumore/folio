@@ -16,7 +16,7 @@ const ProjectExplorer = () => {
 
   return (
     <div className="flex flex-col gap-16">
-      <div className="inline-flex max-w-full flex-wrap items-center gap-1 self-start rounded-full border border-white/10 bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150">
+      <div className="inline-flex max-w-full items-center gap-1 self-start rounded-full border border-white/10 bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150">
         {PROJECT_FILTERS.map((filter) => {
           const activeTab = active === filter.key;
           return (
@@ -47,7 +47,7 @@ const ProjectExplorer = () => {
       </div>
 
       <Projects projects={filterProjects(ALLPROJECTS, active)} />
-      <ShortProjects tools={filterProjects(WEB_TOOLS, active)} />
+      <ShortProjects tools={WEB_TOOLS} />
     </div>
   );
 };

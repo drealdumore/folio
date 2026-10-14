@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import { MobileRow } from "@/components/design/project-ui";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 import { FEATURED_GROUPS, SECTIONS, type FeaturedProject } from "@/content/site";
 
@@ -194,19 +195,7 @@ const Projects = () => {
           className="text-[13px] text-zinc-500 hover:text-zinc-300 transition-all duration-300 flex items-center gap-1.5 group"
         >
           {SECTIONS.projects.viewAll}
-          
-<svg className="transition-transform duration-200 group-hover:translate-x-0.5" width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <g id="arrow-right" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-        <g id="Group" transform="translate(3, 6)" stroke="currentColor">
-            <path d="M12,12 L14.6059,9.3941 C15.7939,8.2061 16.388,7.612 16.6105,6.9271 C16.8063,6.3245 16.8063,5.6755 16.6105,5.0729 C16.388,4.388 15.7939,3.79394 14.6059,2.60589 L12,0" id="Path" stroke-width="1.5"></path>
-            <line x1="0" y1="6" x2="16.5" y2="6" id="Path" stroke-width="1.5"></line>
-        </g>
-    </g>
-</svg>
+          <ArrowIcon size={14} />
         </Link>
       </div>
     </section>

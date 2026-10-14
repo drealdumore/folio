@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/hooks/useScrollAnimation";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 
 type ProjectType = {
   name: string;
@@ -61,20 +62,7 @@ const ProjectCard = ({ name, description, href, tech, image }: ProjectType) => {
             <span className="flex items-center group-hover:pr-2 transition-all duration-300">
               View Project
             </span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+            <ArrowIcon size={20} className="ml-2" />
           </button>
         </div>
       </Link>

@@ -1064,6 +1064,50 @@ export const HERO_CTAS = {
   resume: "Resume",
 };
 
+export type Track = {
+  title: string;
+  artist?: string;
+  src: string;
+};
+
+export const MUSIC = {
+  label: "Play the music",
+  tracks: [
+    {
+      title: "Butterfly Effect",
+      src: "/audio/butterfly-effect.mp3",
+    },
+    {
+      title: "HUMBLE.",
+      src: "/audio/humble.mp3",
+    },
+    {
+      title: "Antidote",
+      src: "/audio/antidote.mp3",
+    },
+    {
+      title: "Antisocial",
+      src: "/audio/antisocial.mp3",
+    },
+    {
+      title: "Money Trees",
+      src: "/audio/money-trees.mp3",
+    },
+    {
+      title: "United In Grief",
+      src: "/audio/united-in-grief.mp3",
+    },
+    {
+      title: "One More Hour",
+      src: "/audio/one-more-hour.mp3",
+    },
+    {
+      title: "Pterodactyl",
+      src: "/audio/pterodactyl.mp3",
+    },
+  ] as Track[],
+};
+
 export const SECTIONS = {
   about: { title: "About" },
   projects: { title: "Projects", viewAll: "See all projects" },

@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/hooks/useScrollAnimation";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 
 type ProjectType = {
   name: string;
@@ -59,19 +60,7 @@ const ProjectCard = ({ name, description, href, tech }: ProjectType) => {
               className="inline-flex items-center gap-2 text-[12px] font-medium text-text-normal hover:text-text-heading transition-all group/button"
             >
               View Project
-              <svg
-                className="w-4 h-4 transition-transform group-hover/button:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
+              <ArrowIcon size={16} />
             </Link>
           )}
         </div>

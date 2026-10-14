@@ -14,8 +14,19 @@
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: #121212;
+    --muted2: #161616;
+    --muted3: #232323;
+    --muted4: #232323;
+    --muted-foreground: #4f4f4e;
+    --common: #a0a0a0;
+    --primary: var(--code3);
+    --code1: #ffffff80;
+    --code2: #ffffff37;
+    --code3: #0cdcf7;
+    --code4: #fff;
+    --code5: #43ffba;
+    --code6: #fd971f;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
@@ -30,6 +41,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
     --bg-image-card: #141414;
+    --shadow-glass: #ffffff08 0px 7.2563px 14.5126px 0px inset, #ffffff0f 0px .5px .5px 0px inset, #ffffff1f 0px .25px .25px 0px inset, #0000005e 0px 14.2111px 20.2815px -5.47742px;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -77,6 +89,10 @@
   .bg-dots {
     background: #1a1a1a;
     contain: layout style paint;
+  }
+
+  .bg-image-card {
+    background-color: var(--bg-image-card);
   }
 
   .bg-grid {
@@ -769,6 +785,5 @@ h2 {
     background: rgba(24,24,27,.7);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255,255,255,.12);
     box-shadow: 0 12px 40px 0 rgba(0,0,0,.4),inset 0 1px 0 0 rgba(255,255,255,.08)
 }

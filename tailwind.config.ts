@@ -146,6 +146,9 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		transitionTimingFunction: {
+  			'out-quint': 'cubic-bezier(0.23, 1, 0.32, 1)'
   		}
   	}
   },

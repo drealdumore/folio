@@ -83,7 +83,7 @@ export default function MobileNav() {
 
       <MotionConfig transition={{ type: "spring", stiffness: 450, damping: 35, mass: 0.8 }}>
         <nav className="fixed inset-x-0 bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] z-50 flex justify-center  pointer-events-none px-4">
-          <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-white/10 bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150 glass-nav">
+          <div className="pointer-events-auto flex items-center gap-1 rounded-full bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150 glass-nav">
             {TABS.map((tab) => {
               const active = !tab.external && isActive(tab.href);
               return (

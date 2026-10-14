@@ -6,6 +6,7 @@ import Link from "next/link";
 import { createPortal } from "react-dom";
 
 import { AnimatedSection } from "@/components/layout/animated-section";
+import { ArrowIcon } from "@/components/design/arrow-icon";
 import { useWebHaptics } from "web-haptics/react";
 import { HERO_CTAS, PROFILE, SOCIALS } from "@/content/site";
 
@@ -493,22 +494,7 @@ const Header = () => {
                   className="group inline-flex items-center gap-2 rounded-full bg-text-heading px-5 py-2.5 text-[14px] font-medium text-[#1a1a1a] transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   {HERO_CTAS.primary}
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    className="transition-transform duration-200 group-hover:translate-x-0.5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="1.8"
-                      d="M5 12h14M13 6l6 6-6 6"
-                    />
-                  </svg>
+                  <ArrowIcon size={14} />
                 </Link>
 
                 <Link
