@@ -88,25 +88,18 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
     return <p className="text-text-normal">{CASE_STUDY_LABELS.notFound}</p>;
   }
 
-  // Only treat the website as a "visit" target when it points at a live app —
-  // not a repo host and not placeholder copy like "Coming Soon".
-  const visitUrl =
-    isHttp(project.website) && !isRepoHost(project.website)
-      ? project.website
-      : undefined;
-
-  // The repo is either the website (when it is a repo host) or a link that
-  // looks like source code.
-  const repoFromWebsite =
-    isHttp(project.website) && isRepoHost(project.website)
-      ? project.website
-      : undefined;
-  const repoLink = project.links.find((link) => {
-    const hay = `${link.label} ${link.url}`;
-    return /github|gitlab|bitbucket|view code|source|repo|code/i.test(hay);
-  });
-  const repoUrl =
-    repoFromWebsite ?? (repoLink && repoLink.url !== visitUrl ? repoLink.url : undefined);
+  // Gather every real, clickable link the project exposes (website + links).
+  // Placeholder copy like "Coming Soon" and bare "#" links are ignored, so a
+  // button is only ever rendered when its link actually exists.
+  const allLinks = [
+    ...(isHttp(project.website)
+      ? [{ label: project.sub, url: project.website }]
+      : []),
+    ...project.links.filter((link) => isHttp(link.url)),
+  ];
+  // A "visit" target is a live app/site; a "code" target is a source host.
+  const visitUrl = allLinks.find((link) => !isRepoHost(link.url))?.url;
+  const repoUrl = allLinks.find((link) => isRepoHost(link.url))?.url;
 
   const platform = derivePlatform(project.technologies);
   const isMobile = platform === "iOS & Android";

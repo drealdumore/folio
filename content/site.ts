@@ -353,8 +353,12 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/melo-connect.png", alt: "Melo Chats List" },
       { src: "/projects/melo-id.png", alt: "Melo ID Card" },
       { src: "/projects/melo-chat.png", alt: "Melo Chat View" },
+      { src: "/projects/melo-chat-id.png", alt: "Melo Chat ID" },
+      { src: "/projects/melo-chat-id-2.png", alt: "Melo Chat ID Detail" },
       { src: "/projects/melo-friend-sheet.png", alt: "Add a Friend" },
       { src: "/projects/melo-profile-sheet-1.png", alt: "Profile Settings" },
+      { src: "/projects/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
+      { src: "/projects/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
     ],
     challenge:
       "The main challenge was keeping the chat responsive while translation happened in the background. I also needed to handle translation failures and rate limits, and let people connect without a traditional account flow.",
@@ -458,7 +462,6 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/vaultx",
-    heroImage: "/projects/metascraper.png",
     intro:
       "VaultX is a REST API for sharing text, code snippets, and links between devices without creating an account. Shared items can expire, have view limits, or require a password.",
     introText:
@@ -520,14 +523,28 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
       { src: "/projects/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
       { src: "/projects/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
+      { src: "/projects/chop-iron-onboarding-3.png", alt: "Onboarding Step 3" },
+      { src: "/projects/chop-iron-onboarding-4.png", alt: "Onboarding Step 4" },
       { src: "/projects/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
+      { src: "/projects/chop-iron-onboarding-goal.png", alt: "Goal Selection" },
       { src: "/projects/chop-iron-index.png", alt: "Home screen with streak calendar" },
+      { src: "/projects/chop-iron-index-2.png", alt: "Home screen detail" },
       { src: "/projects/chop-iron-calender.png", alt: "Calendar View" },
+      { src: "/projects/chop-iron-calender-2.png", alt: "Calendar Detail" },
       { src: "/projects/chop-iron-log.png", alt: "Logging a workout" },
       { src: "/projects/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
+      { src: "/projects/chop-iron-exercise-detail.png", alt: "Exercise Detail" },
+      { src: "/projects/chop-iron-exercise-detail-image.png", alt: "Exercise Demo" },
+      { src: "/projects/chop-iron-exercise-push.png", alt: "Push Exercise" },
+      { src: "/projects/chop-iron-exercise-shoulder.png", alt: "Shoulder Exercise" },
       { src: "/projects/chop-iron-progress.png", alt: "Progress screen with charts" },
       { src: "/projects/chop-iron-achievement.png", alt: "Achievements and milestones" },
       { src: "/projects/chop-iron-profile.png", alt: "Profile and stats overview" },
+      { src: "/projects/chop-iron-profile-avatar.png", alt: "Profile Avatar" },
+      { src: "/projects/chop-iron-profile-1.png", alt: "Profile Overview" },
+      { src: "/projects/chop-iron-profile-2.png", alt: "Profile Details" },
+      { src: "/projects/chop-iron-profile-3.png", alt: "Profile Settings" },
+      { src: "/projects/chop-iron-edit-profile.png", alt: "Edit Profile" },
     ],
     challenge:
       "The tricky part was getting the calculations right. Streaks need to count distinct training days, personal records depend on workout history, and achievements should update if a workout is deleted. All of this also needs to work offline.",
@@ -666,7 +683,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/dropenv",
-    heroImage: "/projects/metascraper.png",
+    heroImage: "/projects/dropenv.png",
     intro:
       "DropEnv lets you share environment variables through temporary links, with encryption handled in the browser.",
     introText:
@@ -720,8 +737,11 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/sage-conversation-1.png", alt: "Sage Conversation Simulator" },
       { src: "/projects/sage-conversation-1b.png", alt: "Sage Conversation Detail" },
       { src: "/projects/sage-conversation-2.png", alt: "Sage Conversation Follow-up" },
+      { src: "/projects/sage-conversation-load.png", alt: "Sage Conversation Loading" },
       { src: "/projects/sage-learn.png", alt: "Sage Learn: The 48 Laws" },
+      { src: "/projects/sage-learn-load.png", alt: "Sage Learn Loading" },
       { src: "/projects/sage-library.png", alt: "Sage Library" },
+      { src: "/projects/sage-delete.png", alt: "Sage Delete Conversation" },
     ],
     challenge:
       "The challenge was getting the model to return useful, structured responses while handling rate limits and responses that did not match the expected format.",
@@ -770,9 +790,12 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "I wanted students to be able to check how their next semester’s grades could affect their overall GPA, rather than having to work it all out manually.",
     gallery: [
+      { src: "/projects/gpz-splash.png", alt: "GPZ Splash Screen" },
       { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
       { src: "/projects/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
       { src: "/projects/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
+      { src: "/projects/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
+      { src: "/projects/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
       { src: "/projects/gpz-home.png", alt: "GPZ Home" },
     ],
     challenge:
