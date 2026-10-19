@@ -104,6 +104,22 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
+    projectName: "DropEnv",
+    projectLink: "/projects/dropenv",
+    image: "/projects/dropenv.png",
+    projectDescription:
+      "A tool for sharing environment variables through temporary, encrypted links. Encryption happens in the browser and the decryption key stays in the URL fragment instead of being sent to the server.",
+    projectType: "Security Utility",
+    projectDate: "2025-08-01",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Node.js",
+      "Web Crypto API",
+      "Tailwind CSS",
+    ],
+  },
+  {
     projectName: "The SupaDevs",
     projectLink: "/projects/thesupadevs",
     image: "/projects/thesupadevs.webp",
@@ -991,29 +1007,30 @@ export const META = {
   category: "Technology",
 };
 
+
 export const PROFILE = {
   name: "Samuel Isah",
   firstName: "Samuel",
   handle: "drealdumore",
-  greeting: "Hey, I'm Samuel Isah.",
-  role: "Software Developer",
-  shortRole: "Software developer",
+  greeting: "Hey, I'm Samuel.",
+  role: "Software Engineer",
+  shortRole: "Software engineer",
   location: "Kaduna, Nigeria",
   locationNote: "Open to relocation & visa sponsorship",
   availability: "Open to work",
   tagline:
-    "I build mobile and web products: offline-first apps, real-time systems, and developer tools and enjoy the problems that come with making them reliable.",
+    "I build web and mobile products, work on backend systems, and enjoy turning ideas into things people can actually use.",
   about: [
-    "I’m a developer based in Nigeria. I work across web, mobile, and backend projects, mostly with React, Next.js, React Native, TypeScript, and Node.js.",
-    "I’ve learned to think beyond writing code and consider how systems behave as a whole, from architecture and data consistency to scalability, fault tolerance, and handling failures gracefully. I’m interested in understanding not just how things work, but why they’re designed a certain way and how to make them more reliable as they grow.",
-    "Recent projects include Melo, a chat app that translates between languages as you message; Chop Iron, an offline-first workout tracker; and DropEnv, an encrypted tool for sharing environment variables.",
-    "I’m looking for a software engineering role where I can contribute to a team, learn from other engineers, and keep improving.",
+    "I'm Samuel, a software engineer based in Nigeria. I build across web, mobile, and backend, mostly using TypeScript, React, Next.js, React Native, and Node.js. I like taking an idea from the rough sketch stage to something people can use.",
+    "I'm also curious about what happens behind the screen: how APIs fit together, how data moves through a system, and what happens when things go wrong. I enjoy figuring out those details and finding ways to make software more reliable without making it unnecessarily complicated.",
+    "Some things I've built include Melo, a chat app that helps two people communicate across different languages; DropEnv, a tool for sharing environment variables with client-side encryption; and Sage, an AI-powered communication coach. I enjoy building things that solve a real problem, even when the solution starts as a small experiment.",
+    "I'm looking for a software engineering role where I can work with good people, contribute to real products, learn from other engineers, and keep getting better at my craft."
   ],
   avatar: "/avatars/avatar-smile.png",
   avatarAlt: "Samuel Isah's profile photo",
   resume: "/files/samuel-isah-resume.pdf",
   email: "samuelisah234@gmail.com",
-  website: "https://drealdumore.vercel.app",
+  website: "https://drealdumore.cv",
 };
 
 export const SOCIALS = {
@@ -1372,6 +1389,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         mobileScreens: [
           "/projects/melo-onboarding.png",
           "/projects/melo-onboarding-language.png",
+          "/projects/melo-connect.png",
           "/projects/melo-chat.png",
           "/projects/melo-id.png",
           "/projects/melo-profile-sheet-1.png",

@@ -7,6 +7,7 @@ import { createPortal } from "react-dom";
 
 import { AnimatedSection } from "@/components/layout/animated-section";
 import { ArrowIcon } from "@/components/design/arrow-icon";
+import { LiveClock } from "@/components/design/live-clock";
 import { useWebHaptics } from "web-haptics/react";
 import { HERO_CTAS, PROFILE, SOCIALS } from "@/content/site";
 
@@ -481,6 +482,8 @@ const Header = () => {
                 <span className="text-[13px] text-emerald-500 font-medium">
                 {PROFILE.availability}
               </span>
+                <span className="text-[13px] text-zinc-700">·</span>
+                <LiveClock className="text-[13px] text-zinc-500" />
               </div>
 
               <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-zinc-400">

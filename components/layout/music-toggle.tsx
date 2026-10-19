@@ -187,7 +187,7 @@ export default function MusicToggle() {
         initial={false}
         animate={{ opacity: isPlaying ? 0 : 1, y: isPlaying ? -4 : 0 }}
         transition={{ duration: 0.25 }}
-        className="mb-2 hidden text-center text-[10px] uppercase leading-tight tracking-wider text-zinc-500 select-none md:block"
+        className="mb-2 hidden text-center text-[10px] uppercase leading-tight tracking-wider text-zinc-500 select-none lg:block"
       >
         {MUSIC.label}
       </motion.span>
