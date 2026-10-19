@@ -15,6 +15,7 @@ interface ProjectCardProps {
   technologies: string[];
   image?: string;
   mobileScreens?: string[];
+  highlight?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -24,6 +25,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
   image,
   mobileScreens,
+  highlight,
 }) => {
   const [opacity, setOpacity] = useState(0.35);
   const [inView, setInView] = useState(false);
@@ -73,10 +75,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
   const showHighlight = inView || hovered;
 
-  // Use first two words of description as the "highlight" stat
-  const words = (projectDescription ?? "").split(" ");
-  const highlight = words.slice(0, 4).join(" ");
-  const rest = words.slice(4).join(" ");
+  // Emphasise the main point of the project, not just the first words.
+  const description = projectDescription ?? "";
+  const highlightIndex =
+    highlight && description.includes(highlight)
+      ? description.indexOf(highlight)
+      : -1;
+  const before = highlightIndex >= 0 ? description.slice(0, highlightIndex) : description;
+  const matched = highlightIndex >= 0 ? description.slice(highlightIndex, highlightIndex + (highlight?.length ?? 0)) : "";
+  const after = highlightIndex >= 0 ? description.slice(highlightIndex + (highlight?.length ?? 0)) : "";
 
   return (
     <div
@@ -126,21 +133,23 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </h2>
           </Link>
           <p className="text-[15px] leading-[1.65] text-zinc-400">
-            <span className="relative inline-block px-[0.15em]">
+            {before}
+            {matched && (
               <span
-                aria-hidden="true"
-                className="absolute inset-y-[-0.04em] left-0 right-0 rounded-[2px] bg-zinc-700/60"
+                className="rounded-[2px] px-[0.15em] text-zinc-300"
                 style={{
-                  transformOrigin: "0% 50%",
-                  opacity: showHighlight ? 1 : 0,
-                  transform: showHighlight ? "scaleX(1)" : "scaleX(0)",
-                  transition:
-                    "opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
+                  backgroundColor: showHighlight
+                    ? "rgba(63, 63, 70, 0.6)"
+                    : "transparent",
+                  transition: "background-color 0.45s ease",
+                  WebkitBoxDecorationBreak: "clone",
+                  boxDecorationBreak: "clone",
                 }}
-              />
-              <span className="relative text-zinc-300">{highlight}</span>
-            </span>
-            {rest ? ` ${rest}` : ""}
+              >
+                {matched}
+              </span>
+            )}
+            {after}
           </p>
         </header>
       </article>

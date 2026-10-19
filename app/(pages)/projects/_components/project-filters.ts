@@ -30,6 +30,7 @@ export const classifyProject = (
 
   if (/mobile/i.test(type)) return "mobile";
   if (/\bclient\b/i.test(type)) return "client";
+  if (/web platform|web app|\bwebsite\b/i.test(type)) return "web";
   if (
     /tool|utility|cli|api|backend|rest|security|game/i.test(
       `${type} ${techs} ${desc}`
@@ -42,7 +43,12 @@ export const classifyProject = (
 export const filterProjects = <T extends FilterableProject>(
   projects: T[],
   filter: ProjectFilterKey
-): T[] =>
-  filter === "all"
-    ? projects
-    : projects.filter((p) => classifyProject(p) === filter);
+): T[] => {
+  if (filter === "all") return projects;
+
+  return projects.filter((p) => {
+    const kind = classifyProject(p);
+    if (filter === "web") return kind === "web" || kind === "client";
+    return kind === filter;
+  });
+};

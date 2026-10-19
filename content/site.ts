@@ -15,6 +15,7 @@ export interface ProjectCardProps {
   projectType: string | undefined | null;
   projectDate: string;
   technologies: string[];
+  highlight?: string;
 }
 
 export interface CaseStudy {
@@ -49,6 +50,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "/projects/melo",
     projectDescription:
       "A chat app for two people who speak different languages. Each person can write in their own language, and the other sees a translation with the original message a tap away.",
+    highlight: "two people who speak different languages",
     projectType: "Personal project (Mobile app)",
     projectDate: "2026-01-01",
     technologies: [
@@ -70,6 +72,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "/projects/iron",
     projectDescription:
       "An offline workout tracker with a Nigerian voice. Log workouts from 53 exercises, track personal records across four categories, and review your training history without an internet connection.",
+    highlight: "offline workout tracker",
     projectType: "Personal project (Mobile app)",
     projectDate: "2026-01-01",
     technologies: [
@@ -92,6 +95,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "/projects/vaultx",
     projectDescription:
       "A REST API for sharing text, code snippets, and links between devices without an account. It supports expiry times, view limits, password protection, rate limiting, and in-memory storage with Redis as a persistence layer.",
+    highlight: "sharing text, code snippets, and links between devices",
     projectType: "API / Backend System",
     projectDate: "2025-12-01",
     technologies: [
@@ -109,6 +113,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/dropenv.png",
     projectDescription:
       "A tool for sharing environment variables through temporary, encrypted links. Encryption happens in the browser and the decryption key stays in the URL fragment instead of being sent to the server.",
+    highlight: "sharing environment variables through temporary, encrypted links",
     projectType: "Security Utility",
     projectDate: "2025-08-01",
     technologies: [
@@ -125,6 +130,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/thesupadevs.webp",
     projectDescription:
       "A searchable collection of developer tools, UI components, APIs, and other resources. It includes metadata scraping, AI categorization with Groq and Llama, and an admin dashboard for managing submissions and checking links.",
+    highlight: "developer tools, UI components, APIs, and other resources",
     projectType: "Web Platform / Developer Tool",
     projectDate: "2025-12-11",
     technologies: [
@@ -144,6 +150,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/crystalglowxquisite.png",
     projectDescription:
       "An online store for a skincare brand, with a product catalog, cart, checkout flow, and analytics.",
+    highlight: "online store for a skincare brand",
     projectType: "Client / E-commerce",
     projectDate: "2026-01-20",
     technologies: [
@@ -162,6 +169,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/knowledgemaster.webp",
     projectDescription:
       "An online bookstore for textbooks, novels, and learning resources, with details about delivery and school bookfair services.",
+    highlight: "online bookstore for textbooks, novels, and learning resources",
     projectType: "Client / E-commerce Website",
     projectDate: "2026-10-01",
     technologies: [
@@ -180,6 +188,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "/projects/sage",
     projectDescription:
       "An AI conversation coach for difficult situations. Describe what is happening and get an analysis of the situation, it reads the power dynamics, maps them against The 48 Laws of Power, plus draft replies in different tones. It also supports voice input.",
+    highlight: "AI conversation coach for difficult situations",
     projectType: "Personal project (Mobile app)",
     projectDate: "2026-01-01",
     technologies: [
@@ -202,6 +211,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     projectLink: "/projects/gpz",
     projectDescription:
       "A GPA tracker for students to manage semesters, courses, and grades, and work out how upcoming results could affect an academic target.",
+    highlight: "GPA tracker for students",
     projectType: "Personal project (Mobile app)",
     projectDate: "2025-01-01",
     technologies: [
@@ -227,6 +237,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/isamitechnologies.png",
     projectDescription:
       "The website for Isami Technologies, a Nigerian digital agency offering websites, online stores, chatbots, branding, and SEO services.",
+    highlight: "Nigerian digital agency",
     projectType: "Client / Company Website",
     projectDate: "2025-12-01",
     technologies: [
@@ -243,9 +254,21 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/cleanup.png",
     projectDescription:
       "A website for Cleanup, a Kaduna-based cleaning company. It explains the company’s residential, commercial, post-construction, upholstery, and carpet cleaning services.",
+    highlight: "Kaduna-based cleaning company",
     projectType: "Client / Company Website",
     projectDate: "2025-11-15",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "React"],
+  },
+  {
+    projectName: "Deps Janitor",
+    projectLink: "https://deps-janitor.vercel.app/",
+    image: "/projects/deps-janitor.webp",
+    projectDescription:
+      "A CLI tool for finding unused npm dependencies and helping you remove packages a project no longer needs.",
+    highlight: "unused npm dependencies",
+    projectType: "CLI & Web Tool",
+    projectDate: "2025-12-28",
+    technologies: ["Node.js", "Next.js", "Tailwind CSS", "TypeScript"],
   },
   {
     projectName: "Peekr",
@@ -253,6 +276,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/peekrr.webp",
     projectDescription:
       "A tool for taking website screenshots at different viewport sizes, useful for checking responsive layouts or preparing visuals.",
+    highlight: "website screenshots at different viewport sizes",
     projectType: "Developer Utility",
     projectDate: "2025-10-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -263,6 +287,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/meta-scrapper.webp",
     projectDescription:
       "A small tool that reads a webpage’s title, description, Open Graph image, and other metadata from a URL.",
+    highlight: "title, description, Open Graph image, and other metadata",
     projectType: "Developer Tool",
     projectDate: "2024-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -273,6 +298,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/rivr-app.png",
     projectDescription:
       "A concept for connecting brands with creators for potential collaborations.",
+    highlight: "connecting brands with creators",
     projectType: "Personal project",
     projectDate: "2025-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -283,6 +309,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/celeb-tour.png",
     projectDescription:
       "A landing-page clone for an Olamide tour concept, with tour dates, media, and a responsive ticket-style interface.",
+    highlight: "landing-page clone for an Olamide tour concept",
     projectType: "Personal project",
     projectDate: "2025-10-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
@@ -889,7 +916,7 @@ export const WEB_TOOLS = [
   {
     projectName: "Deps Janitor",
     projectLink: "https://deps-janitor.vercel.app/",
-    image: "/projects/deps-janitor.png",
+    image: "/projects/deps-janitor.webp",
     projectDescription:
       "A CLI tool for finding unused npm dependencies and helping you remove packages a project no longer needs.",
     projectType: "CLI & Web Tool",
