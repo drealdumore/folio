@@ -26,28 +26,25 @@ const Home = () => {
           <Morph>
             <AboutSection />
           </Morph>
-          {/* <Morph>
-            <TrustedBySection />
-          </Morph> */}
           <Morph>
             <Projects />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <WorkExperienceSection />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <OpenToRolesSection />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <StackTable />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <WebTools />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <PerformanceSection />
           </Morph>
-          <Morph delay={0.1}>
+          <Morph>
             <ContactSection />
           </Morph>
           <Morph delay={0.1}>

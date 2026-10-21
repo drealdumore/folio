@@ -180,17 +180,21 @@ export default function MusicToggle() {
   return (
     <div
       ref={containerRef}
-      className="fixed left-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-40 md:left-5 md:bottom-auto md:top-1/2 md:-translate-y-1/2"
+      className="fixed left-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-40"
     >
+    {/* <div
+      ref={containerRef}
+      className="fixed left-3 bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] z-40 md:left-5 md:bottom-auto md:top-1/2 md:-translate-y-1/2"
+    > */}
       {/* Hint — fades out once playback starts */}
-      <motion.span
+      {/* <motion.span
         initial={false}
         animate={{ opacity: isPlaying ? 0 : 1, y: isPlaying ? -4 : 0 }}
         transition={{ duration: 0.25 }}
         className="mb-2 hidden text-center text-[10px] uppercase leading-tight tracking-wider text-zinc-500 select-none lg:block"
       >
         {MUSIC.label}
-      </motion.span>
+      </motion.span> */}
 
       <motion.div
         onHoverStart={() => setHovered(true)}

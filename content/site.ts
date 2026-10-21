@@ -1182,7 +1182,6 @@ export const SECTIONS = {
   skills: { title: "Skills" },
   roles: { title: "Open to roles" },
   sideProjects: { title: "Side Projects" },
-  teams: { title: "Teams and brands I’ve worked with" },
   repos: {
     title: "Some of my code",
     subtitle: "A few projects you can explore on GitHub.",
@@ -1232,10 +1231,10 @@ export const CONTACT_FORM = {
 };
 
 export const NOT_FOUND = {
-  heading: "404—Not found",
-  line1: "You just hit a route that doesn't exist.",
+  heading: "404 — Lost in the code.",
+  line1: "Well, this page doesn't exist.",
   line2:
-    "Another thing not found anymore is HTML comments. Websites are smaller, at what cost? A discarded thought, an unfinished design, an alternate phrasing, a note to self.",
+    "Funny how the web keeps getting smaller, yet things still disappear. Pages, ideas, half-finished thoughts. Even HTML comments, where we used to leave notes for our future selves. Maybe some things are better left behind. This page, though? Probably just a broken link.",
 };
 
 export type Experience = {
@@ -1258,7 +1257,7 @@ export const EXPERIENCE: Experience[] = [
     ],
     duration: "January 2025 - 2026",
     durationAlt: "01 / 2025 until 2026",
-    stack: ["React Native", "Expo", "TypeScript", "Zustand", "SQLite"],
+    stack: ["React Native", "Expo", "TypeScript", "Zustand", "SQLite", "Motion", "AI"],
   },
   {
     title: "Front-End Developer",
@@ -1269,7 +1268,7 @@ export const EXPERIENCE: Experience[] = [
     ],
     duration: "April 2024 - 2026",
     durationAlt: "04 / 2024 until 2026",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "AI"],
   },
   {
     title: "Full-Stack Developer",
@@ -1280,7 +1279,7 @@ export const EXPERIENCE: Experience[] = [
     ],
     duration: "April 2021 - 2024",
     durationAlt: "04 / 2021 until 2024",
-    stack: ["Next.js", "React", "React Native", "Node.js", "PostgreSQL"],
+    stack: ["Angular", "Next.js", "React", "TypeScript", "JavaScript", "React Native", "Node.js", "MongoDB", "Drizzle ORM", "Express","PostgreSQL", "Firebase","Payment APIs", "AI", "Framer Motion", "Redis", "Redux"],
   },
 ];
 
@@ -1338,13 +1337,6 @@ export const REPOS: Repo[] = [
   },
 ];
 
-export const TEAMS = [
-  "Campus Buddy",
-  "NodePair",
-  "Knowledge Master",
-  "Crystalglowxquisite",
-];
-
 export type SkillCategory = { category: string; skills: string[] };
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -1369,6 +1361,9 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       "Redis",
       "Prisma",
       "Drizzle",
+      "GoLang",
+      "MongoDB",
+      "MySQL"
     ],
   },
   {
@@ -1380,11 +1375,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     //   "AI tooling integration",
     //   "Performance & SEO optimization",
     ],
-  },
-  {
-    category: "Secondary",
-    skills: ["GoLang", "MongoDB", "MySQL"],
-  },
+  }
 ];
 
 export type FeaturedProject = {

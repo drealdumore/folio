@@ -104,6 +104,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
   const platform = derivePlatform(project.technologies);
   const isMobile = platform === "iOS & Android";
   const gallery = project.gallery ?? [];
+  
   // Mobile projects show phone mockups from the gallery. Non-mobile projects
   // show the wide screenshot instead, so drop any gallery image that is just
   // the hero repeated to avoid rendering it twice.
@@ -190,9 +191,10 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
         )}
       </div>
 
-      <article className="pb-16 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:items-start lg:gap-10">
+      <article className="pb-16">
+      {/* <article className="pb-16 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:items-start lg:gap-10"> */}
         {/* Sticky section nav */}
-        <aside className="hidden lg:sticky lg:top-24 lg:block lg:h-max">
+        {/* <aside className="hidden lg:sticky lg:top-24 lg:block lg:h-max">
           <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-zinc-500">
             {CASE_STUDY_LABELS.onThisPage}
           </p>
@@ -207,7 +209,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               </a>
             ))}
           </nav>
-        </aside>
+        </aside> */}
 
         {/* Body */}
         <div className="space-y-12">
@@ -482,7 +484,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                       delay: i * 0.03,
                     }}
                     whileHover={reduce ? undefined : { y: -2, scale: 1.05 }}
-                    className="rounded-md border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-[13px] text-zinc-300 transition-colors duration-150 hover:border-zinc-600 hover:text-white"
+                    className="rounded-full border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-[13px] text-zinc-300 transition-colors duration-150 hover:border-zinc-600 hover:text-white"
                   >
                     {tech}
                   </motion.span>
