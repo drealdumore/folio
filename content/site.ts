@@ -1145,6 +1145,10 @@ export const MUSIC = {
       src: "/audio/butterfly-effect.mp3",
     },
     {
+      title: "Billionaire Club",
+      src: "/audio/billionaire-club.mp3",
+    },
+    {
       title: "HUMBLE.",
       src: "/audio/humble.mp3",
     },

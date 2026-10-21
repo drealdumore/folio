@@ -192,24 +192,6 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
       </div>
 
       <article className="pb-16">
-      {/* <article className="pb-16 lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:items-start lg:gap-10"> */}
-        {/* Sticky section nav */}
-        {/* <aside className="hidden lg:sticky lg:top-24 lg:block lg:h-max">
-          <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.08em] text-zinc-500">
-            {CASE_STUDY_LABELS.onThisPage}
-          </p>
-          <nav className="flex flex-col gap-1 border-l border-zinc-800/70">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                className="-ml-px border-l border-transparent pl-3 text-[13px] text-zinc-500 transition-all duration-200 hover:translate-x-0.5 hover:border-text-heading hover:text-text-heading"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-        </aside> */}
 
         {/* Body */}
         <div className="space-y-12">
