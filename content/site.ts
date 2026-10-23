@@ -432,7 +432,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     client: "Personal project",
     story:
       "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
-    heroImage: "/projects/echo/echo-hero.png",
+    heroImage: "/projects/echo/echo-splash.png",
     intro:
       "Echo is a location-based reminder app for tasks tied to a particular place. Choose a location and a radius, then configure a reminder to trigger when the device enters that area.",
     introText:
