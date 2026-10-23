@@ -8,6 +8,7 @@ import MobileNav from "@/components/layout/mobile-nav";
 import DesktopHeader from "@/components/layout/desktop-header";
 import MusicToggle from "@/components/layout/music-toggle";
 import { ProgressiveBlur } from "@/components/blur";
+import { preloadAppImages } from "@/lib/prefetch";
 
 export default function ClientBody({
   children,
@@ -61,6 +62,17 @@ export default function ClientBody({
 
   useEffect(() => {
     document.body.className = "antialiased";
+  }, []);
+
+  // Preload every app image once the initial render is done.
+  useEffect(() => {
+    const start = () => preloadAppImages();
+    if (document.readyState === "complete") {
+      const idle = requestIdleCallback(() => preloadAppImages());
+      return () => cancelIdleCallback(idle);
+    }
+    window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
   }, []);
 
   // Scroll to top on route change

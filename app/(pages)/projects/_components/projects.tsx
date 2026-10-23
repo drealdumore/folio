@@ -54,6 +54,7 @@ const Projects = ({ projects = ALLPROJECTS }: { projects?: ProjectCardProps[] })
               projectDate={project.projectDate}
               technologies={project.technologies}
               highlight={project.highlight}
+              // status={project.status}
             />
           </motion.div>
         ))}

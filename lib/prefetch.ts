@@ -1,4 +1,4 @@
-import { MOBILE_APPS } from "@/content/site";
+import { FEATURED_GROUPS, MOBILE_APPS } from "@/content/site";
 
 const prefetchedCache = new Set<string>();
 
@@ -89,4 +89,33 @@ export function prefetchProjectDetail(projectIdOrHref: string | undefined | null
   }
 
   prefetchImages(imagesToPrefetch);
+}
+
+/**
+ * Preload every app image (hero + gallery) from the case studies, plus the
+ * featured projects shown on the home page, so all imagery is already in the
+ * browser cache when users browse around.
+ */
+export function preloadAppImages() {
+  if (typeof window === "undefined") return;
+
+  const srcs: string[] = [];
+
+  MOBILE_APPS.forEach((app) => {
+    if (app.heroImage) srcs.push(app.heroImage);
+    app.gallery?.forEach((g) => {
+      if (g.src) srcs.push(g.src);
+    });
+  });
+
+  FEATURED_GROUPS.forEach((group) => {
+    group.projects.forEach((project) => {
+      if (project.image) srcs.push(project.image);
+      project.mobileScreens?.forEach((src) => {
+        if (src) srcs.push(src);
+      });
+    });
+  });
+
+  prefetchImages(Array.from(new Set(srcs)));
 }

@@ -74,17 +74,29 @@ const ProjectArticle = ({
       <article className="flex w-full flex-col items-start gap-[25px]">
         {/* Header */}
         <header className="flex flex-col items-start gap-[3px] text-[18px] leading-[24px] lg:text-[21px] lg:leading-[28px]">
-          <Link
-            href={project.href}
-            target={project.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              project.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-          >
-            <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
-              {project.name}
-            </h2>
-          </Link>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href={project.href}
+              target={project.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                project.href.startsWith("http") ? "noopener noreferrer" : undefined
+              }
+              data-cursor={
+                project.href.startsWith("http") ? "external" : "project"
+              }
+            >
+              <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
+                {project.name}
+              </h2>
+            </Link>
+            {/* {project.status && project.status !== "live" && (
+              <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[11px] font-medium text-amber-400">
+                {project.status === "in-development"
+                  ? "In development"
+                  : project.status}
+              </span>
+            )} */}
+          </div>
           {(project.tags?.length || project.year) && (
             <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-zinc-500">
               {project.tags?.map((tag, i) => (
@@ -106,18 +118,18 @@ const ProjectArticle = ({
           <p className="text-[15px] leading-[1.65] text-zinc-400">
             {project.descriptionBefore}
             {project.highlight && (
-              <span className="relative inline-block px-[0.15em]">
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-y-[-0.04em] left-0 right-0 rounded-[2px] bg-zinc-700/60"
-                  style={{
-                    transformOrigin: "0% 50%",
-                    opacity: showHighlight ? 1 : 0,
-                    transform: showHighlight ? "scaleX(1)" : "scaleX(0)",
-                    transition: "opacity 0.45s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)",
-                  }}
-                />
-                <span className="relative text-zinc-300">{project.highlight}</span>
+              <span
+                className="rounded-[2px] px-[0.15em] text-zinc-300"
+                style={{
+                  backgroundColor: showHighlight
+                    ? "rgba(63, 63, 70, 0.6)"
+                    : "transparent",
+                  transition: "background-color 0.45s ease",
+                  WebkitBoxDecorationBreak: "clone",
+                  boxDecorationBreak: "clone",
+                }}
+              >
+                {project.highlight}
               </span>
             )}
             {project.descriptionAfter}

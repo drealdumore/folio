@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useLayoutEffect, type KeyboardEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
 import "./activity-strip.css";
 
 export type Day = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
@@ -9,6 +9,13 @@ export type Day = { date: string; count: number; level: 0 | 1 | 2 | 3 | 4 };
 const DEFAULT_TEXT = "A little progress, every day.";
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const EASE: [number,number,number,number] = [0.22, 1, 0.36, 1];
+
+// Sweep timing, matched to the sleek reveal: each column lands a beat after the
+// last, and the month labels resolve by blur only once the sweep has passed.
+const COLUMN_STAGGER = 0.012;
+const CELL_FADE = 0.2;
+const LABEL_BLUR = 6;
+const LABEL_REVEAL = { duration: 0.45, ease: EASE } as const;
 
 function ordinal(n: number) {
   const v = n % 100;
@@ -33,6 +40,7 @@ interface Props {
 }
 
 export default function ActivityStripClient({ days, inline = false }: Props) {
+  const reduceMotion = useReducedMotion();
   const pad = new Date(`${days[0].date}T00:00:00Z`).getUTCDay();
   const cells: (Day | null)[] = [...Array<null>(pad).fill(null), ...days];
   const weeks: (Day | null)[][] = [];
@@ -41,13 +49,24 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
   const total = days.reduce((s, d) => s + d.count, 0);
 
   const [locked, setLocked] = useState<string | null>(null);
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [cap, setCap] = useState<{ on: 0|1; text: [string,string] }>({
     on: 0,
     text: [DEFAULT_TEXT, ""],
   });
   const [tab, setTab] = useState(cells.length - 1);
-  const [ringPos, setRingPos] = useState<{ left: number; top: number; width: number; height: number } | null>(null);
+
+  // The ring is driven by motion values written straight to the DOM, so moving
+  // between days never triggers a React re-render — it tracks the pointer at
+  // full speed instead of gliding behind it.
+  const ringX = useMotionValue(0);
+  const ringY = useMotionValue(0);
+  const ringW = useMotionValue(0);
+  const ringH = useMotionValue(0);
+  const ringOpacity = useMotionValue(0);
+  const ringAnimatedOpacity = useSpring(ringOpacity, {
+    stiffness: 900,
+    damping: 60,
+  });
 
   const gridRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -57,15 +76,19 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
     if (scrollRef.current) scrollRef.current.scrollLeft = scrollRef.current.scrollWidth;
   }, []);
 
-  // Update ring position when active cell changes
-  useLayoutEffect(() => {
-    if (activeIdx === null || !gridRef.current) return;
-    const cell = gridRef.current.querySelector<HTMLElement>(`[data-i="${activeIdx}"]`);
-    if (!cell) return;
-    const gr = gridRef.current.getBoundingClientRect();
-    const cr = cell.getBoundingClientRect();
-    setRingPos({ left: cr.left - gr.left, top: cr.top - gr.top, width: cr.width, height: cr.height });
-  }, [activeIdx]);
+  // Snap the ring onto a cell immediately (no spring, no re-render). Only the
+  // position jumps; opacity eases in so the ring doesn't pop.
+  const moveRing = (el: HTMLElement) => {
+    const grid = gridRef.current;
+    if (!grid) return;
+    const gr = grid.getBoundingClientRect();
+    const cr = el.getBoundingClientRect();
+    ringX.set(cr.left - gr.left);
+    ringY.set(cr.top - gr.top);
+    ringW.set(cr.width);
+    ringH.set(cr.height);
+    ringOpacity.set(1);
+  };
 
   const show = (text: string) =>
     setCap((c) => {
@@ -75,13 +98,13 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
       return { on: next, text: t };
     });
 
-  const onEnter = (day: Day, idx: number) => {
-    setActiveIdx(idx);
+  const onEnter = (day: Day, el: HTMLElement) => {
+    moveRing(el);
     if (!locked) show(describe(day));
   };
 
   const onLeave = () => {
-    setActiveIdx(null);
+    ringOpacity.set(0);
     if (locked) {
       const ld = days.find(d => d.date === locked);
       if (ld) show(describe(ld));
@@ -114,7 +137,16 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
         <div className="as-scroll" ref={scrollRef}>
 
           {/* Month labels */}
-          <div className="as-months" aria-hidden="true">
+          <motion.div
+            className="as-months"
+            aria-hidden="true"
+            initial={reduceMotion ? false : { opacity: 0, filter: `blur(${LABEL_BLUR}px)` }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{
+              ...LABEL_REVEAL,
+              delay: reduceMotion ? 0 : (weeks.length - 1) * COLUMN_STAGGER + CELL_FADE,
+            }}
+          >
             {weeks.map((w, i) => {
               const first = w.find(d => d && d.date.endsWith("-01"));
               return (
@@ -123,28 +155,21 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Cell grid with animated hover ring */}
           <div className="as-grid" ref={gridRef} onKeyDown={onKeyDown}>
-            <AnimatePresence initial={false}>
-              {activeIdx !== null && ringPos && (
-                <motion.span
-                  className="as-hover-ring"
-                  aria-hidden="true"
-                  initial={false}
-                  animate={{ left: ringPos.left, top: ringPos.top, width: ringPos.width, height: ringPos.height, opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{
-                    left: { type: "spring", stiffness: 700, damping: 40 },
-                    top: { type: "spring", stiffness: 700, damping: 40 },
-                    width: { duration: 0.08 },
-                    height: { duration: 0.08 },
-                    opacity: { duration: 0.1 },
-                  }}
-                />
-              )}
-            </AnimatePresence>
+            <motion.span
+              className="as-hover-ring"
+              aria-hidden="true"
+              style={{
+                x: ringX,
+                y: ringY,
+                width: ringW,
+                height: ringH,
+                opacity: ringAnimatedOpacity,
+              }}
+            />
 
             {weeks.map((w, wi) => (
               <div key={wi} className={`as-week${wi < weeks.length - 26 ? " as-old" : ""}`}>
@@ -153,20 +178,31 @@ export default function ActivityStripClient({ days, inline = false }: Props) {
                   const i = wi * 7 + r;
                   if (!day) return <span key={r} className="as-void" />;
                   return (
-                    <button
+                    <motion.span
                       key={r}
-                      type="button"
-                      data-i={i}
-                      className={`as-cell level-${day.level}`}
-                      aria-pressed={locked === day.date}
-                      aria-label={describe(day)}
-                      tabIndex={i === tab ? 0 : -1}
-                      onFocus={() => { setTab(i); onEnter(day, i); }}
-                      onBlur={onLeave}
-                      onMouseEnter={() => onEnter(day, i)}
-                      onMouseLeave={onLeave}
-                      onClick={() => onClick(day)}
-                    />
+                      className="as-cell-wrap"
+                      initial={reduceMotion ? false : { opacity: 0, scale: 0.4 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        duration: CELL_FADE,
+                        ease: EASE,
+                        delay: reduceMotion ? 0 : wi * COLUMN_STAGGER,
+                      }}
+                    >
+                      <button
+                        type="button"
+                        data-i={i}
+                        className={`as-cell level-${day.level}`}
+                        aria-pressed={locked === day.date}
+                        aria-label={describe(day)}
+                        tabIndex={i === tab ? 0 : -1}
+                        onFocus={(e) => { setTab(i); onEnter(day, e.currentTarget); }}
+                        onBlur={onLeave}
+                        onMouseEnter={(e) => onEnter(day, e.currentTarget)}
+                        onMouseLeave={onLeave}
+                        onClick={() => onClick(day)}
+                      />
+                    </motion.span>
                   );
                 })}
               </div>

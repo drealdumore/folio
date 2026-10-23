@@ -1,7 +1,7 @@
 import { META as sharedMetadata, PROFILE, SOCIALS } from "@/content/site";
 
 import React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
 import ClientBody from "./ClientBody";
@@ -13,7 +13,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#1a1a1a" />
@@ -128,7 +128,9 @@ export const metadata: Metadata = {
     images: [`${sharedMetadata.url}${sharedMetadata.image}`],
   },
   verification: {
-    google: "google-site-verification-code", // TODO: Replace with your actual Google Site Verification code
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
   },
   appleWebApp: {
     capable: true,

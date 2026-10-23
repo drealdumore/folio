@@ -329,7 +329,7 @@ export function MobileRow({
           <div
             key={chunkIndex}
             className={cn(
-              "w-full rounded-[8px] bg-[#141414] p-3 py-5 sm:p-6 sm:py-8 md:p-8 md:py-10 shadow-sm",
+              "w-full rounded-[8px] bg-surface p-3 py-5 sm:p-6 sm:py-8 md:p-8 md:py-10 shadow-sm",
               className
             )}
           >
@@ -344,6 +344,18 @@ export function MobileRow({
                     <div
                       onMouseEnter={() => prefetchImages(images)}
                       onTouchStart={() => prefetchImages(images)}
+                      onMouseMove={(e) => {
+                        const el = e.currentTarget;
+                        const rect = el.getBoundingClientRect();
+                        const px = (e.clientX - rect.left) / rect.width - 0.5;
+                        const py = (e.clientY - rect.top) / rect.height - 0.5;
+                        el.style.setProperty("--tilt-y", `${px * 9}deg`);
+                        el.style.setProperty("--tilt-x", `${-py * 9}deg`);
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.setProperty("--tilt-x", "0deg");
+                        e.currentTarget.style.setProperty("--tilt-y", "0deg");
+                      }}
                       onClick={(e) => {
                         // Prevent navigation if inside a Link
                         e.preventDefault();
@@ -352,8 +364,8 @@ export function MobileRow({
                         setSelectedIndex(globalIndex);
                       }}
                       className={cn(
-                        "group/screen relative aspect-[9/19] w-full overflow-hidden rounded-[16cqi] shadow-md outline -outline-offset-1 outline-black/10 dark:outline-white/15 bg-zinc-950/60 cursor-pointer",
-                        "transition-[scale] duration-150 ease-out-quint active:scale-[0.98]"
+                        "group/screen relative aspect-[9/19] w-full overflow-hidden rounded-[16cqi] shadow-md outline -outline-offset-1 outline-white/15 bg-zinc-950/60 cursor-pointer tilt-card",
+                        "transition-[scale,transform] duration-150 ease-out-quint active:scale-[0.98]"
                       )}
                     >
                       <Image
@@ -408,7 +420,7 @@ export function WideImage({
         priority={priority}
         draggable={false}
         sizes="(min-width: 1600px) 768px, (min-width: 768px) 55vw, 92vw"
-        className="mx-auto h-auto w-full max-w-3xl rounded-sm object-contain outline -outline-offset-1 outline-black/5 select-none dark:outline-white/15"
+        className="mx-auto h-auto w-full max-w-3xl rounded-sm object-contain select-none"
       />
     </div>
   );

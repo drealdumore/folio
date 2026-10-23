@@ -1,0 +1,56 @@
+# Samuel Isah (@drealdumore)
+
+> Software engineer from Nigeria. I build web products, mobile apps, and backend systems — mostly with TypeScript, React, Next.js, React Native, and Node.js.
+
+This site is a personal portfolio: a place to show what I built, how I built it, and what I'm working on right now. Everything here is real work — no mockups presented as products.
+
+## About
+
+I'm Samuel Isah. I like taking an idea from a rough sketch to something a person can actually use, and I care about the unglamorous parts: what happens when the network drops, how a screen behaves on a slow phone, why an API takes four seconds when it should take forty milliseconds.
+
+I work across the stack, but mobile is where I've spent the most time — React Native and Expo, offline-first, real-time. Some of my work:
+
+- **Melo** — a two-person chat app that translates messages live across 11 languages, with no account signup.
+- **Chop Iron** — an offline workout tracker with 53 exercises and personal records.
+- **DropEnv** — shares environment variables through temporary, encrypted links; the key never leaves the URL fragment.
+- **VaultX** — a REST API for sharing snippets and links between devices, with expiry, view limits, and password protection.
+- **Sage** — an AI-powered communication coach.
+- **GPZ** — a GPA tracker for students.
+- **Echo** — location-based reminders.
+
+## Pages
+
+- [/](/) — Home: intro, selected work, experience, contact.
+- [/projects](/projects) — Every project, filterable by type.
+- [/projects/[slug]](/projects) — Long-form case studies: challenge, what I did, what came out of it.
+- [/about](/about) — The longer version of my story: background, how I work, what I'm good at.
+- [/now](/now) — What I'm working on this month, and what's next.
+- [/uses](/uses) — The tools and setup behind the work.
+
+## How I work
+
+- Problem first, technology second. The stack follows the problem.
+- Small, shippable increments over big-bang rewrites.
+- Types are documentation that cannot go stale.
+- Performance is a feature, not a phase.
+- Offline-first where the network can't be trusted.
+- Accessible by default — keyboard, focus, contrast, motion.
+- Write it down. Future me is a real person.
+
+## Stack
+
+**Frontend** React, Next.js, TypeScript, Tailwind CSS, Framer Motion
+**Mobile** React Native, Expo, Expo Router, Reanimated, SQLite
+**Backend** Node.js, Express, REST, PostgreSQL, Redis, Zod
+**Tooling** Vercel, GitHub Actions, PostHog, Resend, Sharp
+
+## Availability
+
+Open to software engineering roles across mobile, web, and backend.Email: samuelisah234@gmail.com
+
+## Links
+
+- GitHub: https://github.com/drealdumore
+- LinkedIn: https://www.linkedin.com/in/samuel-isah
+- X: https://twitter.com/drealdumore
+- Site: https://drealdumore.cv

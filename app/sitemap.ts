@@ -1,42 +1,49 @@
-import { MetadataRoute } from 'next'
-import { META, MOBILE_APPS, SHORTPROJECTS } from '@/content/site'
- 
+import { MetadataRoute } from "next";
+import { META, MOBILE_APPS } from "@/content/site";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = META.url
-  
-  // Static routes
-  const routes = [
+  const baseUrl = META.url;
+  const now = new Date();
+
+  const routes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.9,
     },
-  ]
-
-  // Dynamic project routes
-  const projectRoutes = MOBILE_APPS.map((project) => ({
-    url: `${baseUrl}/projects/${project.id}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8,
-  }))
-
-  // Short project routes (if they have internal links)
-  const shortProjectRoutes = SHORTPROJECTS
-    .filter(project => project.projectinAppLink)
-    .map((project) => ({
-      url: `${baseUrl}${project.projectinAppLink}`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
+    {
+      url: `${baseUrl}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/now`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.6,
-    }))
+    },
+    {
+      url: `${baseUrl}/uses`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+  ];
 
-  return [...routes, ...projectRoutes, ...shortProjectRoutes]
+  const caseStudyRoutes: MetadataRoute.Sitemap = MOBILE_APPS.map((project) => ({
+    url: `${baseUrl}/projects/${project.id}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...routes, ...caseStudyRoutes];
 }

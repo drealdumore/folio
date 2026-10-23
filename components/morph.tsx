@@ -1,10 +1,10 @@
 "use client"
 
-import React, { useEffect, useState, useRef, useMemo } from "react"
+import React, { useEffect, useId, useMemo, useRef } from "react"
 import { cn } from "@/lib/utils"
 
-const morphTime = 0.5
-const cooldownTime = 0.5
+const morphTime = 1.1
+const cooldownTime = 1.4
 
 interface MorphProps {
   children: React.ReactNode
@@ -12,6 +12,28 @@ interface MorphProps {
   duration?: number
   cooldown?: number
   delay?: number
+}
+
+// easeInOutCubic, same curve as cubic-bezier(0.65, 0, 0.35, 1) on easing.dev
+const ease = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+// val: 0 = hidden, 1 = fully visible
+const applyLayer = (el: HTMLDivElement | null, val: number) => {
+  if (!el) return
+  if (val <= 0.001) {
+    el.style.visibility = "hidden"
+    el.style.opacity = "0"
+    el.style.filter = ""
+  } else if (val >= 0.999) {
+    el.style.visibility = "visible"
+    el.style.opacity = "1"
+    el.style.filter = ""
+  } else {
+    el.style.visibility = "visible"
+    el.style.opacity = String(Math.pow(val, 0.4))
+    el.style.filter = `blur(${Math.min(8 / val - 8, 100)}px)`
+  }
 }
 
 export const Morph: React.FC<MorphProps> = ({
@@ -22,182 +44,126 @@ export const Morph: React.FC<MorphProps> = ({
   delay = 0,
 }) => {
   const childrenArray = useMemo(() => React.Children.toArray(children), [children])
-  const [index, setIndex] = useState(0)
-  const [fraction, setFraction] = useState(0)
-  const [isStarted, setIsStarted] = useState(false)
-  const [isInView, setIsInView] = useState(false)
-  const [reduceMotion, setReduceMotion] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const indexRef = useRef(0)
+  const count = childrenArray.length
 
-  const isEntrance = childrenArray.length === 1
+  const containerRef = useRef<HTMLDivElement>(null)
+  const gooRef = useRef<HTMLDivElement>(null)
+  const layerRefs = useRef<(HTMLDivElement | null)[]>([])
+  const filterId = `threshold-${useId().replace(/:/g, "")}`
 
   useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setReduceMotion(true)
-      setIsStarted(true)
-      setFraction(1)
+    if (count === 0) return
+
+    const layers = layerRefs.current
+    const goo = gooRef.current
+    layers.forEach((el) => applyLayer(el, 0))
+
+    // Multiple words: show the first one right away, crisp
+    if (count > 1) applyLayer(layers[0], 1)
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      applyLayer(layers[0], 1)
       return
+    }
+
+    let rafId = 0
+    let timeoutId: ReturnType<typeof setTimeout> | undefined
+    let gooOn = false
+
+    // Threshold filter only while morphing -> resting text is never filtered
+    const setGoo = (on: boolean) => {
+      if (!goo || on === gooOn) return
+      gooOn = on
+      goo.style.filter = on ? `url(#${filterId})` : "none"
+    }
+
+    const start = () => {
+      const startTime = performance.now()
+
+      const tick = (now: number) => {
+        const elapsed = (now - startTime) / 1000
+
+        if (count === 1) {
+          const f = Math.min(elapsed / duration, 1)
+          setGoo(f < 1)
+          applyLayer(layers[0], ease(f))
+          if (f < 1) rafId = requestAnimationFrame(tick)
+          return
+        }
+
+        const cycle = duration + cooldown
+        const t = elapsed % cycle
+        const idx = Math.floor(elapsed / cycle) % count
+        const nextIdx = (idx + 1) % count
+        const morphing = t < duration
+        const f = morphing ? ease(t / duration) : 1
+
+        setGoo(morphing)
+
+        for (let i = 0; i < count; i++) {
+          if (i === idx) applyLayer(layers[i], 1 - f)
+          else if (i === nextIdx) applyLayer(layers[i], f)
+          else applyLayer(layers[i], 0)
+        }
+
+        rafId = requestAnimationFrame(tick)
+      }
+
+      rafId = requestAnimationFrame(tick)
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true)
-          observer.disconnect()
-        }
+        if (!entry.isIntersecting) return
+        observer.disconnect()
+        timeoutId = setTimeout(start, delay * 1000)
       },
       { threshold: 0.1 }
     )
+    if (containerRef.current) observer.observe(containerRef.current)
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
+    return () => {
+      observer.disconnect()
+      if (timeoutId) clearTimeout(timeoutId)
+      cancelAnimationFrame(rafId)
     }
-
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!isInView) return
-    const timer = setTimeout(() => {
-      setIsStarted(true)
-    }, delay * 1000)
-    return () => clearTimeout(timer)
-  }, [isInView, delay])
-
-  useEffect(() => {
-    if (!isStarted || reduceMotion || childrenArray.length === 0) return
-
-    let animationFrameId: number
-    let startTime = performance.now()
-
-    const animate = (now: number) => {
-      const elapsed = (now - startTime) / 1000
-
-      if (isEntrance) {
-        const f = Math.min(elapsed / duration, 1)
-        setFraction(f)
-        if (f < 1) {
-          animationFrameId = requestAnimationFrame(animate)
-        }
-      } else {
-        const totalCycle = duration + cooldown
-        const cycleElapsed = elapsed % totalCycle
-
-        if (cycleElapsed < duration) {
-          setFraction(cycleElapsed / duration)
-        } else {
-          setFraction(1)
-        }
-
-        const newIndex = Math.floor(elapsed / totalCycle) % childrenArray.length
-        if (newIndex !== indexRef.current) {
-          indexRef.current = newIndex
-          setIndex(newIndex)
-        }
-        animationFrameId = requestAnimationFrame(animate)
-      }
-    }
-
-    animationFrameId = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(animationFrameId)
-  }, [isStarted, isEntrance, childrenArray.length, duration, cooldown, reduceMotion])
-
-  const nextIndex = (index + 1) % childrenArray.length
-
-  const getStyles = (f: number, isCurrent: boolean) => {
-    if (reduceMotion) {
-      return { opacity: "100%", filter: "none" }
-    }
-    const val = isCurrent ? 1 - f : f
-    const opacity = Math.pow(val, 0.4)
-    const blur = Math.min(8 / val - 8, 100)
-    return {
-      opacity: isStarted ? `${opacity * 100}%` : "0%",
-      filter: isStarted ? `blur(${blur}px)` : "blur(100px)",
-    }
-  }
+  }, [count, duration, cooldown, delay, filterId])
 
   return (
     <div ref={containerRef} className={cn("relative w-full", className)}>
-      <div className="filter-[url(#threshold)_blur(0.6px)] relative w-full">
-        {isEntrance ? (
+      <div ref={gooRef} className="relative grid w-full">
+        {childrenArray.map((child, i) => (
           <div
-            className="w-full"
-            style={getStyles(fraction, false)} // Use the "fading in" style
+            key={i}
+            ref={(el) => {
+              layerRefs.current[i] = el
+            }}
+            className="col-start-1 row-start-1 w-full"
+            style={{ visibility: "hidden", opacity: 0 }}
           >
-            {childrenArray[0]}
+            {child}
           </div>
-        ) : (
-          <>
-            <div
-              className="relative w-full"
-              style={getStyles(fraction, true)}
-            >
-              {childrenArray[index]}
-            </div>
-            <div
-              className="absolute inset-0 w-full"
-              style={getStyles(fraction, false)}
-            >
-              {childrenArray[nextIndex]}
-            </div>
-          </>
-        )}
+        ))}
       </div>
-      <SvgFilters />
+
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        className="pointer-events-none absolute h-0 w-0"
+      >
+        <defs>
+          <filter id={filterId} colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              in="SourceGraphic"
+              type="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 255 -100"
+            />
+          </filter>
+        </defs>
+      </svg>
     </div>
   )
 }
-
-const SvgFilters: React.FC = () => (
-  <svg
-    id="filters"
-    className="fixed h-0 w-0 pointer-events-none"
-    preserveAspectRatio="xMidYMid slice"
-  >
-    <defs>
-      <filter id="threshold">
-        <feColorMatrix
-          in="SourceGraphic"
-          type="matrix"
-          values="1 0 0 0 0
-                  0 1 0 0 0
-                  0 0 1 0 0
-                  0 0 0 255 -100"
-        />
-      </filter>
-    </defs>
-  </svg>
-)
-
-
-export interface MorphingTextProps {
-  className?: string
-  texts: string[]
-}
-
-export const MorphingText: React.FC<MorphingTextProps> = ({
-  texts,
-  className,
-}) => (
-  <div className="relative">
-    <Morph
-      className={cn(
-        "mx-auto h-16 w-full max-w-3xl text-center font-sans text-[40pt] leading-none font-bold md:h-24 lg:text-[6rem]",
-        className
-      )}
-    >
-      {texts.map((text, i) => (
-        <span key={i} className="inline-block w-full">
-          {text}
-        </span>
-      ))}
-    </Morph>
-  </div>
-)
-
-

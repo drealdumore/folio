@@ -9,9 +9,34 @@ import { AnimatedSection } from "@/components/layout/animated-section";
 import { ArrowIcon } from "@/components/design/arrow-icon";
 import { LiveClock } from "@/components/design/live-clock";
 import { useWebHaptics } from "web-haptics/react";
-import { HERO_CTAS, PROFILE, SOCIALS } from "@/content/site";
+import { HERO_CTAS, GREETINGS, PROFILE, SOCIALS } from "@/content/site";
 
 import { motion } from "framer-motion";
+
+/** Picks a greeting based on the visitor's local clock. */
+function useTimeGreeting() {
+  const [greeting, setGreeting] = useState(PROFILE.greeting);
+
+  useEffect(() => {
+    const compute = () => {
+      const hour = new Date().getHours();
+      setGreeting(
+        hour < 5
+          ? GREETINGS.night
+          : hour < 12
+            ? GREETINGS.morning
+            : hour < 18
+              ? GREETINGS.afternoon
+              : GREETINGS.evening,
+      );
+    };
+    compute();
+    const id = setInterval(compute, 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  return greeting;
+}
 
 interface MagneticProps {
   children: React.ReactElement;
@@ -219,7 +244,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
             e.stopPropagation();
             handleClose();
           }}
-          className="group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white border border-white/5 shadow-sm"
+          className="theme-dark-surface group flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white border border-white/5 shadow-sm"
           aria-label="Dismiss View"
         >
           <svg
@@ -379,6 +404,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
   const originAvatarRef = useRef<HTMLDivElement>(null);
+  const greeting = useTimeGreeting();
 
   const [showTip, setShowTip] = useState(false);
   const tipTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);

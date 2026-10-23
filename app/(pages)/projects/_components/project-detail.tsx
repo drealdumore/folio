@@ -161,7 +161,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
         whileHover={reduce ? undefined : { scale: 1.08 }}
         whileTap={reduce ? undefined : { scale: 0.92 }}
         transition={SPRING_BOUNCY}
-        className="group mb-4 flex w-max shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 p-2 text-white shadow-sm backdrop-blur-md transition-colors hover:bg-white/20"
+        className="theme-dark-surface group mb-4 flex w-max shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/10 p-2 text-white shadow-sm backdrop-blur-md transition-colors hover:bg-white/20"
       >
         <ArrowIcon size={20} className="rotate-180" />
       </MotionLink>
@@ -204,33 +204,84 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               <p className="text-[15px] leading-[20px] text-text-normal">
                 {project.intro}
               </p>
+
+              {project.story && (
+                <div className="mt-5">
+                  <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-zinc-600">
+                    {CASE_STUDY_LABELS.why}
+                  </p>
+                  <p className="text-[15px] leading-[1.7] text-zinc-300">
+                    {project.story}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div>
-              <table>
-                <tbody className="divide-y divide-zinc-700">
+              <table className="w-full">
+                <tbody className="divide-y divide-zinc-800/70">
                   <tr>
-                    <td className="py-2 pr-6 font-medium text-text-heading">
+                    <td className="w-[110px] py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
                       {CASE_STUDY_LABELS.year}
                     </td>
-                    <td className="text-[15px] leading-[20px] text-text-normal">
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
                       {project.year}
                     </td>
                   </tr>
+                  {project.type && (
+                    <tr>
+                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                        {CASE_STUDY_LABELS.type}
+                      </td>
+                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                        {project.type}
+                      </td>
+                    </tr>
+                  )}
+                  {project.client && (
+                    <tr>
+                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                        {CASE_STUDY_LABELS.client}
+                      </td>
+                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                        {project.client}
+                      </td>
+                    </tr>
+                  )}
+                  {project.role && (
+                    <tr>
+                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                        {CASE_STUDY_LABELS.role}
+                      </td>
+                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                        {project.role}
+                      </td>
+                    </tr>
+                  )}
+                  {/* {project.duration && (
+                    <tr>
+                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                        {CASE_STUDY_LABELS.duration}
+                      </td>
+                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                        {project.duration}
+                      </td>
+                    </tr>
+                  )} */}
                   <tr>
-                    <td className="py-2 pr-6 font-medium text-text-heading">
+                    <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
                       {CASE_STUDY_LABELS.platform}
                     </td>
-                    <td className="text-[15px] leading-[20px] text-text-normal">
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
                       {platform}
                     </td>
                   </tr>
                   {visitUrl && (
                     <tr>
-                      <td className="py-2 pr-6 font-medium text-text-heading">
+                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
                         {CASE_STUDY_LABELS.link}
                       </td>
-                      <td className="text-[15px] leading-[20px] text-text-normal">
+                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
                         <a
                           href={visitUrl}
                           target="_blank"
@@ -258,7 +309,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                 damping: 26,
                 delay: 0.08,
               }}
-              className="inline-flex max-w-full items-center gap-1 self-start rounded-full border border-white/10 bg-[#141414]/40 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-2xl backdrop-saturate-150 glass-nav"
+              className="glass-nav inline-flex max-w-full items-center gap-1 self-start rounded-full border border-white/10 p-1.5"
             >
               {visitUrl && (
                 <motion.a
@@ -288,6 +339,18 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               )}
             </motion.div>
           )}
+
+          {/* Nothing public yet — say so instead of showing a dead button. */}
+          {/* {!visitUrl && !repoUrl && (
+            <div className="flex flex-col items-start gap-1.5 self-start rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/20 px-4 py-3">
+              <span className="text-[13px] font-medium text-zinc-400">
+                {CASE_STUDY_LABELS.notAvailable}
+              </span>
+              <p className="max-w-sm text-[12.5px] leading-[1.6] text-zinc-600">
+                {CASE_STUDY_LABELS.notAvailableHint}
+              </p>
+            </div>
+          )} */}
 
           {/* Hero Image */}
           {project.heroImage && (

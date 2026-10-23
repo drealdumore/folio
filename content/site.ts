@@ -6,6 +6,8 @@ export type projectType = {
   tech?: string[];
 };
 
+export type ProjectStatus = "live" | "in-development" | "private" | "archived";
+
 export interface ProjectCardProps {
   projectName: string | undefined | null;
   image?: string;
@@ -16,6 +18,7 @@ export interface ProjectCardProps {
   projectDate: string;
   technologies: string[];
   highlight?: string;
+  status?: ProjectStatus;
 }
 
 export interface CaseStudy {
@@ -42,6 +45,12 @@ export interface CaseStudy {
     label: string;
     url: string;
   }[];
+  role?: string;
+  type?: string;
+  client?: string;
+  status?: ProjectStatus;
+  duration?: string;
+  story?: string;
 }
 
 export const ALLPROJECTS: ProjectCardProps[] = [
@@ -232,6 +241,24 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
+    projectName: "Echo",
+    projectLink: "/projects/echo",
+    projectDescription:
+      "A reminder app that lets you set a place, then nudges you when you actually get there — useful for the errands you keep forgetting on the way home.",
+    highlight: "reminders that fire where you are",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2025-11-01",
+    image: "/projects/echo-square.png",
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "expo-location",
+      "expo-task-manager",
+      "expo-router",
+    ],
+  },
+  {
     projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
     image: "/projects/isamitechnologies.png",
@@ -359,34 +386,29 @@ export const SHORTPROJECTS = [
     projectType: "Developer Tool",
     projectDate: "2025-03-01",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    projectName: "Writing Pad",
-    projectLink: "",
-    projectinAppLink: "/writing-pad",
-    projectDescription:
-      "A simple writing space for quick notes and drafts.",
-    projectType: "Utility",
-    projectDate: "2025-05-05",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
-  },
+  }
 ];
 
 export const MOBILE_APPS: CaseStudy[] = [
   // 1. Melo
   {
     id: "melo",
-    title: "Projects",
+    title: "Melo",
     sub: "Melo",
-    oneLiner: "Private real-time chat with automatic language translation",
+    oneLiner: "Private text chat with automatic language translation",
+    role: "Product design, mobile & backend engineering",
+    type: "Mobile app",
+    client: "Personal project",
+    story:
+      "A friend and I would text in different languages. They wrote in Igbo, I wrote in English, and understanding each other meant dealing with the language barrier one message at a time. I wanted to make that feel less like work. Melo puts translation inside the conversation, so both people can chat in their preferred language and reveal the original message whenever they want.",
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/melo",
     heroImage: "/projects/melo-splash.png",
     intro:
-      "Melo is a two-person chat app for people who speak different languages. You write in your language, the other person receives a translation, and either person can tap to see the original message.",
+      "Melo is a two-person messaging app that translates text between people who speak different languages. Each person reads messages in their preferred language and can tap to see the original text.",
     introText:
-      "I wanted to make conversations between people who speak different languages feel less awkward. Switching between a messaging app and a translation tool breaks the flow, so Melo puts translation directly into the chat.",
+      "Instead of copying messages into a separate translation app, people can communicate inside one chat. The goal is to make translation feel like part of messaging rather than an extra step.",
     gallery: [
       { src: "/projects/melo-splash.png", alt: "Melo Splash Screen" },
       { src: "/projects/melo-onboarding.png", alt: "Melo Onboarding" },
@@ -404,27 +426,27 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
     ],
     challenge:
-      "The main challenge was keeping the chat responsive while translation happened in the background. I also needed to handle translation failures and rate limits, and let people connect without a traditional account flow.",
+      "The challenge was keeping conversations responsive while translation requests ran asynchronously. I also had to account for failed requests, API quotas, and connecting two people without requiring a traditional account.",
     actions: [
       {
-        title: "Identity without traditional auth",
-        text: "Each device gets a UUID and a readable Melo ID, stored in AsyncStorage and synced to Supabase. I derive the room ID from the two participant IDs so both people resolve to the same chat without signing up.",
+        title: "Identity without traditional accounts",
+        text: "Each device gets a UUID and a readable Melo ID, stored in AsyncStorage and synced to Supabase. I derive the conversation room ID from both participant IDs so the same pair resolves to the same room.",
       },
       {
-        title: "Optimistic UI + translation pipeline",
-        text: "The sender sees the message immediately while translation runs. I track each message’s translation state, support retries, and use Supabase Realtime to keep the chat updated. I also added request coalescing, in-memory caching, and echo detection.",
+        title: "Responsive messaging and translation",
+        text: "I implemented optimistic message updates so the sender does not have to wait for the full request cycle. Translation state, retries, Supabase Realtime updates, request coalescing, in-memory caching, and echo detection help handle asynchronous processing and repeated requests.",
       },
       {
-        title: "Realtime architecture across 11 languages",
-        text: "Expo Router and Supabase Realtime handle typing indicators, presence, and read receipts. The app supports 11 languages, including English, Spanish, French, Arabic, Swahili, Yoruba, and Korean.",
+        title: "Realtime chat across 11 languages",
+        text: "I used Expo Router and Supabase Realtime for the chat experience, including typing indicators, presence, and read receipts. Melo supports 11 languages, including English, Spanish, French, Arabic, Swahili, Yoruba, and Korean.",
       },
     ],
     result:
-      "Working on Melo gave me practical experience with optimistic UI updates, realtime events, and the trade-offs involved in translating messages before delivery.",
+      "Melo brought messaging, translation, and realtime updates into one mobile experience. Building it helped me work through asynchronous UI states, message synchronization, and the practical limits of external translation APIs.",
     stats: [
       { value: "11", label: "languages supported" },
-      { value: "Real-time", label: "typing, presence & read receipts" },
-      { value: "No accounts", label: "device-ID identity" },
+      { value: "Realtime", label: "chat presence and message updates" },
+      { value: "No accounts", label: "device-ID-based identity" },
     ],
     technologies: [
       "Expo SDK 57",
@@ -442,42 +464,50 @@ export const MOBILE_APPS: CaseStudy[] = [
   // 2. The SupaDevs
   {
     id: "thesupadevs",
-    title: "Projects",
+    title: "The SupaDevs",
     sub: "The SupaDevs",
-    oneLiner: "A searchable developer resource library with AI categorization",
+    oneLiner: "A searchable library of developer resources",
+    role: "Full-stack development, AI integration",
+    type: "Web app",
+    client: "Personal project",
+    story:
+      "I kept finding useful developer resources and then losing them in bookmarks, chats, and browser tabs. The SupaDevs started as my attempt to put those resources in one searchable place. I also wanted to make contributing easier, so I explored using AI to categorize submissions instead of making every contributor organize everything manually.",
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://thesupadevs.vercel.app",
     heroImage: "/projects/thesupadevs.webp",
     intro:
-      "The SupaDevs is a searchable library of developer tools, UI components, APIs, and other resources, so developers can find useful things without searching across dozens of sites.",
+      "The SupaDevs is a searchable library of developer tools, UI components, APIs, tutorials, and other resources.",
     introText:
-      "I started The SupaDevs to put useful developer resources in one place. The site includes search, automatic metadata extraction, and AI categorization to help organize submissions.",
+      "The platform combines resource discovery with metadata extraction and AI-assisted categorization, helping submissions become easier to browse and manage.",
     gallery: [
-      { src: "/projects/thesupadevs.webp", alt: "The SupaDevs Platform" },
+      {
+        src: "/projects/thesupadevs.webp",
+        alt: "The SupaDevs Platform",
+      },
     ],
     challenge:
-      "The work involved collecting resources from different websites, handling missing or inconsistent metadata, and building admin tools to review and manage submissions.",
+      "Resources come from different websites, each with its own metadata conventions. The challenge was extracting useful information consistently, organizing submissions, and giving administrators a practical way to review them.",
     actions: [
       {
-        title: "Intelligent metadata scraper",
-        text: "I built a scraper that tries Open Graph data first, then Twitter card metadata, page images, and finally the favicon. It also uses caching, rate-limit handling, and retries.",
+        title: "Metadata extraction and fallbacks",
+        text: "I built a scraper that checks Open Graph metadata first, then Twitter card data, page images, and finally the favicon. Caching, retries, and rate-limit handling help manage requests to third-party sites.",
       },
       {
-        title: "AI batch categorization with Groq & Llama",
-        text: "I integrated Groq with Llama 3.1 8B to categorize batches of submitted resources and suggest tags, including a confidence score for each classification.",
+        title: "AI-assisted categorization",
+        text: "I integrated Groq with Llama 3.1 8B to categorize batches of submitted resources and suggest tags. The workflow also produces confidence scores to help identify classifications that may need review.",
       },
       {
-        title: "Next.js site and admin tools",
-        text: "The site uses Next.js ISR with five-minute revalidation and dynamic metadata. I also built admin tools for bulk approval, link checks, and categorization.",
+        title: "Search, caching, and admin tools",
+        text: "I built the site with Next.js and ISR, using five-minute revalidation for the configured pages. Admin tools support bulk approval, link checks, and resource categorization.",
       },
     ],
     result:
-      "Building The SupaDevs gave me experience with Next.js caching, scraping metadata from third-party sites, and using an LLM to help organize content.",
+      "The SupaDevs combines resource discovery with automated metadata extraction and AI-assisted organization. It gave me practical experience with caching, web scraping, and integrating language models into an existing workflow.",
     stats: [
-      { value: "500+", label: "resources listed" },
-      { value: "5 min", label: "ISR revalidation" },
-      { value: "AI", label: "Groq + Llama categorization" },
+      { value: "200+", label: "resources listed" },
+      { value: "5 min", label: "configured ISR revalidation" },
+      { value: "AI", label: "resource categorization" },
     ],
     technologies: [
       "Next.js 15",
@@ -499,39 +529,44 @@ export const MOBILE_APPS: CaseStudy[] = [
   // 3. VaultX
   {
     id: "vaultx",
-    title: "Projects",
+    title: "VaultX",
     sub: "VaultX",
-    oneLiner: "Cross-device temporary sharing API",
+    oneLiner: "A temporary sharing API for text, code, and links",
+    role: "Backend engineering, API design, documentation",
+    type: "Backend / API",
+    client: "Personal project",
+    story:
+      "Sometimes I just need to move a code snippet from my laptop to my phone. I didn't want to create an account or leave temporary information sitting around indefinitely, so I built VaultX. Expiry times, view limits, and optional passwords are part of the design rather than features added as an afterthought.",
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/vaultx",
     intro:
-      "VaultX is a REST API for sharing text, code snippets, and links between devices without creating an account. Shared items can expire, have view limits, or require a password.",
+      "VaultX is a REST API for sharing text, code snippets, and links between devices without creating an account.",
     introText:
-      "I wanted a simple way to move a snippet or temporary piece of text between devices without creating an account or leaving it online indefinitely.",
+      "Shared items can have expiration times, view limits, and optional password protection. The API is designed around temporary access rather than permanent storage.",
     gallery: [],
     challenge:
-      "The main backend challenge was keeping shared items accessible while handling Redis outages and server restarts.",
+      "The main challenge was managing temporary data across in-memory storage and Redis while accounting for Redis outages, server restarts, and the different guarantees each storage layer provides.",
     actions: [
       {
-        title: "Hybrid in-memory + Redis storage architecture",
-        text: "Reads check memory first and fall back to Redis when needed. I added failover so the API can continue using in-memory storage if Redis is unavailable, with the trade-off that memory-only data may not survive a restart.",
+        title: "Hybrid in-memory and Redis storage",
+        text: "I implemented reads that check in-memory storage before falling back to Redis. The fallback allows the API to continue operating when Redis is unavailable, with the explicit trade-off that memory-only data may be lost on restart.",
       },
       {
-        title: "Security and rate limiting",
+        title: "Validation and access controls",
         text: "I added Helmet security headers, bcrypt password hashing, Zod input validation, a 100 KB content limit, CORS configuration, and cleanup for expired items.",
       },
       {
-        title: "Consistent API design & monitoring",
-        text: "I standardized JSON error responses, added health-check endpoints and access tracking, and used Node’s crypto utilities to generate tokens.",
+        title: "Predictable API behaviour",
+        text: "I standardized JSON error responses, added health-check endpoints and access tracking, and used Node.js crypto utilities to generate tokens.",
       },
     ],
     result:
-      "VaultX gave me a chance to work through backend concerns like Redis failover, validation, expiry, and predictable API errors.",
+      "VaultX gave me hands-on experience with API design, temporary data lifecycles, validation, and storage failure trade-offs. It also helped me think more carefully about the difference between adding security features and guaranteeing security.",
     stats: [
       { value: "0", label: "accounts required" },
-      { value: "100 KB", label: "payload cap per clip" },
-      { value: "Memory + Redis", label: "hybrid storage with failover" },
+      { value: "100 KB", label: "maximum clip payload" },
+      { value: "Redis + memory", label: "hybrid storage strategy" },
     ],
     technologies: [
       "Node.js",
@@ -540,7 +575,7 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Redis (Upstash)",
       "Helmet",
       "Zod",
-      "crypto",
+      "Node.js crypto",
     ],
     links: [
       { label: "GitHub", url: "https://github.com/drealdumore/vaultx" },
@@ -550,17 +585,21 @@ export const MOBILE_APPS: CaseStudy[] = [
   // 4. Chop Iron
   {
     id: "iron",
-    title: "Projects",
+    title: "Chop Iron",
     sub: "Chop Iron",
-    oneLiner: "Offline-first fitness / bodybuilding progress tracker",
+    oneLiner: "An offline-first workout tracker with a Nigerian voice",
     year: 2026,
     builtBy: "Samuel Isah",
-    website: "Coming Soon",
+    role: "Mobile engineering",
+    type: "Mobile app",
+    client: "Personal project",
+    story:
+      "I train, forget my numbers, and sometimes struggle to stay consistent. I wanted a tracker that made logging workouts feel simple instead of turning the gym into another admin task. Chop Iron grew from that idea, with a bit of Nigerian personality thrown in because fitness apps don't all have to sound the same.",
     heroImage: "/projects/chop-iron-splash.png",
     intro:
-      "Chop Iron is a workout tracker with a Nigerian voice. It includes 53 exercises, tracks personal records across four categories, and stores workout history in SQLite so logging works offline.",
+      "Chop Iron is a workout tracker with a Nigerian voice. It includes 53 exercises, workout history, personal records, progress charts, and achievement tracking, with workout data stored locally.",
     introText:
-      "I built Chop Iron because every fitness app I tried felt bloated with paywalls or completely sterile. None had the motivating voice I needed when lifting: 'No dull. Go chop iron.' From there, every decision answered one question: does this help me log a set faster and train harder?",
+      "The guiding question was simple: does this make it easier to record a set and understand my progress? That shaped the offline-first architecture, compact workout flows, and copy built around the phrase, 'No dull. Go chop iron.'",
     gallery: [
       { src: "/projects/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
       { src: "/projects/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
@@ -590,28 +629,28 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/chop-iron-edit-profile.png", alt: "Edit Profile" },
     ],
     challenge:
-      "The tricky part was getting the calculations right. Streaks need to count distinct training days, personal records depend on workout history, and achievements should update if a workout is deleted. All of this also needs to work offline.",
+      "Workout history has to stay consistent as records change. Streaks depend on distinct training days, personal records depend on previous sets, and achievements may need to be recalculated when a workout is edited or deleted.",
     actions: [
       {
-        title: "Local-first SQLite database architecture",
-        text: "I used React Native, Expo, Zustand, and 12 SQLite tables to keep workout data on the device. Logging doesn’t need a network connection.",
+        title: "Local-first SQLite architecture",
+        text: "I used React Native, Expo, Zustand, and SQLite to store workout data locally. The database is organized across 12 tables, allowing workout logging and history access without requiring a network connection.",
       },
       {
-        title: "Custom PR calculation & streak engine",
-        text: "I wrote the history calculations for estimated one-rep max (Epley formula), training volume, rep records, streaks, and achievement thresholds.",
+        title: "Workout calculations and progress",
+        text: "I implemented calculations for estimated one-rep max using the Epley formula, training volume, rep records, workout streaks, and achievement thresholds.",
       },
       {
-        title: "Spring-physics motion & local personality",
-        text: "I used Reanimated for the bottom sheets and gestures, and gave the interface a dark look with Nigerian/Pidgin copy throughout.",
+        title: "Motion and product personality",
+        text: "I used Reanimated for interactive bottom sheets and gestures, then carried the product's Nigerian/Pidgin voice through a dark interface designed around quick workout logging.",
       },
     ],
     result:
-      "Chop Iron helped me practise offline-first app design, local data consistency, workout calculations, and gesture-based interactions.",
+      "Chop Iron brings workout logging, history, and progress tracking into a local-first mobile app. It helped me work through local data consistency, derived calculations, and interaction design without making connectivity a requirement for everyday use.",
     stats: [
-      { value: "53", label: "exercises built in" },
-      { value: "12", label: "transactional SQLite tables" },
-      { value: "4", label: "PR metrics tracked" },
-      { value: "100%", label: "offline, zero network" },
+      { value: "53", label: "built-in exercises" },
+      { value: "12", label: "SQLite tables" },
+      { value: "4", label: "personal-record categories" },
+      { value: "Offline-first", label: "local workout storage" },
     ],
     technologies: [
       "React Native",
@@ -620,51 +659,57 @@ export const MOBILE_APPS: CaseStudy[] = [
       "SQLite",
       "Zustand",
       "Reanimated",
-      "expo-router",
+      "Expo Router",
     ],
-    links: [
-      { label: "Chop Iron", url: "#" },
-    ],
+    links: [],
   },
 
-  // 5. Crystalglowxquisite
+  // 5. Crystal Glow Xquisite
   {
     id: "crystalglowxquisite",
-    title: "Projects",
+    title: "Crystal Glow Xquisite",
     sub: "Crystalglowxquisite",
-    oneLiner: "Online store for a skincare brand",
+    oneLiner: "An online storefront for a skincare brand",
+    role: "Frontend, checkout, store integrations",
+    type: "E-commerce",
+    client: "Crystal Glow Xquisite",
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://crystalglowxquisite.com/",
     heroImage: "/projects/crystalglowxquisite.png",
+    story:
+      "Crystal Glow Xquisite is a skincare brand I helped bring online with a custom storefront. The focus was giving customers a straightforward way to browse products, understand what was available, and move through the shopping experience on both mobile and desktop.",
     intro:
-      "An online store for a skincare brand, with a product catalog, cart, checkout flow, and analytics.",
+      "A custom online store for a skincare brand, featuring a product catalog, product galleries, cart interactions, checkout, and analytics.",
     introText:
-      "I built the storefront around the brand’s product catalog, with filtering, product images, cart interactions, checkout, and analytics.",
+      "I built the storefront around the brand's catalog and shopping flow, with responsive layouts and integrations to support the store's day-to-day operation.",
     gallery: [
-      { src: "/projects/crystalglowxquisite.png", alt: "Crystalglowxquisite Storefront" },
+      {
+        src: "/projects/crystalglowxquisite.png",
+        alt: "Crystal Glow Xquisite Storefront",
+      },
     ],
     challenge:
-      "The main work was making the catalog and cart usable on both mobile and desktop, and connecting the shopping flow to checkout.",
+      "The main challenge was keeping the catalog and cart usable across screen sizes while connecting the shopping flow to checkout and supporting services.",
     actions: [
       {
-        title: "Custom catalog & checkout flow",
-        text: "Built product filtering, responsive product galleries, cart state management, and the checkout flow.",
+        title: "Catalog and shopping experience",
+        text: "I built product filtering, responsive product galleries, cart state management, and the checkout flow using Next.js, React, and TypeScript.",
       },
       {
-        title: "Performance & analytics integration",
-        text: "Integrated PostHog for analytics and Neon PostgreSQL for data storage, and deployed the site on Vercel.",
+        title: "Data and analytics integrations",
+        text: "I integrated Neon PostgreSQL for application data and PostHog for analytics, then deployed the storefront on Vercel.",
       },
     ],
     result:
-      "The result is an online storefront where customers can browse the catalog and go through the checkout flow.",
+      "The delivered storefront gives the brand an online destination where customers can browse its products and proceed through the shopping flow. The work covered both the customer-facing interface and supporting integrations.",
     technologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
       "React",
-      "Posthog",
-      "Neon",
+      "PostHog",
+      "Neon PostgreSQL",
       "Vercel",
     ],
     links: [
@@ -672,85 +717,103 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
   },
 
-  // 6. Knowledge Master
+  // 6. KnowledgeMaster
   {
     id: "knowledgemaster",
-    title: "Projects",
+    title: "KnowledgeMaster",
     sub: "Knowledge Master",
-    oneLiner: "E-commerce platform for a nationwide bookstore",
+    oneLiner: "An online bookstore and learning-resource platform",
+    role: "Frontend, backend, payments",
+    type: "E-commerce",
+    client: "KnowledgeMaster",
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://www.knowledgemaster.com.ng/",
     heroImage: "/projects/knowledgemaster.webp",
+    story:
+      "A bookstore has more to offer than a list of books. Customers also need to find the right resources and understand how delivery and school bookfairs work. I worked on KnowledgeMaster's online presence to bring its catalog and service information together in a place customers could browse without visiting a physical store first.",
     intro:
-      "An online bookstore for textbooks, novels, and learning resources, with details about delivery and school bookfair services.",
+      "KnowledgeMaster is an online bookstore for textbooks, novels, and learning resources, with information about delivery and school bookfair services.",
     introText:
-      "I built the site to help customers browse the bookstore’s offerings and find information about delivery and school bookfair services.",
+      "The site organizes the bookstore's offerings and makes important information about its services easier to find, especially when browsing on mobile.",
     gallery: [
-      { src: "/projects/knowledgemaster.webp", alt: "Knowledge Master Bookstore" },
+      {
+        src: "/projects/knowledgemaster.webp",
+        alt: "KnowledgeMaster Bookstore",
+      },
     ],
     challenge:
-      "The focus was organizing different types of books and making the catalog and delivery information easy to find on mobile.",
+      "The challenge was organizing different kinds of books and making catalog navigation, delivery information, and school bookfair details accessible without overwhelming the interface.",
     actions: [
       {
-        title: "Curriculum & resource categorization",
-        text: "Organized books into categories and added search and information about the school bookfair service.",
+        title: "Catalog organization and discovery",
+        text: "I organized book categories and built browsing and search experiences, alongside pages explaining the bookstore's school bookfair service.",
       },
       {
-        title: "Next.js web platform",
-        text: "Built with Next.js, TypeScript, and Tailwind CSS, with AI-related product recommendation functionality.",
+        title: "Modern web platform",
+        text: "I built the platform using Next.js, TypeScript, and Tailwind CSS, with Neon for data storage and PostHog for analytics. AI-related product recommendation functionality is also part of the project.",
       },
     ],
     result:
-      "The site gives customers a place to explore books, check delivery information, and learn about school bookfair services.",
+      "The website gives customers a central place to explore books, find service information, and learn about school bookfairs. It demonstrates my experience building a content-rich business website around real customer needs.",
     technologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
       "React",
-      "Neon",
-      "Posthog",
-      "AI-integration",
+      "Neon PostgreSQL",
+      "PostHog",
+      "AI integration",
     ],
     links: [
-      { label: "Live Website", url: "https://www.knowledgemaster.com.ng/" },
+      {
+        label: "Live Website",
+        url: "https://www.knowledgemaster.com.ng/",
+      },
     ],
   },
 
   // 7. DropEnv
   {
     id: "dropenv",
-    title: "Projects",
+    title: "DropEnv",
     sub: "DropEnv",
-    oneLiner: "Encrypted environment-variable sharing tool",
+    oneLiner: "Client-side encrypted sharing for environment variables",
+    role: "Design, encryption",
+    type: "Developer tool",
+    client: "Personal project",
+    duration: "Two weeks",
+    story:
+      "Sharing a .env file with a teammate sounds harmless until you remember what those files contain. DropEnv was my attempt to make that exchange less risky: encrypt the contents in the browser, keep the decryption key in the URL fragment, and give shared data a limited lifetime. Building it pushed me to learn the Web Crypto API beyond simply following an example.",
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/dropenv",
     heroImage: "/projects/dropenv.png",
     intro:
-      "DropEnv lets you share environment variables through temporary links, with encryption handled in the browser.",
+      "DropEnv is a developer tool for sharing environment variables through temporary links, with encryption performed in the browser.",
     introText:
-      "Sharing `.env` secrets over Slack or chat apps exposes keys to plain text storage. DropEnv encrypts config in the client browser with ephemeral zero-knowledge storage.",
+      "Instead of sending configuration values as plain text in a chat, the tool encrypts the contents client-side before sharing them. The design keeps the decryption key in the URL fragment rather than the normal HTTP request.",
     gallery: [],
     challenge:
-      "The important part was encrypting the contents before they leave the browser and controlling how long a shared link remains available.",
+      "The core challenge was handling encryption and decryption in the browser while managing temporary links, expiration, and view limits. Security also required understanding exactly which parts of the data and key each component could access.",
     actions: [
       {
-        title: "Client-side AES encryption",
-        text: "I used the Web Crypto API with AES-GCM. The decryption key is kept in the URL fragment rather than sent as part of the normal request to the server.",
+        title: "Browser-side AES-GCM encryption",
+        text: "I used the Web Crypto API with AES-GCM to encrypt shared content in the browser. The decryption key is stored in the URL fragment, which is not included in the HTTP request sent to the server.",
       },
       {
-        title: "Ephemeral lifecycle & auto-destruction",
-        text: "Added link expiry and view limits so shared content can be removed after a set time or number of views.",
+        title: "Temporary access and expiry",
+        text: "I implemented link expiration and view limits to control how long shared content remains available. These controls reduce the lifetime of a share but do not replace secure handling of the link itself.",
       },
     ],
     result:
-      "The result is a small tool for sharing configuration data without pasting the contents directly into chat.",
+      "DropEnv gave me practical experience with browser cryptography, temporary resource lifecycles, and the security trade-offs involved in sharing sensitive configuration data.",
     technologies: [
       "TypeScript",
       "Next.js",
       "Node.js",
       "Web Crypto API",
+      "AES-GCM",
       "Tailwind CSS",
     ],
     links: [
@@ -761,17 +824,22 @@ export const MOBILE_APPS: CaseStudy[] = [
   // 8. SAGE
   {
     id: "sage",
-    title: "Projects",
+    title: "Sage",
     sub: "SAGE",
-    oneLiner: "AI strategist for difficult conversations mapped against The 48 Laws of Power",
+    oneLiner: "An AI coach for thinking through difficult conversations",
     year: 2026,
     builtBy: "Samuel Isah",
-    website: "Coming Soon",
+    role: "AI integration, mobile engineering",
+    type: "Mobile app",
+    client: "Personal project",
+    duration: "Ongoing",
+    story:
+      "Sometimes the hardest part of a difficult conversation is working out what to say before you say it. I built SAGE as a place to think through those situations, using ideas from The 48 Laws of Power to explore different approaches. The product is still evolving, especially the part that matters most to me: making an AI conversation feel natural rather than like filling out a form.",
     heroImage: "/projects/sage-splash.png",
     intro:
-      "SAGE is an AI coach for difficult conversations. Describe a situation and it helps you think through the dynamics, then drafts possible replies in different tones using ideas from The 48 Laws of Power.",
+      "SAGE is an AI coach for difficult conversations. Describe a situation and explore its dynamics, then generate possible responses in different tones informed by ideas from The 48 Laws of Power.",
     introText:
-      "The idea was to help people think through a difficult conversation before replying. Rather than only generating a response, SAGE considers the situation and offers a few ways to approach it.",
+      "Rather than producing a single reply without context, SAGE aims to help users consider the situation and compare different ways of approaching a conversation.",
     gallery: [
       { src: "/projects/sage-splash.png", alt: "Sage Splash Screen" },
       { src: "/projects/sage-index.png", alt: "Sage Analysis View" },
@@ -787,23 +855,23 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/sage-delete.png", alt: "Sage Delete Conversation" },
     ],
     challenge:
-      "The challenge was getting the model to return useful, structured responses while handling rate limits and responses that did not match the expected format.",
+      "The main challenge was getting consistent, structured responses from AI services while handling rate limits, malformed output, and voice transcription failures without breaking the conversation flow.",
     actions: [
       {
-        title: "API key rotation & quota recovery",
-        text: "I built an eight-key rotation system that tracks exhausted keys and temporarily locks out keys that hit their quota, helping the app recover when an API key is rate-limited.",
+        title: "API key rotation and quota recovery",
+        text: "I built an eight-key rotation system that tracks exhausted keys and temporarily locks out keys that hit their quota. This gives the app a way to try another available key when a request is rate-limited.",
       },
       {
-        title: "Dual voice engine & schema validation",
-        text: "Voice input can use Gemini or Groq Whisper, with a fallback path. I also validate AI responses with Zod and handle responses that do not match the expected schema.",
+        title: "Voice input and response validation",
+        text: "Voice input can use Gemini or Groq Whisper, with a fallback path. I also validate structured AI responses with Zod and handle output that does not match the expected schema.",
       },
       {
-        title: "Custom dark motion design system",
-        text: "I built the interface with Reanimated and Gesture Handler, including haptic feedback for key interactions.",
+        title: "Custom mobile interactions",
+        text: "I built the mobile interface with Reanimated and Gesture Handler, adding motion and haptic feedback to key interactions.",
       },
     ],
     result:
-      "Building SAGE gave me experience handling AI API limits, validating model responses, and adding a fallback for voice transcription.",
+      "SAGE has helped me work through practical AI integration problems, including quota handling, structured response validation, and alternative paths for voice transcription. The product remains in development as I refine the conversation experience.",
     technologies: [
       "React Native",
       "Expo",
@@ -812,26 +880,29 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Groq Whisper",
       "Zod",
       "Reanimated",
+      "Gesture Handler",
     ],
-    links: [
-      { label: "Sage", url: "#" },
-    ],
+    links: [],
   },
 
   // 9. GPZ
   {
     id: "gpz",
-    title: "Projects",
+    title: "GPZ",
     sub: "GPZ",
-    oneLiner: "GPA tracker and academic planner for students",
+    oneLiner: "A GPA tracker and academic planning tool",
     year: 2025,
     builtBy: "Samuel Isah",
-    website: "Coming Soon",
+    role: "Mobile engineering, data modelling",
+    type: "Mobile app",
+    client: "Personal project",
+    story:
+      "Every semester, I found myself rebuilding the same spreadsheet to keep track of courses, grades, and academic targets. GPZ started as a way to stop doing that manually. It brings those calculations into one place and helps me see how future grades could affect my overall GPA.",
     heroImage: "/projects/gpz-splash.png",
     intro:
-      "A GPA tracker for students to manage semesters, courses, and grades, and work out how upcoming results could affect an academic target.",
+      "GPZ is a student-focused GPA tracker for managing semesters, courses, grades, and target academic results.",
     introText:
-      "I wanted students to be able to check how their next semester’s grades could affect their overall GPA, rather than having to work it all out manually.",
+      "The app helps students organize their academic records and explore what grades they may need in future courses or semesters to reach a target GPA.",
     gallery: [
       { src: "/projects/gpz-splash.png", alt: "GPZ Splash Screen" },
       { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
@@ -842,63 +913,65 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/gpz-home.png", alt: "GPZ Home" },
     ],
     challenge:
-      "The calculations need to account for different grading scales and estimate future results, while keeping course and grade entry straightforward.",
+      "Academic projections need to account for credit units, grading scales, completed courses, and future results. The challenge was to make those calculations useful without making course entry complicated.",
     actions: [
       {
-        title: "Academic target calculation logic",
-        text: "I added calculations to estimate the grades and credit requirements needed to reach a target GPA in future semesters.",
+        title: "Academic target calculations",
+        text: "I implemented calculations to estimate the grades and credit requirements needed to reach a target GPA in future semesters.",
       },
       {
-        title: "Offline-first React Native architecture",
-        text: "Built with Expo and TypeScript, with AsyncStorage for local persistence and React Query for data caching.",
+        title: "Local-first mobile architecture",
+        text: "I built the app with Expo and TypeScript, using AsyncStorage for local persistence and React Query for data caching.",
       },
     ],
     result:
-      "GPZ brings course records, GPA calculations, and academic targets together in one place.",
+      "GPZ brings academic records and target-GPA planning into one mobile experience. It also gave me a practical way to work through data modelling and the calculation logic behind academic projections.",
     technologies: [
       "React Native",
       "Expo",
       "TypeScript",
       "AsyncStorage",
-      "react-query",
+      "React Query",
     ],
-    links: [
-      { label: "GPZ", url: "#" },
-    ],
+    links: [],
   },
 
   // 10. ECHO
   {
     id: "echo",
-    title: "Projects",
+    title: "Echo",
     sub: "ECHO",
-    oneLiner: "A reminder app that can notify you when you reach a chosen location",
+    oneLiner: "Location-based reminders that trigger when you arrive",
     year: 2025,
     builtBy: "Samuel Isah",
-    website: "Coming Soon",
+    role: "Mobile engineering, background location",
+    type: "Mobile app",
+    client: "Personal project",
+    story:
+      "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
     heroImage: "/projects/echo-hero.png",
     intro:
-      "ECHO is a reminder app for tasks tied to a place. Choose a location and a radius, and the app can send a notification when you arrive. It is designed to keep reminders on the device rather than depend on a cloud account.",
+      "Echo is a location-based reminder app for tasks tied to a particular place. Choose a location and a radius, then configure a reminder to trigger when the device enters that area.",
     introText:
-      "Some reminders are more useful when you reach a place than at a set time. The challenge was monitoring locations in the background while working within mobile operating-system limits.",
+      "A reminder to buy something at a shop or complete a task on campus is more useful when it appears at the right place. Echo explores how geofencing and local notifications can support that experience without requiring a cloud account.",
     gallery: [
       { src: "/projects/echo-hero.png", alt: "Echo Map View" },
       { src: "/projects/echo-square.png", alt: "Echo Reminder List" },
     ],
     challenge:
-      "The challenge was monitoring locations in the background while working within operating-system battery and region limits.",
+      "Background location behaviour varies across mobile operating systems. Battery restrictions, permissions, region limits, and background execution rules all affect when a location-triggered reminder can be delivered.",
     actions: [
       {
-        title: "Headless task manager & local geofencing",
-        text: "Used expo-task-manager to monitor location regions in the background and trigger local notifications.",
+        title: "Background location tasks and geofencing",
+        text: "I used expo-task-manager and location-region monitoring to handle background location events and trigger local notifications when supported operating-system conditions are met.",
       },
       {
-        title: "Offline location caching",
-        text: "Added caching and debouncing around forward and reverse geocoding to avoid repeating requests unnecessarily.",
+        title: "More efficient location lookup",
+        text: "I added caching and debouncing around forward and reverse geocoding to avoid unnecessary repeated requests when searching for and selecting places.",
       },
     ],
     result:
-      "ECHO explores how background location tasks and local notifications can support reminders without relying on a cloud service.",
+      "Echo explores the engineering behind place-aware reminders, from background tasks to local notifications. It helped me understand the practical constraints of mobile location services and the importance of designing around them.",
     technologies: [
       "React Native",
       "Expo",
@@ -906,9 +979,7 @@ export const MOBILE_APPS: CaseStudy[] = [
       "expo-task-manager",
       "TypeScript",
     ],
-    links: [
-      { label: "Echo", url: "#" },
-    ],
+    links: [],
   },
 ];
 
@@ -918,7 +989,7 @@ export const WEB_TOOLS = [
     projectLink: "https://deps-janitor.vercel.app/",
     image: "/projects/deps-janitor.webp",
     projectDescription:
-      "A CLI tool for finding unused npm dependencies and helping you remove packages a project no longer needs.",
+      "Find unused npm dependencies and clean up your project with an interactive CLI and web interface.",
     projectType: "CLI & Web Tool",
     projectDate: "2025-12-28",
     technologies: ["Node.js", "Next.js", "Tailwind CSS", "TypeScript"],
@@ -928,7 +999,7 @@ export const WEB_TOOLS = [
     projectLink: "https://peekrr.vercel.app/",
     image: "/projects/peekrr.webp",
     projectDescription:
-      "Responsive website snapshot and screenshot generator for previewing designs across viewport sizes.",
+      "Preview how a website looks across different viewport sizes with a responsive screenshot tool.",
     projectType: "Developer Utility",
     projectDate: "2025-12-15",
     technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "TypeScript"],
@@ -938,7 +1009,7 @@ export const WEB_TOOLS = [
     projectLink: "https://meta-scrapper.vercel.app/",
     image: "/projects/meta-scrapper.webp",
     projectDescription:
-      "Extract a page title, description, Open Graph image, and other metadata from a URL.",
+      "Pull page titles, descriptions, Open Graph images, and other metadata from a URL.",
     projectType: "Web Utility",
     projectDate: "2025-11-20",
     technologies: ["Next.js", "Tailwind CSS", "TypeScript", "Lucide React"],
@@ -947,7 +1018,7 @@ export const WEB_TOOLS = [
     projectName: "VaultX",
     projectLink: "https://github.com/drealdumore/vaultx/",
     projectDescription:
-      "Lightweight API for sharing text, code snippets, and links across devices with expiry and burn-after-reading.",
+      "A REST API for temporary text, code, and link sharing, with expiry, view limits, and optional password protection.",
     projectType: "REST API",
     projectDate: "2025-12-01",
     technologies: ["TypeScript", "Node.js", "Express", "Redis"],
@@ -956,7 +1027,7 @@ export const WEB_TOOLS = [
     projectName: "Falso API",
     projectLink: "https://github.com/drealdumore/falso-api/",
     projectDescription:
-      "TypeScript mock data generator that turns interfaces into realistic JSON for testing and database seeding.",
+      "Generate mock JSON data from TypeScript interfaces for testing APIs and seeding databases.",
     projectType: "Developer Tool",
     projectDate: "2025-03-01",
     technologies: ["TypeScript", "Node.js"],
@@ -965,63 +1036,40 @@ export const WEB_TOOLS = [
     projectName: "DropEnv",
     projectLink: "https://github.com/drealdumore/dropenv/",
     projectDescription:
-      "Encrypted environment-variable sharing tool for safely passing sensitive config between teammates or devices.",
+      "Share environment variables in encrypted form between teammates or devices without pasting secrets into chats.",
     projectType: "Security Utility",
     projectDate: "2025-08-01",
     technologies: ["TypeScript", "Next.js", "Web Crypto API"],
   },
-  {
-    projectName: "Split Cost / Percentage Calculator",
-    projectLink: "https://percentage-calcc.vercel.app/",
-    projectDescription:
-      "Real-time cost splitter and percentage calculator for group expense sharing.",
-    projectType: "Web Utility",
-    projectDate: "2024-03-01",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "number-flow"],
-  },
-  {
-    projectName: "Writing Pad",
-    projectLink: "",
-    projectDescription:
-      "Minimal distraction-free writing pad for focused drafting.",
-    projectType: "Utility",
-    projectDate: "2025-05-05",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
-  },
 ];
 
-/* ------------------------------------------------------------------ *
- * Site identity, copy and everything else (single source of truth).
- * ------------------------------------------------------------------ */
-
 export const META = {
-  title: "Samuel Isah | Software Developer",
+  title: "Samuel Isah — Software Engineer",
   name: "Samuel Isah",
   description:
-    "Samuel Isah is a software developer from Nigeria who builds web apps, mobile apps, and backend services with tools including React, Next.js, React Native, TypeScript, and Node.js.",
-  og: "Web apps, mobile apps, and backend systems built to solve real problems.",
+    "I'm Samuel Isah, a software engineer from Nigeria building web apps, mobile products, and backend systems with TypeScript, React, Next.js, and Node.js.",
+  og: "Web apps, mobile products, and backend systems built to solve real problems.",
   keywords: [
     "Samuel Isah",
     "drealdumore",
+    "Software Engineer",
     "Full-Stack Developer",
     "Web Developer",
-    "Next.js SEO",
     "React Developer",
+    "Next.js Developer",
     "React Native Developer",
     "TypeScript Developer",
-    "Software Engineer",
-    "UI/UX Design",
+    "Node.js Developer",
     "Web Applications",
-    "Performance Optimization",
+    "Mobile App Development",
+    "Backend Development",
     "Full-Stack Portfolio",
-    "Custom Mobile Apps",
-    "TypeScript and React",
     "Cross-platform Development",
   ],
   url:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3001"
-      : "https://drealdumore.vercel.app",
+      : "https://drealdumore.cv",
   ogImage: {
     width: 1200,
     height: 630,
@@ -1034,7 +1082,6 @@ export const META = {
   category: "Technology",
 };
 
-
 export const PROFILE = {
   name: "Samuel Isah",
   firstName: "Samuel",
@@ -1043,15 +1090,14 @@ export const PROFILE = {
   role: "Software Engineer",
   shortRole: "Software engineer",
   location: "Kaduna, Nigeria",
-  locationNote: "Open to relocation & visa sponsorship",
   availability: "Open to work",
   tagline:
-    "I build web and mobile products, work on backend systems, and enjoy turning ideas into things people can actually use.",
+    "I build web and mobile products, work on backend systems, and turn ideas into things people can actually use.",
   about: [
-    "I'm Samuel, a software engineer based in Nigeria. I build across web, mobile, and backend, mostly using TypeScript, React, Next.js, React Native, and Node.js. I like taking an idea from the rough sketch stage to something people can use.",
-    "I'm also curious about what happens behind the screen: how APIs fit together, how data moves through a system, and what happens when things go wrong. I enjoy figuring out those details and finding ways to make software more reliable without making it unnecessarily complicated.",
-    "Some things I've built include Melo, a chat app that helps two people communicate across different languages; DropEnv, a tool for sharing environment variables with client-side encryption; and Sage, an AI-powered communication coach. I enjoy building things that solve a real problem, even when the solution starts as a small experiment.",
-    "I'm looking for a software engineering role where I can work with good people, contribute to real products, learn from other engineers, and keep getting better at my craft."
+    "I'm Samuel. I build things for the web and phones, usually in TypeScript, usually because there's a problem I want to solve.",
+    "I'm drawn to the parts people don't always see: making an app work without a reliable connection, figuring out why a request takes four seconds instead of forty milliseconds, or making a screen feel faster without adding more to it. That's where a lot of the real work happens.",
+    "I've built Melo, a chat app that translates messages between people who speak different languages; Chop Iron, an offline-first workout tracker; DropEnv, an encrypted environment-variable sharing tool; and VaultX, an API for sharing temporary snippets between devices. Most started with a problem I wanted to solve for myself.",
+    "I'm open to software engineering opportunities where I can keep learning, work with good engineers, and ship useful products. If you'd like to work together, my email is at the bottom of the page.",
   ],
   avatar: "/avatars/avatar-smile.png",
   avatarAlt: "Samuel Isah's profile photo",
@@ -1059,6 +1105,7 @@ export const PROFILE = {
   email: "samuelisah234@gmail.com",
   website: "https://drealdumore.cv",
 };
+
 
 export const SOCIALS = {
   twitter: {
@@ -1114,10 +1161,14 @@ export const HEADER_LINKS: NavItem[] = [
   { name: "Resume", href: PROFILE.resume, external: true },
 ];
 
+export const FOOTER_LINKS: NavItem[] = [
+  { name: "Work", href: "/projects" },
+];
+
 export const MOBILE_TABS: NavItem[] = [
   { name: "Home", href: "/" },
-  { name: "Projects", href: "/projects" },
-  { name: "Resume", href: PROFILE.resume, external: true },
+  { name: "Work", href: "/projects" },
+  { name: "Résumé", href: PROFILE.resume, external: true },
 ];
 
 export const NAV = {
@@ -1131,6 +1182,13 @@ export const HERO_CTAS = {
   resume: "Resume",
 };
 
+export const GREETINGS = {
+  morning: "Good morning, I'm Samuel.",
+  afternoon: "Good afternoon, I'm Samuel.",
+  evening: "Good evening, I'm Samuel.",
+  night: "Hey, I'm Samuel.",
+} as const;
+
 export type Track = {
   title: string;
   artist?: string;
@@ -1141,12 +1199,64 @@ export const MUSIC = {
   label: "Play the music",
   tracks: [
     {
-      title: "Butterfly Effect",
-      src: "/audio/butterfly-effect.mp3",
+      title: "Mentally",
+      src: "/audio/asake-mentally.mp3",
     },
     {
       title: "Billionaire Club",
       src: "/audio/billionaire-club.mp3",
+    },
+    {
+      title: "Authentic",
+      src: "/audio/gunna-authentic.mp3",
+    },
+    {
+      title: "Skybox",
+      src: "/audio/gunna-skybox.mp3",
+    },
+    {
+      title: "Heavy Frown",
+      src: "/audio/gunna-heavy-frown.mp3",
+    },
+    {
+      title: "Yosemite",
+      src: "/audio/yosemite.mp3",
+    },
+    {
+      title: "Money Right",
+      src: "/audio/money-right.mp3",
+    },
+    {
+      title: "High Noon",
+      src: "/audio/high-noon.mp3",
+    },
+    {
+      title: "Bandana",
+      src: "/audio/fireboy-bandana.mp3",
+    },
+    {
+      title: "Monalisa (Remix)",
+      src: "/audio/lojay-monalisa.mp3",
+    },
+    {
+      title: "Nonstop",
+      src: "/audio/drake-nonstop.mp3",
+    },
+    {
+      title: "City Boys",
+      src: "/audio/burna-boy-city-boys.mp3",
+    },
+    {
+      title: "I'm Upset",
+      src: "/audio/im-upset.mp3",
+    },
+    {
+      title: "Hate It Or Love It",
+      src: "/audio/hate-it-or-love-it.mp3",
+    },
+    {
+      title: "Butterfly Effect",
+      src: "/audio/butterfly-effect.mp3",
     },
     {
       title: "HUMBLE.",
@@ -1183,9 +1293,11 @@ export const SECTIONS = {
   about: { title: "About" },
   projects: { title: "Projects", viewAll: "See all projects" },
   experience: { title: "Experience" },
+  education: { title: "Education" },
   skills: { title: "Skills" },
   roles: { title: "Open to roles" },
-  sideProjects: { title: "Side Projects" },
+  sideProjects: { title: "Side projects" },
+  
   repos: {
     title: "Some of my code",
     subtitle: "A few projects you can explore on GitHub.",
@@ -1196,9 +1308,9 @@ export const SECTIONS = {
   projectsPage: {
     title: "Projects",
     subtitle:
-      "A few web, mobile, and developer-tool projects I’ve been working on.",
+      "Web apps, mobile products, and small tools built to solve real problems.",
     description:
-      "Projects by Samuel Isah, including web apps, mobile apps, and developer tools built with React, Next.js, React Native, and TypeScript.",
+      "Explore Samuel Isah's software projects, from React and Next.js applications to React Native apps, backend APIs, and developer utilities.",
   },
 };
 
@@ -1218,6 +1330,18 @@ export const CASE_STUDY_LABELS = {
   previous: "Previous",
   next: "Next",
   onThisPage: "On this page",
+  type: "Type",
+  client: "Client",
+  role: "My role",
+  why: "Why I built it",
+  live: "Live",
+  inDevelopment: "In development",
+  notReleased: "Not released yet",
+  private: "Private",
+  archived: "Archived",
+  notAvailable: "Not available yet",
+  notAvailableHint:
+    "This one is still in the workshop..",
 };
 
 export const CONTACT_FORM = {
@@ -1245,7 +1369,6 @@ export type Experience = {
   title: string;
   company: string;
   description: string[];
-  duration: string;
   durationAlt: string;
   stack?: string[];
 };
@@ -1255,35 +1378,61 @@ export const EXPERIENCE: Experience[] = [
     title: "Mobile Developer",
     company: "Campus Buddy",
     description: [
-      "Build and maintain mobile app features with React Native and Expo.",
-      "Work on app performance, offline support, and screen flows.",
-      "Work with teammates and stakeholders to turn product requirements into working features.",
+      "Develop mobile app features with React Native, Expo, and TypeScript.",
+      "Work on app performance, offline data handling, and navigation flows.",
+      "Collaborate with teammates to turn product requirements into working features.",
     ],
-    duration: "January 2025 - 2026",
     durationAlt: "01 / 2025 until 2026",
-    stack: ["React Native", "Expo", "TypeScript", "Zustand", "SQLite", "Motion", "AI"],
+    stack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Zustand",
+      "SQLite",
+    ],
   },
   {
     title: "Front-End Developer",
     company: "NodePair",
     description: [
-      "Build and improve user-facing features with React and Next.js.",
-      "Create reusable components and help keep the interface responsive and consistent.",
+      "Develop user-facing features with React and Next.js.",
+      "Build reusable components and improve responsive layouts and interface consistency.",
     ],
-    duration: "April 2024 - 2026",
     durationAlt: "04 / 2024 until 2026",
-    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "AI"],
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
   },
   {
     title: "Full-Stack Developer",
     company: "Freelance",
     description: [
       "Build websites, online stores, mobile apps, and custom tools for clients.",
-      "Work across the interface, APIs, database, and deployment, then make changes based on client feedback.",
+      "Work across frontend interfaces, APIs, databases, and deployment, then iterate based on client feedback.",
     ],
-    duration: "April 2021 - 2024",
     durationAlt: "04 / 2021 until 2024",
-    stack: ["Angular", "Next.js", "React", "TypeScript", "JavaScript", "React Native", "Node.js", "MongoDB", "Drizzle ORM", "Express","PostgreSQL", "Firebase","Payment APIs", "AI", "Framer Motion", "Redis", "Redux"],
+    stack: [
+      "Angular",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "React Native",
+      "Node.js",
+      "MongoDB",
+      "Drizzle ORM",
+      "Express",
+      "PostgreSQL",
+      "Firebase",
+      "Payment APIs",
+      "Framer Motion",
+      "Redis",
+      "Redux",
+    ],
   },
 ];
 
@@ -1312,34 +1461,35 @@ export const REPOS: Repo[] = [
   {
     name: "melo",
     url: "https://github.com/drealdumore/melo/",
-    desc: "Private one-to-one chat for people who speak different languages. Messages are translated automatically before delivery with real-time indicators and device-based Melo IDs.",
+    desc: "A private one-to-one chat app that translates text messages between people who speak different languages, with device-based Melo IDs and realtime chat updates.",
   },
   {
     name: "thesupadevs",
     url: "https://github.com/drealdumore/thesupadevs/",
-    desc: "Open-source curated library of 500+ developer tools, UI components, APIs, and resources with AI categorization, metadata scraping, and an admin dashboard.",
+    desc: "A searchable library of developer tools, UI components, APIs, and resources, with metadata extraction, AI-assisted categorization, and admin tools.",
   },
   {
     name: "vaultx",
     url: "https://github.com/drealdumore/vaultx/",
-    desc: "A lightweight REST API for sharing text, code snippets, and links across devices. Built with hybrid in-memory + Redis storage, rate limiting, expiry, and burn-after-reading.",
+    desc: "A REST API for temporary text, code, and link sharing, with expiry, view limits, optional password protection, and Redis-backed storage.",
   },
   {
     name: "deps-janitor",
     url: "https://github.com/drealdumore/deps-janitor/",
-    desc: "Interactive CLI and utility that finds and safely removes unused npm dependencies to keep JavaScript and Node.js projects clean and lightweight.",
+    desc: "A CLI and web utility for finding unused npm dependencies and helping developers clean up their projects.",
   },
   {
     name: "falso-api",
     url: "https://github.com/drealdumore/falso-api/",
-    desc: "TypeScript-powered mock data generator that produces realistic JSON data from user-defined interfaces. Ideal for seeding databases and testing APIs.",
+    desc: "A TypeScript mock-data generator for creating JSON fixtures from interfaces, useful for testing and database seeding.",
   },
   {
     name: "auth-api",
     url: "https://github.com/drealdumore/auth-api/",
-    desc: "A secure authentication API built with Node.js and Express, featuring JWT-based authentication, refresh token rotation, and role-based access control.",
+    desc: "A Node.js and Express authentication API with JWT authentication, refresh-token rotation, and role-based access control.",
   },
 ];
+
 
 export type SkillCategory = { category: string; skills: string[] };
 
@@ -1348,10 +1498,12 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     category: "Frontend & Mobile",
     skills: [
       "TypeScript",
+      "JavaScript",
       "React",
       "Next.js",
       "React Native",
       "Expo",
+      "Angular",
       "Tailwind CSS",
     ],
   },
@@ -1360,26 +1512,20 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     skills: [
       "Node.js",
       "Express",
-      "Supabase",
+      "Go",
       "PostgreSQL",
+      "MongoDB",
+      "MySQL",
+      "Supabase",
       "Redis",
       "Prisma",
-      "Drizzle",
-      "GoLang",
-      "MongoDB",
-      "MySQL"
+      "Drizzle ORM",
     ],
   },
   {
-    category: "Other & Patterns",
-    skills: [
-      "Git",
-    //   "Real-time systems",
-    //   "Offline-first patterns",
-    //   "AI tooling integration",
-    //   "Performance & SEO optimization",
-    ],
-  }
+    category: "Tools & Practices",
+    skills: ["Git", "GitHub", "Vercel", "Docker", "CI/CD", "Testing", "Debugging"],
+  },
 ];
 
 export type FeaturedProject = {
@@ -1393,6 +1539,7 @@ export type FeaturedProject = {
   descriptionAfter?: string;
   tags?: string[];
   year?: string;
+  status?: ProjectStatus;
 };
 
 export type FeaturedGroup = { label: string; projects: FeaturedProject[] };
@@ -1405,9 +1552,9 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         name: "Melo",
         descriptionBefore:
           "A chat app for people who speak different languages: ",
-        highlight: "translates messages before delivery",
+        highlight: "messages are translated automatically",
         descriptionAfter:
-          ". The original message is still available, and the chat includes typing indicators and presence.",
+          ". People can still view the original text, with typing indicators and presence in the chat.",
         mobileScreens: [
           "/projects/melo-onboarding.png",
           "/projects/melo-onboarding-language.png",
@@ -1423,10 +1570,10 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       {
         name: "Chop Iron",
         descriptionBefore:
-          "An offline workout tracker with a Nigerian voice: ",
-        highlight: "logs 53 exercises and detects personal records",
+          "A workout tracker with a Nigerian voice: ",
+        highlight: "53 exercises, workout history, and personal records",
         descriptionAfter:
-          ". Workout history is stored locally in SQLite.",
+          ". Your workout data stays on your device, so you can log sessions offline.",
         mobileScreens: [
           "/projects/chop-iron-splash-2.png",
           "/projects/chop-iron-index.png",
@@ -1442,10 +1589,10 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       {
         name: "The SupaDevs",
         descriptionBefore:
-          "A searchable collection of developer tools, UI components, and APIs: ",
-        highlight: "search, AI categorization, and metadata scraping",
+          "A searchable library of developer resources: ",
+        highlight: "metadata extraction and AI-assisted categorization",
         descriptionAfter:
-          ", plus an admin dashboard for managing resources.",
+          ", with admin tools for reviewing and managing submissions.",
         image: "/projects/thesupadevs.webp",
         href: "/projects/thesupadevs",
         tags: ["Next.js", "Supabase", "AI", "PostgreSQL"],
@@ -1454,12 +1601,24 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       {
         name: "VaultX",
         descriptionBefore:
-          "A REST API for sharing text, code snippets, and links between devices, ",
-        highlight: "hybrid in-memory + Redis storage",
+          "A REST API for temporary text, code, and link sharing, with ",
+        highlight: "expiry, view limits, and optional password protection",
         descriptionAfter:
-          " with password protection, view limits, and expiry settings.",
+          " Built with a hybrid Redis and in-memory storage strategy.",
         href: "/projects/vaultx",
         tags: ["Node.js", "Redis", "REST API"],
+        year: "2025",
+      },
+      {
+        name: "Echo",
+        descriptionBefore:
+          "A reminder app tied to places instead of times: ",
+        highlight: "get reminded when you arrive",
+        descriptionAfter:
+          ". Designed around location-based reminders and local notifications.",
+        image: "/projects/echo-square.png",
+        href: "/projects/echo",
+        tags: ["React Native", "expo-location", "Notifications"],
         year: "2025",
       },
     ],
@@ -1470,9 +1629,9 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       {
         name: "Crystalglowxquisite",
         descriptionBefore:
-          "An online store for a skincare brand, with ",
-        highlight: "a catalog, checkout, and analytics",
-        descriptionAfter: ".",
+          "A skincare brand's online store, with ",
+        highlight: "product browsing, cart, checkout and analytics",
+        descriptionAfter: ", alongside analytics integrations.",
         image: "/projects/crystalglowxquisite.png",
         href: "https://crystalglowxquisite.com/",
         tags: ["Next.js", "E-commerce", "Analytics"],
@@ -1482,8 +1641,8 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         name: "Knowledge Master",
         descriptionBefore:
           "An online bookstore for textbooks, novels, and ",
-        highlight: "educational resources, plus school bookfair services",
-        descriptionAfter: ", with nationwide delivery information.",
+        highlight: "educational resources, and school bookfair services",
+        descriptionAfter: ", with delivery information available on the site.",
         image: "/projects/knowledgemaster.webp",
         href: "https://www.knowledgemaster.com.ng/",
         tags: ["Next.js", "E-commerce"],
@@ -1497,36 +1656,35 @@ export type SideProject = { name: string; href?: string };
 
 export const SIDE_PROJECTS: SideProject[] = [
   {
-    name: "Deps Janitor: Interactive CLI that finds and safely removes unused npm dependencies",
+    name: "Deps Janitor — Find and remove unused npm dependencies",
     href: "https://deps-janitor.vercel.app/",
   },
   {
-    name: "Peekr: Responsive website snapshot & screenshot generator",
+    name: "Peekr — Preview websites across viewport sizes",
     href: "https://peekrr.vercel.app/",
   },
   {
-    name: "MetaScraper: Extract title, description, OG image & metadata from any URL",
+    name: "MetaScraper — Extract webpage metadata from a URL",
     href: "https://meta-scrapper.vercel.app/",
   },
   {
-    name: "VaultX: Lightweight API for sharing text, code, and links across devices",
+    name: "VaultX — Temporary text, code, and link sharing API",
     href: "https://github.com/drealdumore/vaultx/",
   },
   {
-    name: "Falso API: TypeScript mock data generator from interfaces",
+    name: "Falso API — Generate mock JSON from TypeScript interfaces",
     href: "https://github.com/drealdumore/falso-api/",
   },
   {
-    name: "DropEnv: Encrypted environment-variable sharing tool",
+    name: "DropEnv — Encrypted environment-variable sharing",
     href: "https://github.com/drealdumore/dropenv/",
   },
   {
-    name: "Split Cost: Real-time group cost splitter and percentage calculator",
+    name: "Split Cost — Group expense and percentage calculator",
     href: "https://percentage-calcc.vercel.app/",
   },
-  { name: "Writing Pad: Minimal distraction-free writing space" },
   {
-    name: "Olamide Tour: Concert tour landing page clone",
+    name: "Olamide Tour — Concert tour landing page",
     href: "https://olamide-tour.vercel.app/",
   },
 ];

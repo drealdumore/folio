@@ -1,5 +1,6 @@
 "use client";
 
+import { useLayoutEffect, useState } from "react";
 import { motion, Variants, Target, TargetAndTransition } from "framer-motion";
 import {
   fadeInLeft,
@@ -37,6 +38,12 @@ export const AnimatedSection = ({
 }: AnimatedSectionProps) => {
   const { ref, controls } = useScrollAnimation();
 
+  // Render fully visible on the server and first paint so content never flashes
+  // blank while JS hydrates. The hidden -> visible entrance only engages once
+  // we're mounted on the client.
+  const [mounted, setMounted] = useState(false);
+  useLayoutEffect(() => setMounted(true), []);
+
   const selectedVariant = isContainer
     ? containerVariants
     : variants[variant] || variants.fadeInUp;
@@ -71,15 +78,19 @@ export const AnimatedSection = ({
   }
 
   return (
-    <div className={className}>{children}</div>
-    // <motion.div
-    //   ref={ref}
-    //   initial="hidden"
-    //   animate={controls}
-    //   variants={variantWithDelay}
-    //   className={className}
-    // >
-    //   {children}
-    // </motion.div>
+    <div className={className} ref={ref}>
+      {mounted ? (
+        <motion.div
+          initial="hidden"
+          animate={controls}
+          variants={variantWithDelay}
+        >
+          {children}
+        </motion.div>
+      ) : (
+        // Server + first paint: plain, fully visible, no entrance applied yet.
+        <div>{children}</div>
+      )}
+    </div>
   );
 };

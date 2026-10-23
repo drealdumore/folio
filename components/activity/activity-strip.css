@@ -58,6 +58,14 @@
   flex-shrink: 0;
 }
 
+/* Reveal wrapper — owns the cell footprint so the inner button keeps its own
+   transform for :active / pressed states without fighting framer-motion. */
+.as-cell-wrap {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
 /* Cells */
 .as-cell {
   appearance: none;
@@ -67,6 +75,7 @@
   display: block;
   position: relative;
   width: 100%;
+  height: 100%;
   aspect-ratio: 1;
   border-radius: 2px;
   cursor: pointer;
