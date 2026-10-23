@@ -77,6 +77,29 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     ],
   },
   {
+    projectName: "Echo",
+    projectLink: "/projects/echo",
+    projectDescription:
+      "A reminder app that lets you set a place, then nudges you when you actually get there — useful for the errands you keep forgetting on the way home.",
+    highlight: "reminders that fire where you are",
+    projectType: "Personal project (Mobile app)",
+    projectDate: "2025-11-01",
+    image: "/projects/echo/echo-hero.png",
+    mobileScreens: [
+      "/projects/echo/echo-splash.png",
+      "/projects/echo/echo-onboarding-2b.png",
+      "/projects/echo/echo-reminder-detail.png",
+    ],
+    technologies: [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "expo-location",
+      "expo-task-manager",
+      "expo-router",
+    ],
+  },
+  {
     projectName: "Chop Iron",
     projectLink: "/projects/iron",
     projectDescription:
@@ -240,29 +263,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "/projects/gpz/gpz-home.png",
     ],
   },
-  {
-    projectName: "Echo",
-    projectLink: "/projects/echo",
-    projectDescription:
-      "A reminder app that lets you set a place, then nudges you when you actually get there — useful for the errands you keep forgetting on the way home.",
-    highlight: "reminders that fire where you are",
-    projectType: "Personal project (Mobile app)",
-    projectDate: "2025-11-01",
-    image: "/projects/echo/echo-hero.png",
-    mobileScreens: [
-      "/projects/echo/echo-home.png",
-      "/projects/echo/echo-new-reminder.png",
-      "/projects/echo/echo-reminder-detail.png",
-    ],
-    technologies: [
-      "TypeScript",
-      "React Native",
-      "Expo",
-      "expo-location",
-      "expo-task-manager",
-      "expo-router",
-    ],
-  },
+  
   {
     projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
