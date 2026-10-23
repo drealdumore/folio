@@ -343,52 +343,6 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   },
 ];
 
-export const SHORTPROJECTS = [
-  {
-    projectName: "Percentage Calculator / Cost Splitter",
-    projectLink: "https://percentage-calcc.vercel.app/",
-    projectinAppLink: "/percentage-calc",
-    projectDescription:
-      "A small calculator for splitting costs or percentages between people. Change the amounts or participants and the totals update.",
-    projectType: "Utility",
-    projectDate: "2024-03-01",
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "number-flow",
-    ],
-  },
-  {
-    projectName: "Mini Shooter Game",
-    projectLink: "",
-    projectinAppLink: "/shooter-game",
-    projectDescription:
-      "A small browser-based shooter game controlled with the keyboard.",
-    projectType: "Mini Game",
-    projectDate: "2024-03-01",
-    technologies: [
-      "TypeScript",
-      "Next.js",
-      "Tailwind CSS",
-      "Framer Motion",
-      "use-keys-bindings",
-      "usehooks-ts",
-    ],
-  },
-  {
-    projectName: "Falso - Mock Data Generator",
-    projectLink: "https://github.com/drealdumore/falso-api/",
-    projectinAppLink: "/falso",
-    projectDescription:
-      "A TypeScript utility for generating mock data from interfaces, so you don’t have to write every test object by hand.",
-    projectType: "Developer Tool",
-    projectDate: "2025-03-01",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-  }
-];
-
 export const MOBILE_APPS: CaseStudy[] = [
   // 1. Melo
   {
@@ -1682,13 +1636,5 @@ export const SIDE_PROJECTS: SideProject[] = [
   {
     name: "DropEnv — Encrypted environment-variable sharing",
     href: "https://github.com/drealdumore/dropenv/",
-  },
-  {
-    name: "Split Cost — Group expense and percentage calculator",
-    href: "https://percentage-calcc.vercel.app/",
-  },
-  {
-    name: "Olamide Tour — Concert tour landing page",
-    href: "https://olamide-tour.vercel.app/",
-  },
+  }
 ];

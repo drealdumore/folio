@@ -88,9 +88,10 @@ const BEAT_WEIGHTS = [1, 0.6, 0.42, 0.28] as const;
 
 const HEIGHT = 41;
 const BARS_WIDTH = 52;
-const TITLE_WIDTH = 244;
+const TITLE_WIDTH_DESKTOP = 244;
+const TITLE_WIDTH_MOBILE = 196; 
 const VOLUME_WIDTH = 50;
-const EXPANDED_WIDTH = TITLE_WIDTH + BARS_WIDTH + VOLUME_WIDTH;
+// const EXPANDED_WIDTH = TITLE_WIDTH + BARS_WIDTH + VOLUME_WIDTH;
 
 const randomHeights = () =>
   Array.from({ length: BAR_COUNT }, () => Math.random() * 0.8 + 0.2);
@@ -192,6 +193,8 @@ export default function MusicToggle() {
 
   const track = MUSIC.tracks[index];
   const expanded = canHover ? hovered : open;
+const titleWidth = canHover ? TITLE_WIDTH_DESKTOP : TITLE_WIDTH_MOBILE;
+const expandedWidth = titleWidth + BARS_WIDTH + VOLUME_WIDTH;
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -438,21 +441,23 @@ export default function MusicToggle() {
       </motion.span> */}
 
       <motion.div
-        onHoverStart={() => setHovered(true)}
-        onHoverEnd={() => setHovered(false)}
-        initial={false}
-        animate={{ width: expanded ? EXPANDED_WIDTH : BARS_WIDTH }}
-        transition={{ type: "spring", bounce: 0.16, duration: 0.6 }}
-        style={{ height: HEIGHT, borderRadius: 9999 }}
-        className="glass-nav relative flex items-center overflow-hidden border border-white/10"
-      >
-        {/* Reveal: play/pause + prev/title/next */}
-        <motion.div
-          initial={false}
-          animate={{ width: expanded ? TITLE_WIDTH : 0, opacity: expanded ? 1 : 0, paddingLeft: expanded ? "12px" : 0 }}
-          transition={{ type: "spring", bounce: 0.16, duration: 0.6 }}
-          className="flex h-full shrink-0 items-center gap-1.5 overflow-hidden pl-3"
-        >
+  onHoverStart={() => setHovered(true)}
+  onHoverEnd={() => setHovered(false)}
+  initial={false}
+  animate={{ width: expanded ? expandedWidth : BARS_WIDTH }}
+  transition={{ type: "spring", bounce: 0.16, duration: 0.6 }}
+  style={{ height: HEIGHT, borderRadius: 9999 }}
+  className="glass-nav relative flex items-center overflow-hidden border border-white/10"
+>
+  <motion.div
+    initial={false}
+    animate={{ width: expanded ? titleWidth : 0, opacity: expanded ? 1 : 0, paddingLeft: expanded ? "12px" : 0 }}
+    transition={{ type: "spring", bounce: 0.16, duration: 0.6 }}
+    className={cn(
+      "flex h-full shrink-0 items-center overflow-hidden pl-3",
+      canHover ? "gap-1.5" : "gap-0.5"
+    )}
+  >
           <motion.button
             type="button"
             onClick={() => { toggle(); armClose(); }}
@@ -473,9 +478,14 @@ export default function MusicToggle() {
               <path d="M4 4L4 20" strokeLinecap="round"></path>
             </svg>
           </button>
-          <span className="min-w-0 flex-1 truncate text-center text-[13px] font-medium text-zinc-100">
-            {track.title}
-          </span>
+          <span
+  className={cn(
+    "min-w-0 flex-1 truncate text-center font-medium text-zinc-100",
+    canHover ? "text-[13px]" : "px-0.5 text-[12px]"
+  )}
+>
+  {track.title}
+</span>
           <button
             type="button"
             onClick={() => { next(); armClose(); }}
