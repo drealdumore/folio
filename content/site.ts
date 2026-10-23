@@ -1590,6 +1590,25 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         year: "2026",
       },
       {
+        name: "Echo",
+        descriptionBefore:
+          "A reminder app tied to places instead of times: ",
+        highlight: "get reminded when you arrive",
+        descriptionAfter:
+          ". Designed around location-based reminders and local notifications.",
+        mobileScreens: [
+          "/projects/echo/echo-home.png",
+          "/projects/echo/echo-new-reminder.png",
+          "/projects/echo/echo-reminder-detail.png",
+          "/projects/echo/echo-map-selection.png",
+          "/projects/echo/echo-places.png",
+          "/projects/echo/echo-save-pop.png",
+        ],
+        href: "/projects/echo",
+        tags: ["React Native", "expo-location", "Notifications"],
+        year: "2025",
+      },
+      {
         name: "Chop Iron",
         descriptionBefore:
           "A workout tracker with a Nigerian voice: ",
@@ -1630,26 +1649,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/vaultx",
         tags: ["Node.js", "Redis", "REST API"],
         year: "2025",
-      },
-      {
-        name: "Echo",
-        descriptionBefore:
-          "A reminder app tied to places instead of times: ",
-        highlight: "get reminded when you arrive",
-        descriptionAfter:
-          ". Designed around location-based reminders and local notifications.",
-        mobileScreens: [
-          "/projects/echo/echo-home.png",
-          "/projects/echo/echo-new-reminder.png",
-          "/projects/echo/echo-reminder-detail.png",
-          "/projects/echo/echo-map-selection.png",
-          "/projects/echo/echo-places.png",
-          "/projects/echo/echo-save-pop.png",
-        ],
-        href: "/projects/echo",
-        tags: ["React Native", "expo-location", "Notifications"],
-        year: "2025",
-      },
+      }
     ],
   },
   {
