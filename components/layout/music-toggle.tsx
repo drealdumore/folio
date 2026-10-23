@@ -477,14 +477,26 @@ const expandedWidth = titleWidth + BARS_WIDTH + VOLUME_WIDTH;
               <path d="M4 4L4 20" strokeLinecap="round"></path>
             </svg>
           </button>
-          <span
-  className={cn(
-    "min-w-0 flex-1 truncate text-center font-medium text-zinc-100",
-    canHover ? "text-[13px]" : "px-0.5 text-[12px]"
-  )}
->
-  {track.title}
-</span>
+          <div className="flex min-w-0 flex-1 flex-col items-center justify-center leading-tight">
+            <span
+              className={cn(
+                "w-full truncate text-center font-medium text-zinc-100",
+                canHover ? "text-[12px]" : "text-[11px]"
+              )}
+            >
+              {track.title}
+            </span>
+            {track.artist && (
+              <span
+                className={cn(
+                  "w-full truncate text-center text-zinc-500",
+                  canHover ? "text-[10px]" : "text-[9px]"
+                )}
+              >
+                {track.artist}
+              </span>
+            )}
+          </div>
           <button
             type="button"
             onClick={() => { next(); armClose(); }}

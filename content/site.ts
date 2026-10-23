@@ -1195,90 +1195,112 @@ export const MUSIC = {
   tracks: [
     {
       title: "Mentally",
+      artist: "Asake",
       src: "/audio/asake-mentally.mp3",
     },
     {
       title: "Billionaire Club",
+      artist: "Olamide, Wizkid & Darkoo",
       src: "/audio/billionaire-club.mp3",
     },
     {
       title: "Authentic",
+      artist: "Gunna",
       src: "/audio/gunna-authentic.mp3",
     },
     {
       title: "Skybox",
+      artist: "Gunna",
       src: "/audio/gunna-skybox.mp3",
     },
     {
       title: "Heavy Frown",
+      artist: "Gunna",
       src: "/audio/gunna-heavy-frown.mp3",
     },
     {
       title: "Yosemite",
+      artist: "Travis Scott, Gunna & NAV",
       src: "/audio/yosemite.mp3",
     },
     {
       title: "Money Right",
+      artist: "Gunna & Roddy Ricch",
       src: "/audio/money-right.mp3",
     },
     {
       title: "High Noon",
+      artist: "Shaboozey & Gunna",
       src: "/audio/high-noon.mp3",
     },
     {
       title: "Bandana",
+      artist: "Fireboy DML & Asake",
       src: "/audio/fireboy-bandana.mp3",
     },
     {
       title: "Monalisa (Remix)",
+      artist: "Lojay, Chris Brown & Sarz",
       src: "/audio/lojay-monalisa.mp3",
     },
     {
       title: "Nonstop",
+      artist: "Drake",
       src: "/audio/drake-nonstop.mp3",
     },
     {
       title: "City Boys",
+      artist: "Burna Boy",
       src: "/audio/burna-boy-city-boys.mp3",
     },
     {
       title: "I'm Upset",
+      artist: "Drake",
       src: "/audio/im-upset.mp3",
     },
     {
       title: "Hate It Or Love It",
+      artist: "The Game & 50 Cent",
       src: "/audio/hate-it-or-love-it.mp3",
     },
     {
       title: "Butterfly Effect",
+      artist: "Travis Scott",
       src: "/audio/butterfly-effect.mp3",
     },
     {
       title: "HUMBLE.",
+      artist: "Kendrick Lamar",
       src: "/audio/humble.mp3",
     },
     {
       title: "Antidote",
+      artist: "Travis Scott",
       src: "/audio/antidote.mp3",
     },
     {
       title: "Antisocial",
+      artist: "Ed Sheeran & Travis Scott",
       src: "/audio/antisocial.mp3",
     },
     {
       title: "Money Trees",
+      artist: "Kendrick Lamar & Jay Rock",
       src: "/audio/money-trees.mp3",
     },
     {
       title: "United In Grief",
+      artist: "Kendrick Lamar",
       src: "/audio/united-in-grief.mp3",
     },
     {
       title: "One More Hour",
+      artist: "Tame Impala",
       src: "/audio/one-more-hour.mp3",
     },
     {
       title: "Pterodactyl",
+      artist: "Fourfive",
       src: "/audio/pterodactyl.mp3",
     },
   ] as Track[],

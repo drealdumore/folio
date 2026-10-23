@@ -3,32 +3,32 @@
 import React, { useEffect, useRef, useState } from "react"
 import { cn } from "@/lib/utils"
 
-// Curves from easing.dev (standard values, pick one per use)
+// Curves from easing.dev
 export const easings = {
-  outExpo: "cubic-bezier(0.16, 1, 0.3, 1)", // fast start, very soft landing (default)
-  outQuart: "cubic-bezier(0.25, 1, 0.5, 1)", // a bit more gentle
-  inOutCubic: "cubic-bezier(0.65, 0, 0.35, 1)", // symmetrical
+  outExpo: "cubic-bezier(0.16, 1, 0.3, 1)",
+  outQuart: "cubic-bezier(0.25, 1, 0.5, 1)",
+  inOutCubic: "cubic-bezier(0.65, 0, 0.35, 1)",
 } as const
+
+type RevealState = "hidden" | "shown" | "instant"
 
 interface RevealProps {
   children: React.ReactNode
   className?: string
   as?: React.ElementType
-  /** seconds to wait before animating */
+  /** seconds to wait before animating in */
   delay?: number
   /** seconds */
   duration?: number
-  /** starting offset in px (positive = rises up into place) */
+  /** starting offset in px (positive = rises into place) */
   y?: number
-  /** starting offset in px on the x axis */
   x?: number
-  /** starting scale, 1 = none */
   scale?: number
   easing?: string
-  /** animate only the first time it enters the viewport */
+  /** true = animate once, false = replay when re-entering */
   once?: boolean
-  /** 0-1, how much must be visible before it triggers */
-  threshold?: number
+  /** how far below the screen (in %) to start animating early */
+  lead?: number
 }
 
 export const Reveal: React.FC<RevealProps> = ({
@@ -36,52 +36,72 @@ export const Reveal: React.FC<RevealProps> = ({
   className,
   as: Tag = "div",
   delay = 0,
-  duration = 0.9,
-  y = 24,
+  duration = 0.8,
+  y = 20,
   x = 0,
   scale = 1,
   easing = easings.outExpo,
   once = true,
-  threshold = 0.15,
+  lead = 15,
 }) => {
   const ref = useRef<HTMLElement>(null)
-  const [shown, setShown] = useState(false)
+  const [state, setState] = useState<RevealState>("hidden")
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setShown(true)
+    // No observer support or reduced motion: just show everything
+    if (
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setState("instant")
       return
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShown(true)
+          // On screen (or just about to be): animate in
+          setState("shown")
+          if (once) observer.disconnect()
+        } else if (entry.boundingClientRect.bottom <= 0) {
+          // Already scrolled PAST it (fast scroll, anchor jump, refresh mid-page):
+          // show it with no animation so you never land on blank space
+          setState("instant")
           if (once) observer.disconnect()
         } else if (!once) {
-          setShown(false)
+          // Below the screen again: reset so it can replay
+          setState("hidden")
         }
       },
-      { threshold, rootMargin: "0px 0px -8% 0px" }
+      {
+        threshold: 0, // first pixel triggers it, so tall sections are fine
+        rootMargin: `0px 0px ${lead}% 0px`, // start before it enters the screen
+      }
     )
+
     observer.observe(el)
     return () => observer.disconnect()
-  }, [once, threshold])
+  }, [once, lead])
+
+  const visible = state !== "hidden"
 
   return (
     <Tag
       ref={ref}
       className={cn(className)}
       style={{
-        opacity: shown ? 1 : 0,
-        transform: shown
+        opacity: visible ? 1 : 0,
+        transform: visible
           ? "none"
           : `translate3d(${x}px, ${y}px, 0) scale(${scale})`,
-        transition: `opacity ${duration}s ${easing} ${delay}s, transform ${duration}s ${easing} ${delay}s`,
-        willChange: shown ? "auto" : "opacity, transform",
+        transition:
+          state === "instant"
+            ? "none"
+            : `opacity ${duration}s ${easing} ${state === "shown" ? delay : 0}s, transform ${duration}s ${easing} ${state === "shown" ? delay : 0}s`,
+        willChange: visible ? "auto" : "opacity, transform",
       }}
     >
       {children}
