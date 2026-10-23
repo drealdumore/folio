@@ -88,10 +88,9 @@ const BEAT_WEIGHTS = [1, 0.6, 0.42, 0.28] as const;
 
 const HEIGHT = 41;
 const BARS_WIDTH = 52;
-const TITLE_WIDTH_DESKTOP = 244;
+const TITLE_WIDTH_DESKTOP = 230;
 const TITLE_WIDTH_MOBILE = 196; 
 const VOLUME_WIDTH = 50;
-// const EXPANDED_WIDTH = TITLE_WIDTH + BARS_WIDTH + VOLUME_WIDTH;
 
 const randomHeights = () =>
   Array.from({ length: BAR_COUNT }, () => Math.random() * 0.8 + 0.2);

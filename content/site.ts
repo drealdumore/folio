@@ -71,9 +71,9 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "expo-router",
     ],
     mobileScreens: [
-      "/projects/melo-onboarding.png",
-      "/projects/melo-profile-sheet-1.png",
-      "/projects/melo-chat.png",
+      "/projects/melo/melo-onboarding.png",
+      "/projects/melo/melo-profile-sheet-1.png",
+      "/projects/melo/melo-chat.png",
     ],
   },
   {
@@ -94,9 +94,9 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "expo-router",
     ],
     mobileScreens: [
-      "/projects/chop-iron-splash-2.png",
-      "/projects/chop-iron-index.png",
-      "/projects/chop-iron-achievement.png",
+      "/projects/chop-iron/chop-iron-splash-2.png",
+      "/projects/chop-iron/chop-iron-index.png",
+      "/projects/chop-iron/chop-iron-achievement.png",
     ],
   },
   {
@@ -119,7 +119,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "DropEnv",
     projectLink: "/projects/dropenv",
-    image: "/projects/dropenv.png",
+    image: "/projects/dropenv/dropenv.png",
     projectDescription:
       "A tool for sharing environment variables through temporary, encrypted links. Encryption happens in the browser and the decryption key stays in the URL fragment instead of being sent to the server.",
     highlight: "sharing environment variables through temporary, encrypted links",
@@ -136,7 +136,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "The SupaDevs",
     projectLink: "/projects/thesupadevs",
-    image: "/projects/thesupadevs.webp",
+    image: "/projects/thesupadevs/thesupadevs.webp",
     projectDescription:
       "A searchable collection of developer tools, UI components, APIs, and other resources. It includes metadata scraping, AI categorization with Groq and Llama, and an admin dashboard for managing submissions and checking links.",
     highlight: "developer tools, UI components, APIs, and other resources",
@@ -156,7 +156,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Crystalglowxquisite: Skincare Boutique",
     projectLink: "https://crystalglowxquisite.com/",
-    image: "/projects/crystalglowxquisite.png",
+    image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
     projectDescription:
       "An online store for a skincare brand, with a product catalog, cart, checkout flow, and analytics.",
     highlight: "online store for a skincare brand",
@@ -175,7 +175,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Knowledge Master",
     projectLink: "https://www.knowledgemaster.com.ng/",
-    image: "/projects/knowledgemaster.webp",
+    image: "/projects/knowledgemaster/knowledgemaster.webp",
     projectDescription:
       "An online bookstore for textbooks, novels, and learning resources, with details about delivery and school bookfair services.",
     highlight: "online bookstore for textbooks, novels, and learning resources",
@@ -210,9 +210,9 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "Reanimated",
     ],
     mobileScreens: [
-      "/projects/sage-index.png",
-      "/projects/sage-coach.png",
-      "/projects/sage-conversation-1.png",
+      "/projects/sage/sage-index.png",
+      "/projects/sage/sage-coach.png",
+      "/projects/sage/sage-conversation-1.png",
     ],
   },
   {
@@ -232,12 +232,12 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "react-query",
     ],
     mobileScreens: [
-      "/projects/gpz-onboarding-1.png",
-      "/projects/gpz-onboarding-2.png",
-      "/projects/gpz-onboarding-3.png",
-      "/projects/gpz-onboarding-4.png",
-      "/projects/gpz-onboarding-5.png",
-      "/projects/gpz-home.png",
+      "/projects/gpz/gpz-onboarding-1.png",
+      "/projects/gpz/gpz-onboarding-2.png",
+      "/projects/gpz/gpz-onboarding-3.png",
+      "/projects/gpz/gpz-onboarding-4.png",
+      "/projects/gpz/gpz-onboarding-5.png",
+      "/projects/gpz/gpz-home.png",
     ],
   },
   {
@@ -248,7 +248,12 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     highlight: "reminders that fire where you are",
     projectType: "Personal project (Mobile app)",
     projectDate: "2025-11-01",
-    image: "/projects/echo-square.png",
+    image: "/projects/echo/echo-hero.png",
+    mobileScreens: [
+      "/projects/echo/echo-home.png",
+      "/projects/echo/echo-new-reminder.png",
+      "/projects/echo/echo-reminder-detail.png",
+    ],
     technologies: [
       "TypeScript",
       "React Native",
@@ -261,7 +266,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
-    image: "/projects/isamitechnologies.png",
+    image: "/projects/isamitechnologies/isamitechnologies.png",
     projectDescription:
       "The website for Isami Technologies, a Nigerian digital agency offering websites, online stores, chatbots, branding, and SEO services.",
     highlight: "Nigerian digital agency",
@@ -278,7 +283,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Cleanup: Cleaning Services Website",
     projectLink: "https://cleanup.com.ng/",
-    image: "/projects/cleanup.png",
+    image: "/projects/cleanup/cleanup.png",
     projectDescription:
       "A website for Cleanup, a Kaduna-based cleaning company. It explains the company’s residential, commercial, post-construction, upholstery, and carpet cleaning services.",
     highlight: "Kaduna-based cleaning company",
@@ -289,7 +294,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Deps Janitor",
     projectLink: "https://deps-janitor.vercel.app/",
-    image: "/projects/deps-janitor.webp",
+    image: "/projects/deps-janitor/deps-janitor.webp",
     projectDescription:
       "A CLI tool for finding unused npm dependencies and helping you remove packages a project no longer needs.",
     highlight: "unused npm dependencies",
@@ -300,7 +305,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Peekr",
     projectLink: "https://peekrr.vercel.app/",
-    image: "/projects/peekrr.webp",
+    image: "/projects/peekrr/peekrr.webp",
     projectDescription:
       "A tool for taking website screenshots at different viewport sizes, useful for checking responsive layouts or preparing visuals.",
     highlight: "website screenshots at different viewport sizes",
@@ -311,7 +316,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app",
-    image: "/projects/meta-scrapper.webp",
+    image: "/projects/meta-scrapper/meta-scrapper.webp",
     projectDescription:
       "A small tool that reads a webpage’s title, description, Open Graph image, and other metadata from a URL.",
     highlight: "title, description, Open Graph image, and other metadata",
@@ -322,7 +327,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Rivr App",
     projectLink: "https://rivr-mu.vercel.app/",
-    image: "/projects/rivr-app.png",
+    image: "/projects/rivr-app/rivr-app.png",
     projectDescription:
       "A concept for connecting brands with creators for potential collaborations.",
     highlight: "connecting brands with creators",
@@ -333,7 +338,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   {
     projectName: "Olamide Tours Website (clone)",
     projectLink: "https://olamide-tour.vercel.app/",
-    image: "/projects/celeb-tour.png",
+    image: "/projects/celeb-tour/celeb-tour.png",
     projectDescription:
       "A landing-page clone for an Olamide tour concept, with tour dates, media, and a responsive ticket-style interface.",
     highlight: "landing-page clone for an Olamide tour concept",
@@ -358,26 +363,26 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/melo",
-    heroImage: "/projects/melo-splash.png",
+    heroImage: "/projects/melo/melo-splash.png",
     intro:
       "Melo is a two-person messaging app that translates text between people who speak different languages. Each person reads messages in their preferred language and can tap to see the original text.",
     introText:
       "Instead of copying messages into a separate translation app, people can communicate inside one chat. The goal is to make translation feel like part of messaging rather than an extra step.",
     gallery: [
-      { src: "/projects/melo-splash.png", alt: "Melo Splash Screen" },
-      { src: "/projects/melo-onboarding.png", alt: "Melo Onboarding" },
-      { src: "/projects/melo-onboarding-name.png", alt: "Enter Your Name" },
-      { src: "/projects/melo-onboarding-avatar.png", alt: "Choose Avatar" },
-      { src: "/projects/melo-onboarding-language.png", alt: "Language Selection" },
-      { src: "/projects/melo-connect.png", alt: "Melo Chats List" },
-      { src: "/projects/melo-id.png", alt: "Melo ID Card" },
-      { src: "/projects/melo-chat.png", alt: "Melo Chat View" },
-      { src: "/projects/melo-chat-id.png", alt: "Melo Chat ID" },
-      { src: "/projects/melo-chat-id-2.png", alt: "Melo Chat ID Detail" },
-      { src: "/projects/melo-friend-sheet.png", alt: "Add a Friend" },
-      { src: "/projects/melo-profile-sheet-1.png", alt: "Profile Settings" },
-      { src: "/projects/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
-      { src: "/projects/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
+      { src: "/projects/melo/melo-splash.png", alt: "Melo Splash Screen" },
+      { src: "/projects/melo/melo-onboarding.png", alt: "Melo Onboarding" },
+      { src: "/projects/melo/melo-onboarding-name.png", alt: "Enter Your Name" },
+      { src: "/projects/melo/melo-onboarding-avatar.png", alt: "Choose Avatar" },
+      { src: "/projects/melo/melo-onboarding-language.png", alt: "Language Selection" },
+      { src: "/projects/melo/melo-connect.png", alt: "Melo Chats List" },
+      { src: "/projects/melo/melo-id.png", alt: "Melo ID Card" },
+      { src: "/projects/melo/melo-chat.png", alt: "Melo Chat View" },
+      { src: "/projects/melo/melo-chat-id.png", alt: "Melo Chat ID" },
+      { src: "/projects/melo/melo-chat-id-2.png", alt: "Melo Chat ID Detail" },
+      { src: "/projects/melo/melo-friend-sheet.png", alt: "Add a Friend" },
+      { src: "/projects/melo/melo-profile-sheet-1.png", alt: "Profile Settings" },
+      { src: "/projects/melo/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
+      { src: "/projects/melo/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
     ],
     challenge:
       "The challenge was keeping conversations responsive while translation requests ran asynchronously. I also had to account for failed requests, API quotas, and connecting two people without requiring a traditional account.",
@@ -415,6 +420,87 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
   },
 
+  {
+    id: "echo",
+    title: "Echo",
+    sub: "ECHO",
+    oneLiner: "Location-based reminders that trigger when you arrive",
+    year: 2025,
+    builtBy: "Samuel Isah",
+    role: "Mobile engineering, background location",
+    type: "Mobile app",
+    client: "Personal project",
+    story:
+      "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
+    heroImage: "/projects/echo/echo-hero.png",
+    intro:
+      "Echo is a location-based reminder app for tasks tied to a particular place. Choose a location and a radius, then configure a reminder to trigger when the device enters that area.",
+    introText:
+      "A reminder to buy something at a shop or complete a task on campus is more useful when it appears at the right place. Echo explores how geofencing and local notifications can support that experience without requiring a cloud account.",
+    gallery: [
+      { src: "/projects/echo/echo-splash.png", alt: "Echo Splash Screen" },
+      { src: "/projects/echo/echo-onboarding-1.png", alt: "Echo Onboarding: Welcome" },
+      { src: "/projects/echo/echo-onboarding-2.png", alt: "Echo Onboarding: Location Permission" },
+      { src: "/projects/echo/echo-onboarding-2b.png", alt: "Echo Onboarding: Location Permission Detail" },
+      { src: "/projects/echo/echo-onboarding-3.png", alt: "Echo Onboarding: Notifications" },
+      { src: "/projects/echo/echo-onboarding-3b.png", alt: "Echo Onboarding: Notification Permission Detail" },
+      { src: "/projects/echo/echo-onboarding-3c.png", alt: "Echo Onboarding: Reminder Setup" },
+      { src: "/projects/echo/echo-onboarding-3d.png", alt: "Echo Onboarding: Reminder Setup Detail" },
+      { src: "/projects/echo/echo-onboarding-4.png", alt: "Echo Onboarding: Get Started" },
+      { src: "/projects/echo/echo-onboarding-4b.png", alt: "Echo Onboarding: Ready" },
+      { src: "/projects/echo/echo-home.png", alt: "Echo Home" },
+      { src: "/projects/echo/echo-home-loading.png", alt: "Echo Home Loading" },
+      { src: "/projects/echo/echo-no-reminder.png", alt: "Echo Empty Reminder State" },
+      { src: "/projects/echo/echo-current-location.png", alt: "Echo Current Location" },
+      { src: "/projects/echo/echo-new-reminder.png", alt: "Echo New Reminder" },
+      { src: "/projects/echo/echo-new-reminder-b.png", alt: "Echo New Reminder: Place Search" },
+      { src: "/projects/echo/echo-new-reminder-c.png", alt: "Echo New Reminder: Details" },
+      { src: "/projects/echo/echo-edit-reminder.png", alt: "Echo Edit Reminder" },
+      { src: "/projects/echo/echo-edit-reminder-saved-places-dropdown.png", alt: "Echo Saved Places Dropdown" },
+      { src: "/projects/echo/echo-places.png", alt: "Echo Saved Places" },
+      { src: "/projects/echo/echo-places-place-expanded.png", alt: "Echo Saved Place Expanded" },
+      { src: "/projects/echo/echo-map-search.png", alt: "Echo Map Search" },
+      { src: "/projects/echo/echo-map-selection.png", alt: "Echo Map Location Selection" },
+      { src: "/projects/echo/echo-map-style.png", alt: "Echo Map Style" },
+      { src: "/projects/echo/echo-no-place.png", alt: "Echo No Place Selected" },
+      { src: "/projects/echo/echo-no-search-result.png", alt: "Echo No Search Results" },
+      { src: "/projects/echo/echo-no-reminder-result.png", alt: "Echo No Reminders Found" },
+      { src: "/projects/echo/echo-date-day.png", alt: "Echo Date Picker: Day" },
+      { src: "/projects/echo/echo-date-time.png", alt: "Echo Date Picker: Time" },
+      { src: "/projects/echo/echo-date-year.png", alt: "Echo Date Picker: Year" },
+      { src: "/projects/echo/echo-ringtone-sheet.png", alt: "Echo Ringtone Picker" },
+      { src: "/projects/echo/echo-reminder-detail.png", alt: "Echo Reminder Detail" },
+      { src: "/projects/echo/echo-reminder-detail-b.png", alt: "Echo Reminder Detail: Map" },
+      { src: "/projects/echo/echo-reminder-detail-map-expanded.png", alt: "Echo Reminder Detail: Expanded Map" },
+      { src: "/projects/echo/echo-reminder-search-result.png", alt: "Echo Reminder Search Results" },
+      { src: "/projects/echo/echo-delete-sheet.png", alt: "Echo Delete Reminder" },
+      { src: "/projects/echo/echo-delete-sheet-b.png", alt: "Echo Delete Reminder Confirmation" },
+      { src: "/projects/echo/echo-save-pop.png", alt: "Echo Reminder Saved" },
+    ],
+    challenge:
+      "Background location behaviour varies across mobile operating systems. Battery restrictions, permissions, region limits, and background execution rules all affect when a location-triggered reminder can be delivered.",
+    actions: [
+      {
+        title: "Background location tasks and geofencing",
+        text: "I used expo-task-manager and location-region monitoring to handle background location events and trigger local notifications when supported operating-system conditions are met.",
+      },
+      {
+        title: "More efficient location lookup",
+        text: "I added caching and debouncing around forward and reverse geocoding to avoid unnecessary repeated requests when searching for and selecting places.",
+      },
+    ],
+    result:
+      "Echo explores the engineering behind place-aware reminders, from background tasks to local notifications. It helped me understand the practical constraints of mobile location services and the importance of designing around them.",
+    technologies: [
+      "React Native",
+      "Expo",
+      "expo-location",
+      "expo-task-manager",
+      "TypeScript",
+    ],
+    links: [],
+  },
+
   // 2. The SupaDevs
   {
     id: "thesupadevs",
@@ -429,14 +515,14 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://thesupadevs.vercel.app",
-    heroImage: "/projects/thesupadevs.webp",
+    heroImage: "/projects/thesupadevs/thesupadevs.webp",
     intro:
       "The SupaDevs is a searchable library of developer tools, UI components, APIs, tutorials, and other resources.",
     introText:
       "The platform combines resource discovery with metadata extraction and AI-assisted categorization, helping submissions become easier to browse and manage.",
     gallery: [
       {
-        src: "/projects/thesupadevs.webp",
+        src: "/projects/thesupadevs/thesupadevs.webp",
         alt: "The SupaDevs Platform",
       },
     ],
@@ -549,38 +635,38 @@ export const MOBILE_APPS: CaseStudy[] = [
     client: "Personal project",
     story:
       "I train, forget my numbers, and sometimes struggle to stay consistent. I wanted a tracker that made logging workouts feel simple instead of turning the gym into another admin task. Chop Iron grew from that idea, with a bit of Nigerian personality thrown in because fitness apps don't all have to sound the same.",
-    heroImage: "/projects/chop-iron-splash.png",
+    heroImage: "/projects/chop-iron/chop-iron-splash.png",
     intro:
       "Chop Iron is a workout tracker with a Nigerian voice. It includes 53 exercises, workout history, personal records, progress charts, and achievement tracking, with workout data stored locally.",
     introText:
       "The guiding question was simple: does this make it easier to record a set and understand my progress? That shaped the offline-first architecture, compact workout flows, and copy built around the phrase, 'No dull. Go chop iron.'",
     gallery: [
-      { src: "/projects/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
-      { src: "/projects/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
-      { src: "/projects/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
-      { src: "/projects/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
-      { src: "/projects/chop-iron-onboarding-3.png", alt: "Onboarding Step 3" },
-      { src: "/projects/chop-iron-onboarding-4.png", alt: "Onboarding Step 4" },
-      { src: "/projects/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
-      { src: "/projects/chop-iron-onboarding-goal.png", alt: "Goal Selection" },
-      { src: "/projects/chop-iron-index.png", alt: "Home screen with streak calendar" },
-      { src: "/projects/chop-iron-index-2.png", alt: "Home screen detail" },
-      { src: "/projects/chop-iron-calender.png", alt: "Calendar View" },
-      { src: "/projects/chop-iron-calender-2.png", alt: "Calendar Detail" },
-      { src: "/projects/chop-iron-log.png", alt: "Logging a workout" },
-      { src: "/projects/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
-      { src: "/projects/chop-iron-exercise-detail.png", alt: "Exercise Detail" },
-      { src: "/projects/chop-iron-exercise-detail-image.png", alt: "Exercise Demo" },
-      { src: "/projects/chop-iron-exercise-push.png", alt: "Push Exercise" },
-      { src: "/projects/chop-iron-exercise-shoulder.png", alt: "Shoulder Exercise" },
-      { src: "/projects/chop-iron-progress.png", alt: "Progress screen with charts" },
-      { src: "/projects/chop-iron-achievement.png", alt: "Achievements and milestones" },
-      { src: "/projects/chop-iron-profile.png", alt: "Profile and stats overview" },
-      { src: "/projects/chop-iron-profile-avatar.png", alt: "Profile Avatar" },
-      { src: "/projects/chop-iron-profile-1.png", alt: "Profile Overview" },
-      { src: "/projects/chop-iron-profile-2.png", alt: "Profile Details" },
-      { src: "/projects/chop-iron-profile-3.png", alt: "Profile Settings" },
-      { src: "/projects/chop-iron-edit-profile.png", alt: "Edit Profile" },
+      { src: "/projects/chop-iron/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
+      { src: "/projects/chop-iron/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-3.png", alt: "Onboarding Step 3" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-4.png", alt: "Onboarding Step 4" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
+      { src: "/projects/chop-iron/chop-iron-onboarding-goal.png", alt: "Goal Selection" },
+      { src: "/projects/chop-iron/chop-iron-index.png", alt: "Home screen with streak calendar" },
+      { src: "/projects/chop-iron/chop-iron-index-2.png", alt: "Home screen detail" },
+      { src: "/projects/chop-iron/chop-iron-calender.png", alt: "Calendar View" },
+      { src: "/projects/chop-iron/chop-iron-calender-2.png", alt: "Calendar Detail" },
+      { src: "/projects/chop-iron/chop-iron-log.png", alt: "Logging a workout" },
+      { src: "/projects/chop-iron/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
+      { src: "/projects/chop-iron/chop-iron-exercise-detail.png", alt: "Exercise Detail" },
+      { src: "/projects/chop-iron/chop-iron-exercise-detail-image.png", alt: "Exercise Demo" },
+      { src: "/projects/chop-iron/chop-iron-exercise-push.png", alt: "Push Exercise" },
+      { src: "/projects/chop-iron/chop-iron-exercise-shoulder.png", alt: "Shoulder Exercise" },
+      { src: "/projects/chop-iron/chop-iron-progress.png", alt: "Progress screen with charts" },
+      { src: "/projects/chop-iron/chop-iron-achievement.png", alt: "Achievements and milestones" },
+      { src: "/projects/chop-iron/chop-iron-profile.png", alt: "Profile and stats overview" },
+      { src: "/projects/chop-iron/chop-iron-profile-avatar.png", alt: "Profile Avatar" },
+      { src: "/projects/chop-iron/chop-iron-profile-1.png", alt: "Profile Overview" },
+      { src: "/projects/chop-iron/chop-iron-profile-2.png", alt: "Profile Details" },
+      { src: "/projects/chop-iron/chop-iron-profile-3.png", alt: "Profile Settings" },
+      { src: "/projects/chop-iron/chop-iron-edit-profile.png", alt: "Edit Profile" },
     ],
     challenge:
       "Workout history has to stay consistent as records change. Streaks depend on distinct training days, personal records depend on previous sets, and achievements may need to be recalculated when a workout is edited or deleted.",
@@ -630,7 +716,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://crystalglowxquisite.com/",
-    heroImage: "/projects/crystalglowxquisite.png",
+    heroImage: "/projects/crystalglowxquisite/crystalglowxquisite.png",
     story:
       "Crystal Glow Xquisite is a skincare brand I helped bring online with a custom storefront. The focus was giving customers a straightforward way to browse products, understand what was available, and move through the shopping experience on both mobile and desktop.",
     intro:
@@ -639,7 +725,7 @@ export const MOBILE_APPS: CaseStudy[] = [
       "I built the storefront around the brand's catalog and shopping flow, with responsive layouts and integrations to support the store's day-to-day operation.",
     gallery: [
       {
-        src: "/projects/crystalglowxquisite.png",
+        src: "/projects/crystalglowxquisite/crystalglowxquisite.png",
         alt: "Crystal Glow Xquisite Storefront",
       },
     ],
@@ -683,7 +769,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://www.knowledgemaster.com.ng/",
-    heroImage: "/projects/knowledgemaster.webp",
+    heroImage: "/projects/knowledgemaster/knowledgemaster.webp",
     story:
       "A bookstore has more to offer than a list of books. Customers also need to find the right resources and understand how delivery and school bookfairs work. I worked on KnowledgeMaster's online presence to bring its catalog and service information together in a place customers could browse without visiting a physical store first.",
     intro:
@@ -692,7 +778,7 @@ export const MOBILE_APPS: CaseStudy[] = [
       "The site organizes the bookstore's offerings and makes important information about its services easier to find, especially when browsing on mobile.",
     gallery: [
       {
-        src: "/projects/knowledgemaster.webp",
+        src: "/projects/knowledgemaster/knowledgemaster.webp",
         alt: "KnowledgeMaster Bookstore",
       },
     ],
@@ -742,7 +828,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     year: 2025,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/dropenv",
-    heroImage: "/projects/dropenv.png",
+    heroImage: "/projects/dropenv/dropenv.png",
     intro:
       "DropEnv is a developer tool for sharing environment variables through temporary links, with encryption performed in the browser.",
     introText:
@@ -789,24 +875,24 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "Ongoing",
     story:
       "Sometimes the hardest part of a difficult conversation is working out what to say before you say it. I built SAGE as a place to think through those situations, using ideas from The 48 Laws of Power to explore different approaches. The product is still evolving, especially the part that matters most to me: making an AI conversation feel natural rather than like filling out a form.",
-    heroImage: "/projects/sage-splash.png",
+    heroImage: "/projects/sage/sage-splash.png",
     intro:
       "SAGE is an AI coach for difficult conversations. Describe a situation and explore its dynamics, then generate possible responses in different tones informed by ideas from The 48 Laws of Power.",
     introText:
       "Rather than producing a single reply without context, SAGE aims to help users consider the situation and compare different ways of approaching a conversation.",
     gallery: [
-      { src: "/projects/sage-splash.png", alt: "Sage Splash Screen" },
-      { src: "/projects/sage-index.png", alt: "Sage Analysis View" },
-      { src: "/projects/sage-index-listening.png", alt: "Sage Voice Input" },
-      { src: "/projects/sage-coach.png", alt: "Sage Live Coach" },
-      { src: "/projects/sage-conversation-1.png", alt: "Sage Conversation Simulator" },
-      { src: "/projects/sage-conversation-1b.png", alt: "Sage Conversation Detail" },
-      { src: "/projects/sage-conversation-2.png", alt: "Sage Conversation Follow-up" },
-      { src: "/projects/sage-conversation-load.png", alt: "Sage Conversation Loading" },
-      { src: "/projects/sage-learn.png", alt: "Sage Learn: The 48 Laws" },
-      { src: "/projects/sage-learn-load.png", alt: "Sage Learn Loading" },
-      { src: "/projects/sage-library.png", alt: "Sage Library" },
-      { src: "/projects/sage-delete.png", alt: "Sage Delete Conversation" },
+      { src: "/projects/sage/sage-splash.png", alt: "Sage Splash Screen" },
+      { src: "/projects/sage/sage-index.png", alt: "Sage Analysis View" },
+      { src: "/projects/sage/sage-index-listening.png", alt: "Sage Voice Input" },
+      { src: "/projects/sage/sage-coach.png", alt: "Sage Live Coach" },
+      { src: "/projects/sage/sage-conversation-1.png", alt: "Sage Conversation Simulator" },
+      { src: "/projects/sage/sage-conversation-1b.png", alt: "Sage Conversation Detail" },
+      { src: "/projects/sage/sage-conversation-2.png", alt: "Sage Conversation Follow-up" },
+      { src: "/projects/sage/sage-conversation-load.png", alt: "Sage Conversation Loading" },
+      { src: "/projects/sage/sage-learn.png", alt: "Sage Learn: The 48 Laws" },
+      { src: "/projects/sage/sage-learn-load.png", alt: "Sage Learn Loading" },
+      { src: "/projects/sage/sage-library.png", alt: "Sage Library" },
+      { src: "/projects/sage/sage-delete.png", alt: "Sage Delete Conversation" },
     ],
     challenge:
       "The main challenge was getting consistent, structured responses from AI services while handling rate limits, malformed output, and voice transcription failures without breaking the conversation flow.",
@@ -852,19 +938,19 @@ export const MOBILE_APPS: CaseStudy[] = [
     client: "Personal project",
     story:
       "Every semester, I found myself rebuilding the same spreadsheet to keep track of courses, grades, and academic targets. GPZ started as a way to stop doing that manually. It brings those calculations into one place and helps me see how future grades could affect my overall GPA.",
-    heroImage: "/projects/gpz-splash.png",
+    heroImage: "/projects/gpz/gpz-splash.png",
     intro:
       "GPZ is a student-focused GPA tracker for managing semesters, courses, grades, and target academic results.",
     introText:
       "The app helps students organize their academic records and explore what grades they may need in future courses or semesters to reach a target GPA.",
     gallery: [
-      { src: "/projects/gpz-splash.png", alt: "GPZ Splash Screen" },
-      { src: "/projects/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
-      { src: "/projects/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
-      { src: "/projects/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
-      { src: "/projects/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
-      { src: "/projects/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
-      { src: "/projects/gpz-home.png", alt: "GPZ Home" },
+      { src: "/projects/gpz/gpz-splash.png", alt: "GPZ Splash Screen" },
+      { src: "/projects/gpz/gpz-onboarding-1.png", alt: "GPZ Onboarding 1" },
+      { src: "/projects/gpz/gpz-onboarding-2.png", alt: "GPZ Onboarding 2" },
+      { src: "/projects/gpz/gpz-onboarding-3.png", alt: "GPZ Onboarding 3" },
+      { src: "/projects/gpz/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
+      { src: "/projects/gpz/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
+      { src: "/projects/gpz/gpz-home.png", alt: "GPZ Home" },
     ],
     challenge:
       "Academic projections need to account for credit units, grading scales, completed courses, and future results. The challenge was to make those calculations useful without making course entry complicated.",
@@ -890,58 +976,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     links: [],
   },
 
-  // 10. ECHO
-  {
-    id: "echo",
-    title: "Echo",
-    sub: "ECHO",
-    oneLiner: "Location-based reminders that trigger when you arrive",
-    year: 2025,
-    builtBy: "Samuel Isah",
-    role: "Mobile engineering, background location",
-    type: "Mobile app",
-    client: "Personal project",
-    story:
-      "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
-    heroImage: "/projects/echo-hero.png",
-    intro:
-      "Echo is a location-based reminder app for tasks tied to a particular place. Choose a location and a radius, then configure a reminder to trigger when the device enters that area.",
-    introText:
-      "A reminder to buy something at a shop or complete a task on campus is more useful when it appears at the right place. Echo explores how geofencing and local notifications can support that experience without requiring a cloud account.",
-    gallery: [
-      { src: "/projects/echo-hero.png", alt: "Echo Map View" },
-      { src: "/projects/echo-square.png", alt: "Echo Reminder List" },
-    ],
-    challenge:
-      "Background location behaviour varies across mobile operating systems. Battery restrictions, permissions, region limits, and background execution rules all affect when a location-triggered reminder can be delivered.",
-    actions: [
-      {
-        title: "Background location tasks and geofencing",
-        text: "I used expo-task-manager and location-region monitoring to handle background location events and trigger local notifications when supported operating-system conditions are met.",
-      },
-      {
-        title: "More efficient location lookup",
-        text: "I added caching and debouncing around forward and reverse geocoding to avoid unnecessary repeated requests when searching for and selecting places.",
-      },
-    ],
-    result:
-      "Echo explores the engineering behind place-aware reminders, from background tasks to local notifications. It helped me understand the practical constraints of mobile location services and the importance of designing around them.",
-    technologies: [
-      "React Native",
-      "Expo",
-      "expo-location",
-      "expo-task-manager",
-      "TypeScript",
-    ],
-    links: [],
-  },
 ];
 
 export const WEB_TOOLS = [
   {
     projectName: "Deps Janitor",
     projectLink: "https://deps-janitor.vercel.app/",
-    image: "/projects/deps-janitor.webp",
+    image: "/projects/deps-janitor/deps-janitor.webp",
     projectDescription:
       "Find unused npm dependencies and clean up your project with an interactive CLI and web interface.",
     projectType: "CLI & Web Tool",
@@ -951,7 +992,7 @@ export const WEB_TOOLS = [
   {
     projectName: "Peekr",
     projectLink: "https://peekrr.vercel.app/",
-    image: "/projects/peekrr.webp",
+    image: "/projects/peekrr/peekrr.webp",
     projectDescription:
       "Preview how a website looks across different viewport sizes with a responsive screenshot tool.",
     projectType: "Developer Utility",
@@ -961,7 +1002,7 @@ export const WEB_TOOLS = [
   {
     projectName: "MetaScraper",
     projectLink: "https://meta-scrapper.vercel.app/",
-    image: "/projects/meta-scrapper.webp",
+    image: "/projects/meta-scrapper/meta-scrapper.webp",
     projectDescription:
       "Pull page titles, descriptions, Open Graph images, and other metadata from a URL.",
     projectType: "Web Utility",
@@ -1514,12 +1555,12 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         descriptionAfter:
           ". People can still view the original text, with typing indicators and presence in the chat.",
         mobileScreens: [
-          "/projects/melo-onboarding.png",
-          "/projects/melo-onboarding-language.png",
-          "/projects/melo-connect.png",
-          "/projects/melo-chat.png",
-          "/projects/melo-id.png",
-          "/projects/melo-profile-sheet-1.png",
+          "/projects/melo/melo-onboarding.png",
+          "/projects/melo/melo-onboarding-language.png",
+          "/projects/melo/melo-connect.png",
+          "/projects/melo/melo-chat.png",
+          "/projects/melo/melo-id.png",
+          "/projects/melo/melo-profile-sheet-1.png",
         ],
         href: "/projects/melo",
         tags: ["React Native", "Expo", "Supabase Realtime", "AI"],
@@ -1533,12 +1574,12 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         descriptionAfter:
           ". Your workout data stays on your device, so you can log sessions offline.",
         mobileScreens: [
-          "/projects/chop-iron-splash-2.png",
-          "/projects/chop-iron-index.png",
-          "/projects/chop-iron-log.png",
-          "/projects/chop-iron-progress.png",
-          "/projects/chop-iron-achievement.png",
-          "/projects/chop-iron-calender.png",
+          "/projects/chop-iron/chop-iron-splash-2.png",
+          "/projects/chop-iron/chop-iron-index.png",
+          "/projects/chop-iron/chop-iron-log.png",
+          "/projects/chop-iron/chop-iron-progress.png",
+          "/projects/chop-iron/chop-iron-achievement.png",
+          "/projects/chop-iron/chop-iron-calender.png",
         ],
         href: "/projects/iron",
         tags: ["React Native", "SQLite", "Offline-first"],
@@ -1551,7 +1592,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         highlight: "metadata extraction and AI-assisted categorization",
         descriptionAfter:
           ", with admin tools for reviewing and managing submissions.",
-        image: "/projects/thesupadevs.webp",
+        image: "/projects/thesupadevs/thesupadevs.webp",
         href: "/projects/thesupadevs",
         tags: ["Next.js", "Supabase", "AI", "PostgreSQL"],
         year: "2025",
@@ -1574,7 +1615,14 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         highlight: "get reminded when you arrive",
         descriptionAfter:
           ". Designed around location-based reminders and local notifications.",
-        image: "/projects/echo-square.png",
+        mobileScreens: [
+          "/projects/echo/echo-home.png",
+          "/projects/echo/echo-new-reminder.png",
+          "/projects/echo/echo-reminder-detail.png",
+          "/projects/echo/echo-map-selection.png",
+          "/projects/echo/echo-places.png",
+          "/projects/echo/echo-save-pop.png",
+        ],
         href: "/projects/echo",
         tags: ["React Native", "expo-location", "Notifications"],
         year: "2025",
@@ -1590,7 +1638,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
           "A skincare brand's online store, with ",
         highlight: "product browsing, cart, checkout and analytics",
         descriptionAfter: ", alongside analytics integrations.",
-        image: "/projects/crystalglowxquisite.png",
+        image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
         href: "https://crystalglowxquisite.com/",
         tags: ["Next.js", "E-commerce", "Analytics"],
         year: "2026",
@@ -1601,7 +1649,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
           "An online bookstore for textbooks, novels, and ",
         highlight: "educational resources, and school bookfair services",
         descriptionAfter: ", with delivery information available on the site.",
-        image: "/projects/knowledgemaster.webp",
+        image: "/projects/knowledgemaster/knowledgemaster.webp",
         href: "https://www.knowledgemaster.com.ng/",
         tags: ["Next.js", "E-commerce"],
         year: "2026",
