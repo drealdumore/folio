@@ -1040,7 +1040,7 @@ export const WEB_TOOLS = [
 ];
 
 export const META = {
-  title: "Samuel Isah — Software Engineer",
+  title: "Samuel Isah | Software Engineer",
   name: "Samuel Isah",
   description:
     "I'm Samuel Isah, a software engineer from Nigeria building web apps, mobile products, and backend systems with TypeScript, React, Next.js, and Node.js.",
@@ -1101,7 +1101,6 @@ export const PROFILE = {
   email: "samuelisah234@gmail.com",
   website: "https://drealdumore.cv",
 };
-
 
 export const SOCIALS = {
   twitter: {
@@ -1597,11 +1596,11 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         descriptionAfter:
           ". Designed around location-based reminders and local notifications.",
         mobileScreens: [
+          "/projects/echo/echo-splash.png",
+          "/projects/echo/echo-onboarding-2b.png",
+          "/projects/echo/echo-reminder-detail.png",
           "/projects/echo/echo-home.png",
           "/projects/echo/echo-new-reminder.png",
-          "/projects/echo/echo-reminder-detail.png",
-          "/projects/echo/echo-map-selection.png",
-          "/projects/echo/echo-places.png",
           "/projects/echo/echo-save-pop.png",
         ],
         href: "/projects/echo",

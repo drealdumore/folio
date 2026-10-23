@@ -90,7 +90,7 @@ export const metadata: Metadata = {
   },
   title: {
     default: sharedMetadata.title,
-    template: `%s — ${sharedMetadata.title}`,
+    template: `%s | ${PROFILE.name}`,
   },
   description: sharedMetadata.description,
   keywords: sharedMetadata.keywords,
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: {
       default: sharedMetadata.title,
-      template: `%s — ${sharedMetadata.title}`,
+      template: `%s | ${PROFILE.name}`,
     },
     description: sharedMetadata.description,
     type: "website",

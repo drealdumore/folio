@@ -23,17 +23,17 @@ export function generateMetadata({
   const description = project.oneLiner ?? project.intro;
 
   return {
-    title: `${project.sub} — Case Study`,
+    title: project.sub,
     description,
     openGraph: {
-      title: `${project.sub} — Case Study`,
+      title: project.sub,
       description,
       type: "article",
       images: project.heroImage ? [{ url: project.heroImage }] : undefined,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.sub} — Case Study`,
+      title: project.sub,
       description,
       images: project.heroImage ? [project.heroImage] : undefined,
     },
