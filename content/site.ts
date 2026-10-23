@@ -1369,6 +1369,7 @@ export type Experience = {
   title: string;
   company: string;
   description: string[];
+  duration: string;
   durationAlt: string;
   stack?: string[];
 };
@@ -1382,6 +1383,7 @@ export const EXPERIENCE: Experience[] = [
       "Work on app performance, offline data handling, and navigation flows.",
       "Collaborate with teammates to turn product requirements into working features.",
     ],
+    duration: "January 2025 - 2026",
     durationAlt: "01 / 2025 until 2026",
     stack: [
       "React Native",
@@ -1398,6 +1400,7 @@ export const EXPERIENCE: Experience[] = [
       "Develop user-facing features with React and Next.js.",
       "Build reusable components and improve responsive layouts and interface consistency.",
     ],
+    duration: "April 2024 - 2026",
     durationAlt: "04 / 2024 until 2026",
     stack: [
       "React",
@@ -1414,6 +1417,7 @@ export const EXPERIENCE: Experience[] = [
       "Build websites, online stores, mobile apps, and custom tools for clients.",
       "Work across frontend interfaces, APIs, databases, and deployment, then iterate based on client feedback.",
     ],
+     duration: "April 2021 - 2024",
     durationAlt: "04 / 2021 until 2024",
     stack: [
       "Angular",
