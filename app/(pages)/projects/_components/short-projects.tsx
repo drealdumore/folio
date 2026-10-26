@@ -21,7 +21,7 @@ const ShortProjects = ({ tools = WEB_TOOLS }: { tools?: typeof WEB_TOOLS }) => {
               <span
                 className={`text-[15px] leading-[1.5] transition-colors duration-150 ${
                   isLive
-                    ? "text-zinc-200 group-hover:text-white"
+                    ? "text-zinc-200 group-hover:text-text-heading"
                     : "text-zinc-600"
                 }`}
               >

@@ -9,7 +9,14 @@ import { AnimatedSection } from "@/components/layout/animated-section";
 import { ArrowIcon } from "@/components/design/arrow-icon";
 import { LiveClock } from "@/components/design/live-clock";
 import { useWebHaptics } from "web-haptics/react";
-import { HERO_CTAS, GREETINGS, PROFILE, SOCIALS } from "@/content/site";
+import {
+  COMPANIES,
+  CompanyLink,
+  HERO_CTAS,
+  GREETINGS,
+  PROFILE,
+  SOCIALS,
+} from "@/content/site";
 
 import { motion } from "framer-motion";
 
@@ -72,6 +79,220 @@ function Magnetic({ children, strength = 0.5 }: MagneticProps) {
     >
       {children}
     </motion.div>
+  );
+}
+
+type IconProps = { size?: number };
+
+const GitHubIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+    <path d="M9 18c-4.51 2-5-2-7-2" />
+  </svg>
+);
+
+const LinkedInIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6" />
+    <circle cx="4" cy="4" r="2" />
+    <path d="M2 9h4v12H2z" />
+  </svg>
+);
+
+const XIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 512 512"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+  </svg>
+);
+
+const MailIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <rect width="20" height="16" x="2" y="4" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
+
+const ResumeIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <path d="M14 2v6h6" />
+    <path d="M8 13h8M8 17h5" />
+  </svg>
+);
+
+const ArrowUpRightIcon = ({ size = 14 }: IconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M7 17 17 7M8 7h9v9" />
+  </svg>
+);
+
+function CompanyMention({ company }: { company: CompanyLink }) {
+  const content = (
+    <>
+      <span
+        aria-hidden="true"
+        className="inline-flex size-[17px] shrink-0 items-center justify-center rounded-[4px] text-[7px] font-bold tracking-tight text-white"
+        style={{
+          backgroundImage: `linear-gradient(135deg, ${company.accent[0]}, ${company.accent[1]})`,
+        }}
+      >
+        {company.initials}
+      </span>
+      <span>{company.name}</span>
+    </>
+  );
+
+  const triggerClassName =
+    "inline-flex items-center gap-1 font-medium text-text-heading decoration-zinc-500 underline-offset-4 transition-colors hover:underline focus-visible:underline";
+
+  return (
+    <span className="group/company relative inline-flex whitespace-nowrap">
+      {company.href ? (
+        <Link
+          href={company.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={triggerClassName}
+        >
+          {content}
+        </Link>
+      ) : (
+        <span className={triggerClassName}>{content}</span>
+      )}
+
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-full left-1/2 z-30 mb-3 hidden w-64 origin-bottom -translate-x-1/2 translate-y-1 scale-95 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-950 opacity-0 shadow-[0_16px_40px_-12px_rgba(0,0,0,0.65)] transition-[opacity,transform] duration-200 ease-out group-hover/company:translate-y-0 group-hover/company:scale-100 group-hover/company:opacity-100 group-hover/company:delay-75 group-focus-within/company:translate-y-0 group-focus-within/company:scale-100 group-focus-within/company:opacity-100 [@media(pointer:fine)]:block"
+      >
+        <span className="block aspect-[16/10] overflow-hidden bg-zinc-900">
+          {company.preview ? (
+            <Image
+              src={company.preview}
+              alt=""
+              width={256}
+              height={160}
+              className="size-full object-cover object-top"
+            />
+          ) : (
+            <span
+              className="flex size-full items-center justify-center"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${company.accent[0]}, ${company.accent[1]})`,
+              }}
+            >
+              <span className="text-[30px] font-semibold tracking-tight text-white/95">
+                {company.initials}
+              </span>
+            </span>
+          )}
+        </span>
+        <span className="flex items-center justify-between gap-3 border-t border-zinc-800 px-3 py-2.5 text-xs whitespace-normal">
+          <span className="flex flex-col gap-0.5">
+            <span className="font-medium text-text-heading">
+              {company.domain}
+            </span>
+            <span className="text-zinc-500">{company.description}</span>
+          </span>
+          <span className="shrink-0 text-zinc-500">
+            <ArrowUpRightIcon />
+          </span>
+        </span>
+      </span>
+    </span>
+  );
+}
+
+interface SocialPillProps {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+  external?: boolean;
+  onClick?: () => void;
+}
+
+function SocialPill({
+  href,
+  label,
+  icon,
+  external = true,
+  onClick,
+}: SocialPillProps) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      {...(external
+        ? { target: "_blank", rel: "noopener noreferrer" }
+        : {})}
+      className="group/pill inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 px-3 py-1.5 text-[13px] text-zinc-400 transition-colors duration-200 hover:border-zinc-600 hover:bg-zinc-900 hover:text-text-heading focus-visible:border-zinc-500 focus-visible:text-text-heading"
+    >
+      <span className="text-zinc-500 transition-colors duration-200 group-hover/pill:text-text-heading">
+        {icon}
+      </span>
+      {label}
+    </Link>
   );
 }
 
@@ -293,105 +514,62 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
         className="fixed bottom-12 left-1/2 flex items-center justify-center px-6 py-3 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-lg will-change-[transform,opacity]"
       >
         <div className="flex gap-6 py-1 cursor-pointer">
-          <Magnetic strength={0.25}>
-            <Link
-              target="_blank"
-              className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href={SOCIALS.twitter.url}
-              aria-label={`${PROFILE.name} on ${SOCIALS.twitter.label}`}
-            >
-              <svg
-                stroke="currentColor"
-                fill="currentColor"
-                strokeWidth="0"
-                viewBox="0 0 512 512"
-                height="20"
-                width="20"
-                xmlns="http://www.w3.org/2000/svg"
+          {[
+            {
+              key: "github",
+              href: SOCIALS.github.url,
+              label: "GitHub",
+              ariaLabel: `${PROFILE.name} on ${SOCIALS.github.label}`,
+              icon: <GitHubIcon size={20} />,
+              external: true,
+            },
+            {
+              key: "linkedin",
+              href: SOCIALS.linkedin.url,
+              label: "LinkedIn",
+              ariaLabel: `${PROFILE.name} on ${SOCIALS.linkedin.label}`,
+              icon: <LinkedInIcon size={20} />,
+              external: true,
+            },
+            {
+              key: "x",
+              href: SOCIALS.twitter.url,
+              label: "X",
+              ariaLabel: `${PROFILE.name} on ${SOCIALS.twitter.label}`,
+              icon: <XIcon size={20} />,
+              external: true,
+            },
+            {
+              key: "email",
+              href: `mailto:${PROFILE.email}`,
+              label: "Email",
+              ariaLabel: `Email ${PROFILE.name}`,
+              icon: <MailIcon size={20} />,
+              external: false,
+            },
+            {
+              key: "resume",
+              href: PROFILE.resume,
+              label: HERO_CTAS.resume,
+              ariaLabel: `${PROFILE.name}'s ${HERO_CTAS.resume}`,
+              icon: <ResumeIcon size={20} />,
+              external: true,
+            },
+          ].map((link) => (
+            <Magnetic key={link.key} strength={0.25}>
+              <Link
+                href={link.href}
+                title={link.label}
+                aria-label={link.ariaLabel}
+                {...(link.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
               >
-                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
-              </svg>
-            </Link>
-          </Magnetic>
-
-          <Magnetic strength={0.25}>
-            <Link
-              target="_blank"
-              className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href={SOCIALS.linkedin.url}
-              aria-label={`${PROFILE.name} on ${SOCIALS.linkedin.label}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-              >
-                <g
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6M2 9h4v12H2z" />
-                  <circle cx="4" cy="4" r="2" />
-                </g>
-              </svg>
-            </Link>
-          </Magnetic>
-
-          <Magnetic strength={0.25}>
-            <Link
-              target="_blank"
-              className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href={SOCIALS.github.url}
-              aria-label={`${PROFILE.name} on ${SOCIALS.github.label}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-github"
-                aria-hidden="true"
-              >
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-                <path d="M9 18c-4.51 2-5-2-7-2"></path>
-              </svg>
-            </Link>
-          </Magnetic>
-
-          <Magnetic strength={0.25}>
-            <Link
-              target="_blank"
-              className="text-zinc-400 cursor-pointer hover:text-text-normal transition-all duration-300 flex items-center justify-center p-1"
-              href={`mailto:${PROFILE.email}`}
-              aria-label={`Email ${PROFILE.name}`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-mail"
-                aria-hidden="true"
-              >
-                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-              </svg>
-            </Link>
-          </Magnetic>
+                {link.icon}
+              </Link>
+            </Magnetic>
+          ))}
         </div>
       </nav>
     </div>,
@@ -493,7 +671,7 @@ const Header = () => {
 
           <AnimatedSection delay={0.4}>
             <div className="flex flex-col items-start gap-2">
-              <h1 className="font-display text-[24px] leading-[1.3] font-semibold tracking-[-0.02em] text-white lg:text-[28px]">
+              <h1 className="font-display text-[24px] leading-[1.3] font-semibold tracking-[-0.02em] text-text-heading lg:text-[28px]">
                 {PROFILE.greeting}
               </h1>
               <h2 className="text-[15px] leading-[1.4] tracking-[-0.01em] text-zinc-400 lg:text-[16px] font-normal p-0">
@@ -512,29 +690,73 @@ const Header = () => {
                 <LiveClock className="text-[13px] text-zinc-500" />
               </div>
 
-              <p className="mt-4 max-w-xl text-[15px] leading-[1.65] text-zinc-400">
+              <p className="mt-4 max-w-xl text-sm/6 text-zinc-400 md:text-[15px]/[26px]">
                 {PROFILE.tagline}
               </p>
+
+              {/* <p className="mt-3 max-w-xl text-[15px] leading-[1.65] text-zinc-400">
+                Right now I&apos;m building mobile features at{" "}
+                <CompanyMention company={COMPANIES.current[0]} /> and front-end
+                work at <CompanyMention company={COMPANIES.current[1]} />.
+                I&apos;ve also shipped storefronts and sites for{" "}
+                <CompanyMention company={COMPANIES.past[0]} /> and{" "}
+                <CompanyMention company={COMPANIES.past[1]} />.
+              </p> */}
+
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <SocialPill
+                  href={SOCIALS.github.url}
+                  label={SOCIALS.github.label}
+                  icon={<GitHubIcon />}
+                  onClick={() => trigger("light")}
+                />
+                <SocialPill
+                  href={SOCIALS.linkedin.url}
+                  label={SOCIALS.linkedin.label}
+                  icon={<LinkedInIcon />}
+                  onClick={() => trigger("light")}
+                />
+                <SocialPill
+                  href={SOCIALS.twitter.url}
+                  label="X"
+                  icon={<XIcon />}
+                  onClick={() => trigger("light")}
+                />
+                <SocialPill
+                  href={`mailto:${PROFILE.email}`}
+                  label="Email"
+                  icon={<MailIcon />}
+                  external={false}
+                  onClick={() => trigger("light")}
+                />
+                <SocialPill
+                  href={PROFILE.resume}
+                  label="Résumé"
+                  icon={<ResumeIcon />}
+                  onClick={() => trigger("light")}
+                />
+              </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-3">
                 <Link
                   href="/projects"
                   onClick={() => trigger("light")}
-                  className="group inline-flex items-center gap-2 rounded-full bg-text-heading px-5 py-2.5 text-[14px] font-medium text-[#1a1a1a] transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
+                  className="group inline-flex items-center gap-2 rounded-full bg-text-heading px-5 py-2.5 text-[14px] font-medium text-background transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 >
                   {HERO_CTAS.primary}
                   <ArrowIcon size={14} />
                 </Link>
 
-                <Link
+                {/* <Link
                   href={PROFILE.resume}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trigger("light")}
-                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white"
+                  className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-5 py-2.5 text-[14px] font-medium text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-text-heading"
                 >
                   {HERO_CTAS.resume}
-                </Link>
+                </Link> */}
               </div>
             </div>
           </AnimatedSection>

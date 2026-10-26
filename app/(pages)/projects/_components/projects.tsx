@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import ProjectCard from "./project-card";
 import { ALLPROJECTS, type ProjectCardProps } from "@/content/site";
@@ -10,13 +11,16 @@ const IN_OUT_QUART = [0.77, 0, 0.175, 1] as const; // exits & on-screen movement
 
 const Projects = ({ projects = ALLPROJECTS }: { projects?: ProjectCardProps[] }) => {
   const reduce = useReducedMotion();
+  const [hovered, setHovered] = useState<string | null>(null);
 
   return (
     <motion.div layout className="flex flex-col gap-[30px] md:gap-[50px]">
       <AnimatePresence mode="popLayout" initial={false}>
-        {projects.map((project) => (
+        {projects.map((project) => {
+          const key = project.projectName ?? project.projectLink;
+          return (
           <motion.div
-            key={project.projectName ?? project.projectLink}
+            key={key}
             layout
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.98 }}
             animate={{
@@ -43,6 +47,12 @@ const Projects = ({ projects = ALLPROJECTS }: { projects?: ProjectCardProps[] })
                 ease: OUT_QUINT,
               },
             }}
+            onPointerEnter={(e) => {
+              if (e.pointerType === "mouse") setHovered(key);
+            }}
+            onPointerLeave={(e) => {
+              if (e.pointerType === "mouse") setHovered(null);
+            }}
           >
             <ProjectCard
               image={project.image}
@@ -54,10 +64,11 @@ const Projects = ({ projects = ALLPROJECTS }: { projects?: ProjectCardProps[] })
               projectDate={project.projectDate}
               technologies={project.technologies}
               highlight={project.highlight}
-              // status={project.status}
+              dimmed={hovered !== null && hovered !== key}
             />
           </motion.div>
-        ))}
+          );
+        })}
       </AnimatePresence>
     </motion.div>
   );

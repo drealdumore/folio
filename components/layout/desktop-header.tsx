@@ -61,7 +61,7 @@ export default function DesktopHeader() {
             ? "pointer-events-none -translate-y-[130%] opacity-0"
             : "pointer-events-auto translate-y-0 opacity-100"
         )}
-        style={{ width: "min(629px, 100vw - 44px)" }}
+        style={{ width: "min(720px, 100vw - 44px)" }}
       >
         {/* Left: brand */}
         <div className="flex flex-1 items-center">

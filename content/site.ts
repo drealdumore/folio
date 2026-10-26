@@ -6,7 +6,29 @@ export type projectType = {
   tech?: string[];
 };
 
-export type ProjectStatus = "live" | "in-development" | "private" | "archived";
+export type ProjectStatus =
+  | "live"
+  | "in-development"
+  | "open-source"
+  | "private"
+  | "archived";
+
+export type CaseStudyOutcome = {
+  value: string;
+  label: string;
+};
+
+export type CaseStudyDemo = {
+  title: string;
+  caption: string;
+  screens: { src: string; alt: string }[];
+  video?: {
+    webm?: string;
+    mp4?: string;
+    poster?: string;
+  };
+  layout?: "phones" | "wide";
+};
 
 export interface ProjectCardProps {
   projectName: string | undefined | null;
@@ -50,6 +72,9 @@ export interface CaseStudy {
   client?: string;
   status?: ProjectStatus;
   duration?: string;
+  designBy?: string;
+  outcome?: CaseStudyOutcome;
+  demos?: CaseStudyDemo[];
   story?: string;
 }
 
@@ -84,7 +109,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     highlight: "reminders that fire where you are",
     projectType: "Personal project (Mobile app)",
     projectDate: "2025-11-01",
-    image: "/projects/echo/echo-hero.png",
+    image: "/projects/echo/echo-home.png",
     mobileScreens: [
       "/projects/echo/echo-splash.png",
       "/projects/echo/echo-onboarding-2b.png",
@@ -178,7 +203,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   },
   {
     projectName: "Crystalglowxquisite: Skincare Boutique",
-    projectLink: "https://crystalglowxquisite.com/",
+    projectLink: "/projects/crystalglowxquisite",
     image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
     projectDescription:
       "An online store for a skincare brand, with a product catalog, cart, checkout flow, and analytics.",
@@ -197,7 +222,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   },
   {
     projectName: "Knowledge Master",
-    projectLink: "https://www.knowledgemaster.com.ng/",
+    projectLink: "/projects/knowledgemaster",
     image: "/projects/knowledgemaster/knowledgemaster.webp",
     projectDescription:
       "An online bookstore for textbooks, novels, and learning resources, with details about delivery and school bookfair services.",
@@ -359,8 +384,15 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Product design, mobile & backend engineering",
     type: "Mobile app",
     client: "Personal project",
+    status: "in-development",
+    duration: "Ongoing",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "11 languages",
+      label: "supported inside one conversation",
+    },
     story:
-      "A friend and I would text in different languages. They wrote in Igbo, I wrote in English, and understanding each other meant dealing with the language barrier one message at a time. I wanted to make that feel less like work. Melo puts translation inside the conversation, so both people can chat in their preferred language and reveal the original message whenever they want.",
+      "A friend and I would text in different languages. They wrote in French, I wrote in English, and understanding each other meant dealing with the language barrier one message at a time. I wanted to make that feel less like work. Melo puts translation inside the conversation, so both people can chat in their preferred language and reveal the original message whenever they want.",
     year: 2026,
     builtBy: "Samuel Isah",
     website: "https://github.com/drealdumore/melo",
@@ -384,6 +416,65 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/melo/melo-profile-sheet-1.png", alt: "Profile Settings" },
       { src: "/projects/melo/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
       { src: "/projects/melo/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
+    ],
+    demos: [
+      {
+        title: "Set up a shared language",
+        caption:
+          "Each person chooses the language they want to read in. No separate translation app, no copied messages.",
+        screens: [
+          {
+            src: "/projects/melo/melo-onboarding-language.png",
+            alt: "Language selection",
+          },
+          {
+            src: "/projects/melo/melo-onboarding-name.png",
+            alt: "Name entry",
+          },
+          {
+            src: "/projects/melo/melo-onboarding-avatar.png",
+            alt: "Avatar selection",
+          },
+        ],
+      },
+      {
+        title: "Connect two devices",
+        caption:
+          "A readable Melo ID pairs two people without asking either of them to create a traditional account.",
+        screens: [
+          {
+            src: "/projects/melo/melo-connect.png",
+            alt: "Connected chats list",
+          },
+          {
+            src: "/projects/melo/melo-id.png",
+            alt: "Melo ID card",
+          },
+          {
+            src: "/projects/melo/melo-friend-sheet.png",
+            alt: "Add a friend sheet",
+          },
+        ],
+      },
+      {
+        title: "Translate in place",
+        caption:
+          "Messages arrive translated inside the thread. Tap any message to reveal the original text.",
+        screens: [
+          {
+            src: "/projects/melo/melo-chat.png",
+            alt: "Translated chat view",
+          },
+          {
+            src: "/projects/melo/melo-chat-id.png",
+            alt: "Chat detail",
+          },
+          {
+            src: "/projects/melo/melo-profile-sheet-1.png",
+            alt: "Profile settings",
+          },
+        ],
+      },
     ],
     challenge:
       "The challenge was keeping conversations responsive while translation requests ran asynchronously. I also had to account for failed requests, API quotas, and connecting two people without requiring a traditional account.",
@@ -431,6 +522,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Mobile engineering, background location",
     type: "Mobile app",
     client: "Personal project",
+    status: "in-development",
+    duration: "2025",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "No account",
+      label: "required for local, place-aware reminders",
+    },
     story:
       "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
     heroImage: "/projects/echo/echo-splash.png",
@@ -478,6 +576,65 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/echo/echo-delete-sheet-b.png", alt: "Delete Reminder Confirmation" },
       { src: "/projects/echo/echo-save-pop.png", alt: "Reminder Saved" },
     ],
+    demos: [
+      {
+        title: "Choose a place",
+        caption:
+          "Search the map or drop a pin, then decide how close you need to be before the reminder can fire.",
+        screens: [
+          {
+            src: "/projects/echo/echo-map-search.png",
+            alt: "Map search",
+          },
+          {
+            src: "/projects/echo/echo-map-selection.png",
+            alt: "Map location selection",
+          },
+          {
+            src: "/projects/echo/echo-new-reminder.png",
+            alt: "New place reminder",
+          },
+        ],
+      },
+      {
+        title: "Set the nudge",
+        caption:
+          "Add the task, choose the trigger radius, and keep everything local to the device.",
+        screens: [
+          {
+            src: "/projects/echo/echo-new-reminder-b.png",
+            alt: "Place search",
+          },
+          {
+            src: "/projects/echo/echo-new-reminder-c.png",
+            alt: "Reminder details",
+          },
+          {
+            src: "/projects/echo/echo-ringtone-sheet.png",
+            alt: "Reminder sound picker",
+          },
+        ],
+      },
+      {
+        title: "Arrive and remember",
+        caption:
+          "Saved places and their reminders sit together, ready for the moment you actually arrive.",
+        screens: [
+          {
+            src: "/projects/echo/echo-home.png",
+            alt: "Reminder home",
+          },
+          {
+            src: "/projects/echo/echo-reminder-detail.png",
+            alt: "Reminder detail",
+          },
+          {
+            src: "/projects/echo/echo-save-pop.png",
+            alt: "Reminder saved confirmation",
+          },
+        ],
+      },
+    ],
     challenge:
       "Background location behaviour varies across mobile operating systems. Battery restrictions, permissions, region limits, and background execution rules all affect when a location-triggered reminder can be delivered.",
     actions: [
@@ -511,6 +668,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Full-stack development, AI integration",
     type: "Web app",
     client: "Personal project",
+    status: "live",
+    duration: "2025",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "200+",
+      label: "developer resources organized in one library",
+    },
     story:
       "I kept finding useful developer resources and then losing them in bookmarks, chats, and browser tabs. The SupaDevs started as my attempt to put those resources in one searchable place. I also wanted to make contributing easier, so I explored using AI to categorize submissions instead of making every contributor organize everything manually.",
     year: 2025,
@@ -525,6 +689,20 @@ export const MOBILE_APPS: CaseStudy[] = [
       {
         src: "/projects/thesupadevs/thesupadevs.webp",
         alt: "The SupaDevs Platform",
+      },
+    ],
+    demos: [
+      {
+        title: "Browse the library",
+        caption:
+          "Search and filter developer resources, with metadata pulled from each source before it reaches the library.",
+        layout: "wide",
+        screens: [
+          {
+            src: "/projects/thesupadevs/thesupadevs.webp",
+            alt: "The SupaDevs resource library",
+          },
+        ],
       },
     ],
     challenge:
@@ -576,6 +754,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Backend engineering, API design, documentation",
     type: "Backend / API",
     client: "Personal project",
+    status: "open-source",
+    duration: "2025",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "0 accounts",
+      label: "required to share a temporary snippet",
+    },
     story:
       "Sometimes I just need to move a code snippet from my laptop to my phone. I didn't want to create an account or leave temporary information sitting around indefinitely, so I built VaultX. Expiry times, view limits, and optional passwords are part of the design rather than features added as an afterthought.",
     year: 2025,
@@ -634,6 +819,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Mobile engineering",
     type: "Mobile app",
     client: "Personal project",
+    status: "in-development",
+    duration: "2026",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "53 exercises",
+      label: "available without a network connection",
+    },
     story:
       "I train, forget my numbers, and sometimes struggle to stay consistent. I wanted a tracker that made logging workouts feel simple instead of turning the gym into another admin task. Chop Iron grew from that idea, with a bit of Nigerian personality thrown in because fitness apps don't all have to sound the same.",
     heroImage: "/projects/chop-iron/chop-iron-splash.png",
@@ -668,6 +860,46 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/chop-iron/chop-iron-profile-2.png", alt: "Profile Details" },
       { src: "/projects/chop-iron/chop-iron-profile-3.png", alt: "Profile Settings" },
       { src: "/projects/chop-iron/chop-iron-edit-profile.png", alt: "Edit Profile" },
+    ],
+    demos: [
+      {
+        title: "Log a session",
+        caption:
+          "Pick from 53 exercises, record sets and reps, and keep moving without waiting on a network request.",
+        screens: [
+          {
+            src: "/projects/chop-iron/chop-iron-index.png",
+            alt: "Workout home",
+          },
+          {
+            src: "/projects/chop-iron/chop-iron-log.png",
+            alt: "Logging a workout",
+          },
+          {
+            src: "/projects/chop-iron/chop-iron-exercises.png",
+            alt: "Exercise library",
+          },
+        ],
+      },
+      {
+        title: "See the progress",
+        caption:
+          "Personal records, streaks, charts, and achievements are recalculated from the same local workout history.",
+        screens: [
+          {
+            src: "/projects/chop-iron/chop-iron-progress.png",
+            alt: "Progress charts",
+          },
+          {
+            src: "/projects/chop-iron/chop-iron-achievement.png",
+            alt: "Achievements",
+          },
+          {
+            src: "/projects/chop-iron/chop-iron-calender.png",
+            alt: "Training calendar",
+          },
+        ],
+      },
     ],
     challenge:
       "Workout history has to stay consistent as records change. Streaks depend on distinct training days, personal records depend on previous sets, and achievements may need to be recalculated when a workout is edited or deleted.",
@@ -715,6 +947,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     type: "E-commerce",
     client: "Crystal Glow Xquisite",
     year: 2026,
+    status: "live",
+    duration: "2026",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "One storefront",
+      label: "for catalog, cart, checkout, and analytics",
+    },
     builtBy: "Samuel Isah",
     website: "https://crystalglowxquisite.com/",
     heroImage: "/projects/crystalglowxquisite/crystalglowxquisite.png",
@@ -728,6 +967,20 @@ export const MOBILE_APPS: CaseStudy[] = [
       {
         src: "/projects/crystalglowxquisite/crystalglowxquisite.png",
         alt: "Crystal Glow Xquisite Storefront",
+      },
+    ],
+    demos: [
+      {
+        title: "Browse the storefront",
+        caption:
+          "Product galleries, filtering, cart state, and checkout stay in one responsive shopping flow.",
+        layout: "wide",
+        screens: [
+          {
+            src: "/projects/crystalglowxquisite/crystalglowxquisite.png",
+            alt: "Crystal Glow Xquisite storefront",
+          },
+        ],
       },
     ],
     challenge:
@@ -768,6 +1021,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     type: "E-commerce",
     client: "KnowledgeMaster",
     year: 2026,
+    status: "live",
+    duration: "2026",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "One platform",
+      label: "for catalog, delivery, and bookfair information",
+    },
     builtBy: "Samuel Isah",
     website: "https://www.knowledgemaster.com.ng/",
     heroImage: "/projects/knowledgemaster/knowledgemaster.webp",
@@ -781,6 +1041,20 @@ export const MOBILE_APPS: CaseStudy[] = [
       {
         src: "/projects/knowledgemaster/knowledgemaster.webp",
         alt: "KnowledgeMaster Bookstore",
+      },
+    ],
+    demos: [
+      {
+        title: "Find the right book",
+        caption:
+          "Categories, search, and service pages bring the bookstore catalog and school bookfair details together.",
+        layout: "wide",
+        screens: [
+          {
+            src: "/projects/knowledgemaster/knowledgemaster.webp",
+            alt: "KnowledgeMaster bookstore",
+          },
+        ],
       },
     ],
     challenge:
@@ -823,7 +1097,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Design, encryption",
     type: "Developer tool",
     client: "Personal project",
+    status: "open-source",
     duration: "Two weeks",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "0 plaintext secrets",
+      label: "sent to the server during sharing",
+    },
     story:
       "Sharing a .env file with a teammate sounds harmless until you remember what those files contain. DropEnv was my attempt to make that exchange less risky: encrypt the contents in the browser, keep the decryption key in the URL fragment, and give shared data a limited lifetime. Building it pushed me to learn the Web Crypto API beyond simply following an example.",
     year: 2025,
@@ -835,6 +1115,20 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "Instead of sending configuration values as plain text in a chat, the tool encrypts the contents client-side before sharing them. The design keeps the decryption key in the URL fragment rather than the normal HTTP request.",
     gallery: [],
+    demos: [
+      {
+        title: "Encrypt before sharing",
+        caption:
+          "The browser encrypts the contents with AES-GCM, and the decryption key stays in the URL fragment.",
+        layout: "wide",
+        screens: [
+          {
+            src: "/projects/dropenv/dropenv.png",
+            alt: "DropEnv encrypted environment sharing",
+          },
+        ],
+      },
+    ],
     challenge:
       "The core challenge was handling encryption and decryption in the browser while managing temporary links, expiration, and view limits. Security also required understanding exactly which parts of the data and key each component could access.",
     actions: [
@@ -873,7 +1167,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "AI integration, mobile engineering",
     type: "Mobile app",
     client: "Personal project",
+    status: "in-development",
     duration: "Ongoing",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "8 keys",
+      label: "rotated automatically when quotas run out",
+    },
     story:
       "Sometimes the hardest part of a difficult conversation is working out what to say before you say it. I built SAGE as a place to think through those situations, using ideas from The 48 Laws of Power to explore different approaches. The product is still evolving, especially the part that matters most to me: making an AI conversation feel natural rather than like filling out a form.",
     heroImage: "/projects/sage/sage-splash.png",
@@ -894,6 +1194,46 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/sage/sage-learn-load.png", alt: "Learn Loading" },
       { src: "/projects/sage/sage-library.png", alt: "Library" },
       { src: "/projects/sage/sage-delete.png", alt: "Delete Conversation" },
+    ],
+    demos: [
+      {
+        title: "Describe the situation",
+        caption:
+          "Talk or type through what happened, then look at the dynamics before jumping to a reply.",
+        screens: [
+          {
+            src: "/projects/sage/sage-index.png",
+            alt: "Situation analysis",
+          },
+          {
+            src: "/projects/sage/sage-index-listening.png",
+            alt: "Voice input",
+          },
+          {
+            src: "/projects/sage/sage-coach.png",
+            alt: "Live coach",
+          },
+        ],
+      },
+      {
+        title: "Compare a response",
+        caption:
+          "Explore different tones and approaches without losing the context of the original conversation.",
+        screens: [
+          {
+            src: "/projects/sage/sage-conversation-1.png",
+            alt: "Conversation simulator",
+          },
+          {
+            src: "/projects/sage/sage-conversation-2.png",
+            alt: "Conversation follow-up",
+          },
+          {
+            src: "/projects/sage/sage-library.png",
+            alt: "Response library",
+          },
+        ],
+      },
     ],
     challenge:
       "The main challenge was getting consistent, structured responses from AI services while handling rate limits, malformed output, and voice transcription failures without breaking the conversation flow.",
@@ -937,6 +1277,13 @@ export const MOBILE_APPS: CaseStudy[] = [
     role: "Mobile engineering, data modelling",
     type: "Mobile app",
     client: "Personal project",
+    status: "in-development",
+    duration: "2025",
+    designBy: "Samuel Isah",
+    outcome: {
+      value: "Target GPA",
+      label: "projected from current course data",
+    },
     story:
       "Every semester, I found myself rebuilding the same spreadsheet to keep track of courses, grades, and academic targets. GPZ started as a way to stop doing that manually. It brings those calculations into one place and helps me see how future grades could affect my overall GPA.",
     heroImage: "/projects/gpz/gpz-splash.png",
@@ -952,6 +1299,42 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/gpz/gpz-onboarding-4.png", alt: "GPZ Onboarding 4" },
       { src: "/projects/gpz/gpz-onboarding-5.png", alt: "GPZ Onboarding 5" },
       { src: "/projects/gpz/gpz-home.png", alt: "GPZ Home" },
+    ],
+    demos: [
+      {
+        title: "Set up a semester",
+        caption:
+          "Add courses and credit units once, then keep the semester's grades in one place.",
+        screens: [
+          {
+            src: "/projects/gpz/gpz-onboarding-3.png",
+            alt: "Semester setup",
+          },
+          {
+            src: "/projects/gpz/gpz-onboarding-4.png",
+            alt: "Course setup",
+          },
+          {
+            src: "/projects/gpz/gpz-onboarding-5.png",
+            alt: "Grade setup",
+          },
+        ],
+      },
+      {
+        title: "Project the GPA",
+        caption:
+          "See how current and future course results could move the overall GPA toward a target.",
+        screens: [
+          {
+            src: "/projects/gpz/gpz-home.png",
+            alt: "GPA dashboard",
+          },
+          {
+            src: "/projects/gpz/gpz-onboarding-2.png",
+            alt: "Academic target",
+          },
+        ],
+      },
     ],
     challenge:
       "Academic projections need to account for credit units, grading scales, completed courses, and future results. The challenge was to make those calculations useful without making course entry complicated.",
@@ -1088,16 +1471,16 @@ export const PROFILE = {
   location: "Kaduna, Nigeria",
   availability: "Open to work",
   tagline:
-    "I build web and mobile products, work on backend systems, and turn ideas into things people can actually use.",
+    "I build web and mobile apps, from thoughtful interfaces to the backend systems that power them.",
   about: [
-    "I'm Samuel. I build things for the web and phones, usually in TypeScript, usually because there's a problem I want to solve.",
-    "I'm drawn to the parts people don't always see: making an app work without a reliable connection, figuring out why a request takes four seconds instead of forty milliseconds, or making a screen feel faster without adding more to it. That's where a lot of the real work happens.",
-    "I've built Melo, a chat app that translates messages between people who speak different languages; Chop Iron, an offline-first workout tracker; DropEnv, an encrypted environment-variable sharing tool; and VaultX, an API for sharing temporary snippets between devices. Most started with a problem I wanted to solve for myself.",
-    "I'm open to software engineering opportunities where I can keep learning, work with good engineers, and ship useful products. If you'd like to work together, my email is at the bottom of the page.",
+    "I'm Samuel. I build web and mobile apps with TypeScript, usually starting with a problem I want to solve.",
+    "I'm interested in the parts of software that take more thought than they seem to: making an app work without a reliable connection, turning a slow request into a fast one, or making an interface feel simpler without stripping away what makes it useful.",
+    "I've built Melo, a chat app that translates conversations between people speaking different languages; Chop Iron, an offline-first workout tracker; DropEnv, an encrypted environment-variable sharing tool; and VaultX, an API for sharing temporary snippets between devices. Most began as small problems I wanted to solve for myself.",
+    "I'm looking for software engineering opportunities where I can solve meaningful problems, learn from good engineers, and ship products people find useful. If that sounds like a fit, my email is at the bottom of the page.",
   ],
   avatar: "/avatars/avatar-smile.png",
   avatarAlt: "Samuel Isah's profile photo",
-  resume: "/files/samuel-isah-resume.pdf",
+  resume: "/files/SAMUEL-ISAH-RESUME.pdf",
   email: "samuelisah234@gmail.com",
   website: "https://drealdumore.cv",
 };
@@ -1118,6 +1501,55 @@ export const SOCIALS = {
     username: "samuel-isah",
     url: "https://www.linkedin.com/in/samuel-isah",
   },
+};
+
+export type CompanyLink = {
+  name: string;
+  domain: string;
+  description: string;
+  initials: string;
+  accent: [string, string];
+  href?: string;
+  preview?: string;
+};
+
+export const COMPANIES: { current: CompanyLink[]; past: CompanyLink[] } = {
+  current: [
+    {
+      name: "Campus Buddy",
+      domain: "campusbuddy.app",
+      description: "Student tools, built for mobile",
+      initials: "CB",
+      accent: ["#2563eb", "#7c3aed"],
+    },
+    {
+      name: "NodePair",
+      domain: "nodepair.com",
+      description: "Front-end product engineering",
+      initials: "NP",
+      accent: ["#059669", "#0d9488"],
+    },
+  ],
+  past: [
+    {
+      name: "Crystalglowxquisite",
+      domain: "crystalglowxquisite.com",
+      description: "Skincare storefront and checkout",
+      initials: "CG",
+      accent: ["#db2777", "#f59e0b"],
+      href: "https://crystalglowxquisite.com/",
+      preview: "/projects/crystalglowxquisite/crystalglowxquisite.png",
+    },
+    {
+      name: "Knowledge Master",
+      domain: "knowledgemaster.com.ng",
+      description: "Online bookstore and learning resources",
+      initials: "KM",
+      accent: ["#1d4ed8", "#0891b2"],
+      href: "https://www.knowledgemaster.com.ng/",
+      preview: "/projects/knowledgemaster/knowledgemaster.webp",
+    },
+  ],
 };
 
 export type ContactLink = { label: string; value: string; href: string };
@@ -1254,11 +1686,6 @@ export const MUSIC = {
       src: "/audio/burna-boy-city-boys.mp3",
     },
     {
-      title: "I'm Upset",
-      artist: "Drake",
-      src: "/audio/im-upset.mp3",
-    },
-    {
       title: "Hate It Or Love It",
       artist: "The Game & 50 Cent",
       src: "/audio/hate-it-or-love-it.mp3",
@@ -1331,6 +1758,14 @@ export const SECTIONS = {
   },
 };
 
+export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
+  live: "Live",
+  "in-development": "In development",
+  "open-source": "Open source",
+  private: "Private",
+  archived: "Archived",
+};
+
 export const CASE_STUDY_LABELS = {
   year: "Year",
   challenge: "Challenge",
@@ -1339,6 +1774,8 @@ export const CASE_STUDY_LABELS = {
   notFound: "Project not found",
   overview: "Overview",
   gallery: "Gallery",
+  demos: "Demos",
+  allScreens: "All screens",
   stack: "Stack",
   platform: "Platform",
   link: "Link",
@@ -1346,13 +1783,17 @@ export const CASE_STUDY_LABELS = {
   viewCode: "View Code",
   previous: "Previous",
   next: "Next",
+  nextProject: "Next project",
+  allProjects: "All projects",
   onThisPage: "On this page",
   type: "Type",
   client: "Client",
   role: "My role",
+  outcome: "Outcome",
   why: "Why I built it",
   live: "Live",
   inDevelopment: "In development",
+  openSource: "Open source",
   notReleased: "Not released yet",
   private: "Private",
   archived: "Archived",
@@ -1598,6 +2039,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/melo",
         tags: ["React Native", "Expo", "Supabase Realtime", "AI"],
         year: "2026",
+        status: "in-development",
       },
       {
         name: "Echo",
@@ -1617,6 +2059,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/echo",
         tags: ["React Native", "expo-location", "Notifications"],
         year: "2025",
+        status: "in-development",
       },
       {
         name: "Chop Iron",
@@ -1636,6 +2079,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/iron",
         tags: ["React Native", "SQLite", "Offline-first"],
         year: "2026",
+        status: "in-development",
       },
       {
         name: "The SupaDevs",
@@ -1648,6 +2092,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/thesupadevs",
         tags: ["Next.js", "Supabase", "AI", "PostgreSQL"],
         year: "2025",
+        status: "live",
       },
       {
         name: "VaultX",
@@ -1659,6 +2104,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         href: "/projects/vaultx",
         tags: ["Node.js", "Redis", "REST API"],
         year: "2025",
+        status: "open-source",
       }
     ],
   },
@@ -1666,26 +2112,28 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
     label: "Client work",
     projects: [
       {
-        name: "Crystalglowxquisite",
-        descriptionBefore:
-          "A skincare brand's online store, with ",
-        highlight: "product browsing, cart, checkout and analytics",
-        descriptionAfter: ", alongside analytics integrations.",
-        image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
-        href: "https://crystalglowxquisite.com/",
+    name: "Crystalglowxquisite",
+    descriptionBefore:
+      "A skincare brand's online store, with ",
+    highlight: "product browsing, cart, checkout and analytics",
+    descriptionAfter: ", alongside analytics integrations.",
+    image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
+    href: "/projects/crystalglowxquisite",
         tags: ["Next.js", "E-commerce", "Analytics"],
         year: "2026",
+        status: "live",
       },
       {
-        name: "Knowledge Master",
-        descriptionBefore:
-          "An online bookstore for textbooks, novels, and ",
-        highlight: "educational resources, and school bookfair services",
-        descriptionAfter: ", with delivery information available on the site.",
-        image: "/projects/knowledgemaster/knowledgemaster.webp",
-        href: "https://www.knowledgemaster.com.ng/",
+    name: "Knowledge Master",
+    descriptionBefore:
+      "An online bookstore for textbooks, novels, and ",
+    highlight: "educational resources, and school bookfair services",
+    descriptionAfter: ", with delivery information available on the site.",
+    image: "/projects/knowledgemaster/knowledgemaster.webp",
+    href: "/projects/knowledgemaster",
         tags: ["Next.js", "E-commerce"],
         year: "2026",
+        status: "live",
       },
     ],
   },

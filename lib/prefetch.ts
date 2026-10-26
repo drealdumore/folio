@@ -1,4 +1,4 @@
-import { FEATURED_GROUPS, MOBILE_APPS } from "@/content/site";
+import { MOBILE_APPS } from "@/content/site";
 
 const prefetchedCache = new Set<string>();
 
@@ -53,33 +53,57 @@ export function prefetchNextImage(src: string | undefined | null, widths: number
   for (const width of widths) {
     prefetchImage(nextImageUrl(src, width));
   }
-  // Also warm the original so the source is cached as a fallback.
-  prefetchImage(src);
 }
 
-const GRID_WIDTHS = [384, 640, 1080, 1200];
+const NEXT_IMAGE_WIDTHS = [
+  16, 32, 48, 64, 96, 128, 256, 384, 640, 750, 828, 1080, 1200, 1920, 2048,
+  3840,
+];
 
 /**
- * Prefetch an array of image URLs. Local paths (served through Next.js image
- * optimization) are warmed as their optimized variants so the browser doesn't
- * have to fetch them cold on first render.
+ * Pick the width Next.js will request for a CSS slot at the current DPR.
+ * Prefetching the wrong width leaves the real request cold.
+ */
+function nextWidthFor(cssWidth: number) {
+  const target = cssWidth * (window.devicePixelRatio || 1);
+  return (
+    NEXT_IMAGE_WIDTHS.find((width) => width >= target) ??
+    NEXT_IMAGE_WIDTHS[NEXT_IMAGE_WIDTHS.length - 1]
+  );
+}
+
+function mobileRowWidth() {
+  return nextWidthFor(window.innerWidth >= 768 ? 260 : window.innerWidth * 0.3);
+}
+
+function detailWideWidth() {
+  return nextWidthFor(Math.min(720, window.innerWidth - 44));
+}
+
+function demoPhoneWidth() {
+  return nextWidthFor(218);
+}
+
+/**
+ * Prefetch the optimized variants for the mobile screen row.
  */
 export function prefetchImages(srcs: (string | undefined | null)[]) {
   if (!Array.isArray(srcs) || srcs.length === 0) return;
+  if (typeof window === "undefined") return;
 
   const run = () => {
+    const width = mobileRowWidth();
     srcs.forEach((src) => {
       if (!src) return;
       if (src.startsWith("/") && !src.startsWith("/_next/")) {
-        prefetchNextImage(src, GRID_WIDTHS);
+        prefetchNextImage(src, [width]);
       } else {
         prefetchImage(src);
       }
     });
   };
 
-  // Use requestIdleCallback if available to avoid blocking main thread
-  if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+  if ("requestIdleCallback" in window) {
     window.requestIdleCallback(run);
   } else {
     run();
@@ -87,8 +111,10 @@ export function prefetchImages(srcs: (string | undefined | null)[]) {
 }
 
 /**
- * Prefetch project detail first image (heroImage) and gallery images
- * before the user navigates to the project detail page.
+ * Prefetch the images the detail page needs immediately: its hero, the
+ * mobile screens in the hero row, and the first demo. Prefetching every
+ * gallery image here floods the image optimizer and makes the visible
+ * images slower.
  */
 export function prefetchProjectDetail(projectIdOrHref: string | undefined | null) {
   if (!projectIdOrHref || typeof window === "undefined") return;
@@ -106,51 +132,30 @@ export function prefetchProjectDetail(projectIdOrHref: string | undefined | null
 
   if (!project) return;
 
-  const heroWidths = [640, 1080, 1200];
+  const isMobile = /react native|expo|reanimated/i.test(
+    (project.technologies ?? []).join(" ")
+  );
+  const wideWidth = detailWideWidth();
+  const phoneWidth = mobileRowWidth();
+  const demoWidth = demoPhoneWidth();
 
-  // Hero image (project detail first image)
-  if (project.heroImage) {
-    prefetchNextImage(project.heroImage, heroWidths);
+  const heroScreens = (project.gallery ?? [])
+    .filter((image) => image.src !== project.heroImage)
+    .slice(0, 3);
+
+  if (isMobile && heroScreens.length > 0) {
+    heroScreens.forEach((image) => {
+      prefetchNextImage(image.src, [phoneWidth]);
+    });
+  } else if (project.heroImage) {
+    prefetchNextImage(project.heroImage, [isMobile ? phoneWidth : wideWidth]);
   }
 
-  // Gallery images
-  if (project.gallery && Array.isArray(project.gallery)) {
-    project.gallery.forEach((g) => {
-      if (g.src) prefetchNextImage(g.src, heroWidths);
+  const firstDemo = project.demos?.[0];
+  if (firstDemo) {
+    const width = firstDemo.layout === "wide" ? wideWidth : demoWidth;
+    firstDemo.screens.slice(0, 3).forEach((screen) => {
+      prefetchNextImage(screen.src, [width]);
     });
   }
-}
-
-/**
- * Preload every app image (hero + gallery) from the case studies, plus the
- * featured projects shown on the home page, so all imagery is already in the
- * browser cache when users browse around. Warms the optimized Next.js URLs that
- * the <Image> components actually request, not just the source files.
- */
-export function preloadAppImages() {
-  if (typeof window === "undefined") return;
-
-  // Widths chosen to cover the slots these images render into:
-  // - featured `image`           -> ~260px  (384, 640)
-  // - featured `mobileScreens`   -> 30vw-88vw / detail 1200 (384, 640, 1080, 1200)
-  // - case study hero + gallery  -> full width (640, 1080, 1200)
-  const heroWidths = [640, 1080, 1200];
-  const thumbWidths = [384, 640];
-  const screenWidths = [384, 640, 1080, 1200];
-
-  MOBILE_APPS.forEach((app) => {
-    if (app.heroImage) prefetchNextImage(app.heroImage, heroWidths);
-    app.gallery?.forEach((g) => {
-      if (g.src) prefetchNextImage(g.src, heroWidths);
-    });
-  });
-
-  FEATURED_GROUPS.forEach((group) => {
-    group.projects.forEach((project) => {
-      if (project.image) prefetchNextImage(project.image, thumbWidths);
-      project.mobileScreens?.forEach((src) => {
-        if (src) prefetchNextImage(src, screenWidths);
-      });
-    });
-  });
 }

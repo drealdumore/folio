@@ -160,7 +160,7 @@ export function WordmarkLines({
                 y2={0}
                 custom={line.delay}
                 variants={reduceMotion ? undefined : lineVariants}
-                vector-effect="non-scaling-stroke"
+                vectorEffect="non-scaling-stroke"
               />
             ))}
           </motion.g>

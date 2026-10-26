@@ -1,16 +1,15 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { BlurUpImage } from "@/components/media/blur-up-image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CASE_STUDY_LABELS, MOBILE_APPS } from "@/content/site";
 import { MobileRow, WideImage } from "@/components/design/project-ui";
+import { NextProjectCard } from "@/components/design/next-project-card";
 import { ArrowIcon } from "@/components/design/arrow-icon";
-import { prefetchImage, prefetchImages } from "@/lib/prefetch";
-import { cn } from "@/lib/utils";
+import { BlurUpImage } from "@/components/media/blur-up-image";
+import { prefetchProjectDetail } from "@/lib/prefetch";
 
-// Interaction springs — quick, interruptible, slightly bouncy.
 const SPRING = { type: "spring", stiffness: 420, damping: 28 } as const;
 const SPRING_BOUNCY = { type: "spring", stiffness: 500, damping: 18 } as const;
 
@@ -19,7 +18,6 @@ const MotionLink = motion.create(Link);
 const isHttp = (url: string | undefined): url is string =>
   !!url && /^https?:/i.test(url);
 
-// Hosts that point at source code rather than a running app.
 const isRepoHost = (url: string) =>
   /(?:github\.com|gitlab\.com|bitbucket\.org|codeberg\.org|sourcehut\.org)/i.test(
     url
@@ -45,6 +43,7 @@ function Reveal({
   delay?: number;
 }) {
   const reduce = useReducedMotion();
+
   return (
     <motion.div
       id={id}
@@ -76,82 +75,29 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
 
   useEffect(() => {
     if (!project) return;
-    if (project.heroImage) {
-      prefetchImage(project.heroImage);
-    }
-    if (project.gallery && project.gallery.length > 0) {
-      prefetchImages(project.gallery.map((img) => img.src));
-    }
+    prefetchProjectDetail(project.id);
   }, [project]);
 
   if (!project) {
     return <p className="text-text-normal">{CASE_STUDY_LABELS.notFound}</p>;
   }
 
-  // Gather every real, clickable link the project exposes (website + links).
-  // Placeholder copy like "Coming Soon" and bare "#" links are ignored, so a
-  // button is only ever rendered when its link actually exists.
   const allLinks = [
     ...(isHttp(project.website)
       ? [{ label: project.sub, url: project.website }]
       : []),
     ...project.links.filter((link) => isHttp(link.url)),
   ];
-  // A "visit" target is a live app/site; a "code" target is a source host.
   const visitUrl = allLinks.find((link) => !isRepoHost(link.url))?.url;
   const repoUrl = allLinks.find((link) => isRepoHost(link.url))?.url;
 
   const platform = derivePlatform(project.technologies);
   const isMobile = platform === "iOS & Android";
   const gallery = project.gallery ?? [];
-  
-  // Mobile projects show phone mockups from the gallery. Non-mobile projects
-  // show the wide screenshot instead, so drop any gallery image that is just
-  // the hero repeated to avoid rendering it twice.
   const galleryImages = isMobile
     ? gallery
     : gallery.filter((img) => img.src !== project.heroImage);
   const showGallery = galleryImages.length > 0;
-
-  const navItems: { id: string; label: string }[] = [
-    { id: "overview", label: CASE_STUDY_LABELS.overview },
-    ...(showGallery
-      ? [{ id: "gallery", label: CASE_STUDY_LABELS.gallery }]
-      : []),
-    { id: "challenge", label: CASE_STUDY_LABELS.challenge },
-    { id: "result", label: CASE_STUDY_LABELS.result },
-    ...(project.technologies && project.technologies.length > 0
-      ? [{ id: "stack", label: CASE_STUDY_LABELS.stack }]
-      : []),
-  ];
-
-  const renderPager = (
-    target: (typeof MOBILE_APPS)[number],
-    side: "prev" | "next"
-  ) => (
-    <MotionLink
-      href={`/projects/${target.id}`}
-      prefetch
-      whileHover={reduce ? undefined : { y: -3 }}
-      whileTap={reduce ? undefined : { scale: 0.98 }}
-      transition={SPRING}
-      className={cn(
-        "group flex flex-col gap-1 rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-4 py-3 transition-colors duration-150 hover:border-zinc-700 hover:bg-zinc-900/80",
-        side === "next" && "items-end text-right"
-      )}
-    >
-      <span className="flex items-center gap-1.5 text-[12px] tracking-wide text-zinc-500">
-        {side === "prev" && <ArrowIcon size={12} className="rotate-180" />}
-        {side === "prev"
-          ? CASE_STUDY_LABELS.previous
-          : CASE_STUDY_LABELS.next}
-        {side === "next" && <ArrowIcon size={12} />}
-      </span>
-      <span className="text-[15px] text-text-heading transition-colors group-hover:text-white">
-        {target.sub}
-      </span>
-    </MotionLink>
-  );
 
   return (
     <>
@@ -165,12 +111,13 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
       >
         <ArrowIcon size={20} className="rotate-180" />
       </MotionLink>
-      <div className="mb-4 flex flex-col gap-2">
+
+      <div className="mb-5 flex flex-col gap-2">
         <motion.h1
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", stiffness: 240, damping: 28 }}
-          className="w-full text-[20px] font-bold leading-9 text-text-heading"
+          className="w-full text-[24px] font-bold leading-9 tracking-[-0.02em] text-text-heading lg:text-[28px]"
         >
           {project.sub}
         </motion.h1>
@@ -192,22 +139,19 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
       </div>
 
       <article className="pb-16">
-
-        {/* Body */}
         <div className="space-y-12">
-          {/* Info Grid */}
           <Reveal
             id="overview"
-            className="mb-8 flex scroll-mt-28 flex-col justify-between gap-6"
+            className="flex scroll-mt-28 flex-col justify-between gap-8"
           >
             <div className="max-w-xl">
-              <p className="text-[15px] leading-[20px] text-text-normal">
+              <p className="text-[15px] leading-[1.7] text-text-normal">
                 {project.intro}
               </p>
 
               {project.story && (
                 <div className="mt-5">
-                  <p className="mb-1 text-[11px] uppercase tracking-[0.12em] text-zinc-600">
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.16em] text-zinc-600">
                     {CASE_STUDY_LABELS.why}
                   </p>
                   <p className="text-[15px] leading-[1.7] text-zinc-300">
@@ -217,88 +161,85 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               )}
             </div>
 
-            <div>
-              <table className="w-full">
-                <tbody className="divide-y divide-zinc-800/70">
-                  <tr>
-                    <td className="w-[110px] py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                      {CASE_STUDY_LABELS.year}
-                    </td>
-                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                      {project.year}
-                    </td>
-                  </tr>
-                  {project.type && (
-                    <tr>
-                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                        {CASE_STUDY_LABELS.type}
-                      </td>
-                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                        {project.type}
-                      </td>
-                    </tr>
-                  )}
-                  {project.client && (
-                    <tr>
-                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                        {CASE_STUDY_LABELS.client}
-                      </td>
-                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                        {project.client}
-                      </td>
-                    </tr>
-                  )}
-                  {project.role && (
-                    <tr>
-                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                        {CASE_STUDY_LABELS.role}
-                      </td>
-                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                        {project.role}
-                      </td>
-                    </tr>
-                  )}
-                  {/* {project.duration && (
-                    <tr>
-                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                        {CASE_STUDY_LABELS.duration}
-                      </td>
-                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                        {project.duration}
-                      </td>
-                    </tr>
-                  )} */}
+            <table className="w-full">
+              <tbody className="divide-y divide-zinc-800/70">
+                <tr>
+                  <td className="w-[110px] py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                    {CASE_STUDY_LABELS.year}
+                  </td>
+                  <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                    {project.year}
+                  </td>
+                </tr>
+                {project.type && (
                   <tr>
                     <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                      {CASE_STUDY_LABELS.platform}
+                      {CASE_STUDY_LABELS.type}
                     </td>
                     <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                      {platform}
+                      {project.type}
                     </td>
                   </tr>
-                  {visitUrl && (
-                    <tr>
-                      <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
-                        {CASE_STUDY_LABELS.link}
-                      </td>
-                      <td className="py-2 text-[15px] leading-[20px] text-text-normal">
-                        <a
-                          href={visitUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-text-heading underline underline-offset-4 transition-colors hover:text-white"
-                        >
-                          {project.sub}
-                        </a>
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+                )}
+                {project.client && (
+                  <tr>
+                    <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                      {CASE_STUDY_LABELS.client}
+                    </td>
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                      {project.client}
+                    </td>
+                  </tr>
+                )}
+                {project.role && (
+                  <tr>
+                    <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                      {CASE_STUDY_LABELS.role}
+                    </td>
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                      {project.role}
+                    </td>
+                  </tr>
+                )}
+                <tr>
+                  <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                    {CASE_STUDY_LABELS.platform}
+                  </td>
+                  <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                    {platform}
+                  </td>
+                </tr>
+                {project.technologies && project.technologies.length > 0 && (
+                  <tr>
+                    <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                      {CASE_STUDY_LABELS.stack}
+                    </td>
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                      {project.technologies.join(", ")}
+                    </td>
+                  </tr>
+                )}
+                {visitUrl && (
+                  <tr>
+                    <td className="py-2 pr-6 align-top text-[13px] font-medium text-zinc-500">
+                      {CASE_STUDY_LABELS.link}
+                    </td>
+                    <td className="py-2 text-[15px] leading-[20px] text-text-normal">
+                      <a
+                        href={visitUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="break-all text-text-heading underline underline-offset-4 transition-colors hover:text-zinc-300"
+                      >
+                        {visitUrl}
+                      </a>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
           </Reveal>
 
-          {/* CTA pair — styled like the mobile nav pill */}
           {(visitUrl || repoUrl) && (
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -340,19 +281,6 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             </motion.div>
           )}
 
-          {/* Nothing public yet — say so instead of showing a dead button. */}
-          {/* {!visitUrl && !repoUrl && (
-            <div className="flex flex-col items-start gap-1.5 self-start rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/20 px-4 py-3">
-              <span className="text-[13px] font-medium text-zinc-400">
-                {CASE_STUDY_LABELS.notAvailable}
-              </span>
-              <p className="max-w-sm text-[12.5px] leading-[1.6] text-zinc-600">
-                {CASE_STUDY_LABELS.notAvailableHint}
-              </p>
-            </div>
-          )} */}
-
-          {/* Hero Image */}
           {project.heroImage && (
             <motion.div
               initial={reduce ? false : { opacity: 0, scale: 0.97, y: 24 }}
@@ -380,16 +308,42 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             </motion.div>
           )}
 
-          {/* Intro Text */}
           {project.introText && (
             <Reveal>
-              <p className="max-w-3xl text-[15px] leading-[20px] text-text-normal">
+              <p className="max-w-3xl text-[15px] leading-[1.7] text-text-normal">
                 {project.introText}
               </p>
             </Reveal>
           )}
 
-          {/* Stats */}
+          {project.outcome && (
+            <Reveal>
+              <div className="relative overflow-hidden rounded-[16px] border border-zinc-800/70 bg-zinc-900/30 p-6 sm:p-8">
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -right-12 -top-16 size-40 rounded-full bg-white/[0.035] blur-3xl"
+                />
+
+                <p className="relative text-[10px] font-medium uppercase tracking-[0.18em] text-zinc-500">
+                  {CASE_STUDY_LABELS.outcome}
+                </p>
+
+                <div className="relative mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+                  <p className="text-[32px] font-semibold leading-none tracking-[-0.03em] text-text-heading sm:text-[40px]">
+                    {project.outcome.value}
+                  </p>
+                  <p className="max-w-sm text-[14px] leading-[1.65] text-zinc-400 sm:text-right">
+                    {project.outcome.label}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          )}
+
           {project.stats && project.stats.length > 0 && (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {project.stats.map((stat, i) => (
@@ -405,7 +359,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                     delay: i * 0.06,
                   }}
                   whileHover={reduce ? undefined : { y: -4 }}
-                  className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 transition-colors duration-200 hover:border-zinc-700 hover:bg-zinc-900/60"
+                  className="rounded-[14px] border border-zinc-800/60 bg-zinc-900/30 p-4 transition-colors duration-200 hover:border-zinc-700 hover:bg-zinc-900/60"
                 >
                   <p className="text-[20px] font-semibold text-text-heading">
                     {stat.value}
@@ -418,9 +372,8 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             </div>
           )}
 
-          {/* Gallery */}
           {showGallery && (
-            <div id="gallery" className="my-8 scroll-mt-28">
+            <div id="gallery" className="scroll-mt-28">
               {isMobile ? (
                 <MobileRow
                   images={galleryImages.map((img) => img.src)}
@@ -428,7 +381,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                   alt={project.sub}
                 />
               ) : (
-                <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-5">
                   {galleryImages.map((img) => (
                     <motion.div
                       key={img.src}
@@ -441,7 +394,16 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                         damping: 26,
                       }}
                     >
-                      <WideImage src={img.src} alt={img.alt} />
+                      <div className="relative overflow-hidden rounded-[14px] border border-zinc-800/70 bg-image-card">
+                        <BlurUpImage
+                          src={img.src}
+                          alt={img.alt}
+                          width={1200}
+                          height={800}
+                          sizes="(max-width: 768px) 100vw, 720px"
+                          className="h-auto w-full object-contain"
+                        />
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -449,16 +411,15 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             </div>
           )}
 
-          {/* Process Grid */}
           <Reveal
             id="challenge"
-            className="relative my-32 grid scroll-mt-28 gap-12"
+            className="relative my-6 grid scroll-mt-28 gap-10"
           >
             <div>
-              <h3 className="mb-4 text-xl font-bold text-text-heading">
+              <h3 className="mb-3 text-xl font-bold text-text-heading">
                 {CASE_STUDY_LABELS.challenge}
               </h3>
-              <p className="text-[15px] leading-[20px] text-text-normal">
+              <p className="text-[15px] leading-[1.7] text-text-normal">
                 {project.challenge}
               </p>
             </div>
@@ -484,7 +445,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                     <h4 className="font-bold leading-6 text-text-heading">
                       {action.title}
                     </h4>
-                    <p className="text-[15px] leading-[20px] text-text-normal">
+                    <p className="text-[15px] leading-[1.7] text-text-normal">
                       {action.text}
                     </p>
                   </motion.div>
@@ -493,54 +454,56 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
             )}
           </Reveal>
 
-          {/* Result */}
           {project.result && (
             <Reveal id="result" className="scroll-mt-28">
-              <h3 className="mb-4 text-xl font-bold text-text-heading">
+              <h3 className="mb-3 text-xl font-bold text-text-heading">
                 {CASE_STUDY_LABELS.result}
               </h3>
-              <p className="max-w-3xl text-[15px] leading-[20px] text-text-normal">
+              <p className="max-w-3xl text-[15px] leading-[1.7] text-text-normal">
                 {project.result}
               </p>
             </Reveal>
           )}
 
-          {/* Stack */}
-          {project.technologies && project.technologies.length > 0 && (
-            <div id="stack" className="scroll-mt-28">
-              <h3 className="mb-4 text-xl font-bold text-text-heading">
-                {CASE_STUDY_LABELS.stack}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, i) => (
-                  <motion.span
-                    key={i}
-                    initial={reduce ? false : { opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 22,
-                      delay: i * 0.03,
-                    }}
-                    whileHover={reduce ? undefined : { y: -2, scale: 1.05 }}
-                    className="rounded-full border border-zinc-800 bg-zinc-900/60 px-3 py-1.5 text-[13px] text-zinc-300 transition-colors duration-150 hover:border-zinc-600 hover:text-white"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
+          <div className="mt-6 border-t border-zinc-800/70 pt-6">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-3 text-[13px]">
+              {prev ? (
+                <Link
+                  href={`/projects/${prev.id}`}
+                  className="group inline-flex items-center gap-1.5 text-zinc-500 transition-colors hover:text-text-heading"
+                >
+                  <ArrowIcon
+                    size={12}
+                    className="rotate-180 transition-transform group-hover:-translate-x-0.5"
+                  />
+                  {CASE_STUDY_LABELS.previous}: {prev.sub}
+                </Link>
+              ) : (
+                <span />
+              )}
+              <Link
+                href="/projects"
+                className="text-zinc-500 transition-colors hover:text-text-heading"
+              >
+                {CASE_STUDY_LABELS.allProjects}
+              </Link>
             </div>
-          )}
 
-          {/* Prev / Next */}
-          {(prev || next) && (
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              {prev ? renderPager(prev, "prev") : <div />}
-              {next ? renderPager(next, "next") : <div />}
-            </div>
-          )}
+            {next ? (
+              <NextProjectCard project={next} />
+            ) : (
+              <Link
+                href="/projects"
+                className="group flex items-center justify-between rounded-[14px] border border-zinc-800/70 bg-zinc-900/20 p-5 text-[15px] text-zinc-300 transition-colors hover:border-zinc-700 hover:text-text-heading"
+              >
+                {CASE_STUDY_LABELS.allProjects}
+                <ArrowIcon
+                  size={16}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
+              </Link>
+            )}
+          </div>
         </div>
       </article>
     </>

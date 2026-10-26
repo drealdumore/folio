@@ -5,17 +5,25 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import { MobileRow } from "@/components/design/project-ui";
 import { ArrowIcon } from "@/components/design/arrow-icon";
+import { BrowserFrame } from "@/components/design/browser-frame";
 import { BlurUpImage } from "@/components/media/blur-up-image";
 import { WorkVideo } from "@/components/media/work-video";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
-import { FEATURED_GROUPS, SECTIONS, type FeaturedProject } from "@/content/site";
+import {
+  ALLPROJECTS,
+  FEATURED_GROUPS,
+  SECTIONS,
+  type FeaturedProject,
+} from "@/content/site";
 
 const ProjectArticle = ({
   project,
   index,
+  dimmed = false,
 }: {
   project: FeaturedProject;
   index: number;
+  dimmed?: boolean;
 }) => {
   const [opacity, setOpacity] = useState(index === 0 ? 1 : 0.35);
   const [inView, setInView] = useState(index === 0);
@@ -55,13 +63,16 @@ const ProjectArticle = ({
     return () => observer.disconnect();
   }, [project]);
 
+  const { mobileScreens, video } = project;
+  const hasVideo = Boolean(video?.webm || video?.mp4);
+
   const handleHover = () => {
     setHovered(true);
     if (project.href && !project.href.startsWith("http")) {
       prefetchProjectDetail(project.href);
     }
-    if (project.video?.poster) {
-      prefetchImage(project.video.poster);
+    if (hasVideo && video?.poster) {
+      prefetchImage(video.poster);
     }
     if (project.mobileScreens) {
       prefetchImages(project.mobileScreens);
@@ -69,7 +80,6 @@ const ProjectArticle = ({
   };
 
   const showHighlight = inView || hovered;
-  const { mobileScreens, video } = project;
   const mediaLinkProps = {
     href: project.href,
     target: project.href.startsWith("http") ? "_blank" : undefined,
@@ -81,7 +91,10 @@ const ProjectArticle = ({
   return (
     <div
       ref={ref}
-      style={{ opacity, transition: "opacity 0.4s ease" }}
+      style={{
+        opacity: dimmed ? opacity * 0.4 : opacity,
+        transition: "opacity 0.4s ease",
+      }}
       onMouseEnter={handleHover}
       onMouseLeave={() => setHovered(false)}
     >
@@ -99,17 +112,10 @@ const ProjectArticle = ({
                 project.href.startsWith("http") ? "external" : "project"
               }
             >
-              <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
+              <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-text-heading">
                 {project.name}
               </h2>
             </Link>
-            {/* {project.status && project.status !== "live" && (
-              <span className="rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[11px] font-medium text-amber-400">
-                {project.status === "in-development"
-                  ? "In development"
-                  : project.status}
-              </span>
-            )} */}
           </div>
           {(project.tags?.length || project.year) && (
             <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-zinc-500">
@@ -151,7 +157,7 @@ const ProjectArticle = ({
         </header>
 
         {/* Media */}
-        {video ? (
+        {hasVideo && video ? (
           <Link {...mediaLinkProps} className="w-full block">
             <WorkVideo {...video} alt={`${project.name} preview`} />
           </Link>
@@ -166,19 +172,29 @@ const ProjectArticle = ({
           </Link>
         ) : null}
 
-        {!video &&
+        {!hasVideo &&
         (!mobileScreens || mobileScreens.length === 0) &&
         project.image ? (
-          <Link {...mediaLinkProps} className="w-full block">
-            <BlurUpImage
-              src={project.image}
-              alt={project.name}
-              width={1200}
-              height={800}
-              wrapperClassName="w-full rounded-[4px]"
-              className="block w-full object-cover"
-              sizes="(max-width: 768px) 100vw, 629px"
-            />
+          <Link {...mediaLinkProps} className="group/media w-full block">
+            <BrowserFrame url={project.href}>
+              <div className="relative w-full overflow-hidden bg-surface">
+                <BlurUpImage
+                  src={project.image}
+                  alt={project.name}
+                  width={1200}
+                  height={800}
+                  wrapperClassName="w-full"
+                  className="block w-full object-cover transition-transform duration-700 group-hover/media:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 720px"
+                  minBlurMs={320}
+                />
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover/media:opacity-100" />
+                <span className="pointer-events-none absolute bottom-3 left-3 inline-flex translate-y-1 items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-[12px] font-medium text-white opacity-0 backdrop-blur-md transition-all duration-300 group-hover/media:translate-y-0 group-hover/media:opacity-100">
+                  View project
+                  <ArrowIcon size={12} className="-rotate-45" />
+                </span>
+              </div>
+            </BrowserFrame>
           </Link>
         ) : null}
       </article>
@@ -187,6 +203,7 @@ const ProjectArticle = ({
 };
 
 const Projects = () => {
+  const [hovered, setHovered] = useState<string | null>(null);
   let globalIndex = -1;
 
   return (
@@ -203,11 +220,21 @@ const Projects = () => {
               {group.projects.map((project) => {
                 globalIndex += 1;
                 return (
-                  <ProjectArticle
+                  <div
                     key={project.name}
-                    project={project}
-                    index={globalIndex}
-                  />
+                    onPointerEnter={(e) => {
+                      if (e.pointerType === "mouse") setHovered(project.name);
+                    }}
+                    onPointerLeave={(e) => {
+                      if (e.pointerType === "mouse") setHovered(null);
+                    }}
+                  >
+                    <ProjectArticle
+                      project={project}
+                      index={globalIndex}
+                      dimmed={hovered !== null && hovered !== project.name}
+                    />
+                  </div>
                 );
               })}
             </div>
@@ -220,7 +247,7 @@ const Projects = () => {
           href="/projects"
           className="text-[13px] text-zinc-500 hover:text-zinc-300 transition-all duration-300 flex items-center gap-1.5 group"
         >
-          {SECTIONS.projects.viewAll}
+          See all {ALLPROJECTS.length} projects
           <ArrowIcon size={14} />
         </Link>
       </div>

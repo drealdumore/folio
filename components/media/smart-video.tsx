@@ -18,6 +18,8 @@ export function SmartVideo({
   preload = "metadata",
   ...videoProps
 }: SmartVideoProps) {
+  if (!webm && !mp4) return null;
+
   return (
     <video
       {...videoProps}

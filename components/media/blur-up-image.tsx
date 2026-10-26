@@ -13,6 +13,7 @@ type BaseProps = {
   quality?: number;
   priority?: boolean;
   blurDataURL?: string;
+  minBlurMs?: number;
 };
 
 type FillProps = BaseProps & {
@@ -42,14 +43,24 @@ export function BlurUpImage(props: BlurUpImageProps) {
     quality,
     priority,
     blurDataURL,
+    minBlurMs = 0,
   } = props;
   const [loaded, setLoaded] = useState(false);
   const imageRef = useRef<HTMLImageElement>(null);
   const hasBlur = Boolean(blurDataURL);
 
   useEffect(() => {
-    if (imageRef.current?.complete) setLoaded(true);
-  }, []);
+    const image = imageRef.current;
+    if (!image?.complete) return;
+
+    if (minBlurMs <= 0) {
+      setLoaded(true);
+      return;
+    }
+
+    const timer = window.setTimeout(() => setLoaded(true), minBlurMs);
+    return () => window.clearTimeout(timer);
+  }, [minBlurMs]);
 
   const imageClassName = cn(
     "transition-opacity duration-500 motion-reduce:transition-none",
@@ -58,7 +69,13 @@ export function BlurUpImage(props: BlurUpImageProps) {
   );
 
   return (
-    <div className={cn("relative overflow-hidden", wrapperClassName)}>
+    <div
+      className={cn(
+        "relative overflow-hidden",
+        props.fill && "h-full w-full",
+        wrapperClassName
+      )}
+    >
       {!hasBlur && (
         <Image
           src={src}

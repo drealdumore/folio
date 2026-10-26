@@ -49,6 +49,8 @@ export function WorkVideo({
     return () => observer.disconnect();
   }, []);
 
+  if (!webm && !mp4) return null;
+
   const ratio =
     aspectRatio ??
     (width && height ? `${width} / ${height}` : "16 / 10");

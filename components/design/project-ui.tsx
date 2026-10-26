@@ -330,7 +330,7 @@ export function MobileRow({
           <div
             key={chunkIndex}
             className={cn(
-              "w-full rounded-[8px] bg-surface p-3 py-5 sm:p-6 sm:py-8 md:p-8 md:py-10 shadow-sm",
+              "w-full rounded-[14px] bg-surface p-3 py-5 sm:p-6 sm:py-8 md:p-8 md:py-10 shadow-sm",
               className
             )}
           >
@@ -369,12 +369,11 @@ export function MobileRow({
                         "transition-[scale,transform] duration-150 ease-out-quint active:scale-[0.98]"
                       )}
                     >
-                      <Image
+                      <BlurUpImage
                         src={src}
                         alt={`${alt} screen ${globalIndex + 1}`}
                         fill
                         priority={priority && globalIndex === 0}
-                        draggable={false}
                         sizes="(min-width: 768px) 260px, 30vw"
                         className={cn(
                           "object-cover select-none",
@@ -422,6 +421,7 @@ export function WideImage({
         wrapperClassName="mx-auto w-full max-w-3xl"
         sizes="(min-width: 1600px) 768px, (min-width: 768px) 55vw, 92vw"
         className="h-auto w-full rounded-sm object-contain select-none"
+        minBlurMs={320}
       />
     </div>
   );

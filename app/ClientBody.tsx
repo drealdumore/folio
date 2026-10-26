@@ -8,7 +8,6 @@ import MobileNav from "@/components/layout/mobile-nav";
 import DesktopHeader from "@/components/layout/desktop-header";
 import MusicToggle from "@/components/layout/music-toggle";
 import { ProgressiveBlur } from "@/components/blur";
-import { preloadAppImages } from "@/lib/prefetch";
 import { initSelectionDots } from "@/lib/selection-dots";
 
 export default function ClientBody({
@@ -66,17 +65,6 @@ export default function ClientBody({
     initSelectionDots();
   }, []);
 
-  // Preload every app image once the initial render is done.
-  useEffect(() => {
-    const start = () => preloadAppImages();
-    if (document.readyState === "complete") {
-      const idle = requestIdleCallback(() => preloadAppImages());
-      return () => cancelIdleCallback(idle);
-    }
-    window.addEventListener("load", start, { once: true });
-    return () => window.removeEventListener("load", start);
-  }, []);
-
   // Scroll to top on route change
   useEffect(() => {
     if (lenisRef.current) {
@@ -91,7 +79,7 @@ export default function ClientBody({
       <DesktopHeader />
       <div
         style={{
-          width: "min(629px, 100vw - 44px)",
+          width: "min(720px, 100vw - 44px)",
           margin: "0 auto",
           padding: "0 0 88px",
         }}

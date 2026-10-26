@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MobileRow } from "@/components/design/project-ui";
+import { ArrowIcon } from "@/components/design/arrow-icon";
+import { BrowserFrame } from "@/components/design/browser-frame";
 import { BlurUpImage } from "@/components/media/blur-up-image";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 
@@ -16,6 +18,7 @@ interface ProjectCardProps {
   image?: string;
   mobileScreens?: string[];
   highlight?: string;
+  dimmed?: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -26,6 +29,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image,
   mobileScreens,
   highlight,
+  dimmed = false,
 }) => {
   const [opacity, setOpacity] = useState(0.35);
   const [inView, setInView] = useState(false);
@@ -88,7 +92,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       ref={ref}
-      style={{ opacity, transition: "opacity 0.4s ease" }}
+      style={{
+        opacity: dimmed ? opacity * 0.4 : opacity,
+        transition: "opacity 0.4s ease",
+      }}
       onMouseEnter={handleHover}
       onMouseLeave={() => setHovered(false)}
     >
@@ -106,19 +113,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             href={projectLink}
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
-            className="w-full block"
+            className="group/media w-full block"
           >
-            <div className="w-full overflow-hidden rounded-[8px]">
-              <BlurUpImage
-                src={image}
-                alt={projectName ?? "Project"}
-                width={1200}
-                height={800}
-                wrapperClassName="w-full"
-                className="block w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
-                sizes="(max-width: 768px) 100vw, 629px"
-              />
-            </div>
+            <BrowserFrame url={projectLink}>
+              <div className="relative w-full overflow-hidden bg-surface">
+                <BlurUpImage
+                  src={image}
+                  alt={projectName ?? "Project"}
+                  width={1200}
+                  height={800}
+                  wrapperClassName="w-full"
+                  className="block w-full object-cover transition-transform duration-700 group-hover/media:scale-[1.02]"
+                  sizes="(max-width: 768px) 100vw, 720px"
+                  minBlurMs={320}
+                />
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/0 to-transparent opacity-0 transition-opacity duration-300 group-hover/media:opacity-100" />
+                <span className="pointer-events-none absolute bottom-3 left-3 inline-flex translate-y-1 items-center gap-1.5 rounded-full bg-black/55 px-3 py-1.5 text-[12px] font-medium text-white opacity-0 backdrop-blur-md transition-all duration-300 group-hover/media:translate-y-0 group-hover/media:opacity-100">
+                  View project
+                  <ArrowIcon size={12} className="-rotate-45" />
+                </span>
+              </div>
+            </BrowserFrame>
           </Link>
         ) : null}
 
@@ -129,7 +144,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             target={isExternal ? "_blank" : undefined}
             rel={isExternal ? "noopener noreferrer" : undefined}
           >
-            <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-white">
+            <h2 className="font-medium text-[16px] pt-0 text-zinc-200 transition-colors duration-150 ease-out hover:text-text-heading">
               {projectName}
             </h2>
           </Link>
