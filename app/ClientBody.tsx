@@ -9,6 +9,7 @@ import DesktopHeader from "@/components/layout/desktop-header";
 import MusicToggle from "@/components/layout/music-toggle";
 import { ProgressiveBlur } from "@/components/blur";
 import { preloadAppImages } from "@/lib/prefetch";
+import { initSelectionDots } from "@/lib/selection-dots";
 
 export default function ClientBody({
   children,
@@ -62,6 +63,7 @@ export default function ClientBody({
 
   useEffect(() => {
     document.body.className = "antialiased";
+    initSelectionDots();
   }, []);
 
   // Preload every app image once the initial render is done.

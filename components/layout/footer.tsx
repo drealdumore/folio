@@ -3,10 +3,11 @@
 import React from "react";
 import Link from "next/link";
 import { PROFILE, SOCIALS } from "@/content/site";
+import { WordmarkLines } from "@/components/design/wordmark-lines";
 
 const AppFooter = () => {
   return (
-    <footer className="py-8 border-t border-t-zinc-800/60">
+    <footer className="border-t border-t-zinc-800/60 pb-8 pt-10">
       <div className="max-w-screen-lx mx-auto flex items-center justify-between">
         <p className="text-[13px] text-zinc-600">
           {PROFILE.name} · {new Date().getFullYear()}
@@ -14,7 +15,7 @@ const AppFooter = () => {
         <div className="flex gap-5">
           <Link
             target="_blank"
-            className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
+            className="hit-area-6 text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
             href={SOCIALS.twitter.url}
             aria-label="Twitter"
           >
@@ -24,7 +25,7 @@ const AppFooter = () => {
           </Link>
           <Link
             target="_blank"
-            className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
+            className="hit-area-6 text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
             href={SOCIALS.linkedin.url}
             aria-label="LinkedIn"
           >
@@ -37,7 +38,7 @@ const AppFooter = () => {
           </Link>
           <Link
             target="_blank"
-            className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
+            className="hit-area-6 text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
             href={SOCIALS.github.url}
             aria-label="GitHub"
           >
@@ -48,7 +49,7 @@ const AppFooter = () => {
           </Link>
           <Link
             target="_blank"
-            className="text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
+            className="hit-area-6 text-zinc-600 hover:text-zinc-400 transition-colors duration-200"
             href={`mailto:${PROFILE.email}`}
             aria-label="Email"
           >
@@ -59,6 +60,10 @@ const AppFooter = () => {
           </Link>
         </div>
       </div>
+      <WordmarkLines
+        text={PROFILE.firstName.toUpperCase()}
+        className="mt-12"
+      />
     </footer>
   );
 };

@@ -18,6 +18,7 @@ import { useWebHaptics } from "web-haptics/react";
 import { cn } from "@/lib/utils";
 import { prefetchImage, prefetchImages } from "@/lib/prefetch";
 import { ArrowIcon } from "@/components/design/arrow-icon";
+import { BlurUpImage } from "@/components/media/blur-up-image";
 
 // Curves from easing.dev
 const OUT_QUINT = [0.23, 1, 0.32, 1] as const; // fades, quick responses
@@ -412,15 +413,15 @@ export function WideImage({
 }) {
   return (
     <div className={cn("bg-image-card p-4 md:p-12", className)}>
-      <Image
+      <BlurUpImage
         src={src}
         alt={alt}
         width={1200}
         height={800}
         priority={priority}
-        draggable={false}
+        wrapperClassName="mx-auto w-full max-w-3xl"
         sizes="(min-width: 1600px) 768px, (min-width: 768px) 55vw, 92vw"
-        className="mx-auto h-auto w-full max-w-3xl rounded-sm object-contain select-none"
+        className="h-auto w-full rounded-sm object-contain select-none"
       />
     </div>
   );

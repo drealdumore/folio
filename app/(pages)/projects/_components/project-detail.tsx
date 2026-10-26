@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Image from "next/image";
+import { BlurUpImage } from "@/components/media/blur-up-image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CASE_STUDY_LABELS, MOBILE_APPS } from "@/content/site";
@@ -361,19 +361,15 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
               transition={{ type: "spring", stiffness: 200, damping: 26 }}
             >
               {isMobile ? (
-                <div
-                  className="relative w-full overflow-hidden rounded-2xl shadow-md"
-                  style={{ height: "400px" }}
-                >
-                  <Image
-                    src={project.heroImage}
-                    alt={`${project.sub} Hero`}
-                    className="select-none object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 800px"
-                    priority
-                  />
-                </div>
+                <BlurUpImage
+                  src={project.heroImage}
+                  alt={`${project.sub} Hero`}
+                  fill
+                  wrapperClassName="h-[400px] w-full rounded-2xl shadow-md"
+                  className="select-none object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
               ) : (
                 <WideImage
                   src={project.heroImage}

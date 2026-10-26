@@ -370,16 +370,16 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "Instead of copying messages into a separate translation app, people can communicate inside one chat. The goal is to make translation feel like part of messaging rather than an extra step.",
     gallery: [
-      { src: "/projects/melo/melo-splash.png", alt: "Melo Splash Screen" },
-      { src: "/projects/melo/melo-onboarding.png", alt: "Melo Onboarding" },
+      { src: "/projects/melo/melo-splash.png", alt: "Splash Screen" },
+      { src: "/projects/melo/melo-onboarding.png", alt: "Onboarding" },
       { src: "/projects/melo/melo-onboarding-name.png", alt: "Enter Your Name" },
       { src: "/projects/melo/melo-onboarding-avatar.png", alt: "Choose Avatar" },
       { src: "/projects/melo/melo-onboarding-language.png", alt: "Language Selection" },
-      { src: "/projects/melo/melo-connect.png", alt: "Melo Chats List" },
-      { src: "/projects/melo/melo-id.png", alt: "Melo ID Card" },
-      { src: "/projects/melo/melo-chat.png", alt: "Melo Chat View" },
-      { src: "/projects/melo/melo-chat-id.png", alt: "Melo Chat ID" },
-      { src: "/projects/melo/melo-chat-id-2.png", alt: "Melo Chat ID Detail" },
+      { src: "/projects/melo/melo-connect.png", alt: "Chats List" },
+      { src: "/projects/melo/melo-id.png", alt: "ID Card" },
+      { src: "/projects/melo/melo-chat.png", alt: "Chat View" },
+      { src: "/projects/melo/melo-chat-id.png", alt: "Chat ID" },
+      { src: "/projects/melo/melo-chat-id-2.png", alt: "Chat ID Detail" },
       { src: "/projects/melo/melo-friend-sheet.png", alt: "Add a Friend" },
       { src: "/projects/melo/melo-profile-sheet-1.png", alt: "Profile Settings" },
       { src: "/projects/melo/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
@@ -439,44 +439,44 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "A reminder to buy something at a shop or complete a task on campus is more useful when it appears at the right place. Echo explores how geofencing and local notifications can support that experience without requiring a cloud account.",
     gallery: [
-      { src: "/projects/echo/echo-splash.png", alt: "Echo Splash Screen" },
-      { src: "/projects/echo/echo-onboarding-1.png", alt: "Echo Onboarding: Welcome" },
-      { src: "/projects/echo/echo-onboarding-2.png", alt: "Echo Onboarding: Location Permission" },
-      { src: "/projects/echo/echo-onboarding-2b.png", alt: "Echo Onboarding: Location Permission Detail" },
-      { src: "/projects/echo/echo-onboarding-3.png", alt: "Echo Onboarding: Notifications" },
-      { src: "/projects/echo/echo-onboarding-3b.png", alt: "Echo Onboarding: Notification Permission Detail" },
-      { src: "/projects/echo/echo-onboarding-3c.png", alt: "Echo Onboarding: Reminder Setup" },
-      { src: "/projects/echo/echo-onboarding-3d.png", alt: "Echo Onboarding: Reminder Setup Detail" },
-      { src: "/projects/echo/echo-onboarding-4.png", alt: "Echo Onboarding: Get Started" },
-      { src: "/projects/echo/echo-onboarding-4b.png", alt: "Echo Onboarding: Ready" },
-      { src: "/projects/echo/echo-home.png", alt: "Echo Home" },
-      { src: "/projects/echo/echo-home-loading.png", alt: "Echo Home Loading" },
-      { src: "/projects/echo/echo-no-reminder.png", alt: "Echo Empty Reminder State" },
-      { src: "/projects/echo/echo-current-location.png", alt: "Echo Current Location" },
-      { src: "/projects/echo/echo-new-reminder.png", alt: "Echo New Reminder" },
-      { src: "/projects/echo/echo-new-reminder-b.png", alt: "Echo New Reminder: Place Search" },
-      { src: "/projects/echo/echo-new-reminder-c.png", alt: "Echo New Reminder: Details" },
-      { src: "/projects/echo/echo-edit-reminder.png", alt: "Echo Edit Reminder" },
-      { src: "/projects/echo/echo-edit-reminder-saved-places-dropdown.png", alt: "Echo Saved Places Dropdown" },
-      { src: "/projects/echo/echo-places.png", alt: "Echo Saved Places" },
-      { src: "/projects/echo/echo-places-place-expanded.png", alt: "Echo Saved Place Expanded" },
-      { src: "/projects/echo/echo-map-search.png", alt: "Echo Map Search" },
-      { src: "/projects/echo/echo-map-selection.png", alt: "Echo Map Location Selection" },
-      { src: "/projects/echo/echo-map-style.png", alt: "Echo Map Style" },
-      { src: "/projects/echo/echo-no-place.png", alt: "Echo No Place Selected" },
-      { src: "/projects/echo/echo-no-search-result.png", alt: "Echo No Search Results" },
-      { src: "/projects/echo/echo-no-reminder-result.png", alt: "Echo No Reminders Found" },
-      { src: "/projects/echo/echo-date-day.png", alt: "Echo Date Picker: Day" },
-      { src: "/projects/echo/echo-date-time.png", alt: "Echo Date Picker: Time" },
-      { src: "/projects/echo/echo-date-year.png", alt: "Echo Date Picker: Year" },
-      { src: "/projects/echo/echo-ringtone-sheet.png", alt: "Echo Ringtone Picker" },
-      { src: "/projects/echo/echo-reminder-detail.png", alt: "Echo Reminder Detail" },
-      { src: "/projects/echo/echo-reminder-detail-b.png", alt: "Echo Reminder Detail: Map" },
-      { src: "/projects/echo/echo-reminder-detail-map-expanded.png", alt: "Echo Reminder Detail: Expanded Map" },
-      { src: "/projects/echo/echo-reminder-search-result.png", alt: "Echo Reminder Search Results" },
-      { src: "/projects/echo/echo-delete-sheet.png", alt: "Echo Delete Reminder" },
-      { src: "/projects/echo/echo-delete-sheet-b.png", alt: "Echo Delete Reminder Confirmation" },
-      { src: "/projects/echo/echo-save-pop.png", alt: "Echo Reminder Saved" },
+      { src: "/projects/echo/echo-splash.png", alt: "Splash Screen" },
+      { src: "/projects/echo/echo-onboarding-1.png", alt: "Onboarding: Welcome" },
+      { src: "/projects/echo/echo-onboarding-2.png", alt: "Onboarding: Location Permission" },
+      { src: "/projects/echo/echo-onboarding-2b.png", alt: "Onboarding: Location Permission Detail" },
+      { src: "/projects/echo/echo-onboarding-3.png", alt: "Onboarding: Notifications" },
+      { src: "/projects/echo/echo-onboarding-3b.png", alt: "Onboarding: Notification Permission Detail" },
+      { src: "/projects/echo/echo-onboarding-3c.png", alt: "Onboarding: Reminder Setup" },
+      { src: "/projects/echo/echo-onboarding-3d.png", alt: "Onboarding: Reminder Setup Detail" },
+      { src: "/projects/echo/echo-onboarding-4.png", alt: "Onboarding: Get Started" },
+      { src: "/projects/echo/echo-onboarding-4b.png", alt: "Onboarding: Ready" },
+      { src: "/projects/echo/echo-home.png", alt: "Home" },
+      { src: "/projects/echo/echo-home-loading.png", alt: "Home Loading" },
+      { src: "/projects/echo/echo-no-reminder.png", alt: "Empty Reminder State" },
+      { src: "/projects/echo/echo-current-location.png", alt: "Current Location" },
+      { src: "/projects/echo/echo-new-reminder.png", alt: "New Reminder" },
+      { src: "/projects/echo/echo-new-reminder-b.png", alt: "New Reminder: Place Search" },
+      { src: "/projects/echo/echo-new-reminder-c.png", alt: "New Reminder: Details" },
+      { src: "/projects/echo/echo-edit-reminder.png", alt: "Edit Reminder" },
+      { src: "/projects/echo/echo-edit-reminder-saved-places-dropdown.png", alt: "Saved Places Dropdown" },
+      { src: "/projects/echo/echo-places.png", alt: "Saved Places" },
+      { src: "/projects/echo/echo-places-place-expanded.png", alt: "Saved Place Expanded" },
+      { src: "/projects/echo/echo-map-search.png", alt: "Map Search" },
+      { src: "/projects/echo/echo-map-selection.png", alt: "Map Location Selection" },
+      { src: "/projects/echo/echo-map-style.png", alt: "Map Style" },
+      { src: "/projects/echo/echo-no-place.png", alt: "No Place Selected" },
+      { src: "/projects/echo/echo-no-search-result.png", alt: "No Search Results" },
+      { src: "/projects/echo/echo-no-reminder-result.png", alt: "No Reminders Found" },
+      { src: "/projects/echo/echo-date-day.png", alt: "Date Picker: Day" },
+      { src: "/projects/echo/echo-date-time.png", alt: "Date Picker: Time" },
+      { src: "/projects/echo/echo-date-year.png", alt: "Date Picker: Year" },
+      { src: "/projects/echo/echo-ringtone-sheet.png", alt: "Ringtone Picker" },
+      { src: "/projects/echo/echo-reminder-detail.png", alt: "Reminder Detail" },
+      { src: "/projects/echo/echo-reminder-detail-b.png", alt: "Reminder Detail: Map" },
+      { src: "/projects/echo/echo-reminder-detail-map-expanded.png", alt: "Reminder Detail: Expanded Map" },
+      { src: "/projects/echo/echo-reminder-search-result.png", alt: "Reminder Search Results" },
+      { src: "/projects/echo/echo-delete-sheet.png", alt: "Delete Reminder" },
+      { src: "/projects/echo/echo-delete-sheet-b.png", alt: "Delete Reminder Confirmation" },
+      { src: "/projects/echo/echo-save-pop.png", alt: "Reminder Saved" },
     ],
     challenge:
       "Background location behaviour varies across mobile operating systems. Battery restrictions, permissions, region limits, and background execution rules all affect when a location-triggered reminder can be delivered.",
@@ -642,7 +642,7 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "The guiding question was simple: does this make it easier to record a set and understand my progress? That shaped the offline-first architecture, compact workout flows, and copy built around the phrase, 'No dull. Go chop iron.'",
     gallery: [
-      { src: "/projects/chop-iron/chop-iron-splash.png", alt: "Chop Iron Splash Screen" },
+      { src: "/projects/chop-iron/chop-iron-splash.png", alt: "Splash Screen" },
       { src: "/projects/chop-iron/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
       { src: "/projects/chop-iron/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
       { src: "/projects/chop-iron/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
@@ -882,18 +882,18 @@ export const MOBILE_APPS: CaseStudy[] = [
     introText:
       "Rather than producing a single reply without context, SAGE aims to help users consider the situation and compare different ways of approaching a conversation.",
     gallery: [
-      { src: "/projects/sage/sage-splash.png", alt: "Sage Splash Screen" },
-      { src: "/projects/sage/sage-index.png", alt: "Sage Analysis View" },
-      { src: "/projects/sage/sage-index-listening.png", alt: "Sage Voice Input" },
-      { src: "/projects/sage/sage-coach.png", alt: "Sage Live Coach" },
-      { src: "/projects/sage/sage-conversation-1.png", alt: "Sage Conversation Simulator" },
-      { src: "/projects/sage/sage-conversation-1b.png", alt: "Sage Conversation Detail" },
-      { src: "/projects/sage/sage-conversation-2.png", alt: "Sage Conversation Follow-up" },
-      { src: "/projects/sage/sage-conversation-load.png", alt: "Sage Conversation Loading" },
-      { src: "/projects/sage/sage-learn.png", alt: "Sage Learn: The 48 Laws" },
-      { src: "/projects/sage/sage-learn-load.png", alt: "Sage Learn Loading" },
-      { src: "/projects/sage/sage-library.png", alt: "Sage Library" },
-      { src: "/projects/sage/sage-delete.png", alt: "Sage Delete Conversation" },
+      { src: "/projects/sage/sage-splash.png", alt: "Splash Screen" },
+      { src: "/projects/sage/sage-index.png", alt: "Analysis View" },
+      { src: "/projects/sage/sage-index-listening.png", alt: "Voice Input" },
+      { src: "/projects/sage/sage-coach.png", alt: "Live Coach" },
+      { src: "/projects/sage/sage-conversation-1.png", alt: "Conversation Simulator" },
+      { src: "/projects/sage/sage-conversation-1b.png", alt: "Conversation Detail" },
+      { src: "/projects/sage/sage-conversation-2.png", alt: "Conversation Follow-up" },
+      { src: "/projects/sage/sage-conversation-load.png", alt: "Conversation Loading" },
+      { src: "/projects/sage/sage-learn.png", alt: "Learn: The 48 Laws" },
+      { src: "/projects/sage/sage-learn-load.png", alt: "Learn Loading" },
+      { src: "/projects/sage/sage-library.png", alt: "Library" },
+      { src: "/projects/sage/sage-delete.png", alt: "Delete Conversation" },
     ],
     challenge:
       "The main challenge was getting consistent, structured responses from AI services while handling rate limits, malformed output, and voice transcription failures without breaking the conversation flow.",
@@ -1549,12 +1549,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
 ];
 
+export type FeaturedVideo = {
+  webm?: string;
+  mp4?: string;
+  poster?: string;
+  blurDataURL?: string;
+  width?: number;
+  height?: number;
+  aspectRatio?: string;
+};
+
 export type FeaturedProject = {
   name: string;
   highlight?: string;
   highlightLabel?: string;
   image?: string;
   mobileScreens?: string[];
+  video?: FeaturedVideo;
   href: string;
   descriptionBefore?: string;
   descriptionAfter?: string;

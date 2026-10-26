@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { SectionHeading } from "@/components/design/SectionHeading";
 import { MobileRow } from "@/components/design/project-ui";
 import { ArrowIcon } from "@/components/design/arrow-icon";
+import { BlurUpImage } from "@/components/media/blur-up-image";
+import { WorkVideo } from "@/components/media/work-video";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 import { FEATURED_GROUPS, SECTIONS, type FeaturedProject } from "@/content/site";
 
@@ -25,6 +26,9 @@ const ProjectArticle = ({
     // Prefetch project detail first image and gallery images ahead of time
     if (project.href && !project.href.startsWith("http")) {
       prefetchProjectDetail(project.href);
+    }
+    if (project.video?.poster) {
+      prefetchImage(project.video.poster);
     }
     if (project.mobileScreens) {
       prefetchImages(project.mobileScreens);
@@ -56,13 +60,23 @@ const ProjectArticle = ({
     if (project.href && !project.href.startsWith("http")) {
       prefetchProjectDetail(project.href);
     }
+    if (project.video?.poster) {
+      prefetchImage(project.video.poster);
+    }
     if (project.mobileScreens) {
       prefetchImages(project.mobileScreens);
     }
   };
 
   const showHighlight = inView || hovered;
-  const { mobileScreens } = project;
+  const { mobileScreens, video } = project;
+  const mediaLinkProps = {
+    href: project.href,
+    target: project.href.startsWith("http") ? "_blank" : undefined,
+    rel: project.href.startsWith("http")
+      ? "noopener noreferrer"
+      : undefined,
+  };
 
   return (
     <div
@@ -137,34 +151,34 @@ const ProjectArticle = ({
         </header>
 
         {/* Media */}
+        {video ? (
+          <Link {...mediaLinkProps} className="w-full block">
+            <WorkVideo {...video} alt={`${project.name} preview`} />
+          </Link>
+        ) : null}
+
         {mobileScreens && mobileScreens.length > 0 ? (
           <Link
-            href={project.href}
-            target={project.href.startsWith("http") ? "_blank" : undefined}
-            rel={project.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            {...mediaLinkProps}
             className="w-full block transition-transform duration-500 hover:scale-[1.01]"
           >
             <MobileRow images={mobileScreens} alt={project.name} />
           </Link>
-        ) : project.image ? (
-          <Link
-            href={project.href}
-            target={project.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              project.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-            className="w-full block"
-          >
-            <div className="w-full overflow-hidden rounded-[4px]">
-              <Image
-                src={project.image}
-                alt={project.name}
-                width={1200}
-                height={800}
-                className="w-full object-cover block"
-                sizes="(max-width: 768px) 100vw, 629px"
-              />
-            </div>
+        ) : null}
+
+        {!video &&
+        (!mobileScreens || mobileScreens.length === 0) &&
+        project.image ? (
+          <Link {...mediaLinkProps} className="w-full block">
+            <BlurUpImage
+              src={project.image}
+              alt={project.name}
+              width={1200}
+              height={800}
+              wrapperClassName="w-full rounded-[4px]"
+              className="block w-full object-cover"
+              sizes="(max-width: 768px) 100vw, 629px"
+            />
           </Link>
         ) : null}
       </article>

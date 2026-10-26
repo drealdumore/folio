@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { MobileRow } from "@/components/design/project-ui";
+import { BlurUpImage } from "@/components/media/blur-up-image";
 import { prefetchImage, prefetchImages, prefetchProjectDetail } from "@/lib/prefetch";
 
 interface ProjectCardProps {
@@ -109,12 +109,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             className="w-full block"
           >
             <div className="w-full overflow-hidden rounded-[8px]">
-              <Image
+              <BlurUpImage
                 src={image}
                 alt={projectName ?? "Project"}
                 width={1200}
                 height={800}
-                className="w-full object-cover block transition-transform duration-700 hover:scale-[1.02]"
+                wrapperClassName="w-full"
+                className="block w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
                 sizes="(max-width: 768px) 100vw, 629px"
               />
             </div>

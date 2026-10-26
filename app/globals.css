@@ -61,6 +61,9 @@
     --border: 39 39 42;
     --input: 39 39 42;
     --ring: 161 161 170;
+    --focus-ring: 161 161 170;
+    --selection-bg: 113 113 122;
+    --selection-dot: 161 161 170;
 
     --radius: 0.5rem;
     --bg-image-card: #141414;
@@ -128,6 +131,9 @@
     --border: 228 228 231;
     --input: 228 228 231;
     --ring: 113 113 122;
+    --focus-ring: 82 82 91;
+    --selection-bg: 212 212 216;
+    --selection-dot: 113 113 122;
 
     --bg-image-card: #ffffff;
     --shadow-glass: #00000008 0px 7.2563px 14.5126px 0px inset,
@@ -380,6 +386,179 @@
   scrollbar-width: none;
 }
 
+@property --scroll-mask-top {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --scroll-mask-bottom {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --scroll-mask-left {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --scroll-mask-right {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.scroll-mask {
+  --scroll-mask-size: 3rem;
+  --scroll-mask-top: 0px;
+  --scroll-mask-bottom: 0px;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--scroll-mask-top),
+    black calc(100% - var(--scroll-mask-bottom)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--scroll-mask-top),
+    black calc(100% - var(--scroll-mask-bottom)),
+    transparent 100%
+  );
+}
+
+.scroll-mask-x {
+  --scroll-mask-size: 3rem;
+  --scroll-mask-left: 0px;
+  --scroll-mask-right: 0px;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black var(--scroll-mask-left),
+    black calc(100% - var(--scroll-mask-right)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black var(--scroll-mask-left),
+    black calc(100% - var(--scroll-mask-right)),
+    transparent 100%
+  );
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-mask {
+    animation:
+      scroll-mask-top linear both,
+      scroll-mask-bottom linear both;
+    animation-timeline: scroll(self), scroll(self);
+    animation-range:
+      0 var(--scroll-mask-size),
+      calc(100% - var(--scroll-mask-size)) 100%;
+  }
+
+  .scroll-mask-x {
+    animation:
+      scroll-mask-left linear both,
+      scroll-mask-right linear both;
+    animation-timeline: scroll(self x), scroll(self x);
+    animation-range:
+      0 var(--scroll-mask-size),
+      calc(100% - var(--scroll-mask-size)) 100%;
+  }
+}
+
+.hit-area-4,
+.hit-area-6,
+.hit-area-8,
+.hit-area-10,
+.hit-area-12 {
+  position: relative;
+}
+
+.hit-area-4::after,
+.hit-area-6::after,
+.hit-area-8::after,
+.hit-area-10::after,
+.hit-area-12::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--hit-area, 0px) * -1);
+}
+
+.hit-area-4 {
+  --hit-area: 4px;
+}
+
+.hit-area-6 {
+  --hit-area: 6px;
+}
+
+.hit-area-8 {
+  --hit-area: 8px;
+}
+
+.hit-area-10 {
+  --hit-area: 10px;
+}
+
+.hit-area-12 {
+  --hit-area: 12px;
+}
+
+@keyframes scroll-mask-top {
+  from {
+    --scroll-mask-top: 0px;
+  }
+  to {
+    --scroll-mask-top: var(--scroll-mask-size);
+  }
+}
+
+@keyframes scroll-mask-bottom {
+  from {
+    --scroll-mask-bottom: var(--scroll-mask-size);
+  }
+  to {
+    --scroll-mask-bottom: 0px;
+  }
+}
+
+@keyframes scroll-mask-left {
+  from {
+    --scroll-mask-left: 0px;
+  }
+  to {
+    --scroll-mask-left: var(--scroll-mask-size);
+  }
+}
+
+@keyframes scroll-mask-right {
+  from {
+    --scroll-mask-right: var(--scroll-mask-size);
+  }
+  to {
+    --scroll-mask-right: 0px;
+  }
+}
+
+@keyframes mail-sweep {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.animate-mail-sweep {
+  animation: mail-sweep 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 @layer base {
   html {
     @apply scroll-smooth antialiased;
@@ -393,6 +572,19 @@
       sans-serif;
     font-display: swap;
     background-color: rgb(var(--bg-page));
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--zinc-600)) transparent;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--zinc-600)) transparent;
+  }
+
+  @media (forced-colors: active) {
+    * {
+      scrollbar-color: auto;
+    }
   }
 
   .cursor-styled-arrow-black {
@@ -402,12 +594,30 @@
   }
 
   ::selection {
-    @apply bg-text-heading text-text-inverse;
+    background-color: rgb(var(--selection-bg) / 0.28);
+    color: inherit;
   }
+
+::highlight(selection-dots) {
+  text-decoration: underline dotted rgb(var(--selection-dot) / 0.9);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  background-color: rgb(var(--selection-bg) / 0.28);
+  color: inherit;
+}
 
   .squil {
     @apply pb-1 font-light;
   }
+}
+
+:focus-visible:not(input):not(textarea):not([data-focus-via="pointer"]) {
+  outline: 2px solid rgb(var(--focus-ring) / 0.85);
+  outline-offset: 2px;
+  transition: outline-color 150ms ease;
 }
 
 body {
@@ -626,7 +836,7 @@ h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(var(--zinc-700));
+  background: rgb(var(--zinc-600));
   border-radius: 3px;
 }
 
