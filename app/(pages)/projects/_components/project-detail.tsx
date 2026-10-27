@@ -333,7 +333,7 @@ const ProjectsDetailTemplate = ({ id }: { id: string }) => {
                 </p>
 
                 <div className="relative mt-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
-                  <p className="text-[32px] font-semibold leading-none tracking-[-0.03em] text-text-heading sm:text-[40px]">
+                  <p className="text-[22px] font-semibold leading-none tracking-[-0.03em] text-text-heading sm:text-[40px]">
                     {project.outcome.value}
                   </p>
                   <p className="max-w-sm text-[14px] leading-[1.65] text-zinc-400 sm:text-right">

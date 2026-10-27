@@ -170,7 +170,8 @@ export const ALLPROJECTS: ProjectCardProps[] = [
     image: "/projects/dropenv/dropenv.png",
     projectDescription:
       "A tool for sharing environment variables through temporary, encrypted links. Encryption happens in the browser and the decryption key stays in the URL fragment instead of being sent to the server.",
-    highlight: "sharing environment variables through temporary, encrypted links",
+    highlight:
+      "sharing environment variables through temporary, encrypted links",
     projectType: "Security Utility",
     projectDate: "2025-08-01",
     technologies: [
@@ -288,7 +289,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
       "/projects/gpz/gpz-home.png",
     ],
   },
-  
+
   {
     projectName: "Isami Technologies",
     projectLink: "https://isamitechnologies.com.ng/",
@@ -341,7 +342,7 @@ export const ALLPROJECTS: ProjectCardProps[] = [
   },
   {
     projectName: "MetaScraper",
-    projectLink: "https://meta-scrapper.vercel.app",
+    projectLink: "https://meta-scrapper.vercel.app/",
     image: "/projects/meta-scrapper/meta-scrapper.webp",
     projectDescription:
       "A small tool that reads a webpage’s title, description, Open Graph image, and other metadata from a URL.",
@@ -375,7 +376,6 @@ export const ALLPROJECTS: ProjectCardProps[] = [
 ];
 
 export const MOBILE_APPS: CaseStudy[] = [
-  // 1. Melo
   {
     id: "melo",
     title: "Melo",
@@ -388,14 +388,14 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "Ongoing",
     designBy: "Samuel Isah",
     outcome: {
-      value: "11 languages",
-      label: "supported inside one conversation",
+      value: "Built translation into the chat",
+      label: "for conversations across 11 languages",
     },
     story:
       "A friend and I would text in different languages. They wrote in French, I wrote in English, and understanding each other meant dealing with the language barrier one message at a time. I wanted to make that feel less like work. Melo puts translation inside the conversation, so both people can chat in their preferred language and reveal the original message whenever they want.",
     year: 2026,
     builtBy: "Samuel Isah",
-    website: "https://github.com/drealdumore/melo",
+    website: "https://github.com/drealdumore/melo/",
     heroImage: "/projects/melo/melo-splash.png",
     intro:
       "Melo is a two-person messaging app that translates text between people who speak different languages. Each person reads messages in their preferred language and can tap to see the original text.",
@@ -404,18 +404,36 @@ export const MOBILE_APPS: CaseStudy[] = [
     gallery: [
       { src: "/projects/melo/melo-splash.png", alt: "Splash Screen" },
       { src: "/projects/melo/melo-onboarding.png", alt: "Onboarding" },
-      { src: "/projects/melo/melo-onboarding-name.png", alt: "Enter Your Name" },
-      { src: "/projects/melo/melo-onboarding-avatar.png", alt: "Choose Avatar" },
-      { src: "/projects/melo/melo-onboarding-language.png", alt: "Language Selection" },
+      {
+        src: "/projects/melo/melo-onboarding-name.png",
+        alt: "Enter Your Name",
+      },
+      {
+        src: "/projects/melo/melo-onboarding-avatar.png",
+        alt: "Choose Avatar",
+      },
+      {
+        src: "/projects/melo/melo-onboarding-language.png",
+        alt: "Language Selection",
+      },
       { src: "/projects/melo/melo-connect.png", alt: "Chats List" },
       { src: "/projects/melo/melo-id.png", alt: "ID Card" },
       { src: "/projects/melo/melo-chat.png", alt: "Chat View" },
       { src: "/projects/melo/melo-chat-id.png", alt: "Chat ID" },
       { src: "/projects/melo/melo-chat-id-2.png", alt: "Chat ID Detail" },
       { src: "/projects/melo/melo-friend-sheet.png", alt: "Add a Friend" },
-      { src: "/projects/melo/melo-profile-sheet-1.png", alt: "Profile Settings" },
-      { src: "/projects/melo/melo-profile-sheet-2.png", alt: "Profile Settings Detail" },
-      { src: "/projects/melo/melo-profile-sheet-3.png", alt: "Profile Settings Menu" },
+      {
+        src: "/projects/melo/melo-profile-sheet-1.png",
+        alt: "Profile Settings",
+      },
+      {
+        src: "/projects/melo/melo-profile-sheet-2.png",
+        alt: "Profile Settings Detail",
+      },
+      {
+        src: "/projects/melo/melo-profile-sheet-3.png",
+        alt: "Profile Settings Menu",
+      },
     ],
     demos: [
       {
@@ -427,10 +445,7 @@ export const MOBILE_APPS: CaseStudy[] = [
             src: "/projects/melo/melo-onboarding-language.png",
             alt: "Language selection",
           },
-          {
-            src: "/projects/melo/melo-onboarding-name.png",
-            alt: "Name entry",
-          },
+          { src: "/projects/melo/melo-onboarding-name.png", alt: "Name entry" },
           {
             src: "/projects/melo/melo-onboarding-avatar.png",
             alt: "Avatar selection",
@@ -446,10 +461,7 @@ export const MOBILE_APPS: CaseStudy[] = [
             src: "/projects/melo/melo-connect.png",
             alt: "Connected chats list",
           },
-          {
-            src: "/projects/melo/melo-id.png",
-            alt: "Melo ID card",
-          },
+          { src: "/projects/melo/melo-id.png", alt: "Melo ID card" },
           {
             src: "/projects/melo/melo-friend-sheet.png",
             alt: "Add a friend sheet",
@@ -461,14 +473,8 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "Messages arrive translated inside the thread. Tap any message to reveal the original text.",
         screens: [
-          {
-            src: "/projects/melo/melo-chat.png",
-            alt: "Translated chat view",
-          },
-          {
-            src: "/projects/melo/melo-chat-id.png",
-            alt: "Chat detail",
-          },
+          { src: "/projects/melo/melo-chat.png", alt: "Translated chat view" },
+          { src: "/projects/melo/melo-chat-id.png", alt: "Chat detail" },
           {
             src: "/projects/melo/melo-profile-sheet-1.png",
             alt: "Profile settings",
@@ -507,11 +513,8 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Supabase (Postgres + Realtime)",
       "AsyncStorage",
     ],
-    links: [
-      { label: "GitHub", url: "https://github.com/drealdumore/melo" },
-    ],
+    links: [{ label: "GitHub", url: "https://github.com/drealdumore/melo/" }],
   },
-
   {
     id: "echo",
     title: "Echo",
@@ -526,8 +529,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2025",
     designBy: "Samuel Isah",
     outcome: {
-      value: "No account",
-      label: "required for local, place-aware reminders",
+      value: "Built reminders around real places",
+      label: "with location-triggered alerts and no sign-up",
     },
     story:
       "Some things are easy to remember at home and somehow disappear from your head when you get somewhere. I wanted a reminder app that worked around places instead of relying only on a clock. With Echo, you choose a location, attach a reminder, and let the phone handle the nudge when you arrive.",
@@ -538,42 +541,111 @@ export const MOBILE_APPS: CaseStudy[] = [
       "A reminder to buy something at a shop or complete a task on campus is more useful when it appears at the right place. Echo explores how geofencing and local notifications can support that experience without requiring a cloud account.",
     gallery: [
       { src: "/projects/echo/echo-splash.png", alt: "Splash Screen" },
-      { src: "/projects/echo/echo-onboarding-1.png", alt: "Onboarding: Welcome" },
-      { src: "/projects/echo/echo-onboarding-2.png", alt: "Onboarding: Location Permission" },
-      { src: "/projects/echo/echo-onboarding-2b.png", alt: "Onboarding: Location Permission Detail" },
-      { src: "/projects/echo/echo-onboarding-3.png", alt: "Onboarding: Notifications" },
-      { src: "/projects/echo/echo-onboarding-3b.png", alt: "Onboarding: Notification Permission Detail" },
-      { src: "/projects/echo/echo-onboarding-3c.png", alt: "Onboarding: Reminder Setup" },
-      { src: "/projects/echo/echo-onboarding-3d.png", alt: "Onboarding: Reminder Setup Detail" },
-      { src: "/projects/echo/echo-onboarding-4.png", alt: "Onboarding: Get Started" },
-      { src: "/projects/echo/echo-onboarding-4b.png", alt: "Onboarding: Ready" },
+      {
+        src: "/projects/echo/echo-onboarding-1.png",
+        alt: "Onboarding: Welcome",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-2.png",
+        alt: "Onboarding: Location Permission",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-2b.png",
+        alt: "Onboarding: Location Permission Detail",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-3.png",
+        alt: "Onboarding: Notifications",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-3b.png",
+        alt: "Onboarding: Notification Permission Detail",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-3c.png",
+        alt: "Onboarding: Reminder Setup",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-3d.png",
+        alt: "Onboarding: Reminder Setup Detail",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-4.png",
+        alt: "Onboarding: Get Started",
+      },
+      {
+        src: "/projects/echo/echo-onboarding-4b.png",
+        alt: "Onboarding: Ready",
+      },
       { src: "/projects/echo/echo-home.png", alt: "Home" },
       { src: "/projects/echo/echo-home-loading.png", alt: "Home Loading" },
-      { src: "/projects/echo/echo-no-reminder.png", alt: "Empty Reminder State" },
-      { src: "/projects/echo/echo-current-location.png", alt: "Current Location" },
+      {
+        src: "/projects/echo/echo-no-reminder.png",
+        alt: "Empty Reminder State",
+      },
+      {
+        src: "/projects/echo/echo-current-location.png",
+        alt: "Current Location",
+      },
       { src: "/projects/echo/echo-new-reminder.png", alt: "New Reminder" },
-      { src: "/projects/echo/echo-new-reminder-b.png", alt: "New Reminder: Place Search" },
-      { src: "/projects/echo/echo-new-reminder-c.png", alt: "New Reminder: Details" },
+      {
+        src: "/projects/echo/echo-new-reminder-b.png",
+        alt: "New Reminder: Place Search",
+      },
+      {
+        src: "/projects/echo/echo-new-reminder-c.png",
+        alt: "New Reminder: Details",
+      },
       { src: "/projects/echo/echo-edit-reminder.png", alt: "Edit Reminder" },
-      { src: "/projects/echo/echo-edit-reminder-saved-places-dropdown.png", alt: "Saved Places Dropdown" },
+      {
+        src: "/projects/echo/echo-edit-reminder-saved-places-dropdown.png",
+        alt: "Saved Places Dropdown",
+      },
       { src: "/projects/echo/echo-places.png", alt: "Saved Places" },
-      { src: "/projects/echo/echo-places-place-expanded.png", alt: "Saved Place Expanded" },
+      {
+        src: "/projects/echo/echo-places-place-expanded.png",
+        alt: "Saved Place Expanded",
+      },
       { src: "/projects/echo/echo-map-search.png", alt: "Map Search" },
-      { src: "/projects/echo/echo-map-selection.png", alt: "Map Location Selection" },
+      {
+        src: "/projects/echo/echo-map-selection.png",
+        alt: "Map Location Selection",
+      },
       { src: "/projects/echo/echo-map-style.png", alt: "Map Style" },
       { src: "/projects/echo/echo-no-place.png", alt: "No Place Selected" },
-      { src: "/projects/echo/echo-no-search-result.png", alt: "No Search Results" },
-      { src: "/projects/echo/echo-no-reminder-result.png", alt: "No Reminders Found" },
+      {
+        src: "/projects/echo/echo-no-search-result.png",
+        alt: "No Search Results",
+      },
+      {
+        src: "/projects/echo/echo-no-reminder-result.png",
+        alt: "No Reminders Found",
+      },
       { src: "/projects/echo/echo-date-day.png", alt: "Date Picker: Day" },
       { src: "/projects/echo/echo-date-time.png", alt: "Date Picker: Time" },
       { src: "/projects/echo/echo-date-year.png", alt: "Date Picker: Year" },
       { src: "/projects/echo/echo-ringtone-sheet.png", alt: "Ringtone Picker" },
-      { src: "/projects/echo/echo-reminder-detail.png", alt: "Reminder Detail" },
-      { src: "/projects/echo/echo-reminder-detail-b.png", alt: "Reminder Detail: Map" },
-      { src: "/projects/echo/echo-reminder-detail-map-expanded.png", alt: "Reminder Detail: Expanded Map" },
-      { src: "/projects/echo/echo-reminder-search-result.png", alt: "Reminder Search Results" },
+      {
+        src: "/projects/echo/echo-reminder-detail.png",
+        alt: "Reminder Detail",
+      },
+      {
+        src: "/projects/echo/echo-reminder-detail-b.png",
+        alt: "Reminder Detail: Map",
+      },
+      {
+        src: "/projects/echo/echo-reminder-detail-map-expanded.png",
+        alt: "Reminder Detail: Expanded Map",
+      },
+      {
+        src: "/projects/echo/echo-reminder-search-result.png",
+        alt: "Reminder Search Results",
+      },
       { src: "/projects/echo/echo-delete-sheet.png", alt: "Delete Reminder" },
-      { src: "/projects/echo/echo-delete-sheet-b.png", alt: "Delete Reminder Confirmation" },
+      {
+        src: "/projects/echo/echo-delete-sheet-b.png",
+        alt: "Delete Reminder Confirmation",
+      },
       { src: "/projects/echo/echo-save-pop.png", alt: "Reminder Saved" },
     ],
     demos: [
@@ -582,10 +654,7 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "Search the map or drop a pin, then decide how close you need to be before the reminder can fire.",
         screens: [
-          {
-            src: "/projects/echo/echo-map-search.png",
-            alt: "Map search",
-          },
+          { src: "/projects/echo/echo-map-search.png", alt: "Map search" },
           {
             src: "/projects/echo/echo-map-selection.png",
             alt: "Map location selection",
@@ -620,10 +689,7 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "Saved places and their reminders sit together, ready for the moment you actually arrive.",
         screens: [
-          {
-            src: "/projects/echo/echo-home.png",
-            alt: "Reminder home",
-          },
+          { src: "/projects/echo/echo-home.png", alt: "Reminder home" },
           {
             src: "/projects/echo/echo-reminder-detail.png",
             alt: "Reminder detail",
@@ -658,8 +724,6 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
     links: [],
   },
-
-  // 2. The SupaDevs
   {
     id: "thesupadevs",
     title: "The SupaDevs",
@@ -672,14 +736,14 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2025",
     designBy: "Samuel Isah",
     outcome: {
-      value: "200+",
-      label: "developer resources organized in one library",
+      value: "Organized 200+ developer resources",
+      label: "in one searchable library",
     },
     story:
       "I kept finding useful developer resources and then losing them in bookmarks, chats, and browser tabs. The SupaDevs started as my attempt to put those resources in one searchable place. I also wanted to make contributing easier, so I explored using AI to categorize submissions instead of making every contributor organize everything manually.",
     year: 2025,
     builtBy: "Samuel Isah",
-    website: "https://thesupadevs.vercel.app",
+    website: "https://thesupadevs.vercel.app/",
     heroImage: "/projects/thesupadevs/thesupadevs.webp",
     intro:
       "The SupaDevs is a searchable library of developer tools, UI components, APIs, tutorials, and other resources.",
@@ -740,12 +804,10 @@ export const MOBILE_APPS: CaseStudy[] = [
       "ISR",
     ],
     links: [
-      { label: "Live Demo", url: "https://thesupadevs.vercel.app" },
-      { label: "GitHub", url: "https://github.com/drealdumore/thesupadevs" },
+      { label: "Live Demo", url: "https://thesupadevs.vercel.app/" },
+      { label: "GitHub", url: "https://github.com/drealdumore/thesupadevs/" },
     ],
   },
-
-  // 3. VaultX
   {
     id: "vaultx",
     title: "VaultX",
@@ -758,14 +820,14 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2025",
     designBy: "Samuel Isah",
     outcome: {
-      value: "0 accounts",
-      label: "required to share a temporary snippet",
+      value: "Built an account-free snippet API",
+      label: "for sharing temporary text snippets",
     },
     story:
       "Sometimes I just need to move a code snippet from my laptop to my phone. I didn't want to create an account or leave temporary information sitting around indefinitely, so I built VaultX. Expiry times, view limits, and optional passwords are part of the design rather than features added as an afterthought.",
     year: 2025,
     builtBy: "Samuel Isah",
-    website: "https://github.com/drealdumore/vaultx",
+    website: "https://github.com/drealdumore/vaultx/",
     intro:
       "VaultX is a REST API for sharing text, code snippets, and links between devices without creating an account.",
     introText:
@@ -803,12 +865,8 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Zod",
       "Node.js crypto",
     ],
-    links: [
-      { label: "GitHub", url: "https://github.com/drealdumore/vaultx" },
-    ],
+    links: [{ label: "GitHub", url: "https://github.com/drealdumore/vaultx/" }],
   },
-
-  // 4. Chop Iron
   {
     id: "iron",
     title: "Chop Iron",
@@ -823,8 +881,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2026",
     designBy: "Samuel Isah",
     outcome: {
-      value: "53 exercises",
-      label: "available without a network connection",
+      value: "Built an offline-first workout tracker",
+      label: "with 53 exercises available without internet",
     },
     story:
       "I train, forget my numbers, and sometimes struggle to stay consistent. I wanted a tracker that made logging workouts feel simple instead of turning the gym into another admin task. Chop Iron grew from that idea, with a bit of Nigerian personality thrown in because fitness apps don't all have to sound the same.",
@@ -835,31 +893,106 @@ export const MOBILE_APPS: CaseStudy[] = [
       "The guiding question was simple: does this make it easier to record a set and understand my progress? That shaped the offline-first architecture, compact workout flows, and copy built around the phrase, 'No dull. Go chop iron.'",
     gallery: [
       { src: "/projects/chop-iron/chop-iron-splash.png", alt: "Splash Screen" },
-      { src: "/projects/chop-iron/chop-iron-splash-2.png", alt: "Splash Screen Alt" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-1.png", alt: "Onboarding Step 1" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-2.png", alt: "Onboarding Step 2" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-3.png", alt: "Onboarding Step 3" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-4.png", alt: "Onboarding Step 4" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-body.png", alt: "Body Type Selection" },
-      { src: "/projects/chop-iron/chop-iron-onboarding-goal.png", alt: "Goal Selection" },
-      { src: "/projects/chop-iron/chop-iron-index.png", alt: "Home screen with streak calendar" },
-      { src: "/projects/chop-iron/chop-iron-index-2.png", alt: "Home screen detail" },
-      { src: "/projects/chop-iron/chop-iron-calender.png", alt: "Calendar View" },
-      { src: "/projects/chop-iron/chop-iron-calender-2.png", alt: "Calendar Detail" },
-      { src: "/projects/chop-iron/chop-iron-log.png", alt: "Logging a workout" },
-      { src: "/projects/chop-iron/chop-iron-exercises.png", alt: "Exercise library with 53 exercises" },
-      { src: "/projects/chop-iron/chop-iron-exercise-detail.png", alt: "Exercise Detail" },
-      { src: "/projects/chop-iron/chop-iron-exercise-detail-image.png", alt: "Exercise Demo" },
-      { src: "/projects/chop-iron/chop-iron-exercise-push.png", alt: "Push Exercise" },
-      { src: "/projects/chop-iron/chop-iron-exercise-shoulder.png", alt: "Shoulder Exercise" },
-      { src: "/projects/chop-iron/chop-iron-progress.png", alt: "Progress screen with charts" },
-      { src: "/projects/chop-iron/chop-iron-achievement.png", alt: "Achievements and milestones" },
-      { src: "/projects/chop-iron/chop-iron-profile.png", alt: "Profile and stats overview" },
-      { src: "/projects/chop-iron/chop-iron-profile-avatar.png", alt: "Profile Avatar" },
-      { src: "/projects/chop-iron/chop-iron-profile-1.png", alt: "Profile Overview" },
-      { src: "/projects/chop-iron/chop-iron-profile-2.png", alt: "Profile Details" },
-      { src: "/projects/chop-iron/chop-iron-profile-3.png", alt: "Profile Settings" },
-      { src: "/projects/chop-iron/chop-iron-edit-profile.png", alt: "Edit Profile" },
+      {
+        src: "/projects/chop-iron/chop-iron-splash-2.png",
+        alt: "Splash Screen Alt",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-1.png",
+        alt: "Onboarding Step 1",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-2.png",
+        alt: "Onboarding Step 2",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-3.png",
+        alt: "Onboarding Step 3",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-4.png",
+        alt: "Onboarding Step 4",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-body.png",
+        alt: "Body Type Selection",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-onboarding-goal.png",
+        alt: "Goal Selection",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-index.png",
+        alt: "Home screen with streak calendar",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-index-2.png",
+        alt: "Home screen detail",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-calender.png",
+        alt: "Calendar View",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-calender-2.png",
+        alt: "Calendar Detail",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-log.png",
+        alt: "Logging a workout",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-exercises.png",
+        alt: "Exercise library with 53 exercises",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-exercise-detail.png",
+        alt: "Exercise Detail",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-exercise-detail-image.png",
+        alt: "Exercise Demo",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-exercise-push.png",
+        alt: "Push Exercise",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-exercise-shoulder.png",
+        alt: "Shoulder Exercise",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-progress.png",
+        alt: "Progress screen with charts",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-achievement.png",
+        alt: "Achievements and milestones",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-profile.png",
+        alt: "Profile and stats overview",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-profile-avatar.png",
+        alt: "Profile Avatar",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-profile-1.png",
+        alt: "Profile Overview",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-profile-2.png",
+        alt: "Profile Details",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-profile-3.png",
+        alt: "Profile Settings",
+      },
+      {
+        src: "/projects/chop-iron/chop-iron-edit-profile.png",
+        alt: "Edit Profile",
+      },
     ],
     demos: [
       {
@@ -936,8 +1069,6 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
     links: [],
   },
-
-  // 5. Crystal Glow Xquisite
   {
     id: "crystalglowxquisite",
     title: "Crystal Glow Xquisite",
@@ -951,8 +1082,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2026",
     designBy: "Samuel Isah",
     outcome: {
-      value: "One storefront",
-      label: "for catalog, cart, checkout, and analytics",
+      value: "Delivered an end-to-end shopping flow",
+      label: "from product browsing through checkout",
     },
     builtBy: "Samuel Isah",
     website: "https://crystalglowxquisite.com/",
@@ -1006,12 +1137,8 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Neon PostgreSQL",
       "Vercel",
     ],
-    links: [
-      { label: "Live Store", url: "https://crystalglowxquisite.com/" },
-    ],
+    links: [{ label: "Live Store", url: "https://crystalglowxquisite.com/" }],
   },
-
-  // 6. KnowledgeMaster
   {
     id: "knowledgemaster",
     title: "KnowledgeMaster",
@@ -1025,8 +1152,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2026",
     designBy: "Samuel Isah",
     outcome: {
-      value: "One platform",
-      label: "for catalog, delivery, and bookfair information",
+      value: "Brought books and bookfair services online",
+      label: "in one place customers can browse before visiting",
     },
     builtBy: "Samuel Isah",
     website: "https://www.knowledgemaster.com.ng/",
@@ -1081,14 +1208,9 @@ export const MOBILE_APPS: CaseStudy[] = [
       "AI integration",
     ],
     links: [
-      {
-        label: "Live Website",
-        url: "https://www.knowledgemaster.com.ng/",
-      },
+      { label: "Live Website", url: "https://www.knowledgemaster.com.ng/" },
     ],
   },
-
-  // 7. DropEnv
   {
     id: "dropenv",
     title: "DropEnv",
@@ -1101,14 +1223,14 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "Two weeks",
     designBy: "Samuel Isah",
     outcome: {
-      value: "0 plaintext secrets",
-      label: "sent to the server during sharing",
+      value: "Kept decryption keys out of server requests",
+      label: "using browser-side AES-GCM encryption",
     },
     story:
       "Sharing a .env file with a teammate sounds harmless until you remember what those files contain. DropEnv was my attempt to make that exchange less risky: encrypt the contents in the browser, keep the decryption key in the URL fragment, and give shared data a limited lifetime. Building it pushed me to learn the Web Crypto API beyond simply following an example.",
     year: 2025,
     builtBy: "Samuel Isah",
-    website: "https://github.com/drealdumore/dropenv",
+    website: "https://github.com/drealdumore/dropenv/",
     heroImage: "/projects/dropenv/dropenv.png",
     intro:
       "DropEnv is a developer tool for sharing environment variables through temporary links, with encryption performed in the browser.",
@@ -1152,11 +1274,9 @@ export const MOBILE_APPS: CaseStudy[] = [
       "Tailwind CSS",
     ],
     links: [
-      { label: "GitHub", url: "https://github.com/drealdumore/dropenv" },
+      { label: "GitHub", url: "https://github.com/drealdumore/dropenv/" },
     ],
   },
-
-  // 8. SAGE
   {
     id: "sage",
     title: "Sage",
@@ -1171,8 +1291,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "Ongoing",
     designBy: "Samuel Isah",
     outcome: {
-      value: "8 keys",
-      label: "rotated automatically when quotas run out",
+      value: "Built API-key fallback for quota limits",
+      label: "with automatic rotation when a key hits its quota",
     },
     story:
       "Sometimes the hardest part of a difficult conversation is working out what to say before you say it. I built SAGE as a place to think through those situations, using ideas from The 48 Laws of Power to explore different approaches. The product is still evolving, especially the part that matters most to me: making an AI conversation feel natural rather than like filling out a form.",
@@ -1186,10 +1306,22 @@ export const MOBILE_APPS: CaseStudy[] = [
       { src: "/projects/sage/sage-index.png", alt: "Analysis View" },
       { src: "/projects/sage/sage-index-listening.png", alt: "Voice Input" },
       { src: "/projects/sage/sage-coach.png", alt: "Live Coach" },
-      { src: "/projects/sage/sage-conversation-1.png", alt: "Conversation Simulator" },
-      { src: "/projects/sage/sage-conversation-1b.png", alt: "Conversation Detail" },
-      { src: "/projects/sage/sage-conversation-2.png", alt: "Conversation Follow-up" },
-      { src: "/projects/sage/sage-conversation-load.png", alt: "Conversation Loading" },
+      {
+        src: "/projects/sage/sage-conversation-1.png",
+        alt: "Conversation Simulator",
+      },
+      {
+        src: "/projects/sage/sage-conversation-1b.png",
+        alt: "Conversation Detail",
+      },
+      {
+        src: "/projects/sage/sage-conversation-2.png",
+        alt: "Conversation Follow-up",
+      },
+      {
+        src: "/projects/sage/sage-conversation-load.png",
+        alt: "Conversation Loading",
+      },
       { src: "/projects/sage/sage-learn.png", alt: "Learn: The 48 Laws" },
       { src: "/projects/sage/sage-learn-load.png", alt: "Learn Loading" },
       { src: "/projects/sage/sage-library.png", alt: "Library" },
@@ -1201,18 +1333,12 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "Talk or type through what happened, then look at the dynamics before jumping to a reply.",
         screens: [
-          {
-            src: "/projects/sage/sage-index.png",
-            alt: "Situation analysis",
-          },
+          { src: "/projects/sage/sage-index.png", alt: "Situation analysis" },
           {
             src: "/projects/sage/sage-index-listening.png",
             alt: "Voice input",
           },
-          {
-            src: "/projects/sage/sage-coach.png",
-            alt: "Live coach",
-          },
+          { src: "/projects/sage/sage-coach.png", alt: "Live coach" },
         ],
       },
       {
@@ -1228,10 +1354,7 @@ export const MOBILE_APPS: CaseStudy[] = [
             src: "/projects/sage/sage-conversation-2.png",
             alt: "Conversation follow-up",
           },
-          {
-            src: "/projects/sage/sage-library.png",
-            alt: "Response library",
-          },
+          { src: "/projects/sage/sage-library.png", alt: "Response library" },
         ],
       },
     ],
@@ -1265,8 +1388,6 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
     links: [],
   },
-
-  // 9. GPZ
   {
     id: "gpz",
     title: "GPZ",
@@ -1281,8 +1402,8 @@ export const MOBILE_APPS: CaseStudy[] = [
     duration: "2025",
     designBy: "Samuel Isah",
     outcome: {
-      value: "Target GPA",
-      label: "projected from current course data",
+      value: "Turned GPA projections into a mobile tool",
+      label: "so students can see how future grades affect their target",
     },
     story:
       "Every semester, I found myself rebuilding the same spreadsheet to keep track of courses, grades, and academic targets. GPZ started as a way to stop doing that manually. It brings those calculations into one place and helps me see how future grades could affect my overall GPA.",
@@ -1306,18 +1427,9 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "Add courses and credit units once, then keep the semester's grades in one place.",
         screens: [
-          {
-            src: "/projects/gpz/gpz-onboarding-3.png",
-            alt: "Semester setup",
-          },
-          {
-            src: "/projects/gpz/gpz-onboarding-4.png",
-            alt: "Course setup",
-          },
-          {
-            src: "/projects/gpz/gpz-onboarding-5.png",
-            alt: "Grade setup",
-          },
+          { src: "/projects/gpz/gpz-onboarding-3.png", alt: "Semester setup" },
+          { src: "/projects/gpz/gpz-onboarding-4.png", alt: "Course setup" },
+          { src: "/projects/gpz/gpz-onboarding-5.png", alt: "Grade setup" },
         ],
       },
       {
@@ -1325,14 +1437,8 @@ export const MOBILE_APPS: CaseStudy[] = [
         caption:
           "See how current and future course results could move the overall GPA toward a target.",
         screens: [
-          {
-            src: "/projects/gpz/gpz-home.png",
-            alt: "GPA dashboard",
-          },
-          {
-            src: "/projects/gpz/gpz-onboarding-2.png",
-            alt: "Academic target",
-          },
+          { src: "/projects/gpz/gpz-home.png", alt: "GPA dashboard" },
+          { src: "/projects/gpz/gpz-onboarding-2.png", alt: "Academic target" },
         ],
       },
     ],
@@ -1359,7 +1465,6 @@ export const MOBILE_APPS: CaseStudy[] = [
     ],
     links: [],
   },
-
 ];
 
 export const WEB_TOOLS = [
@@ -1557,7 +1662,11 @@ export type ContactLink = { label: string; value: string; href: string };
 export const CONTACTS: ContactLink[] = [
   { label: "Email", value: PROFILE.email, href: `mailto:${PROFILE.email}` },
   { label: "Github", value: SOCIALS.github.username, href: SOCIALS.github.url },
-  { label: "LinkedIn", value: SOCIALS.linkedin.username, href: SOCIALS.linkedin.url },
+  {
+    label: "LinkedIn",
+    value: SOCIALS.linkedin.username,
+    href: SOCIALS.linkedin.url,
+  },
   { label: "X", value: SOCIALS.twitter.username, href: SOCIALS.twitter.url },
 ];
 
@@ -1574,7 +1683,8 @@ export const OPEN_TO_ROLES: RoleArea[] = [
   },
   {
     title: "Developer Tools",
-    detail: "Utilities, tools, and platforms that help other developers ship faster.",
+    detail:
+      "Utilities, tools, and platforms that help other developers ship faster.",
   },
 ];
 
@@ -1588,9 +1698,7 @@ export const HEADER_LINKS: NavItem[] = [
   { name: "Resume", href: PROFILE.resume, external: true },
 ];
 
-export const FOOTER_LINKS: NavItem[] = [
-  { name: "Work", href: "/projects" },
-];
+export const FOOTER_LINKS: NavItem[] = [{ name: "Work", href: "/projects" }];
 
 export const MOBILE_TABS: NavItem[] = [
   { name: "Home", href: "/" },
@@ -1741,7 +1849,7 @@ export const SECTIONS = {
   skills: { title: "Skills" },
   roles: { title: "Open to roles" },
   sideProjects: { title: "Side projects" },
-  
+
   repos: {
     title: "Some of my code",
     subtitle: "A few projects you can explore on GitHub.",
@@ -1798,13 +1906,11 @@ export const CASE_STUDY_LABELS = {
   private: "Private",
   archived: "Archived",
   notAvailable: "Not available yet",
-  notAvailableHint:
-    "This one is still in the workshop..",
+  notAvailableHint: "This one is still in the workshop..",
 };
 
 export const CONTACT_FORM = {
-  intro:
-    "Have a role in mind or need help with a project? Send me a message.",
+  intro: "Have a role in mind or need help with a project? Send me a message.",
   namePlaceholder: "Your Name",
   emailPlaceholder: "Where can I reach you back?",
   messagePlaceholder: "What’s on your mind?",
@@ -1843,13 +1949,7 @@ export const EXPERIENCE: Experience[] = [
     ],
     duration: "January 2025 - 2026",
     durationAlt: "01 / 2025 until 2026",
-    stack: [
-      "React Native",
-      "Expo",
-      "TypeScript",
-      "Zustand",
-      "SQLite",
-    ],
+    stack: ["React Native", "Expo", "TypeScript", "Zustand", "SQLite"],
   },
   {
     title: "Front-End Developer",
@@ -1860,13 +1960,7 @@ export const EXPERIENCE: Experience[] = [
     ],
     duration: "April 2024 - 2026",
     durationAlt: "04 / 2024 until 2026",
-    stack: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
+    stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
   {
     title: "Full-Stack Developer",
@@ -1875,7 +1969,7 @@ export const EXPERIENCE: Experience[] = [
       "Build websites, online stores, mobile apps, and custom tools for clients.",
       "Work across frontend interfaces, APIs, databases, and deployment, then iterate based on client feedback.",
     ],
-     duration: "April 2021 - 2024",
+    duration: "April 2021 - 2024",
     durationAlt: "04 / 2021 until 2024",
     stack: [
       "Angular",
@@ -1903,7 +1997,8 @@ export const EDUCATION = [
     title: "Bachelor's Degree in Statistics",
     subTitle: "Ahmadu Bello University, Nigeria",
     date: "Present",
-    description: "Studying statistics, including data analysis and quantitative methods.",
+    description:
+      "Studying statistics, including data analysis and quantitative methods.",
   },
   {
     title: "Diploma Degree in Computer Science",
@@ -1952,7 +2047,6 @@ export const REPOS: Repo[] = [
   },
 ];
 
-
 export type SkillCategory = { category: string; skills: string[] };
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
@@ -1986,7 +2080,15 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     category: "Tools & Practices",
-    skills: ["Git", "GitHub", "Vercel", "Docker", "CI/CD", "Testing", "Debugging"],
+    skills: [
+      "Git",
+      "GitHub",
+      "Vercel",
+      "Docker",
+      "CI/CD",
+      "Testing",
+      "Debugging",
+    ],
   },
 ];
 
@@ -2043,8 +2145,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       },
       {
         name: "Echo",
-        descriptionBefore:
-          "A reminder app tied to places instead of times: ",
+        descriptionBefore: "A reminder app tied to places instead of times: ",
         highlight: "get reminded when you arrive",
         descriptionAfter:
           ". Designed around location-based reminders and local notifications.",
@@ -2063,8 +2164,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       },
       {
         name: "Chop Iron",
-        descriptionBefore:
-          "A workout tracker with a Nigerian voice: ",
+        descriptionBefore: "A workout tracker with a Nigerian voice: ",
         highlight: "53 exercises, workout history, and personal records",
         descriptionAfter:
           ". Your workout data stays on your device, so you can log sessions offline.",
@@ -2083,8 +2183,7 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
       },
       {
         name: "The SupaDevs",
-        descriptionBefore:
-          "A searchable library of developer resources: ",
+        descriptionBefore: "A searchable library of developer resources: ",
         highlight: "metadata extraction and AI-assisted categorization",
         descriptionAfter:
           ", with admin tools for reviewing and managing submissions.",
@@ -2105,32 +2204,30 @@ export const FEATURED_GROUPS: FeaturedGroup[] = [
         tags: ["Node.js", "Redis", "REST API"],
         year: "2025",
         status: "open-source",
-      }
+      },
     ],
   },
   {
     label: "Client work",
     projects: [
       {
-    name: "Crystalglowxquisite",
-    descriptionBefore:
-      "A skincare brand's online store, with ",
-    highlight: "product browsing, cart, checkout and analytics",
-    descriptionAfter: ", alongside analytics integrations.",
-    image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
-    href: "/projects/crystalglowxquisite",
+        name: "Crystalglowxquisite",
+        descriptionBefore: "A skincare brand's online store, with ",
+        highlight: "product browsing, cart, checkout and analytics",
+        descriptionAfter: ", alongside analytics integrations.",
+        image: "/projects/crystalglowxquisite/crystalglowxquisite.png",
+        href: "/projects/crystalglowxquisite",
         tags: ["Next.js", "E-commerce", "Analytics"],
         year: "2026",
         status: "live",
       },
       {
-    name: "Knowledge Master",
-    descriptionBefore:
-      "An online bookstore for textbooks, novels, and ",
-    highlight: "educational resources, and school bookfair services",
-    descriptionAfter: ", with delivery information available on the site.",
-    image: "/projects/knowledgemaster/knowledgemaster.webp",
-    href: "/projects/knowledgemaster",
+        name: "Knowledge Master",
+        descriptionBefore: "An online bookstore for textbooks, novels, and ",
+        highlight: "educational resources, and school bookfair services",
+        descriptionAfter: ", with delivery information available on the site.",
+        image: "/projects/knowledgemaster/knowledgemaster.webp",
+        href: "/projects/knowledgemaster",
         tags: ["Next.js", "E-commerce"],
         year: "2026",
         status: "live",
@@ -2165,5 +2262,5 @@ export const SIDE_PROJECTS: SideProject[] = [
   {
     name: "DropEnv — Encrypted environment-variable sharing",
     href: "https://github.com/drealdumore/dropenv/",
-  }
+  },
 ];
