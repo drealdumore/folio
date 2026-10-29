@@ -1583,7 +1583,7 @@ export const PROFILE = {
     "I've built Melo, a chat app that translates conversations between people speaking different languages; Chop Iron, an offline-first workout tracker; DropEnv, an encrypted environment-variable sharing tool; and VaultX, an API for sharing temporary snippets between devices. Most began as small problems I wanted to solve for myself.",
     "I'm looking for software engineering opportunities where I can solve meaningful problems, learn from good engineers, and ship products people find useful. If that sounds like a fit, my email is at the bottom of the page.",
   ],
-  avatar: "/avatars/avatar-smile.png",
+  avatar: "/avatars/samuel.png",
   avatarAlt: "Samuel Isah's profile photo",
   resume: "/files/SAMUEL-ISAH-RESUME.pdf",
   email: "samuelisah234@gmail.com",
