@@ -502,8 +502,8 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
           width={250}
           height={250}
           className="w-full h-full object-cover pointer-events-none select-none grayscale contrast-[1.05]"
+          sizes="250px"
           priority
-          unoptimized
         />
       </div>
 
@@ -520,7 +520,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               href: SOCIALS.github.url,
               label: "GitHub",
               ariaLabel: `${PROFILE.name} on ${SOCIALS.github.label}`,
-              icon: <GitHubIcon size={20} />,
+              icon: <GitHubIcon size={16} />,
               external: true,
             },
             {
@@ -528,7 +528,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               href: SOCIALS.linkedin.url,
               label: "LinkedIn",
               ariaLabel: `${PROFILE.name} on ${SOCIALS.linkedin.label}`,
-              icon: <LinkedInIcon size={20} />,
+              icon: <LinkedInIcon size={16} />,
               external: true,
             },
             {
@@ -536,7 +536,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               href: SOCIALS.twitter.url,
               label: "X",
               ariaLabel: `${PROFILE.name} on ${SOCIALS.twitter.label}`,
-              icon: <XIcon size={20} />,
+              icon: <XIcon size={16} />,
               external: true,
             },
             {
@@ -544,7 +544,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               href: `mailto:${PROFILE.email}`,
               label: "Email",
               ariaLabel: `Email ${PROFILE.name}`,
-              icon: <MailIcon size={20} />,
+              icon: <MailIcon size={16} />,
               external: false,
             },
             {
@@ -552,7 +552,7 @@ const AvatarOverlay: React.FC<AvatarOverlayProps> = ({
               href: PROFILE.resume,
               label: HERO_CTAS.resume,
               ariaLabel: `${PROFILE.name}'s ${HERO_CTAS.resume}`,
-              icon: <ResumeIcon size={20} />,
+              icon: <ResumeIcon size={16} />,
               external: true,
             },
           ].map((link) => (
@@ -581,6 +581,7 @@ const Header = () => {
   const { trigger } = useWebHaptics();
   const [isOpen, setIsOpen] = useState(false);
   const [triggerRect, setTriggerRect] = useState<DOMRect | null>(null);
+  const [preloadAvatar, setPreloadAvatar] = useState(false);
   const originAvatarRef = useRef<HTMLDivElement>(null);
   const greeting = useTimeGreeting();
 
@@ -625,8 +626,29 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    type IdleWindow = Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+      cancelIdleCallback?: (id: number) => void;
+    };
+    const idleWindow = window as IdleWindow;
+
+    if (idleWindow.requestIdleCallback) {
+      const id = idleWindow.requestIdleCallback(() => setPreloadAvatar(true), {
+        timeout: 2000,
+      });
+      return () => idleWindow.cancelIdleCallback?.(id);
+    }
+
+    const id = setTimeout(() => setPreloadAvatar(true), 1200);
+    return () => clearTimeout(id);
+  }, []);
+
   const handleAvatarClick = () => {
     dismissAvatarTip();
+    setPreloadAvatar(true);
     if (originAvatarRef.current) {
       setTriggerRect(originAvatarRef.current.getBoundingClientRect());
     }
@@ -644,6 +666,8 @@ const Header = () => {
                 ref={originAvatarRef}
                 className="relative w-full max-w-[130px] flex-shrink-0 cursor-pointer"
                 onClick={handleAvatarClick}
+                onPointerEnter={() => setPreloadAvatar(true)}
+                onFocus={() => setPreloadAvatar(true)}
                 role="button"
                 tabIndex={0}
                 aria-label="View profile photo"
@@ -762,6 +786,22 @@ const Header = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      {preloadAvatar && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed top-0 -left-[9999px] h-px w-px overflow-hidden opacity-0"
+        >
+          <Image
+            src={avatarSrc}
+            alt=""
+            width={250}
+            height={250}
+            sizes="250px"
+            loading="eager"
+          />
+        </div>
+      )}
 
       <AvatarOverlay
         isOpen={isOpen}
